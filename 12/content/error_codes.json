@@ -1,0 +1,131 @@
+{
+  "_comment": [
+    "Fehlercodes nach §59.",
+    "§59: 'Fehlercodes beschreiben Beobachtungen. Keine psychologischen Diagnosen.'",
+    "is_observation_only ist im Schema als CHECK (= 1) fixiert, damit kein",
+    "Fehlercode nachträglich zu einer Diagnose umgewidmet werden kann.",
+    "",
+    "§59 listet die 16 Codes ohne Definitionen. Zwölf sind aus anderen Abschnitten",
+    "belegbar (Fundstelle jeweils im Feld spec_section). Die vier übrigen -",
+    "ERR_SINGLE, ERR_OPERATION_CONCEPT, ERR_STRATEGY, ERR_REPRESENTATION - sind",
+    "unter Entscheidung D-14 festgelegt; die Begründung steht jeweils in note.",
+    "",
+    "Jede Definition ist so gewählt, dass sie an der Antwort oder an den",
+    "Interaktionsdaten ablesbar ist. Wo das nicht möglich war (ERR_REPRESENTATION),",
+    "vergibt scoring.classify() den Code nicht, sondern die Evidence Engine."
+  ],
+  "error_codes": [
+    {
+      "error_code": "ERR_SINGLE",
+      "label_de": "Einzelfehler",
+      "description": "Einzelner abweichender Wert ohne erkennbares Muster. Auffangcode: wird genau dann vergeben, wenn die Antwort falsch ist und kein spezifischerer Code greift.",
+      "spec_section": "§59",
+      "note": "Entscheidung D-14. §59 nennt den Code ohne Definition. Als Auffangcode bleibt er beobachtungsnah und verhindert, dass ein falscher Versuch ohne jede Beobachtung gespeichert wird. Er darf nach §29 keine Diagnose auslösen und wird von hypotheses.py nicht ausgewertet."
+    },
+    {
+      "error_code": "ERR_OMISSION",
+      "label_de": "Auslassung",
+      "description": "Beim Abzählen wurde mindestens ein Objekt nicht erfasst.",
+      "spec_section": "§59, §42",
+      "note": "§42 verlangt bei ZP01-Items ausdrücklich das Speichern 'ausgelassener Objekte'."
+    },
+    {
+      "error_code": "ERR_DOUBLE_COUNT",
+      "label_de": "Doppeltzählung",
+      "description": "Mindestens ein Objekt wurde mehrfach erfasst.",
+      "spec_section": "§59, §42",
+      "note": "§42 verlangt bei ZP01-Items ausdrücklich das Speichern 'doppelter Klicks'."
+    },
+    {
+      "error_code": "ERR_SEQUENCE",
+      "label_de": "Reihenfolgefehler",
+      "description": "Die eingegebene Zahlenfolge weicht von der erwarteten Reihenfolge ab.",
+      "spec_section": "§59, §43",
+      "note": "Bezug: die Zahlwortreihen-Items in §43."
+    },
+    {
+      "error_code": "ERR_CARDINALITY",
+      "label_de": "Kardinalitätsbeobachtung",
+      "description": "Die Antwort auf die Frage nach der Gesamtanzahl stimmt nicht mit der Anzahl der erfassten Objekte überein.",
+      "spec_section": "§59, §44",
+      "note": "§44 verlangt zusätzlich die Beobachtung RECOUNT_AFTER_COUNTING (erneutes Durchzählen nach der Frage nach der Gesamtanzahl); diese wird als interaction_event gespeichert, nicht als Fehlercode."
+    },
+    {
+      "error_code": "ERR_PLACE_VALUE",
+      "label_de": "Stellenwertbeobachtung",
+      "description": "Die Antwort weicht in der Zuordnung von Ziffern zu Stellenwerten ab.",
+      "spec_section": "§59, §50",
+      "note": "§50 stellt das Paar ZO06-D4-S-A / ZO06-D4-S-B ('Wie viele Zehner sind in 430?' vs. 'Welche Ziffer steht an der Zehnerstelle?') gezielt gegenüber."
+    },
+    {
+      "error_code": "ERR_ZERO_PLACEHOLDER",
+      "label_de": "Null als unbesetzte Stelle",
+      "description": "Eine unbesetzte Stelle wurde in der Antwort nicht mit 0 markiert. Beispiel aus §66: 508 wurde als 58 notiert.",
+      "spec_section": "§59, §66, §92",
+      "note": "§66 nutzt genau diesen Fall als Musterbeispiel für die Trennung von Beobachtung, Evidenz und Hypothese."
+    },
+    {
+      "error_code": "ERR_OPERATION_SELECTION",
+      "label_de": "Operationswahl",
+      "description": "Es wurde eine andere Rechenoperation gewählt als die Aufgabe verlangt.",
+      "spec_section": "§59, §51, §53, §54",
+      "note": "Bezug: die GV-Items vom Typ 'Welche Rechnung passt?'."
+    },
+    {
+      "error_code": "ERR_OPERATION_CONCEPT",
+      "label_de": "Grundvorstellung der Operation",
+      "description": "Es wurde eine Operation aus einer anderen Operationsklasse gewählt als die Aufgabe verlangt, also additiv statt multiplikativ oder umgekehrt.",
+      "spec_section": "§59, §70",
+      "note": "Entscheidung D-14. Abgrenzung zu ERR_OPERATION_SELECTION: dieselbe Operationsklasse mit vertauschter Richtung (plus statt minus, mal statt geteilt) oder vertauschten Operanden ist eine Auswahlverwechslung; ein Wechsel der Operationsklasse betrifft die Grundvorstellung. Damit ist der Code an der Antwort ablesbar und trennscharf. §70 prüft nach diesem Befund die Grundvorstellung."
+    },
+    {
+      "error_code": "ERR_CALCULATION",
+      "label_de": "Rechenfehler",
+      "description": "Die gewählte Rechnung passt zur Aufgabe, das Ergebnis weicht ab.",
+      "spec_section": "§59",
+      "note": null
+    },
+    {
+      "error_code": "ERR_STRATEGY",
+      "label_de": "Strategiebeobachtung",
+      "description": "Bei einer Aufgabe, deren Antwort selbst ein Rechenweg ist, weicht der gewählte Rechenweg von der von der Aufgabe nahegelegten Strategie ab.",
+      "spec_section": "§59, §23, §53",
+      "note": "Entscheidung D-14. Der Code wird nur bei Items vergeben, deren correct_answer ein Rechenausdruck ist (scoring_rule EXPRESSION_EQUIVALENT oder eine Auswahl über Rechenausdrücke, z.B. ZO08-D4-STRATEGY-A). Bei einer reinen Ergebniseingabe ist die verwendete Strategie nicht beobachtbar; eine Vergabe wäre eine Inferenz, für die §76 im MVP kein Verfahren vorsieht."
+    },
+    {
+      "error_code": "ERR_REPRESENTATION",
+      "label_de": "Darstellungsbeobachtung",
+      "description": "Die Leistung unterscheidet sich zwischen zwei Darstellungsformen derselben Kompetenz. Wird ausschließlich von der Evidence Engine gesetzt, nie aus einem einzelnen Versuch.",
+      "spec_section": "§59, §16, §32",
+      "note": "Entscheidung D-14. §32 verbietet ausdrücklich, aus einem Darstellungsunterschied auf einen Lerntyp zu schließen, und ein Unterschied ist an einem einzelnen Versuch nicht ablesbar - er entsteht erst im Vergleich. scoring.classify() vergibt diesen Code deshalb nie. Er markiert das Ergebnis eines Facettenvergleichs (state.py) und gehört zur REPRESENTATION_HYPOTHESIS."
+    },
+    {
+      "error_code": "ERR_LANGUAGE_CONTEXT",
+      "label_de": "Sprachlicher Kontext",
+      "description": "Beobachtung bei einer Aufgabe mit sprachlichem Kontext (surface_feature WORD_PROBLEM).",
+      "spec_section": "§59, §22",
+      "note": null
+    },
+    {
+      "error_code": "ERR_TRANSFER",
+      "label_de": "Transferbeobachtung",
+      "description": "Beobachtung bei einer Aufgabe mit task_purpose TRANSFER.",
+      "spec_section": "§59, §90",
+      "note": null
+    },
+    {
+      "error_code": "ERR_PREREQUISITE",
+      "label_de": "Voraussetzungsbeobachtung",
+      "description": "Beobachtung bei einer Aufgabe, die als Voraussetzungsprüfung ausgewählt wurde.",
+      "spec_section": "§59, §31",
+      "note": "§31 Schritt 3 der verbindlichen Priorisierung."
+    },
+    {
+      "error_code": "ERR_SELF_CORRECTED",
+      "label_de": "Selbstkorrektur",
+      "description": "Die Antwort wurde vor der Abgabe eigenständig geändert (interaction_event ANSWER_CHANGE).",
+      "spec_section": "§59, §61",
+      "note": "Kein Fehler im engeren Sinn; wird gespeichert, weil §61 ANSWER_CHANGE als Ereignistyp führt."
+    }
+  ]
+}
