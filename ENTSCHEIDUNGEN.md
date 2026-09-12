@@ -1052,3 +1052,121 @@ Eine falsche Abnahmeaussage aus richtigen Daten. Auf frischem Build: erfüllt.
 Aufbau nachweislich reproduzierbar ist — zwei frische Builds ergeben dieselbe Datei, SHA-256
 `fb6d6459286cd790b6790b660a4c63b7b95ef8f93aa3d6c46c301fbd446dc1ab`. Wer die erhobenen Daten
 zeigen will, gibt die Datei unter anderem Namen mit und liest sie nur.
+
+---
+
+## Siebte Prüfrunde — der Doppelklick
+
+Anlass ist ein Zusatz zur Übergabefrage: die Person auf dem Mac ist *nicht technikaffin*.
+Damit ist eine Befehlsliste kein Ergebnis mehr, sondern eine Zumutung — die vorige Runde
+hatte einen Weg beschrieben, den diese Person nicht gehen kann. Entstanden sind zwei
+doppelklickbare Startsymbole und ein Blatt Anleitung; sechs Angriffsrichtungen haben sie
+anschließend auseinandergenommen, jede mit einer eigenen Gegenprüfung.
+
+### D-54 — Das Ausführungsrecht war gesetzt und trotzdem unwirksam
+
+`tools/paket_fuer_mac.py` schrieb `external_attr = (S_IFREG | 0o755) << 16` und begründete
+im eigenen Kopfkommentar, warum: ein ZIP aus PowerShell speichert keine Unix-Rechte, und
+ohne Ausführungsrecht öffnet der Doppelklick auf dem Mac den Text im Editor.
+
+Der Modus stand richtig. Gelesen hat ihn niemand. `zipfile.ZipInfo()` setzt `create_system`
+auf dem bauenden Rechner — unter Windows auf **0 (MS-DOS)**. Die ZIP-Spezifikation macht die
+Deutung von `external_attr` von genau diesem Feld abhängig; bei Hostkennung MS-DOS wertet
+ein Entpacker die oberen 16 Bit nicht als Unix-Modus aus und vergibt eigene Vorgaberechte.
+Nachgemessen am fertigen Archiv: `create_system 0`, `external_attr 0x81ed0000`.
+
+Die Datei verhinderte also exakt den Fehler nicht, dessentwegen sie geschrieben worden war.
+Die Abhilfe ist eine Zeile — `eintrag.create_system = 3`. Die Lehre ist größer: der Packer
+meldete „ausfuehrbar: …" aus seiner Endungsliste, also aus seiner Absicht. Er sieht jetzt im
+fertigen Archiv nach und bricht ab, wenn dort etwas anderes steht. `test_paket_uebergibt_…`
+prüft die Hostkennung eigens; die Fassung davor hätte nur das x-Bit abgefragt und das Paket
+durchgewinkt.
+
+### D-55 — Eine halb aufgebaute Datenbank war eine Sackgasse ohne Ausgang
+
+Die Weiche lautete `if [ ! -f mathkomp.sqlite3 ]`. Sie fragte, ob die Datei *da* ist, nicht,
+ob etwas *drinsteht*. `db.init_schema()` committet das Schema, bevor der Content importiert
+wird — bricht der Import ab oder wird das Fenster währenddessen geschlossen, bleibt eine
+Datei mit Schema und null Kompetenzknoten liegen.
+
+Ab da war jeder weitere Doppelklick derselbe Fehlschlag: die Datei existiert, also wurde
+nicht mehr gebaut, und `ui` lief in `_lesen()` auf „enthält keinen Content (0 Kompetenzknoten)".
+Der von der Kommandozeile angebotene Ausweg — `mathkomp build --force` — ist für jemanden,
+der nichts tippen soll, keiner.
+
+Aufgebaut wird jetzt unter `mathkomp.sqlite3.neu` und erst am Ende umbenannt; ein Abbruch
+hinterlässt nur die `.neu`-Datei, die der nächste Start wegräumt. Die Weiche fragt den
+Inhalt statt die Existenz und kennt **drei** Antworten: brauchbar, unbrauchbar-und-leer,
+unbrauchbar-aber-mit-erhobenen-Daten. Der dritte Fall wird niemals automatisch gelöscht
+(§86) — er meldet sich und rührt nichts an.
+
+### D-56 — Was das Skript über sich selbst wissen muss
+
+Vier Fälle, in denen es vorher die falsche Ursache nannte:
+
+*Die Startdatei allein.* Wird nur das `.command` irgendwohin gezogen, fehlt drumherum alles.
+Das Skript legte am neuen Ort eine Arbeitsumgebung an und beschuldigte am Ende die
+Internetverbindung. Es prüft jetzt direkt nach dem `cd`, ob `pyproject.toml`, `content`,
+`ui` und `src` daneben liegen, und sagt genau das.
+
+*Der zweite Doppelklick.* Der häufigste Handgriff überhaupt — es dauert jemandem zu lange,
+oder das Fenster ist hinter dem Browser verschwunden. Vorher starb der zweite Lauf an einem
+belegten Port und meldete einen Fehler, während die Oberfläche daneben lief. Gefragt wird
+jetzt vorab, ob `/api/catalog` antwortet; dann wird nur der Browser wieder geöffnet.
+
+*Zwei Läufe gleichzeitig.* Während der Einrichtung hätte das zweite Fenster `.venv` unter
+dem laufenden `pip` des ersten gelöscht. Eine Sperre per `mkdir` verhindert das. Sie prüft
+die hinterlegte Prozessnummer und übernimmt eine verwaiste Sperre — eine Sperre, die nach
+einem Absturz für immer bliebe, wäre schlimmer als das Problem, das sie löst.
+
+*Der kopierte Ordner.* `.venv` merkt sich einen absoluten Pfad. Beim Verschieben bricht der
+Import sichtbar; beim **Kopieren** gelingt er und zeigt auf das Original. Gemessen: die
+Kopie lädt `mathkomp` aus dem Quellordner. Geprüft wird deshalb nicht mehr, *ob* sich das
+Programm laden lässt, sondern *von wo*.
+
+### D-57 — Die Zusagen des Anleitungsblatts mussten wahr werden
+
+Die Prüfung der Anleitung war unbequemer als die des Codes, weil ihre Fehler nicht abstürzen.
+
+„Nichts außerhalb seines eigenen Ordners" stimmte nicht: `pip` legt einen Zwischenspeicher
+im Benutzerordner an. Statt den Satz zu entschärfen, macht ihn `--no-cache-dir` wahr.
+
+Die Anleitung schickte den Ordner auf den **Schreibtisch**. Der wird auf vielen Macs mit der
+iCloud abgeglichen — dort lägen die erhobenen Daten auf fremden Servern, was §86 gerade
+ausschließt. Genannt wird jetzt der Benutzerordner, mit dem Grund in einem Satz.
+
+Der Gatekeeper-Weg bestand nur aus „Rechtsklick → Öffnen". Apple beschreibt heute den Weg
+über *Systemeinstellungen → Datenschutz & Sicherheit → Dennoch öffnen*; ob der alte Weg auf
+neuen Systemen noch trägt, ließ sich von hier aus nicht belegen. Beschrieben sind deshalb
+beide, der belegte zuerst.
+
+Die Störungstabelle zitierte einen **englischen** Satz, den ein deutschsprachiger Mac nicht
+anzeigt — wer danach sucht, findet nichts. `test_anleitung_zitiert_keine_meldung_die_es_nicht_gibt`
+prüft jetzt jedes Zitat gegen den Wortlaut der Skripte und der Oberfläche. Die Gegenrichtung
+— jede Meldung braucht eine Tabellenzeile — steht bewusst nicht im Test: sie wäre richtig,
+würde aber bei jeder neuen Abbruchmeldung anschlagen, auch bei einer, die niemand je sieht.
+
+Zwei weitere Sätze waren schlicht falsch: „Schließt man es, ist die Oberfläche im Browser
+leer" (sie zeigt die zuletzt geladenen Zahlen weiter), und `server.py` nannte „Strg-C" — eine
+Taste, die auf keiner Mac-Tastatur steht. Die Paragraphenverweise sind von diesem Blatt
+verschwunden; sie stehen in `README.md`, wo jemand sie nachschlagen kann.
+
+### D-58 — Das Programm war für diese Person gar nicht erreichbar
+
+Der schwerste Befund steckte nicht im Startskript, sondern in dem, wofür es nicht zuständig
+war. `START-MAC.command` öffnet die *Analyse*oberfläche — die Ansicht auf Erhobenes. Die
+Erhebung selbst, also die Arbeit mit einem Kind, verwies auf den Schnellstart in `README.md`.
+Dessen Weg führt über `source .venv/bin/activate` und einen zweiten `build`, der an der
+Datenschutzsperre aus D-50 scheitert. Wer nichts tippen soll, kam an den eigentlichen Zweck
+des Programms nicht heran.
+
+`SITZUNG-MAC.command` ist die Antwort: doppelklicken, Kennung eingeben, Klassenstufe
+optional. Es richtet bewusst nichts ein und verweist auf `START-MAC.command`, damit es nicht
+zwei Symbole gibt, die dasselbe können. Der §86-Hinweis steht dort, wo die Entscheidung
+fällt — an der Eingabeaufforderung —, und nicht in einer Fußnote. Geprüft wird der Name
+nicht: das Programm sieht nur eine Zeichenkette, und eine Prüfung würde eine Sicherheit
+vortäuschen, die es nicht gibt. Die Zuordnung von Kürzel zu Kind gehört auf Papier.
+
+Nebenbei: `START-MAC.md` hieß im selben Ordner wie `START-MAC.command`. Der Finder blendet
+Endungen voreingestellt aus — dort stand „START-MAC" zweimal, einmal klickbar, einmal nicht.
+Die Anleitung heißt jetzt `ANLEITUNG-MAC.md`.

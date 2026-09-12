@@ -197,7 +197,9 @@ def serve(db_path: Path, host: str = "127.0.0.1", port: int = 8765,
     httpd = ThreadingHTTPServer((host, port), handler)
     print(f"Datenbank:   {db_path} (schreibgeschuetzt, {anzahl} Schueler:innen)")
     print(f"Oberflaeche: http://{host}:{port}/")
-    print("Beenden mit Strg-C.")
+    # "Strg" steht auf keiner Mac-Tastatur; "ctrl" auf jeder, auch auf einer
+    # deutschen Windows-Tastatur daneben.
+    print("Beenden mit ctrl-C.")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:

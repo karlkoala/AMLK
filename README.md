@@ -139,12 +139,19 @@ auffindbar.
 ## Übergabe an eine andere Person
 
 Weitergegeben wird der **Quellbaum ohne erzeugte Dateien**. Das Projekt ist kein
-Git-Repository, die `.gitignore` filtert beim Kopieren also nichts — vor dem
-Packen von Hand aufräumen:
+Git-Repository, die `.gitignore` filtert beim Kopieren also nichts. Statt von Hand
+aufzuräumen:
 
 ```bash
-find . -name __pycache__ -type d -prune -exec rm -rf {} + && rm -rf .pytest_cache *.egg-info .venv
+py tools/paket_fuer_mac.py
 ```
+
+Das legt `../mathkomp-fuer-mac.zip` an — alles unter einem Ordner `mathkomp/`,
+ohne Bytecode, Testzwischenstände, `.venv` und `*.sqlite3`. Vor dem Schreiben
+lehnt es Windows-Zeilenenden in einem Startskript ab (auf dem Mac wäre die Folge
+`/bin/bash^M: bad interpreter`), danach liest es die Rechte im **fertigen Archiv**
+nach und bricht ab, wenn ein `.command` dort ohne Ausführungsrecht oder unter
+falscher Hostkennung steht — siehe ENTSCHEIDUNGEN.md, D-54.
 
 **`mathkomp.sqlite3` gehört nicht dazu.** Sie enthält erhobene Daten (§86) und
 lässt sich aus `content/` vollständig neu erzeugen — zwei frische Builds ergeben
@@ -154,9 +161,27 @@ unterschiedliche Pfade: NICHT erfüllt"*: eine falsche Abnahmeaussage aus
 richtigen Daten. Wer die erhobenen Daten trotzdem zeigen will, gibt die Datei
 unter anderem Namen mit und liest sie nur: `mathkomp --db referenz.sqlite3 ui`.
 
-Die empfangende Person führt dann Schritt 0 bis 5 des Schnellstarts aus. Auf
-einem frischen macOS zusätzlich davor: ein eigenes Python installieren, siehe
-Voraussetzungen.
+**Auf einem Mac tippt die empfangende Person nichts.** Im Paket liegen zwei
+doppelklickbare Startsymbole und ein Blatt Anleitung:
+
+| Datei | wofür |
+|---|---|
+| `START-MAC.command` | einrichten (beim ersten Mal) und die Analyseoberfläche öffnen |
+| `SITZUNG-MAC.command` | mit einem Kind arbeiten |
+| `ANLEITUNG-MAC.md` | die drei Schritte, in Alltagssprache, ohne Paragraphen |
+
+`START-MAC.command` sucht ein Python ≥ 3.11, legt `.venv` an, installiert mit
+`pip install -e .`, baut die Datenbank atomar auf und startet `ui`. Es erkennt
+den zweiten Doppelklick, den verschobenen oder kopierten Ordner, die aus ihrem
+Ordner gezogene Startdatei und einen unvollständig gebliebenen Aufbau — jeweils
+mit einem Satz, der sagt, was zu tun ist. Was dabei geprüft wird, hält
+`tests/test_portabilitaet.py` fest.
+
+Die Anleitung enthält eine Zeile für Name und Kontakt des Absenders; sie will
+ausgefüllt werden. Sie gehört außerdem **neben** die ZIP-Datei geschickt, nicht
+nur hinein — sie erklärt unter anderem, wie man das Archiv öffnet.
+
+Wer das Projekt ohne Mac übernimmt, führt Schritt 0 bis 5 des Schnellstarts aus.
 
 Was dabei entsteht: `build` importiert den Content, `simulate` erzeugt aus den
 sechs Testfällen §98–§103 die sieben Profile `SIM-A` bis `SIM-F` (Fall E zerfällt

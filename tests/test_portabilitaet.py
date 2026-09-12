@@ -260,3 +260,150 @@ def test_keine_plattformgebundenen_startbefehle_in_meldungen():
             if muster.search(zeile):
                 treffer.append(f"{pfad.relative_to(ROOT)}:{nr}: {zeile.strip()}")
     assert not treffer, "Plattformgebundener Startbefehl in einer Meldung:\n" + "\n".join(treffer)
+
+
+# ------------------------------------------------------ Das Startsymbol Mac
+
+def test_paket_uebergibt_keine_erhobenen_daten_und_ein_klickbares_symbol(tmp_path):
+    """Das fertige Archiv, nicht die Absicht des Packers.
+
+    Drei Zusagen der Anleitung haengen daran: dass beim Entpacken ein Ordner
+    ``mathkomp`` entsteht (darauf beruft sich ANLEITUNG-MAC.md woertlich),
+    dass die Startsymbole ein Ausfuehrungsrecht mitbringen (sonst oeffnet der
+    Doppelklick den Text im Editor), und dass keine erhobenen Daten mitreisen
+    (§86, siehe ENTSCHEIDUNGEN.md D-53).
+
+    Die Hostkennung wird eigens geprueft, und das ist der Kern. Der Modus
+    stand hier lange richtig und war trotzdem wirkungslos: ``ZipInfo`` setzt
+    ``create_system`` unter Windows auf 0 (MS-DOS), und bei dieser Kennung
+    liest kein Entpacker die oberen 16 Bit als Unix-Modus. Ein Test, der nur
+    das x-Bit abfragt, haette das Paket durchgewinkt.
+    """
+    import zipfile
+
+    sys.path.insert(0, str(ROOT / "tools"))
+    import paket_fuer_mac
+
+    ziel = tmp_path / "paket.zip"
+    paket_fuer_mac.packen(ziel)
+
+    with zipfile.ZipFile(ziel) as archiv:
+        eintraege = archiv.infolist()
+        namen = [e.filename for e in eintraege]
+
+        oberste = {n.split("/")[0] for n in namen}
+        assert oberste == {"mathkomp"}, f"Nicht genau ein Ordner oben: {oberste}"
+
+        daten = [n for n in namen if n.endswith(".sqlite3")]
+        assert not daten, f"Erhobene Daten im Paket: {daten}"
+
+        rest = [n for n in namen
+                if "__pycache__" in n or "/.venv/" in n or n.endswith(".DS_Store")]
+        assert not rest, f"Zielrechner-Reste im Paket: {rest}"
+
+        symbole = [e for e in eintraege if e.filename.endswith(".command")]
+        erwartet = {"mathkomp/START-MAC.command", "mathkomp/SITZUNG-MAC.command"}
+        assert {e.filename for e in symbole} == erwartet, \
+            f"Andere Startsymbole als erwartet: {[e.filename for e in symbole]}"
+
+        for e in symbole:
+            modus = e.external_attr >> 16
+            assert e.create_system == 3, (
+                f"{e.filename}: Hostkennung {e.create_system} statt 3 (Unix) - "
+                "der Modus darunter wird nicht gelesen")
+            assert modus & 0o111, \
+                f"{e.filename} ohne Ausfuehrungsrecht (Modus {modus:o})"
+            assert b"\r\n" not in archiv.read(e.filename), \
+                f"Windows-Zeilenenden in {e.filename}"
+
+
+def test_anleitung_zitiert_keine_meldung_die_es_nicht_gibt():
+    """Die Fehlertabelle ist nur so viel wert, wie ihre linke Spalte trifft.
+
+    Sie zitierte einmal einen englischen Gatekeeper-Satz, den ein
+    deutschsprachiger Mac gar nicht anzeigt - wer danach suchte, fand nichts
+    und war allein. Geprueft wird deshalb die Richtung, die damals versagt
+    hat: jedes in Anfuehrungszeichen gesetzte Zitat muss woertlich in einem
+    der Skripte oder in der Oberflaeche vorkommen.
+
+    Die Gegenrichtung - jede Meldung des Skripts hat eine Tabellenzeile -
+    steht hier bewusst nicht. Sie waere richtig, aber sie wuerde bei jeder
+    neuen Abbruchmeldung fehlschlagen, auch bei einer, die niemand je sieht.
+    """
+    import re
+
+    anleitung = (ROOT / "ANLEITUNG-MAC.md").read_text(encoding="utf-8")
+    quellen = "\n".join(
+        (ROOT / name).read_text(encoding="utf-8")
+        for name in ("START-MAC.command", "SITZUNG-MAC.command", "ui/index.html"))
+
+    #: Wortlaut, den nicht dieses Programm schreibt, sondern der Browser.
+    FREMD = {"nicht erreichbar"}
+
+    zitate = re.findall(r"\u201e([^\u201c\"]+)\"", anleitung)
+    assert len(zitate) >= 10, f"Nur {len(zitate)} Zitate gefunden - greift das Muster noch?"
+
+    fehlend = [z for z in zitate
+               if z.rstrip(" \u2026").strip() not in quellen and z not in FREMD]
+    assert not fehlend, (
+        "Die Anleitung zitiert Meldungen, die so nirgends erscheinen:\n"
+        + "\n".join(f"  \u201e{z}\u201c" for z in fehlend))
+
+
+def test_beide_startsymbole_sind_auf_einem_mac_startbar():
+    """Dasselbe wie oben, aber fuer jedes Startsymbol im Paket.
+
+    ``SITZUNG-MAC.command`` ist spaeter dazugekommen, und genau solche
+    Nachzuegler fallen aus einer Pruefung heraus, die einen festen Dateinamen
+    nennt.
+    """
+    import re
+
+    skripte = sorted(ROOT.glob("*.command"))
+    assert len(skripte) >= 2, f"Erwartet werden zwei Startsymbole, gefunden: {skripte}"
+
+    nur_bash4 = {
+        r"declare\s+-A": "assoziatives Array (bash 4)",
+        r"local\s+-A": "assoziatives Array (bash 4)",
+        r"\bmapfile\b": "mapfile (bash 4)",
+        r"\breadarray\b": "readarray (bash 4)",
+        r"\$\{[A-Za-z_][A-Za-z0-9_]*\^\^": "Grossschreibung ${x^^} (bash 4)",
+        r"\$\{[A-Za-z_][A-Za-z0-9_]*,,": "Kleinschreibung ${x,,} (bash 4)",
+        r"&>>": "&>> (bash 4)",
+        r";;&": ";;& in case (bash 4)",
+    }
+
+    for skript in skripte:
+        roh = skript.read_bytes()
+        assert b"\r\n" not in roh, f"Windows-Zeilenenden in {skript.name}"
+        assert roh.startswith(b"#!/bin/bash\n"), f"Shebang fehlt in {skript.name}"
+
+        text = roh.decode("utf-8")
+        # Nur Code, keine Prosa: der Kopf der Skripte zaehlt die verbotenen
+        # Konstrukte namentlich auf, damit die naechste Person sie kennt.
+        code = "\n".join(z for z in text.splitlines()
+                         if not z.lstrip().startswith("#"))
+        gefunden = [grund for muster, grund in nur_bash4.items()
+                    if re.search(muster, code)]
+        assert not gefunden, f"{skript.name} braucht bash 4: " + ", ".join(gefunden)
+
+        zeilen = text.splitlines()
+        befehle = [z.strip() for z in zeilen
+                   if z.strip() and not z.strip().startswith("#")]
+        assert befehle[0] == "set -u", f"{skript.name} beginnt mit {befehle[0]!r}"
+
+        # Das cd muss nicht die erste Zeile sein - die Funktionsdefinitionen
+        # stehen bewusst davor, damit auch der frueheste Abbruch schon einen
+        # Satz sagen kann. Es muss aber vor dem ersten Befehl stehen, der
+        # etwas anfasst: ein doppelgeklicktes .command startet im
+        # Benutzerordner, und was davor zugreift, greift dort zu.
+        greift_zu = re.compile(r"\s*(mkdir|rm|curl|open|touch|mv|cp)\s")
+        wechsel = next((i for i, z in enumerate(zeilen)
+                        if z.startswith('cd "$(dirname "$0")"')), None)
+        assert wechsel is not None, f"{skript.name} wechselt nie in seinen Ordner"
+        zugriff = next((i for i, z in enumerate(zeilen)
+                        if greift_zu.match(z) and not z.lstrip().startswith("#")), None)
+        if zugriff is not None:
+            assert wechsel < zugriff, (
+                f"{skript.name}: Zeile {zugriff + 1} greift auf Dateien zu, bevor "
+                f"Zeile {wechsel + 1} in den richtigen Ordner wechselt")
