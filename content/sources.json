@@ -1,0 +1,91 @@
+{
+  "_comment": [
+    "Quellenverwaltung nach §109/§110.",
+    "Die Spezifikation nennt in §111 vier primäre Referenzen namentlich.",
+    "§5 nennt zusätzlich drei Forschungsfelder ohne konkrete Zitation;",
+    "diese sind als UNDEFINED_REFERENCE eingetragen (§1).",
+    "url_or_doi bleibt leer, wo die Spezifikation keine Fundstelle angibt."
+  ],
+  "sources": [
+    {
+      "source_id": "SRC_KMK_2022",
+      "author_or_org": "Kultusministerkonferenz (KMK)",
+      "title": "Bildungsstandards für das Fach Mathematik Primarbereich, Fassung 2022",
+      "year": 2022,
+      "source_type": "OFFICIAL_STANDARD",
+      "url_or_doi": null,
+      "access_date": null,
+      "notes": "§111: verbindliche Grundlage für die übergeordnete Kompetenzstruktur. Fünf inhaltsbezogene Leitideen, sechs prozessbezogene Kompetenzen (§5). Konkrete Fundstelle/URL in der Spezifikation nicht angegeben."
+    },
+    {
+      "source_id": "SRC_IQB_KSM",
+      "author_or_org": "Institut zur Qualitätsentwicklung im Bildungswesen (IQB)",
+      "title": "Kompetenzstufenmodelle Mathematik Primarstufe",
+      "year": null,
+      "source_type": "EMPIRICAL_RESEARCH",
+      "url_or_doi": null,
+      "access_date": null,
+      "notes": "§111: Referenz für empirische Kompetenzmodellierung. §6: Die internen Stufen D1-D5 sind NICHT die IQB-Kompetenzstufen I-V. Jahr in der Spezifikation nicht angegeben."
+    },
+    {
+      "source_id": "SRC_IQB_VERA3",
+      "author_or_org": "Institut zur Qualitätsentwicklung im Bildungswesen (IQB)",
+      "title": "VERA-3 Mathematik, Aufgaben und Aufgabenmetadaten",
+      "year": null,
+      "source_type": "EMPIRICAL_RESEARCH",
+      "url_or_doi": null,
+      "access_date": null,
+      "notes": "§5/§111: Referenz für Aufgabenmetadaten. Jahr in der Spezifikation nicht angegeben."
+    },
+    {
+      "source_id": "SRC_PIKAS_DZLM",
+      "author_or_org": "PIKAS / DZLM",
+      "title": "Arithmetische Basiskompetenzen",
+      "year": null,
+      "source_type": "DIDACTIC_FRAMEWORK",
+      "url_or_doi": null,
+      "access_date": null,
+      "notes": "§111: besonders relevant für Zahlverständnis, Operationsverständnis, Stellenwertverständnis, Darstellungsvernetzung, Aufgabenbeziehungen, Rechenstrategien. §5 nennt die Differenzierung in Zahlverständnis, Operationsverständnis, Stellenwertverständnis, schnelles Kopfrechnen, Zahlenrechnen, Ziffernrechnen. §16 hebt die Vernetzung von Handlung, Bild, Sprache und Symbolik hervor."
+    },
+    {
+      "source_id": "SRC_GELMAN_GALLISTEL",
+      "author_or_org": "Gelman, R. & Gallistel, C. R.",
+      "title": "The Child's Understanding of Number",
+      "year": 1978,
+      "source_type": "EMPIRICAL_RESEARCH",
+      "url_or_doi": null,
+      "access_date": null,
+      "notes": "§9/§111: Referenz für die fünf grundlegenden Zählprinzipien ZP01-ZP05."
+    },
+    {
+      "source_id": "SRC_STRATEGY_RESEARCH_UNDEFINED",
+      "author_or_org": "UNDEFINED",
+      "title": "Forschung zu mathematischen Strategien und Aufgabenvariation",
+      "year": null,
+      "source_type": "THEORETICAL",
+      "url_or_doi": null,
+      "access_date": null,
+      "notes": "UNDEFINED. §5 Punkt 6 und §112 berufen sich auf Forschung zur Strategieauswahl, nennen aber keine konkrete Publikation. Fachliche Rückfrage: siehe OFFENE_FRAGEN.md F-02. Solange keine Fundstelle vorliegt, darf keine daraus abgeleitete Relation den evidence_status A oder B erhalten (§114)."
+    },
+    {
+      "source_id": "SRC_ADAPTIVE_TESTING_UNDEFINED",
+      "author_or_org": "UNDEFINED",
+      "title": "Forschung zu adaptivem Testen",
+      "year": null,
+      "source_type": "THEORETICAL",
+      "url_or_doi": null,
+      "access_date": null,
+      "notes": "UNDEFINED. §5 Punkt 7 und §97 verweisen auf adaptives Testen bzw. CAT ohne Zitation. Für V1 ohne Auswirkung, da §35 die Skip-Level-Logik ausdrücklich nur als CONFIGURABLE_HEURISTIC zulässt."
+    },
+    {
+      "source_id": "SRC_MVP_SPEC_V1",
+      "author_or_org": "Projektintern",
+      "title": "MVP V1.0 - Adaptives Mathematik-Lern- und Kompetenzsystem, Fachliche und technische Spezifikation, Version 1.0",
+      "year": null,
+      "source_type": "MVP_HYPOTHESIS",
+      "url_or_doi": null,
+      "access_date": null,
+      "notes": "Bezugsdokument. Wird als Quelle nur dort gesetzt, wo eine Relation oder ein Item ausschließlich aus dem Text dieser Spezifikation abgeleitet ist und keine externe Absicherung besitzt. Solche Einträge erhalten nach §114 höchstens evidence_status C oder D."
+    }
+  ]
+}

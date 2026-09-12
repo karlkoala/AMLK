@@ -1,0 +1,2147 @@
+{
+  "_lane": "merkmale",
+  "_comment": [
+    "Loest F-03 (Skala language_demand), F-04 (Klassenstufenreferenz),",
+    "F-12 (Merkmalszuordnung) und F-19 (Prozesskompetenzen).",
+    "",
+    "GELTUNG",
+    "  Die vier Regelsaetze stammen vom Auftraggeber, nicht aus der",
+    "  Spezifikation. Sie sind mechanisch auf alle 83 Items angewendet.",
+    "  Jeder Eintrag nennt in begruendung die Fundstelle in der",
+    "  Spezifikation (Notation §NN wie im uebrigen Repo) oder den",
+    "  didaktischen Grund der Implementiererentscheidung.",
+    "",
+    "OPERATIONALISIERUNGEN, die die Regeln offen lassen",
+    "  1. Sachkontext im Sinne der Skala = surface_feature WORD_PROBLEM",
+    "     (§22). Das sind genau vier Items; sie sind zugleich die HIGH-",
+    "     Items, die einzigen mit additional_demand LANGUAGE_DEMAND und",
+    "     die einzigen mit MODELLIEREN.",
+    "  2. LOW gegen MEDIUM: MEDIUM nur, wenn der Aufgabentext einen",
+    "     mathematischen Fakt als eigenen Satzteil nennt ('Du weisst",
+    "     5*8=40.', '7*8=56.') oder eine Bedingung stellt, die ein Urteil",
+    "     ueber den Rechenweg verlangt ('besonders guenstig', 'hilft dir",
+    "     bei', 'Wenn du ... anfaengst'). Die Wortzahl entscheidet nicht:",
+    "     das Skalenbeispiel 'Welche Rechnung ist fuer 49+36 besonders",
+    "     guenstig?' hat sieben Woerter und ist MEDIUM.",
+    "  3. Klassenstufe: es entscheidet die groesste im Item oder in seiner",
+    "     Loesung auftretende Zahl (Zahlenraum) zusammen mit der Operation.",
+    "     Bis 20 -> 1-1; 21 bis 100 ohne Zehnerueberschreitung -> 1-2; 21",
+    "     bis 100 mit Zehnerueberschreitung -> 2-3; 101 bis 1000 -> 3-4.",
+    "     Die Zeilen zum Einsmaleins und zur mehrstelligen Multiplikation",
+    "     gehen der Zahlenraumzeile vor. internal_difficulty spielt keine",
+    "     Rolle - deshalb tragen die drei Doppelitems aus F-20 paarweise",
+    "     dieselbe Klassenstufenreferenz.",
+    "  4. NEAR_ROUND_NUMBER, 'zweistellige Aufgabe' = beide Operanden",
+    "     zweistellig. Alle vier Kontrollfaelle aus §71 kommen damit",
+    "     richtig heraus. Bei nur einem zweistelligen Operanden (15-6,",
+    "     24:6, 72:8, 23*4) greift die Regel nicht; siehe offene Punkte.",
+    "  5. PROBLEMLOESEN = die Aufgabe verlangt einen Rechenweg zu einer",
+    "     im task_payload genannten target_calculation statt eines",
+    "     Ergebnisses. Damit sind es acht Items.",
+    "  6. DARSTELLEN = Uebersetzung zwischen zwei Notationen mit eigener",
+    "     Konvention (Stellenwertmaterial, 20er-Feld, Rechteckfeld,",
+    "     Stellenwert-Sprechweise, Zahlenstrahl, Bild zu Rechnung).",
+    "     Reines Abzaehlen einer gezeigten Menge ist kein",
+    "     Darstellungswechsel, sonst waere jedes Zaehlitem DARSTELLEN.",
+    "",
+    "KONTROLLE NEAR_ROUND_NUMBER",
+    "  Die vier Faelle aus §71 kommen richtig heraus: 49+36 (Abstand 1)",
+    "  und 48+37 (Abstand 2) tragen das Merkmal, 37+28 (Abstand 3) und",
+    "  46+27 (Abstand 4) nicht. Alle zehn bisher im Repo gesetzten",
+    "  Belegungen werden von der Regel bestaetigt, keine ist zu entfernen.",
+    "  Drei Items kommen neu hinzu, siehe near_round_number_abweichungen.",
+    "",
+    "BINDUNGEN",
+    "  §32: keine Zuordnung leitet aus einem Darstellungsunterschied",
+    "  einen Lerntyp ab. §15: WORKING_MEMORY_DEMAND und LANGUAGE_DEMAND",
+    "  beschreiben die Aufgabe, nicht die Schueler:in. §94: die",
+    "  Klassenstufe ist Referenz, keine Schranke. §116: Items derselben",
+    "  Familie erhalten dieselbe Zuordnung, ausser die Abweichung ist",
+    "  ausdruecklich gemeldet.",
+    "",
+    "REICHWEITE",
+    "  Das Fragment deckt genau die 83 Items aus content/tasks.json ab.",
+    "  Items, die andere Lanes neu anlegen, tragen die vier Felder noch",
+    "  nicht (content/_fragments/neue_items.json: 13 Items ohne",
+    "  language_demand, ohne grade_reference und ohne",
+    "  process_competencies). Die Regeln 1 bis 6 oben sind dort in",
+    "  gleicher Weise anzuwenden, sonst entstehen erneut UNDEFINED-Werte.",
+    "",
+    "FELDER",
+    "  process_competencies ist die vollstaendige Zielliste, nicht ein",
+    "  Zusatz. Die Merkmalslisten sind als add_/remove_ angegeben; kein",
+    "  Eintrag entfernt ein bestehendes Merkmal."
+  ],
+  "tasks": [
+    {
+      "task_id": "ZP01-D1-I-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 6 Punkte. §94: Klassenstufe ist Referenz, keine Schranke. OBJEKTE_WERKZEUGE: mit Material wird gehandelt, interaction_mode CLICK_SEQUENCE. §42 verlangt Klickreihenfolge, ausgelassene Objekte und doppelte Klicks, also eine Handlung an jedem einzelnen Objekt. Kein WORKING_MEMORY_DEMAND: die Punkte bleiben sichtbar, es muss keine Information über die Bearbeitung hinweg gehalten werden. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZP01-D1-I-B",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 7 Punkte. §94: Klassenstufe ist Referenz, keine Schranke. OBJEKTE_WERKZEUGE: mit Material wird gehandelt, interaction_mode CLICK_SEQUENCE. Parallelitem zu ZP01-D1-I-A (§42), gleiche Zuordnung, damit §116 gewahrt bleibt. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZP01-D2-I-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 12 Punkte. §94: Klassenstufe ist Referenz, keine Schranke. OBJEKTE_WERKZEUGE: mit Material wird gehandelt, interaction_mode CLICK_SEQUENCE. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZP01-D2-ACTION-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 12 Objekte. §94: Klassenstufe ist Referenz, keine Schranke. OBJEKTE_WERKZEUGE: mit Material wird gehandelt, interaction_mode MANIPULATE. §42: 'Objekte dürfen beim Zählen verschoben werden.' Kein WORKING_MEMORY_DEMAND: gerade das Verschieben macht das Zwischenergebnis äußerlich sichtbar. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZP01-D3-I-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 18 Objekte. §94: Klassenstufe ist Referenz, keine Schranke. OBJEKTE_WERKZEUGE: mit Material wird gehandelt, interaction_mode CLICK_SEQUENCE. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZP02-D1-S-A",
+      "language_demand": "NONE",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, größte Zahl 9. §94: Klassenstufe ist Referenz, keine Schranke. §43-Wortlaut '5, 6, 7, __, __'. Keine Prozesskompetenz: die Aufgabe verlangt das Fortsetzen der Zahlwortreihe, keine Modellierung, keinen Darstellungswechsel und keine Strategiewahl. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZP02-D1-S-B",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, größte Zahl 21, Zehnerüberschreitung 19 auf 20. §94: Klassenstufe ist Referenz, keine Schranke. Die Zahlenraumzeile entscheidet: 21 liegt über 20, das Item trägt bereits CROSSES_TEN. Damit greift die Zeile 'Zahlenraum bis 100 mit Zehnerüberschreitung'. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZP02-D2-S-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, größte Zahl 30, Zehnerüberschreitung 29 auf 30. §94: Klassenstufe ist Referenz, keine Schranke. §43-Wortlaut 'Beginne bei 27 und nenne die nächsten drei Zahlen.' - neun Wörter, Standardanweisung ohne gegebenen Fakt und ohne Sachkontext, deshalb LOW und nicht MEDIUM. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZP02-D2-S-B",
+      "language_demand": "NONE",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 3-4: Zahlenraum bis 1000 / Stellenwert Hunderter, größte Zahl 101, Hunderterüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. Mechanische Folge der Zahlenraumregel: 101 liegt über 100, damit gilt die Zeile 'Zahlenraum bis 1000'. Die Zuordnung ist rein am Zahlenraum bestimmt, nicht an der internen Schwierigkeit (D2). Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZP02-D3-S-A",
+      "language_demand": "NONE",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, größte Zahl 15. §94: Klassenstufe ist Referenz, keine Schranke. §43-Wortlaut '15, 14, __, __'. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZP03-D1-I-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 8 Objekte. §94: Klassenstufe ist Referenz, keine Schranke. OBJEKTE_WERKZEUGE: mit Material wird gehandelt, interaction_mode CLICK_SEQUENCE. Kein WORKING_MEMORY_DEMAND: die Menge bleibt sichtbar; die in §44 verlangte Beobachtung RECOUNT_AFTER_COUNTING ist ein Interaktionsereignis, kein Aufgabenmerkmal. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZP03-D1-I-B",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 12 Objekte. §94: Klassenstufe ist Referenz, keine Schranke. OBJEKTE_WERKZEUGE: mit Material wird gehandelt, interaction_mode CLICK_SEQUENCE. §44: 'Gleicher Ablauf.' Gleiche Zuordnung wie ZP03-D1-I-A (§116). Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZP03-D2-ACTION-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 15 Objekte verfügbar, 9 zu legen. §94: Klassenstufe ist Referenz, keine Schranke. OBJEKTE_WERKZEUGE: mit Material wird gehandelt, interaction_mode DRAG. Kein WORKING_MEMORY_DEMAND: die gelegten Objekte bleiben im Feld liegen und sind nachzählbar. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZP03-D2-I-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 8 Objekte, eines wird hinzugefügt. §94: Klassenstufe ist Referenz, keine Schranke. WORKING_MEMORY_DEMAND: §44 präsentiert nacheinander - erst 8 Objekte, dann eines zusätzlich; die erste Anzahl muss über den zweiten Präsentationsschritt hinweg gehalten werden. §15: das Merkmal beschreibt die Aufgabe, nicht die Schüler:in. Keine Prozesskompetenz, interaction_mode ENTER ohne Materialhandlung."
+    },
+    {
+      "task_id": "ZP04-D1-I-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 8 Gegenstände. §94: Klassenstufe ist Referenz, keine Schranke. OBJEKTE_WERKZEUGE: mit Material wird gehandelt, interaction_mode CLICK_SEQUENCE. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZP04-D2-ACTION-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 7 eigene Handlungen. §94: Klassenstufe ist Referenz, keine Schranke. OBJEKTE_WERKZEUGE: mit Material wird gehandelt, interaction_mode CLICK_SEQUENCE. WORKING_MEMORY_DEMAND: gezählt werden die eigenen Handlungen (§45: '7 interactions'); ein Tippen hinterlässt keine nachzählbare Spur, die laufende Anzahl muss über die Bearbeitung hinweg gehalten werden. §15: das Merkmal beschreibt die Aufgabe, nicht die Schüler:in."
+    },
+    {
+      "task_id": "ZP04-D2-I-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 6 Signale. §94: Klassenstufe ist Referenz, keine Schranke. WORKING_MEMORY_DEMAND: §45 zeigt sechs visuelle Signale nacheinander; die Präsentation ist flüchtig, die laufende Anzahl muss gehalten werden. F-12 nennt genau dieses Item als Lücke. §15: das Merkmal beschreibt die Aufgabe, nicht die Schüler:in. IMAGE_CONTEXT ergänzt: surface_features waren leer, obwohl §45 ausdrücklich von 'visuellen Signalen' spricht und representation_mode IMAGE ist. Zum fehlenden Strukturmerkmal für das Zählen flüchtiger Ereignisse siehe proposed_vocabulary_terms (EVENT_COUNTING)."
+    },
+    {
+      "task_id": "ZP05-D1-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "ARGUMENTIEREN"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [
+        "COUNTING_SET"
+      ],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 7 Objekte. §94: Klassenstufe ist Referenz, keine Schranke. ARGUMENTIEREN: §46 verlangt mit 'Bleibt die Anzahl gleich?' eine Aussage über die Gültigkeit der Anzahlinvarianz, nicht ein Ergebnis. WORKING_MEMORY_DEMAND: §46 lässt zweimal zählen (links-rechts, dann rechts-links); das erste Zählergebnis muss über den zweiten Durchgang hinweg gehalten werden. §15: das Merkmal beschreibt die Aufgabe. COUNTING_SET ergänzt zur Konsistenz mit ZP05-D2-A (§46), das dieselbe Zählmenge trägt. Keine OBJEKTE_WERKZEUGE: interaction_mode ist SELECT."
+    },
+    {
+      "task_id": "ZP05-D2-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 8 Objekte. §94: Klassenstufe ist Referenz, keine Schranke. WORKING_MEMORY_DEMAND: §46 verändert den Startpunkt während der Bearbeitung; die zuvor bestimmte Anzahl muss über die Veränderung hinweg gehalten werden. §15: das Merkmal beschreibt die Aufgabe. Keine ARGUMENTIEREN-Zuordnung: gefragt ist eine Anzahl ('Wie viele werden es sein?'), keine Gültigkeitsaussage."
+    },
+    {
+      "task_id": "ZP05-D2-B",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "ARGUMENTIEREN"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [
+        "COUNTING_SET"
+      ],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand MEDIUM: vollständiger Satz mit gegebenem Fakt beziehungsweise mit Bedingung, ohne Sachkontext. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 10 Objekte. §94: Klassenstufe ist Referenz, keine Schranke. MEDIUM: §46-Wortlaut 'Wenn du mit einem anderen Gegenstand anfängst: mehr, weniger oder gleich viele?' - vollständiger Satz mit Bedingung, zwölf Wörter, kein Sachkontext. ARGUMENTIEREN: gefragt ist eine Aussage über die Gültigkeit der Anzahlinvarianz. COUNTING_SET ergänzt zur Konsistenz mit ZP05-D2-A. Kein WORKING_MEMORY_DEMAND: das Item beschreibt keinen zweiten Präsentations- oder Zähldurchgang, sondern verlangt ein Urteil über einen hypothetischen Startpunkt."
+    },
+    {
+      "task_id": "ZO02-D1-I-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 8 Punkte. §94: Klassenstufe ist Referenz, keine Schranke. Kein DARSTELLEN: die Aufgabe verlangt die Anzahl der gezeigten Menge, keine Übersetzung in eine andere Notation. Merkmalslisten unverändert (FIVE_RELATION und STRUCTURED_SUBITIZING sind bereits belegt)."
+    },
+    {
+      "task_id": "ZO02-D1-I-B",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 7 Punkte. §94: Klassenstufe ist Referenz, keine Schranke. Parallelitem zu ZO02-D1-I-A, gleiche Zuordnung (§116). Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO02-D2-ACTION-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [
+        "COUNTING_SET"
+      ],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, 13 Plättchen verfügbar, 9 zu legen. §94: Klassenstufe ist Referenz, keine Schranke. OBJEKTE_WERKZEUGE: mit Material wird gehandelt, interaction_mode DRAG. COUNTING_SET ergänzt: das Item hat denselben Aufbau wie ZP03-D2-ACTION-A (§44, 9 von 15), dort ist COUNTING_SET belegt - die leere Liste war eine Lücke. Kein WORKING_MEMORY_DEMAND: die gelegten Plättchen bleiben nachzählbar."
+    },
+    {
+      "task_id": "ZO02-D2-S-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [
+        "CROSSES_TEN"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, größte Zahl 100, Zehner- und Hunderterüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. CROSSES_TEN ergänzt: 99 auf 100 überschreitet sowohl einen Zehner als auch einen Hunderter; ZP02-D2-S-B (§43, 97 bis 101) ist genau so kumulativ belegt, hier fehlte der Zehnerübergang. Klassenstufe nach Zahlenraum: 100 bleibt im Zahlenraum bis 100, deshalb 2-3 und nicht 3-4."
+    },
+    {
+      "task_id": "ZO02-D3-MIXED-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 2,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [
+        "COUNTING_SET"
+      ],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-2: Zahlenraum bis 100 ohne Zehnerüberschreitung, größte beteiligte Zahl 42, keine Überschreitung. §94: Klassenstufe ist Referenz, keine Schranke. COUNTING_SET ergänzt: das Item lässt eine Menge von 24 Elementen bestimmen (§47), structural_features waren leer. Kein DARSTELLEN: gefragt ist die Anzahl der gezeigten Menge."
+    },
+    {
+      "task_id": "ZO04-D2-S-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 3-4: Zahlenraum bis 1000 / Stellenwert Hunderter, größte Zahl 398. §94: Klassenstufe ist Referenz, keine Schranke. Vergleichsaufgabe ohne runde Bezugszahl, deshalb kein NEAR_ROUND_NUMBER (§71-Regel, zweiter Teil). Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO04-D2-S-B",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 3-4: Zahlenraum bis 1000 / Stellenwert Hunderter, größte Zahl 570. §94: Klassenstufe ist Referenz, keine Schranke. Vergleichsaufgabe ohne runde Bezugszahl, deshalb kein NEAR_ROUND_NUMBER. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO04-D2-S-C",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 2,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-2: Zahlenraum bis 100 ohne Zehnerüberschreitung, größte Zahl 50, kein Überschreiten (die gesuchte 49 liegt im Zehner der gegebenen 48). §94: Klassenstufe ist Referenz, keine Schranke. NEAR_ROUND_NUMBER nicht gesetzt: das Item ist nach structural_features eine Reihenaufgabe (NUMBER_SEQUENCE), keine Vergleichs- oder Ergänzungsaufgabe; die Regel greift damit nicht, obwohl 50 als Grenze genannt ist. Offener Punkt, siehe Zusammenfassung. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO04-D3-S-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [],
+      "add_numeric_features": [
+        "CROSSES_TEN",
+        "CROSSES_THOUSAND"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 3-4: Zahlenraum bis 1000 / Stellenwert Hunderter, größte Zahl 1000, Tausenderüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. CROSSES_THOUSAND ergänzt (neuer Term, siehe proposed_vocabulary_terms): §20 kennt nur CROSSES_TEN und CROSSES_HUNDRED, 1000 auf 999 überschreitet aber einen Tausender - F-12. CROSSES_TEN ergänzt: der Übergang überschreitet zugleich Zehner, Hunderter und Tausender; ZP02-D2-S-B ist ebenso kumulativ belegt. Der Merge darf erst erfolgen, wenn CROSSES_THOUSAND in content/vocabularies.json aufgenommen ist. NEAR_ROUND_NUMBER nicht gesetzt: Vorgängeraufgaben sind nach der Regel weder Rechen- noch Vergleichs- oder Ergänzungsaufgaben, obwohl 1000 rund ist. Offener Punkt."
+    },
+    {
+      "task_id": "ZO04-D3-I-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 2,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-2: Zahlenraum bis 100 ohne Zehnerüberschreitung, Zahlenstrahl 0 bis 100, Abstand 30 ohne Zehnerüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. DARSTELLEN bleibt unverändert: §14 gibt für genau dieses Item PRIMARY ZO04_NUMBER_RELATIONS, SECONDARY DARSTELLEN und ADDITIONAL_DEMAND SPATIAL_PROCESSING vor. Der Zahlenstrahl ist in der Regel für DARSTELLEN ausdrücklich genannt. Die Klassenstufe folgt dem Zahlenraum, nicht der internen Schwierigkeit D3. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO04-D4-S-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 3-4: Zahlenraum bis 1000 / Stellenwert Hunderter, größte Zahl 541. §94: Klassenstufe ist Referenz, keine Schranke. NEAR_ROUND_NUMBER bleibt belegt: das Item macht mit 'näher an 500' eine runde Zahl ausdrücklich zum Bezugswert - genau der zweite Teil der Regel. Merkmalslisten sonst unverändert."
+    },
+    {
+      "task_id": "ZO05-D1-S-A",
+      "language_demand": "NONE",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, größte Zahl 8. §94: Klassenstufe ist Referenz, keine Schranke. §49-Wortlaut '8 = 5 + __'. Ergänzungsaufgabe ohne runden Zielwert, deshalb kein NEAR_ROUND_NUMBER. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO05-D1-S-B",
+      "language_demand": "NONE",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, größte Zahl 9. §94: Klassenstufe ist Referenz, keine Schranke. Parallelitem zu ZO05-D1-S-A, gleiche Zuordnung (§116). Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO05-D2-I-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, größte Zahl 20 (20er-Feld). §94: Klassenstufe ist Referenz, keine Schranke. DARSTELLEN: das 20er-Feld zeigt 13 als 10+3, die Aufgabe vermittelt vom Bild zur Rechnung. NEAR_ROUND_NUMBER nicht gesetzt: Zielwert ist die 13, die Zehnerstruktur ist bereits über TEN_RELATION belegt. Merkmalslisten sonst unverändert."
+    },
+    {
+      "task_id": "ZO05-D3-S-A",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, größte Zahl 50, Zehnerüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. §49-Wortlaut '37 + __ = 50'. NEAR_ROUND_NUMBER bleibt belegt: Ergänzungsaufgabe mit der runden 50 als Zielwert. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO05-D4-S-A",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "PROBLEMLOESEN"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand MEDIUM: vollständiger Satz mit gegebenem Fakt beziehungsweise mit Bedingung, ohne Sachkontext. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, Zielrechnung 64+28, größte Zahl 92, Zehnerüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. MEDIUM: §49-Wortlaut 'Welche Zerlegung von 64 hilft dir bei 64 + 28?' - vollständiger Satz mit Bedingung ('hilft dir bei'), ohne Sachkontext. PROBLEMLOESEN: verlangt ist ein Rechenweg zu einer gegebenen Zielrechnung (task_payload.target_calculation), kein Ergebnis; §49 sagt ausdrücklich, dass mehrere Zerlegungen sinnvoll sein können. NEAR_ROUND_NUMBER nicht gesetzt: erster Operand 64 liegt vier von einem Vielfachen von zehn entfernt. Dass 28 nahe an 30 liegt, bleibt nach der Regel unberücksichtigt - dieselbe Festlegung, mit der §71 die 37+28 der Seite ohne das Merkmal zuordnet."
+    },
+    {
+      "task_id": "ZO06-D1-I-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 2,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-2: Zahlenraum bis 100 ohne Zehnerüberschreitung, größte Zahl 47. §94: Klassenstufe ist Referenz, keine Schranke. DARSTELLEN: Stellenwertmaterial (Zehnerstangen und Einer) muss in ein Zahlzeichen übersetzt werden - 'Material zu Zahl'. Die Klassenstufe folgt dem Zahlenraum bis 100; §69 nutzt das Item als ikonische Gegenprobe zu den symbolischen D2-Items, die im Zahlenraum bis 1000 liegen - der Unterschied der Klassenstufenreferenz macht die in F-21 gemeldete Konfundierung zusätzlich sichtbar. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO06-D1-I-B",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 2,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-2: Zahlenraum bis 100 ohne Zehnerüberschreitung, größte Zahl 63. §94: Klassenstufe ist Referenz, keine Schranke. DARSTELLEN wie bei ZO06-D1-I-A (Material zu Zahl); gleiche Zuordnung, damit das Paar nach §116 nur die Zahlen variiert. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO06-D2-S-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 3-4: Zahlenraum bis 1000 / Stellenwert Hunderter, größte Zahl 364, Stellenwert Hunderter. §94: Klassenstufe ist Referenz, keine Schranke. Kein DARSTELLEN: die Frage nach dem Wert einer Ziffer bleibt innerhalb der symbolischen Darstellung. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO06-D2-S-B",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 3-4: Zahlenraum bis 1000 / Stellenwert Hunderter, größte Zahl 572, Stellenwert Hunderter. §94: Klassenstufe ist Referenz, keine Schranke. Wie ZO06-D2-S-A; Parallelitem, gleiche Zuordnung (§116). Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO06-D3-S-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 3-4: Zahlenraum bis 1000 / Stellenwert Hunderter, größte Zahl 508, Stellenwert Hunderter. §94: Klassenstufe ist Referenz, keine Schranke. DARSTELLEN: '5 Hunderter + 0 Zehner + 8 Einer' ist die Stellenwert-Sprechweise, die in ein Zahlzeichen zu übersetzen ist - 'Zahlwort zu Zahlzeichen'. Genau darauf beruht die in §66 beschriebene Fehlbeobachtung 58. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO06-D3-S-B",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 3-4: Zahlenraum bis 1000 / Stellenwert Hunderter, größte Zahl 704, Stellenwert Hunderter. §94: Klassenstufe ist Referenz, keine Schranke. DARSTELLEN wie bei ZO06-D3-S-A; gleiche Zuordnung im Paar (§116). Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO06-D4-S-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 3-4: Zahlenraum bis 1000 / Stellenwert Hunderter, größte Zahl 430, Stellenwert Hunderter. §94: Klassenstufe ist Referenz, keine Schranke. Kein DARSTELLEN: die Frage bleibt symbolisch. Kein PROBLEMLOESEN: gefragt ist eine Anzahl, kein Rechenweg. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO06-D4-S-B",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 3-4: Zahlenraum bis 1000 / Stellenwert Hunderter, größte Zahl 430, Stellenwert Hunderter. §94: Klassenstufe ist Referenz, keine Schranke. Gleiche Zuordnung wie ZO06-D4-S-A; §50 verlangt den gezielten Vergleich des Paares, das nach §116 nur die Frageform variiert - Sprachanforderung und Klassenstufenreferenz müssen deshalb übereinstimmen. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO07-GV-D1-I-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, größte Zahl 9. §94: Klassenstufe ist Referenz, keine Schranke. DARSTELLEN: aus dem Bild (6 Kugeln und 3 weitere) ist die passende Rechnung zu wählen - 'Bild zu Rechnung'. Kein MODELLIEREN: es liegt kein sprachlicher Sachkontext vor (surface_feature IMAGE_CONTEXT, nicht WORD_PROBLEM). Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO07-D2-S-A",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [
+        "NEAR_ROUND_NUMBER"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, größte Zahl 65, Zehnerüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. NEAR_ROUND_NUMBER ergänzt: erster Operand 38 liegt zwei von 40 entfernt. Die Grenze 2 ist durch §71 festgelegt, weil 48+37 das Merkmal tragen muss. Abweichung von der bisherigen Belegung, siehe near_round_number_abweichungen. Merkmalslisten sonst unverändert."
+    },
+    {
+      "task_id": "ZO07-D2-S-B",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, größte Zahl 84, Zehnerüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. NEAR_ROUND_NUMBER nicht gesetzt: erster Operand 46 liegt vier von einem Vielfachen von zehn entfernt. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO07-D3-S-A",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "PROBLEMLOESEN"
+      ],
+      "add_numeric_features": [
+        "NEAR_ROUND_NUMBER"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand MEDIUM: vollständiger Satz mit gegebenem Fakt beziehungsweise mit Bedingung, ohne Sachkontext. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, Zielrechnung 38+23, größte Zahl 61, Zehnerüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. MEDIUM: §51-Wortlaut 'Du weißt: 38 + 20 = 58. Wie hilft dir das bei 38 + 23?' - vollständiger Satz mit gegebenem Fakt, ohne Sachkontext. WORKING_MEMORY_DEMAND: der gegebene Fakt 38+20=58 muss beim Weiterrechnen im Kopf gehalten werden. §15: das Merkmal beschreibt die Aufgabe, nicht die Schüler:in. PROBLEMLOESEN: scoring_rule EXPRESSION_EQUIVALENT - gefordert ist der Rechenweg 58+3=61 zu einer gegebenen Zielrechnung, nicht das Ergebnis allein. NEAR_ROUND_NUMBER ergänzt: erster Operand der Zielrechnung 38+23 liegt zwei von 40 entfernt. Abweichung, siehe near_round_number_abweichungen - dort auch der Hinweis, dass §51 hier den Weg über den Zehnerfakt vorgibt."
+    },
+    {
+      "task_id": "ZO07-D3-S-B",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "PROBLEMLOESEN"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand MEDIUM: vollständiger Satz mit gegebenem Fakt beziehungsweise mit Bedingung, ohne Sachkontext. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, Zielrechnung 49+36, größte Zahl 85, Zehnerüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. MEDIUM: §51-Wortlaut 'Welche Rechnung ist für 49+36 besonders günstig?' - Bedingung ohne Sachkontext; dies ist das Beispiel der Skala selbst. PROBLEMLOESEN: gefragt ist die günstige Rechnung zu einer gegebenen Zielrechnung, nicht das Ergebnis. NEAR_ROUND_NUMBER bleibt belegt (49 liegt eins von 50 entfernt, §24/§71). Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO07-D3-S-C",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, größte Zahl 65, Zehnerüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. §71-Kontrollfall: erster Operand 37 liegt drei von einem Vielfachen von zehn entfernt, NEAR_ROUND_NUMBER bleibt deshalb ungesetzt - genau die Zuordnung, die §71 für dieses Item verlangt. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO07-D3-S-D",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, größte Zahl 73, Zehnerüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. §71-Kontrollfall: erster Operand 46 liegt vier von einem Vielfachen von zehn entfernt, NEAR_ROUND_NUMBER bleibt ungesetzt. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO07-D4-L-A",
+      "language_demand": "HIGH",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "MODELLIEREN"
+      ],
+      "add_numeric_features": [
+        "NEAR_ROUND_NUMBER"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [
+        "LANGUAGE_DEMAND"
+      ],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand HIGH: mehrere Teilsätze mit Sachkontext (surface_feature WORD_PROBLEM); dazu additional_demand LANGUAGE_DEMAND. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, größte Zahl 75, Zehnerüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. HIGH: §51-Wortlaut 'In einer Kiste liegen 48 Bücher. 27 kommen hinzu. Wie viele sind es?' - zwei Teilsätze mit Sachkontext plus Frage; dies ist das Beispiel der Skala selbst. Deshalb additional_demand LANGUAGE_DEMAND. MODELLIEREN: aus dem Sachkontext muss die Rechnung gebildet werden (surface_feature WORD_PROBLEM). F-19 nennt dieses Item ausdrücklich. NEAR_ROUND_NUMBER ergänzt: erster Operand 48 liegt zwei von 50 entfernt - dieselbe Zahlenstruktur wie 48+37 in §52. Abweichung, siehe near_round_number_abweichungen."
+    },
+    {
+      "task_id": "ZO07-CONTRAST-01-A",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, größte Zahl 85, Zehnerüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. §71-Kontrollfall: erster Operand 49 liegt eins von 50 entfernt, NEAR_ROUND_NUMBER ist bereits belegt (§24 nennt es wörtlich). Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO07-CONTRAST-01-B",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, größte Zahl 85, Zehnerüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. §71-Kontrollfall: erster Operand 48 liegt zwei von 50 entfernt, NEAR_ROUND_NUMBER ist bereits belegt - die Regelgrenze 2 ist genau an diesem Item geprüft. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO08-GV-D1-I-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, größte Zahl 15. §94: Klassenstufe ist Referenz, keine Schranke. DARSTELLEN: aus dem Bild (15 Objekte, 6 werden entfernt) ist die passende Rechnung zu wählen - 'Bild zu Rechnung'. Kein MODELLIEREN: kein sprachlicher Sachkontext. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO08-D2-S-A",
+      "language_demand": "NONE",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, größte Zahl 15. §94: Klassenstufe ist Referenz, keine Schranke. Klassenstufe nach Zahlenraum: 15-6 bleibt im Zahlenraum bis 20, deshalb 1-1, obwohl das Item CROSSES_TEN trägt. Die Zeile 'Zahlenraum bis 100 mit Zehnerüberschreitung' setzt den Zahlenraum über 20 voraus. NEAR_ROUND_NUMBER nicht gesetzt: die Aufgabe hat nur einen zweistelligen Operanden, die Regel für zweistellige Aufgaben greift nicht. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO08-GV-D2-L-A",
+      "language_demand": "HIGH",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "MODELLIEREN"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [
+        "LANGUAGE_DEMAND"
+      ],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand HIGH: mehrere Teilsätze mit Sachkontext (surface_feature WORD_PROBLEM); dazu additional_demand LANGUAGE_DEMAND. grade_reference 1-1: Zählprinzip beziehungsweise Zahlenraum bis 20, größte Zahl 15. §94: Klassenstufe ist Referenz, keine Schranke. HIGH: §53-Wortlaut 'Mia hat 15 Sticker. Ben hat 9. Wie viele mehr hat Mia?' - drei Teilsätze mit Sachkontext, aus dem die relevante Information zu wählen ist. Deshalb additional_demand LANGUAGE_DEMAND. MODELLIEREN: aus dem Vergleichskontext muss die Rechnung gebildet werden (surface_feature WORD_PROBLEM). F-19 nennt dieses Item ausdrücklich. NEAR_ROUND_NUMBER nicht gesetzt: Vergleichsaufgabe ohne runden Bezugswert. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO08-D3-S-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, größte Zahl 50, Zehnerüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. LOW: §53-Wortlaut 'Ergänze 37 auf 50.' - kurze Standardanweisung ohne Sachkontext. NEAR_ROUND_NUMBER bleibt belegt: Ergänzungsaufgabe mit der runden 50 als Zielwert. Inhaltlich identisch mit ZO05-D3-S-A, dessen Zuordnung deshalb übereinstimmt. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO08-D4-S-A",
+      "language_demand": "NONE",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 3-4: Zahlenraum bis 1000 / Stellenwert Hunderter, größte Zahl 403, dreistellig. §94: Klassenstufe ist Referenz, keine Schranke. NEAR_ROUND_NUMBER bleibt belegt: bei dreistelligen Aufgaben genügt ein Operand mit höchstens 2 Abstand von einem Vielfachen von hundert - 198 liegt zwei von 200 entfernt. §53 nennt im Folgeitem 403-200+2 als günstige Strategie. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO08-D4-STRATEGY-A",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [
+        "PROBLEMLOESEN"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand MEDIUM: vollständiger Satz mit gegebenem Fakt beziehungsweise mit Bedingung, ohne Sachkontext. grade_reference 3-4: Zahlenraum bis 1000 / Stellenwert Hunderter, Zielrechnung 403-198, dreistellig. §94: Klassenstufe ist Referenz, keine Schranke. MEDIUM: §53-Wortlaut 'Welche Strategie ist günstig?' - die Bedingung 'günstig' verlangt ein Urteil über den Rechenweg, nicht eine Standardauskunft; die Zielrechnung 403-198 steht im task_payload. Damit dieselbe Klasse wie das Skalenbeispiel 'Welche Rechnung ist für 49+36 besonders günstig?'. PROBLEMLOESEN: gefragt ist die Strategie zu einer gegebenen Zielrechnung, kein Ergebnis. NEAR_ROUND_NUMBER bleibt belegt (198 nahe 200). Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO09-GV-D1-I-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "add_numeric_features": [
+        "SMALL_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 2-3: kleines Einsmaleins, 4 mal 3, Produkt 12. §94: Klassenstufe ist Referenz, keine Schranke. SMALL_FACTS ergänzt: Multiplikation mit Produkt 12, also höchstens 25 - F-12 fragt die fehlende Schwelle ab, die Regel setzt sie bei 25. DARSTELLEN: aus dem Bild (4 Gruppen mit je 3 Punkten) ist die passende Rechnung zu wählen - 'Bild zu Rechnung'. §70 nutzt das Item zur Prüfung der Grundvorstellung. Klassenstufe: das kleine Einsmaleins ist in der Regel ausdrücklich genannt und geht der Zahlenraumzeile vor, deshalb 2-3 und nicht 1-1."
+    },
+    {
+      "task_id": "ZO09-D1-S-A",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [
+        "SMALL_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 2-3: kleines Einsmaleins, 4 mal 3, Produkt 12. §94: Klassenstufe ist Referenz, keine Schranke. SMALL_FACTS ergänzt: Produkt 12, höchstens 25. Damit ist die in F-12 gestellte Frage 'ist 6*8 klein oder groß' regelbasiert entschieden: 4*3 klein, 6*8 groß."
+    },
+    {
+      "task_id": "ZO09-GV-D2-L-A",
+      "language_demand": "HIGH",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "MODELLIEREN"
+      ],
+      "add_numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [
+        "LANGUAGE_DEMAND"
+      ],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand HIGH: mehrere Teilsätze mit Sachkontext (surface_feature WORD_PROBLEM); dazu additional_demand LANGUAGE_DEMAND. grade_reference 2-3: kleines Einsmaleins, 5 mal 6, Produkt 30. §94: Klassenstufe ist Referenz, keine Schranke. LARGE_FACTS ergänzt: Produkt 30, größer als 25. HIGH: §54 formuliert das Item als Aussage mit Sachkontext ('5 Schachteln enthalten jeweils 6 Stifte.'); die Frage muss der Renderer ergänzen, §54 gibt den Wortlaut nicht vor. Die Stufe MEDIUM schließt Sachkontext ausdrücklich aus, HIGH ist damit die einzige passende Klasse; sie bezieht sich auf das ausgelieferte Item. Deshalb additional_demand LANGUAGE_DEMAND. MODELLIEREN: aus dem Sachkontext muss die Rechnung gebildet werden (surface_feature WORD_PROBLEM). F-19 nennt dieses Item ausdrücklich."
+    },
+    {
+      "task_id": "ZO09-D2-S-A",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 2-3: kleines Einsmaleins, 6 mal 8, Produkt 48. §94: Klassenstufe ist Referenz, keine Schranke. LARGE_FACTS ergänzt: Produkt 48, größer als 25 - die in F-12 offene Zuordnung von 6*8. Keine Prozesskompetenz: verlangt ist das Ergebnis. §70 nutzt das Item als Ausgangspunkt des Multiplikationsroutings; das dort verlangte Parallelitem fehlt weiterhin (F-21)."
+    },
+    {
+      "task_id": "ZO09-REL-D3-S-A",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand MEDIUM: vollständiger Satz mit gegebenem Fakt beziehungsweise mit Bedingung, ohne Sachkontext. grade_reference 2-3: kleines Einsmaleins, 6 mal 8, Produkt 48. §94: Klassenstufe ist Referenz, keine Schranke. MEDIUM: §54-Wortlaut 'Du weißt 5 * 8 = 40. Bestimme 6 * 8.' - dies ist das Beispiel der Skala selbst. WORKING_MEMORY_DEMAND: der gegebene Fakt 5*8=40 muss beim Rechnen im Kopf gehalten werden - der in der Regel wörtlich genannte Fall. §15: das Merkmal beschreibt die Aufgabe, nicht die Schüler:in. LARGE_FACTS ergänzt: Produkt 48. Kein PROBLEMLOESEN: scoring_rule EXACT_NUMERIC, verlangt ist das Ergebnis, nicht der Rechenweg."
+    },
+    {
+      "task_id": "ZO09-REL-D3-I-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "add_numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 2-3: kleines Einsmaleins, 6 mal 8, Produkt 48. §94: Klassenstufe ist Referenz, keine Schranke. DARSTELLEN: das Rechteckfeld muss in die Zerlegung 5*8 + 1*8 übersetzt werden - 'Bild zu Rechnung'. LARGE_FACTS ergänzt: Produkt 48; damit trägt das Item dasselbe Faktenmerkmal wie das symbolische ZO09-D2-S-A, was der Darstellungsvergleich aus §70 voraussetzt. FIVE_RELATION wurde bewusst NICHT ergänzt, obwohl die gezeigte Zerlegung auf 5*8 beruht: das Merkmal fehlt beim symbolischen Gegenstück und würde die in F-21 gemeldete Konfundierung vertiefen. Offener Punkt."
+    },
+    {
+      "task_id": "ZO09-REL-D3-S-B",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand MEDIUM: vollständiger Satz mit gegebenem Fakt beziehungsweise mit Bedingung, ohne Sachkontext. grade_reference 2-3: kleines Einsmaleins, 7 mal 8, Produkt 56. §94: Klassenstufe ist Referenz, keine Schranke. MEDIUM und WORKING_MEMORY_DEMAND wie bei ZO09-REL-D3-S-A (§54: 'Du weißt 5 * 8 = 40. Bestimme 7 * 8.'); gleiche Zuordnung im Paar, damit die Familie nach §116 nur die Zielzahl variiert. LARGE_FACTS ergänzt: Produkt 56. §15: das Merkmal beschreibt die Aufgabe."
+    },
+    {
+      "task_id": "ZO09-D4-S-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 4,
+      "grade_reference_max": 4,
+      "process_competencies": [
+        "PROBLEMLOESEN"
+      ],
+      "add_numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 4-4: mehrstellige Multiplikation mit einstelligem Faktor, 17 mal 6, Produkt 102. §94: Klassenstufe ist Referenz, keine Schranke. LOW: §54-Wortlaut 'Welche Zerlegung entspricht 17 * 6?' - kurze Standardfrage ohne Bedingung und ohne gegebenen Fakt. PROBLEMLOESEN: verlangt ist ein Rechenweg zu einer gegebenen Zielrechnung (task_payload.target_calculation), kein Ergebnis. LARGE_FACTS ergänzt: Produkt 102. NEAR_ROUND_NUMBER nicht gesetzt: 17 liegt drei von 20 entfernt. Klassenstufe 4-4 nach der Zeile 'mehrstellige Multiplikation mit einstelligem Faktor' - identisch mit ZO13-D3-S-A, obwohl dort D3 statt D4 steht (F-20)."
+    },
+    {
+      "task_id": "ZO09-D4-S-B",
+      "language_demand": "NONE",
+      "grade_reference_min": 4,
+      "grade_reference_max": 4,
+      "process_competencies": [],
+      "add_numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 4-4: mehrstellige Multiplikation mit einstelligem Faktor, 23 mal 4, Produkt 92. §94: Klassenstufe ist Referenz, keine Schranke. LARGE_FACTS ergänzt: Produkt 92. Klassenstufe 4-4: mehrstellige Multiplikation mit einstelligem Faktor - die Regel nennt 23*4 als Beispiel. NEAR_ROUND_NUMBER nicht gesetzt: 23 liegt drei von 20 entfernt."
+    },
+    {
+      "task_id": "ZO09-D5-S-A",
+      "language_demand": "NONE",
+      "grade_reference_min": 5,
+      "grade_reference_max": 5,
+      "process_competencies": [],
+      "add_numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 5-5: mehrstellige Multiplikation mit zweistelligem Faktor, 23 mal 14, Produkt 322. §94: Klassenstufe ist Referenz, keine Schranke. LARGE_FACTS ergänzt: Produkt 322. Klassenstufe 5-5: mehrstellige Multiplikation mit zweistelligem Faktor - die Regel nennt 23*14 als Beispiel. Das ist zugleich das einzige Item mit task_purpose CEILING (§54), womit §95 ('zunächst nur ausgewählte Ceiling-Items') jetzt prüfbar ist. NEAR_ROUND_NUMBER nicht gesetzt: 23 liegt drei von 20 entfernt."
+    },
+    {
+      "task_id": "ZO10-GV-D1-ACTION-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "add_numeric_features": [
+        "SMALL_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 2-3: kleines Einsmaleins, 12 geteilt durch 3, Produkt 12. §94: Klassenstufe ist Referenz, keine Schranke. SMALL_FACTS ergänzt: Division mit Produkt 12, also höchstens 25. OBJEKTE_WERKZEUGE: mit Material wird gehandelt, interaction_mode DRAG. Kein MODELLIEREN: '3 Kinder' benennt die Empfänger der Handlung, es liegt kein sprachlicher Sachkontext im Sinne von surface_feature WORD_PROBLEM vor und es muss keine Rechnung gebildet werden. Klassenstufe 2-3, weil das kleine Einsmaleins ausdrücklich genannt ist und der Zahlenraumzeile vorgeht."
+    },
+    {
+      "task_id": "ZO10-GV-D1-ACTION-B",
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "add_numeric_features": [
+        "SMALL_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 2-3: kleines Einsmaleins, 12 geteilt durch 3, Produkt 12. §94: Klassenstufe ist Referenz, keine Schranke. SMALL_FACTS ergänzt wie bei ZO10-GV-D1-ACTION-A. OBJEKTE_WERKZEUGE: mit Material wird gehandelt, interaction_mode DRAG. §55 verlangt den Vergleich VERTEILEN gegen AUFTEILEN; beide Items erhalten deshalb dieselbe Zuordnung, damit nach §116 nur die Grundvorstellung variiert."
+    },
+    {
+      "task_id": "ZO10-D2-S-A",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [
+        "SMALL_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 2-3: kleines Einsmaleins, 24 geteilt durch 6, Produkt 24. §94: Klassenstufe ist Referenz, keine Schranke. SMALL_FACTS ergänzt: Produkt 24, höchstens 25 - der Grenzfall der Regel. NEAR_ROUND_NUMBER nicht gesetzt: die Aufgabe hat nur einen zweistelligen Operanden."
+    },
+    {
+      "task_id": "ZO10-D2-S-B",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 2-3: kleines Einsmaleins, 35 geteilt durch 5, Produkt 35. §94: Klassenstufe ist Referenz, keine Schranke. LARGE_FACTS ergänzt: Produkt 35, größer als 25. Damit trägt dieses Item ein anderes Faktenmerkmal als sein Ausgangsitem ZO10-D2-S-A (Produkt 24) - innerhalb der PARALLEL_ITEM-Familie FAM_ZO10_D2_SYMBOLIC variiert damit neben den Zahlen ein diagnostisch wirksames Merkmal (§116). Gemeldet als Befund, siehe Zusammenfassung."
+    },
+    {
+      "task_id": "ZO10-D3-S-A",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand MEDIUM: vollständiger Satz mit gegebenem Fakt beziehungsweise mit Bedingung, ohne Sachkontext. grade_reference 2-3: kleines Einsmaleins, 7 mal 8, Produkt 56. §94: Klassenstufe ist Referenz, keine Schranke. MEDIUM: §55-Wortlaut '7 * 8 = 56. Welche Divisionsaufgabe passt?' - vollständiger Satz mit gegebenem Fakt, ohne Sachkontext. LARGE_FACTS ergänzt: Produkt 56. Kein WORKING_MEMORY_DEMAND: der Fakt steht sichtbar in der Aufgabe und muss nicht beim Rechnen gehalten werden, es wird nichts gerechnet. Kein PROBLEMLOESEN: gefragt ist die zugehörige Umkehraufgabe, kein Rechenweg zu einer Zielrechnung."
+    },
+    {
+      "task_id": "ZO10-D3-L-A",
+      "language_demand": "HIGH",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "MODELLIEREN"
+      ],
+      "add_numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [
+        "LANGUAGE_DEMAND"
+      ],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand HIGH: mehrere Teilsätze mit Sachkontext (surface_feature WORD_PROBLEM); dazu additional_demand LANGUAGE_DEMAND. grade_reference 2-3: kleines Einsmaleins, 72 geteilt durch 8, Produkt 72. §94: Klassenstufe ist Referenz, keine Schranke. HIGH: §55-Wortlaut '72 Bonbons werden in Tüten mit jeweils 8 Bonbons gepackt. Wie viele Tüten?' - zwei Teilsätze mit Sachkontext. Deshalb additional_demand LANGUAGE_DEMAND. MODELLIEREN: aus dem Sachkontext muss die Rechnung gebildet werden (surface_feature WORD_PROBLEM). F-19 nennt dieses Item ausdrücklich. LARGE_FACTS ergänzt: Produkt 72. NEAR_ROUND_NUMBER nicht gesetzt: nur ein Operand ist zweistellig; siehe Zusammenfassung, dieser Fall hat die Auslegung von 'zweistellige Aufgabe' erzwungen."
+    },
+    {
+      "task_id": "ZO11-D2-S-A",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand MEDIUM: vollständiger Satz mit gegebenem Fakt beziehungsweise mit Bedingung, ohne Sachkontext. grade_reference 2-3: kleines Einsmaleins, 7 mal 8, Produkt 56. §94: Klassenstufe ist Referenz, keine Schranke. MEDIUM: §56-Wortlaut '7 * 8 = 56. Ergänze: 56 : __ = 7' - vollständiger Satz mit gegebenem Fakt. LARGE_FACTS ergänzt: Produkt 56. Kein WORKING_MEMORY_DEMAND: der Fakt bleibt sichtbar, es wird nicht gerechnet, sondern übertragen. NEAR_ROUND_NUMBER nicht gesetzt: Ergänzungsaufgabe ohne runden Zielwert."
+    },
+    {
+      "task_id": "ZO11-D2-S-B",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand MEDIUM: vollständiger Satz mit gegebenem Fakt beziehungsweise mit Bedingung, ohne Sachkontext. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, größte Zahl 65, Zehnerüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. MEDIUM: §56-Wortlaut '38 + 27 = 65. Ergänze: 65 - 27 = __' - vollständiger Satz mit gegebenem Fakt. NEAR_ROUND_NUMBER nicht gesetzt: maßgeblich ist die zu bearbeitende Rechnung 65-27, deren erster Operand fünf von einem Vielfachen von zehn entfernt liegt. Der gegebene Fakt 38+27 wird nicht selbst gerechnet. Kein Faktenmerkmal: Addition und Subtraktion, SMALL_FACTS/LARGE_FACTS gelten nach der Regel nur für Multiplikation und Division. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO11-D3-S-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [],
+      "add_numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 2-3: kleines Einsmaleins, 6 mal 7, Produkt 42. §94: Klassenstufe ist Referenz, keine Schranke. LOW: §56-Wortlaut 'Welche Aufgaben gehören zusammen?' - kurze Standardfrage. LARGE_FACTS ergänzt: Produkt 42. Kein ARGUMENTIEREN: gefordert ist die Auswahl der zusammengehörenden Aufgaben, keine Begründung und keine Gültigkeitsaussage. Kein PROBLEMLOESEN: keine Zielrechnung, für die ein Weg zu wählen wäre."
+    },
+    {
+      "task_id": "ZO12-D2-S-A",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "PROBLEMLOESEN"
+      ],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand MEDIUM: vollständiger Satz mit gegebenem Fakt beziehungsweise mit Bedingung, ohne Sachkontext. grade_reference 2-3: Zahlenraum bis 100 mit Zehnerüberschreitung, Zielrechnung 49+36, größte Zahl 85, Zehnerüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. MEDIUM: §57-Wortlaut 'Welche Rechnung hat denselben Wert wie 49+36 und ist besonders günstig?' - Bedingung ohne Sachkontext, elf Wörter. PROBLEMLOESEN: gefragt ist die günstige Rechnung zu einer gegebenen Zielrechnung. NEAR_ROUND_NUMBER bleibt belegt (49 liegt eins von 50 entfernt). Inhaltlich identisch mit ZO07-D3-S-B; Sprachanforderung und Klassenstufenreferenz stimmen deshalb überein, obwohl die internen Schwierigkeiten abweichen (F-20). Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO12-D3-S-A",
+      "language_demand": "NONE",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [],
+      "add_numeric_features": [],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand NONE: der Aufgabentext enthält nur Zahlen, Rechenzeichen und Platzhalter. grade_reference 3-4: Zahlenraum bis 1000 / Stellenwert Hunderter, größte Zahl 146, Hunderterüberschreitung. §94: Klassenstufe ist Referenz, keine Schranke. NEAR_ROUND_NUMBER bleibt belegt: erster Operand 99 liegt eins von 100 entfernt, also von einem Vielfachen von zehn (§57 nennt die Zielumformung 100+46). Klassenstufe 3-4: das Ergebnis 146 liegt im Zahlenraum bis 1000. Kein PROBLEMLOESEN: gescored wird nach §57 das Ergebnis 146; die beabsichtigte Umformung ist im MVP nicht beobachtbar. Merkmalslisten unverändert."
+    },
+    {
+      "task_id": "ZO13-D3-S-A",
+      "language_demand": "LOW",
+      "grade_reference_min": 4,
+      "grade_reference_max": 4,
+      "process_competencies": [
+        "PROBLEMLOESEN"
+      ],
+      "add_numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 4-4: mehrstellige Multiplikation mit einstelligem Faktor, 17 mal 6, Produkt 102. §94: Klassenstufe ist Referenz, keine Schranke. LOW: §57-Wortlaut 'Welche Rechnung entspricht 17 * 6?'. PROBLEMLOESEN: Rechenweg zu einer gegebenen Zielrechnung statt Ergebnis. LARGE_FACTS ergänzt: Produkt 102. Klassenstufe 4-4 (mehrstellige Multiplikation mit einstelligem Faktor) - identisch mit ZO09-D4-S-A, weil die Klassenstufenreferenz nach Zahlenraum und Operation bestimmt wird und nicht nach internal_difficulty. Das stützt die in F-20 gestellte Frage nach einer Zusammenlegung."
+    },
+    {
+      "task_id": "ZO13-D3-S-B",
+      "language_demand": "LOW",
+      "grade_reference_min": 4,
+      "grade_reference_max": 4,
+      "process_competencies": [
+        "PROBLEMLOESEN"
+      ],
+      "add_numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "remove_numeric_features": [],
+      "add_structural_features": [],
+      "remove_structural_features": [],
+      "add_surface_features": [],
+      "remove_surface_features": [],
+      "add_strategy_affordances": [],
+      "remove_strategy_affordances": [],
+      "add_additional_demands": [],
+      "remove_additional_demands": [],
+      "begruendung": "language_demand LOW: kurze Standardanweisung ohne Sachkontext, unter zehn Wörtern. grade_reference 4-4: mehrstellige Multiplikation mit einstelligem Faktor, 8 mal 23, Produkt 184. §94: Klassenstufe ist Referenz, keine Schranke. LOW: §57-Wortlaut 'Welche Rechnung entspricht 8 * 23?'. PROBLEMLOESEN: Rechenweg zu einer gegebenen Zielrechnung statt Ergebnis. LARGE_FACTS ergänzt: Produkt 184. Klassenstufe 4-4: mehrstellige Multiplikation, der mehrstellige Faktor ist 23, der einstellige 8. NEAR_ROUND_NUMBER nicht gesetzt: erster Operand 8 ist einstellig."
+    }
+  ],
+  "competencies": [
+    {
+      "competency_id": "L1_NUMBER_OPERATION",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "L2_MEASUREMENT",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "L3_PATTERN_FUNCTION",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "L4_SPACE_SHAPE",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "L5_DATA_CHANCE",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZP00_COUNTING_PRINCIPLES",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZP01_ONE_TO_ONE",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "item_count": 5,
+      "begruendung": "Minimum und Maximum über die 5 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZP02_STABLE_ORDER",
+      "grade_reference_min": 1,
+      "grade_reference_max": 4,
+      "item_count": 5,
+      "begruendung": "Minimum und Maximum über die 5 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZP03_CARDINALITY",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "item_count": 4,
+      "begruendung": "Minimum und Maximum über die 4 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZP04_ABSTRACTION",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "item_count": 3,
+      "begruendung": "Minimum und Maximum über die 3 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZP05_ORDER_IRRELEVANCE",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "item_count": 3,
+      "begruendung": "Minimum und Maximum über die 3 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZO02_NUMBER_UNDERSTANDING",
+      "grade_reference_min": 1,
+      "grade_reference_max": 3,
+      "item_count": 5,
+      "begruendung": "Minimum und Maximum über die 5 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZO02_1_CARDINAL",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO02_2_ORDINAL",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO02_3_STRUCTURED_QUANTITY",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO02_4_SET_TO_NUMBER",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO02_5_NUMBER_WORD_SEQUENCE",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO04_NUMBER_RELATIONS",
+      "grade_reference_min": 1,
+      "grade_reference_max": 4,
+      "item_count": 6,
+      "begruendung": "Minimum und Maximum über die 6 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZO04_1_GREATER_SMALLER",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO04_2_PREDECESSOR_SUCCESSOR",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO04_3_DISTANCE",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO04_4_ORDERING",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO04_5_COMPARING",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO05_PART_WHOLE",
+      "grade_reference_min": 1,
+      "grade_reference_max": 3,
+      "item_count": 5,
+      "begruendung": "Minimum und Maximum über die 5 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZO05_1_DECOMPOSITION",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO05_2_COMPOSITION",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO05_3_COMPLEMENT",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO05_4_FLEXIBLE_DECOMPOSITION",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO06_PLACE_VALUE",
+      "grade_reference_min": 1,
+      "grade_reference_max": 4,
+      "item_count": 8,
+      "begruendung": "Minimum und Maximum über die 8 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZO06_1_BUNDLING",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO06_2_UNBUNDLING",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO06_3_PLACE_VALUE_PRINCIPLE",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO06_4_NUMBER_VALUE",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO06_5_PLACE_VALUE_DECOMPOSITION",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO06_6_ZERO_PLACEHOLDER",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO06_7_WORD_TO_NUMERAL",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO06_8_REPRESENTATION_LINKING",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO06_9_LARGER_NUMBER_RANGES",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZOG_OPERATION_UNDERSTANDING",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO07_ADDITION",
+      "grade_reference_min": 1,
+      "grade_reference_max": 3,
+      "item_count": 10,
+      "begruendung": "Minimum und Maximum über die 10 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZO08_SUBTRACTION",
+      "grade_reference_min": 1,
+      "grade_reference_max": 4,
+      "item_count": 6,
+      "begruendung": "Minimum und Maximum über die 6 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZO09_MULTIPLICATION",
+      "grade_reference_min": 2,
+      "grade_reference_max": 5,
+      "item_count": 10,
+      "begruendung": "Minimum und Maximum über die 10 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZO10_DIVISION",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "item_count": 6,
+      "begruendung": "Minimum und Maximum über die 6 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZOG_OPERATION_RELATIONS",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO11_INVERSE_OPERATIONS",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "item_count": 3,
+      "begruendung": "Minimum und Maximum über die 3 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZO12_TASK_RELATIONS",
+      "grade_reference_min": 2,
+      "grade_reference_max": 4,
+      "item_count": 2,
+      "begruendung": "Minimum und Maximum über die 2 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZO13_ARITHMETIC_LAWS",
+      "grade_reference_min": 4,
+      "grade_reference_max": 4,
+      "item_count": 2,
+      "begruendung": "Minimum und Maximum über die 2 zugeordneten Items (§79, §94)."
+    },
+    {
+      "competency_id": "ZO14_DERIVATION_STRATEGIES",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO15_FLEXIBLE_STRATEGY_CHOICE",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZOG_ADVANCED_APPLICATION",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO16_MENTAL_ARITHMETIC",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO17_SEMI_WRITTEN",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO18_CONTEXT_ARITHMETIC",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    },
+    {
+      "competency_id": "ZO19_TRANSFER_PROBLEM_SOLVING",
+      "grade_reference_min": null,
+      "grade_reference_max": null,
+      "item_count": 0,
+      "begruendung": "Kein Item ist diesem Knoten zugeordnet, deshalb bleibt die Klassenstufenreferenz null. Befund F-16, kein Fehler."
+    }
+  ],
+  "near_round_number_abweichungen": [
+    {
+      "task_id": "ZO07-D2-S-A",
+      "bisher": false,
+      "nach_regel": true,
+      "empfehlung": "Bisherige Belegung ändern: NEAR_ROUND_NUMBER aufnehmen. Zusätzlich die Familie FAM_ZO07_D2_TWO_DIGIT prüfen (F-13).",
+      "begruendung": "38+27: erster Operand 38 liegt zwei von 40 entfernt. Die Grenze 2 ist nicht frei wählbar - sie folgt zwingend daraus, dass 48+37 das Merkmal tragen muss (§52/§71) und 37+28 nicht. Arithmetisch trägt 38+27 dieselbe Struktur wie 48+37, also gilt das Merkmal. Folge, die eine fachliche Entscheidung braucht: das Parallelitem ZO07-D2-S-B (46+38) trägt das Merkmal nicht, weil 46 vier von 50 entfernt liegt. Innerhalb der PARALLEL_ITEM-Familie variiert damit neben den Zahlen genau das Merkmal, das §71 diagnostisch nutzt - §116 wäre verletzt. Empfehlung: Merkmal setzen und für 38+27 ein Parallelitem mit ebenfalls nahegelegener Zehnerzahl wählen."
+    },
+    {
+      "task_id": "ZO07-D3-S-A",
+      "bisher": false,
+      "nach_regel": true,
+      "empfehlung": "Regel greift; entweder die bisherige Belegung ändern oder die Regel auf Items ohne gegebenen Fakt einschränken. Entscheidung des Auftraggebers erforderlich.",
+      "begruendung": "Die zu bearbeitende Zielrechnung ist 38+23, erster Operand 38, Abstand zwei von 40. Mechanisch greift die Regel. Fachlicher Einwand: §51 gibt für dieses Item den Weg über den gegebenen Zehnerfakt 38+20=58 vor; das Merkmal NEAR_ROUND_NUMBER legt dagegen die Kompensation über 40 nahe. Zwei Strategiehinweise am selben Item können die Auswertung nach §71 verwischen. Im Fragment ist die Regel angewendet, weil sie mechanisch greift."
+    },
+    {
+      "task_id": "ZO07-D4-L-A",
+      "bisher": false,
+      "nach_regel": true,
+      "empfehlung": "Bisherige Belegung ändern: NEAR_ROUND_NUMBER aufnehmen.",
+      "begruendung": "48+27: erster Operand 48 liegt zwei von 50 entfernt - dieselbe Zahlenstruktur wie 48+37, das §52/§71 ausdrücklich der Seite mit dem Merkmal zuordnet. Kein Konflikt mit einer Familie, das Item steht allein. Nebenbefund: damit gibt es ein sprachlich eingebettetes Gegenstück zu den Contrast-Items der Familie ZO07-CONTRAST-01, das für einen Vergleich Sachkontext gegen kein Sachkontext genutzt werden könnte."
+    }
+  ],
+  "proposed_vocabulary_terms": [
+    {
+      "vocabulary": "NUMERIC_FEATURE",
+      "term": "CROSSES_THOUSAND",
+      "label_de": "überschreitet einen Tausender",
+      "begruendung": "§20 führt nur CROSSES_TEN und CROSSES_HUNDRED. ZO04-D3-S-A (§48, 'Vorgänger von 1.000?') überschreitet einen Tausender; ohne den Term ist der Übergang nur mittelbar über CROSSES_HUNDRED und PLACE_VALUE_CHANGE abbildbar, was F-12 als Lücke meldet. Betroffen ist genau ein Item der Seed-Aufgabenbank, das Merkmal ist arithmetisch eindeutig bestimmbar. Der Term wird in add_numeric_features bei ZO04-D3-S-A verwendet; der Merge setzt die Aufnahme in content/vocabularies.json voraus."
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "EVENT_COUNTING",
+      "label_de": "Zählen von Ereignissen oder eigenen Handlungen",
+      "begruendung": "§21 nennt seine Werte ausdrücklich als Beispiele und führt für Zählaufgaben nur COUNTING_SET, das eine sichtbare Objektmenge beschreibt. ZP04-D2-ACTION-A (§45, 'Tippe genau siebenmal') und ZP04-D2-I-A (§45, sechs nacheinander erscheinende Signale) zählen keine Objektmenge, sondern eigene Handlungen beziehungsweise flüchtige Ereignisse; beide haben deshalb bis heute leere structural_features. Der Term würde diese Lücke schließen. Nicht zugeordnet, weil er noch nicht im Vokabular steht - die Zuordnung zu genau diesen zwei Items wäre nach Freigabe nachzutragen."
+    }
+  ]
+}

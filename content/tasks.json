@@ -1,0 +1,4076 @@
+{
+  "_comment": [
+    "Aufgabenbank. Alle Items aus §42 bis §57, dazu die unter Entscheidung D-11",
+    "ergänzten Items zur Schließung von F-21 und F-22.",
+    "",
+    "HERKUNFT: source_type SPEC_SEED_MVP bezeichnet Items aus §42-57,",
+    "IMPLEMENTER_AUTHORED die ergänzten. Alle tragen calibration_status",
+    "UNCALIBRATED_MVP_ITEM (§6) - keines ist ein validiertes Testitem.",
+    "",
+    "primary_competency folgt der Kapitelüberschrift des jeweiligen Abschnitts",
+    "(z.B. '50. Stellenwert - ZO06'), also der Gruppenebene. Eine feinere",
+    "Zuordnung zu Unterknoten wäre eine fachliche Entscheidung und bleibt offen",
+    "(F-16); die Facettenaufschlüsselung nach §117 leistet dasselbe ohne sie.",
+    "",
+    "representation_mode folgt dem Darstellungskürzel der Item-ID: I = IMAGE,",
+    "S = MATHEMATICAL_SYMBOL, L = NATURAL_LANGUAGE, ACTION = ACTION,",
+    "MIXED = MIXED. Die ZP05-Items in §46 tragen kein Kürzel (F-15, D-16).",
+    "",
+    "task_payload.options_status hält fest, woher die Distraktoren kommen:",
+    "SPEC_GIVEN aus §42-57, IMPLEMENTER_AUTHORED nach Entscheidung D-09.",
+    "Ein Item mit UNDEFINED darf der Renderer nicht ausliefern (§113).",
+    "",
+    "Das Feld note ist Dokumentation und wird nicht in die Datenbank importiert;",
+    "§81 führt für tasks kein notes-Feld. Die Fundstelle steht in spec_section",
+    "und wird als source_reference übernommen.",
+    "",
+    "KORREKTUREN AUS DER KRITIK. Die Kritiker-Agenten der Inhaltsautorierung",
+    "haben 43 Befunde geliefert; die inhaltlichen sind angewandt und in den",
+    "note-Feldern der betroffenen Items einzeln begründet. Die wichtigsten:",
+    "das Bündelungsitem war durch Ziffernablesen lösbar, das ikonische",
+    "6·8-Punktfeld durch Abzählen, und drei GV-Items enthielten als Distraktor",
+    "den Zahlenwert der richtigen Rechnung - wer ihn wählte, hatte die",
+    "Grundvorstellung gezeigt und wurde trotzdem in die Förderkette geleitet.",
+    "",
+    "NEAR_ROUND_NUMBER ist jetzt operandensymmetrisch definiert. Damit trägt",
+    "37+28 das Merkmal, abweichend von §71. Die Abweichung ist als F-25",
+    "gemeldet, nicht durch Regeldesign beseitigt. Den Kontrast der",
+    "Contrast Families trägt jetzt COMPENSATION - §71 nennt für die",
+    "erfolgreiche Seite ausdrücklich COMPENSATION_AVAILABLE.",
+    "",
+    "question_form (§116, Entscheidung D-28) hält fest, WAS die Aufgabe verlangt -",
+    "unabhängig von Darstellung und Bedienform. Der Vergleichsschlüssel für",
+    "Abhängigkeitshypothesen umfasst Stufe, Antwortformat und Frageform; ein",
+    "Vergleich, der zwei davon ändert, eröffnet keine Hypothese mehr."
+  ],
+  "defaults": {
+    "calibration_status": "UNCALIBRATED_MVP_ITEM",
+    "source_type": "SPEC_SEED_MVP",
+    "language_demand": "UNDEFINED",
+    "primary_leitidee": "NUMBER_OPERATION",
+    "secondary_competencies": [],
+    "secondary_leitideen": [],
+    "process_competencies": [],
+    "prerequisites": [],
+    "estimated_time_seconds": null,
+    "grade_reference_min": null,
+    "grade_reference_max": null,
+    "numeric_features": [],
+    "structural_features": [],
+    "surface_features": [],
+    "strategy_affordances": [],
+    "additional_demands": []
+  },
+  "tasks": [
+    {
+      "task_id": "ZP01-D1-I-A",
+      "task_family_id": "FAM_ZP01_D1_ROW",
+      "title": "6 Punkte in Reihe zählen",
+      "primary_competency": "ZP01_ONE_TO_ONE",
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "CLICK_SEQUENCE",
+      "task_prompt": "Zähle die Punkte.",
+      "task_payload": {
+        "objects": 6,
+        "arrangement": "ROW",
+        "record": [
+          "click_order",
+          "omitted_objects",
+          "double_clicks"
+        ]
+      },
+      "correct_answer": {
+        "value": 6
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "parallel_item_id": "ZP01-D1-I-B",
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "ONE_BY_ONE_COUNTING"
+      ],
+      "spec_section": "§42",
+      "note": "§42 gibt für dieses Item CLICK_SEQUENCE verbindlich vor und verlangt das Speichern von Klickreihenfolge, ausgelassenen Objekten und doppelten Klicks. §9 verlangt die Anordnung als Aufgabenmerkmal - daher task_payload.arrangement.",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "question_form": "COUNT_OBJECTS"
+    },
+    {
+      "task_id": "ZP01-D1-I-B",
+      "task_family_id": "FAM_ZP01_D1_ROW",
+      "title": "7 Punkte in Reihe zählen",
+      "primary_competency": "ZP01_ONE_TO_ONE",
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "CLICK_SEQUENCE",
+      "task_prompt": "Zähle die Punkte.",
+      "task_payload": {
+        "objects": 7,
+        "arrangement": "ROW",
+        "record": [
+          "click_order",
+          "omitted_objects",
+          "double_clicks"
+        ]
+      },
+      "correct_answer": {
+        "value": 7
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "VERIFY",
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "ONE_BY_ONE_COUNTING"
+      ],
+      "spec_section": "§42",
+      "note": "§42 bezeichnet dieses Item ausdrücklich als 'Parallelitem'.",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "question_form": "COUNT_OBJECTS"
+    },
+    {
+      "task_id": "ZP01-D2-I-A",
+      "task_family_id": "FAM_ZP01_D2_ARRANGEMENT",
+      "title": "12 ungeordnete Punkte zählen",
+      "primary_competency": "ZP01_ONE_TO_ONE",
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "CLICK_SEQUENCE",
+      "task_prompt": "Zähle die Punkte.",
+      "task_payload": {
+        "objects": 12,
+        "arrangement": "UNORDERED",
+        "record": [
+          "click_order",
+          "omitted_objects",
+          "double_clicks"
+        ]
+      },
+      "correct_answer": {
+        "value": 12
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "ONE_BY_ONE_COUNTING"
+      ],
+      "spec_section": "§42",
+      "note": "§9: dieselbe Anzahl kann in Reihe korrekt gezählt werden und kreisförmig oder ungeordnet Schwierigkeiten verursachen. interaction_mode ist in §42 nur für ZP01-D1-I-A angegeben; CLICK_SEQUENCE hier als technische Übernahme (§17).",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "question_form": "COUNT_OBJECTS"
+    },
+    {
+      "task_id": "ZP01-D2-ACTION-A",
+      "task_family_id": "FAM_ZP01_D2_ARRANGEMENT",
+      "title": "12 verschiebbare Objekte zählen",
+      "primary_competency": "ZP01_ONE_TO_ONE",
+      "internal_difficulty": "D2",
+      "representation_mode": "ACTION",
+      "interaction_mode": "MANIPULATE",
+      "task_prompt": "Wie viele Objekte sind es?",
+      "task_payload": {
+        "objects": 12,
+        "arrangement": "UNORDERED",
+        "movable": true
+      },
+      "correct_answer": {
+        "value": 12
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "surface_features": [
+        "MANIPULATIVE"
+      ],
+      "strategy_affordances": [
+        "ONE_BY_ONE_COUNTING"
+      ],
+      "spec_section": "§42",
+      "note": "§42: 'Objekte dürfen beim Zählen verschoben werden.'",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "question_form": "COUNT_OBJECTS"
+    },
+    {
+      "task_id": "ZP01-D3-I-A",
+      "task_family_id": null,
+      "title": "18 ungeordnete Objekte zählen",
+      "primary_competency": "ZP01_ONE_TO_ONE",
+      "internal_difficulty": "D3",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "CLICK_SEQUENCE",
+      "task_prompt": "Zähle die Objekte.",
+      "task_payload": {
+        "objects": 18,
+        "arrangement": "UNORDERED",
+        "record": [
+          "click_order",
+          "omitted_objects",
+          "double_clicks"
+        ]
+      },
+      "correct_answer": {
+        "value": 18
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "ONE_BY_ONE_COUNTING"
+      ],
+      "spec_section": "§42",
+      "note": null,
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "question_form": "COUNT_OBJECTS"
+    },
+    {
+      "task_id": "ZP02-D1-S-A",
+      "task_family_id": null,
+      "title": "Zahlwortreihe 5,6,7 fortsetzen",
+      "primary_competency": "ZP02_STABLE_ORDER",
+      "internal_difficulty": "D1",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "5, 6, 7, __, __",
+      "task_payload": {
+        "given": [
+          5,
+          6,
+          7
+        ],
+        "blanks": 2
+      },
+      "correct_answer": {
+        "sequence": [
+          8,
+          9
+        ]
+      },
+      "scoring_rule": "SEQUENCE_EXACT",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "NUMBER_SEQUENCE"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COUNTING_ON"
+      ],
+      "spec_section": "§43",
+      "note": null,
+      "language_demand": "NONE",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "question_form": "CONTINUE_SEQUENCE"
+    },
+    {
+      "task_id": "ZP02-D1-S-B",
+      "task_family_id": null,
+      "title": "Zahlwortreihe 17,18,19 fortsetzen",
+      "primary_competency": "ZP02_STABLE_ORDER",
+      "internal_difficulty": "D1",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "17, 18, 19, __, __",
+      "task_payload": {
+        "given": [
+          17,
+          18,
+          19
+        ],
+        "blanks": 2
+      },
+      "correct_answer": {
+        "sequence": [
+          20,
+          21
+        ]
+      },
+      "scoring_rule": "SEQUENCE_EXACT",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "CROSSES_TEN"
+      ],
+      "structural_features": [
+        "NUMBER_SEQUENCE"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COUNTING_ON"
+      ],
+      "spec_section": "§43",
+      "note": "Nicht als Parallelitem zu ZP02-D1-S-A ausgewiesen: dieses Item enthält eine Zehnerüberschreitung, ZP02-D1-S-A nicht. §116 wäre verletzt. F-13.",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "CONTINUE_SEQUENCE"
+    },
+    {
+      "task_id": "ZP02-D2-S-A",
+      "task_family_id": null,
+      "title": "Ab 27 weiterzählen",
+      "primary_competency": "ZP02_STABLE_ORDER",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Beginne bei 27 und nenne die nächsten drei Zahlen.",
+      "task_payload": {
+        "start": 27,
+        "count": 3
+      },
+      "correct_answer": {
+        "sequence": [
+          28,
+          29,
+          30
+        ]
+      },
+      "scoring_rule": "SEQUENCE_EXACT",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "CROSSES_TEN"
+      ],
+      "structural_features": [
+        "NUMBER_SEQUENCE"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "COUNTING_ON"
+      ],
+      "spec_section": "§43",
+      "note": null,
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "CONTINUE_SEQUENCE"
+    },
+    {
+      "task_id": "ZP02-D2-S-B",
+      "task_family_id": null,
+      "title": "Zahlwortreihe 97,98,99 fortsetzen",
+      "primary_competency": "ZP02_STABLE_ORDER",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "97, 98, 99, __, __",
+      "task_payload": {
+        "given": [
+          97,
+          98,
+          99
+        ],
+        "blanks": 2
+      },
+      "correct_answer": {
+        "sequence": [
+          100,
+          101
+        ]
+      },
+      "scoring_rule": "SEQUENCE_EXACT",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "CROSSES_HUNDRED",
+        "CROSSES_TEN",
+        "PLACE_VALUE_CHANGE"
+      ],
+      "structural_features": [
+        "NUMBER_SEQUENCE"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COUNTING_ON"
+      ],
+      "spec_section": "§43",
+      "note": null,
+      "language_demand": "NONE",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "question_form": "CONTINUE_SEQUENCE"
+    },
+    {
+      "task_id": "ZP02-D3-S-A",
+      "task_family_id": null,
+      "title": "Rückwärts ab 15",
+      "primary_competency": "ZP02_STABLE_ORDER",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "15, 14, __, __",
+      "task_payload": {
+        "given": [
+          15,
+          14
+        ],
+        "blanks": 2,
+        "direction": "BACKWARD"
+      },
+      "correct_answer": {
+        "sequence": [
+          13,
+          12
+        ]
+      },
+      "scoring_rule": "SEQUENCE_EXACT",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "NUMBER_SEQUENCE"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COUNTING_BACK"
+      ],
+      "spec_section": "§43",
+      "note": "§43: 'Rückwärtszählen liefert zusätzliche Evidenz und darf nicht allein mit dem Kernprinzip gleichgesetzt werden.' Die Evidence Engine darf aus diesem Item keine Aussage über ZP02 insgesamt ableiten.",
+      "language_demand": "NONE",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "question_form": "CONTINUE_SEQUENCE"
+    },
+    {
+      "task_id": "ZP03-D1-I-A",
+      "task_family_id": "FAM_ZP03_D1_TOTAL",
+      "title": "8 Objekte zählen, dann Gesamtanzahl nennen",
+      "primary_competency": "ZP03_CARDINALITY",
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "CLICK_SEQUENCE",
+      "task_prompt": "Wie viele sind es insgesamt?",
+      "task_payload": {
+        "objects": 8,
+        "arrangement": "UNDEFINED",
+        "ask_total_after_counting": true,
+        "observe": [
+          "RECOUNT_AFTER_COUNTING"
+        ]
+      },
+      "correct_answer": {
+        "value": 8
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "parallel_item_id": "ZP03-D1-I-B",
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "ONE_BY_ONE_COUNTING"
+      ],
+      "spec_section": "§44",
+      "note": "§44 verlangt die Beobachtung RECOUNT_AFTER_COUNTING (erneutes Durchzählen nach der Frage nach der Gesamtanzahl). Diese wird als interaction_event gespeichert, nicht als Fehlercode. Anordnung in §44 nicht angegeben, obwohl §9 sie als Merkmal verlangt: F-14.",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "question_form": "STATE_TOTAL_AFTER_COUNTING"
+    },
+    {
+      "task_id": "ZP03-D1-I-B",
+      "task_family_id": "FAM_ZP03_D1_TOTAL",
+      "title": "12 Objekte zählen, dann Gesamtanzahl nennen",
+      "primary_competency": "ZP03_CARDINALITY",
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "CLICK_SEQUENCE",
+      "task_prompt": "Wie viele sind es insgesamt?",
+      "task_payload": {
+        "objects": 12,
+        "arrangement": "UNDEFINED",
+        "ask_total_after_counting": true,
+        "observe": [
+          "RECOUNT_AFTER_COUNTING"
+        ]
+      },
+      "correct_answer": {
+        "value": 12
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "VERIFY",
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "ONE_BY_ONE_COUNTING"
+      ],
+      "spec_section": "§44",
+      "note": "§44: 'Gleicher Ablauf.'",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "question_form": "STATE_TOTAL_AFTER_COUNTING"
+    },
+    {
+      "task_id": "ZP03-D2-ACTION-A",
+      "task_family_id": null,
+      "title": "Genau 9 von 15 Objekten legen",
+      "primary_competency": "ZP03_CARDINALITY",
+      "internal_difficulty": "D2",
+      "representation_mode": "ACTION",
+      "interaction_mode": "DRAG",
+      "task_prompt": "Lege genau 9 Objekte in das Feld.",
+      "task_payload": {
+        "objects_available": 15,
+        "target_count": 9
+      },
+      "correct_answer": {
+        "placed": 9
+      },
+      "scoring_rule": "PLACED_OBJECT_COUNT",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "surface_features": [
+        "MANIPULATIVE"
+      ],
+      "strategy_affordances": [
+        "ONE_BY_ONE_COUNTING"
+      ],
+      "spec_section": "§44",
+      "note": null,
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "question_form": "PLACE_EXACT_COUNT"
+    },
+    {
+      "task_id": "ZP03-D2-I-A",
+      "task_family_id": null,
+      "title": "8 Objekte, eines wird hinzugefügt",
+      "primary_competency": "ZP03_CARDINALITY",
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Wie viele sind es jetzt?",
+      "task_payload": {
+        "objects_before": 8,
+        "objects_added": 1
+      },
+      "correct_answer": {
+        "value": 9
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "COUNTING_ON"
+      ],
+      "spec_section": "§44",
+      "note": null,
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "question_form": "COUNT_OBJECTS"
+    },
+    {
+      "task_id": "ZP04-D1-I-A",
+      "task_family_id": null,
+      "title": "8 unterschiedliche Gegenstände zählen",
+      "primary_competency": "ZP04_ABSTRACTION",
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "CLICK_SEQUENCE",
+      "task_prompt": "Wie viele Dinge sind es insgesamt?",
+      "task_payload": {
+        "objects": 8,
+        "heterogeneous": true,
+        "arrangement": "UNDEFINED"
+      },
+      "correct_answer": {
+        "value": 8
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "ONE_BY_ONE_COUNTING"
+      ],
+      "spec_section": "§45",
+      "note": "Das Abstraktionsprinzip zeigt sich hier darin, dass die Objekte unterschiedlich sind (heterogeneous=true).",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "question_form": "COUNT_OBJECTS"
+    },
+    {
+      "task_id": "ZP04-D2-ACTION-A",
+      "task_family_id": null,
+      "title": "Genau siebenmal tippen",
+      "primary_competency": "ZP04_ABSTRACTION",
+      "internal_difficulty": "D2",
+      "representation_mode": "ACTION",
+      "interaction_mode": "CLICK_SEQUENCE",
+      "task_prompt": "Tippe genau siebenmal auf den Kreis.",
+      "task_payload": {
+        "target_count": 7,
+        "target_object": "CIRCLE"
+      },
+      "correct_answer": {
+        "interactions": 7
+      },
+      "scoring_rule": "INTERACTION_COUNT",
+      "task_purpose": "SCREEN",
+      "surface_features": [
+        "MANIPULATIVE"
+      ],
+      "spec_section": "§45",
+      "note": "§45: '7 interactions'. Gezählt werden eigene Handlungen, nicht sichtbare Objekte.",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "question_form": "PRODUCE_ACTION_COUNT"
+    },
+    {
+      "task_id": "ZP04-D2-I-A",
+      "task_family_id": null,
+      "title": "6 aufeinanderfolgende Signale zählen",
+      "primary_competency": "ZP04_ABSTRACTION",
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Wie oft erschien das Signal?",
+      "task_payload": {
+        "signal_count": 6,
+        "presentation": "SEQUENTIAL"
+      },
+      "correct_answer": {
+        "value": 6
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "spec_section": "§45",
+      "note": "Gezählt werden flüchtige Ereignisse. §45 schreibt diesem Item kein additional_demand zu; WORKING_MEMORY_DEMAND wäre fachlich naheliegend, wird aber nicht eigenständig gesetzt (F-12).",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "question_form": "COUNT_OBJECTS"
+    },
+    {
+      "task_id": "ZP05-D1-A",
+      "task_family_id": null,
+      "title": "7 Objekte in beiden Richtungen zählen",
+      "primary_competency": "ZP05_ORDER_IRRELEVANCE",
+      "internal_difficulty": "D1",
+      "representation_mode": "MIXED",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Bleibt die Anzahl gleich?",
+      "task_payload": {
+        "objects": 7,
+        "count_directions": [
+          "LEFT_TO_RIGHT",
+          "RIGHT_TO_LEFT"
+        ],
+        "options": [
+          "JA",
+          "NEIN"
+        ],
+        "options_status": "SPEC_GIVEN"
+      },
+      "correct_answer": {
+        "selection": "JA"
+      },
+      "scoring_rule": "BOOLEAN",
+      "task_purpose": "SCREEN",
+      "surface_features": [
+        "IMAGE_CONTEXT",
+        "MULTIPLE_CHOICE"
+      ],
+      "spec_section": "§46",
+      "note": "§46 gibt für die ZP05-Items - anders als bei ZP01 bis ZP04 - kein Darstellungskürzel in der ID an. representation_mode=MIXED ist eine technische Festlegung: das Item verbindet Handlung/Bild mit einer sprachlichen Frage. Fachliche Rückfrage: F-15. options_status=SPEC_GIVEN: die Auswahloptionen stehen wörtlich in der Spezifikation, sie sind nicht vom Implementierer autorisiert.",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "ARGUMENTIEREN"
+      ],
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "question_form": "JUDGE_INVARIANCE"
+    },
+    {
+      "task_id": "ZP05-D2-A",
+      "task_family_id": null,
+      "title": "8 ungeordnete Objekte, veränderter Startpunkt",
+      "primary_competency": "ZP05_ORDER_IRRELEVANCE",
+      "internal_difficulty": "D2",
+      "representation_mode": "MIXED",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Wie viele werden es sein?",
+      "task_payload": {
+        "objects": 8,
+        "arrangement": "UNORDERED",
+        "start_point_changed": true
+      },
+      "correct_answer": {
+        "value": 8
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "spec_section": "§46",
+      "note": "representation_mode wie bei ZP05-D1-A technisch festgelegt (F-15).",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "question_form": "COUNT_OBJECTS"
+    },
+    {
+      "task_id": "ZP05-D2-B",
+      "task_family_id": null,
+      "title": "10 Objekte, anderer Startgegenstand",
+      "primary_competency": "ZP05_ORDER_IRRELEVANCE",
+      "internal_difficulty": "D2",
+      "representation_mode": "MIXED",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Wenn du mit einem anderen Gegenstand anfängst: mehr, weniger oder gleich viele?",
+      "task_payload": {
+        "objects": 10,
+        "options": [
+          "mehr",
+          "weniger",
+          "gleich viele"
+        ],
+        "options_status": "SPEC_GIVEN"
+      },
+      "correct_answer": {
+        "selection": "gleich viele"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "surface_features": [
+        "IMAGE_CONTEXT",
+        "MULTIPLE_CHOICE"
+      ],
+      "spec_section": "§46",
+      "note": "§46 gibt die Lösung als 'GLEICH' an; hier auf die angebotene Option 'gleich viele' abgebildet. representation_mode technisch festgelegt (F-15). options_status=SPEC_GIVEN: die Auswahloptionen stehen wörtlich in der Spezifikation, sie sind nicht vom Implementierer autorisiert.",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "ARGUMENTIEREN"
+      ],
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "question_form": "JUDGE_INVARIANCE"
+    },
+    {
+      "task_id": "ZO02-D1-I-A",
+      "task_family_id": "FAM_ZO02_D1_STRUCTURED",
+      "title": "8 Punkte in 5+3-Struktur",
+      "primary_competency": "ZO02_NUMBER_UNDERSTANDING",
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Wie viele Punkte?",
+      "task_payload": {
+        "objects": 8,
+        "arrangement": "STRUCTURED",
+        "structure": "5+3"
+      },
+      "correct_answer": {
+        "value": 8
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "parallel_item_id": "ZO02-D1-I-B",
+      "numeric_features": [
+        "FIVE_RELATION"
+      ],
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "STRUCTURED_SUBITIZING"
+      ],
+      "spec_section": "§47",
+      "note": "Die 5+3-Struktur legt strukturierte Mengenerfassung nahe (ZO02.3), im Unterschied zu den ungeordneten Mengen in §42.",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "question_form": "COUNT_OBJECTS"
+    },
+    {
+      "task_id": "ZO02-D1-I-B",
+      "task_family_id": "FAM_ZO02_D1_STRUCTURED",
+      "title": "7 Punkte in 5+2-Struktur",
+      "primary_competency": "ZO02_NUMBER_UNDERSTANDING",
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Wie viele Punkte?",
+      "task_payload": {
+        "objects": 7,
+        "arrangement": "STRUCTURED",
+        "structure": "5+2"
+      },
+      "correct_answer": {
+        "value": 7
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "VERIFY",
+      "numeric_features": [
+        "FIVE_RELATION"
+      ],
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "STRUCTURED_SUBITIZING"
+      ],
+      "spec_section": "§47",
+      "note": null,
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "question_form": "COUNT_OBJECTS"
+    },
+    {
+      "task_id": "ZO02-D2-ACTION-A",
+      "task_family_id": null,
+      "title": "Genau 9 von 13 Plättchen legen",
+      "primary_competency": "ZO02_NUMBER_UNDERSTANDING",
+      "internal_difficulty": "D2",
+      "representation_mode": "ACTION",
+      "interaction_mode": "DRAG",
+      "task_prompt": "Lege genau 9 in das Feld.",
+      "task_payload": {
+        "objects_available": 13,
+        "target_count": 9
+      },
+      "correct_answer": {
+        "placed": 9
+      },
+      "scoring_rule": "PLACED_OBJECT_COUNT",
+      "task_purpose": "SCREEN",
+      "surface_features": [
+        "MANIPULATIVE"
+      ],
+      "spec_section": "§47",
+      "note": "Inhaltlich nahe an ZP03-D2-ACTION-A (§44, 9 von 15). Unterschiedliche primary_competency laut Kapitelüberschrift.",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "question_form": "PLACE_EXACT_COUNT"
+    },
+    {
+      "task_id": "ZO02-D2-S-A",
+      "task_family_id": null,
+      "title": "Zahl direkt nach 99",
+      "primary_competency": "ZO02_NUMBER_UNDERSTANDING",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Welche Zahl kommt direkt nach 99?",
+      "task_payload": {},
+      "correct_answer": {
+        "value": 100
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "CROSSES_HUNDRED",
+        "CROSSES_TEN",
+        "PLACE_VALUE_CHANGE"
+      ],
+      "structural_features": [
+        "NUMBER_SEQUENCE"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COUNTING_ON"
+      ],
+      "spec_section": "§47",
+      "note": "Überschneidet sich inhaltlich mit ZO04.2 (Vorgänger/Nachfolger). Eine secondary_competency wird nicht eigenständig gesetzt (F-16).",
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "NAME_NEIGHBOUR"
+    },
+    {
+      "task_id": "ZO02-D3-MIXED-A",
+      "task_family_id": null,
+      "title": "Menge mit 24 Elementen bestimmen",
+      "primary_competency": "ZO02_NUMBER_UNDERSTANDING",
+      "internal_difficulty": "D3",
+      "representation_mode": "MIXED",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Wie viele Elemente sind es?",
+      "task_payload": {
+        "objects": 24,
+        "arrangement": "UNDEFINED",
+        "options": [
+          20,
+          22,
+          24,
+          42
+        ],
+        "options_status": "SPEC_GIVEN"
+      },
+      "correct_answer": {
+        "selection": 24
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "surface_features": [
+        "IMAGE_CONTEXT",
+        "MULTIPLE_CHOICE"
+      ],
+      "spec_section": "§47",
+      "note": "Eines von zwei Auswahlitems, für die §42-57 die Distraktoren ausdrücklich nennt. Der Distraktor 42 ist die Ziffernumkehrung von 24; §47 kommentiert die Distraktorwahl nicht. Anordnung nicht angegeben (F-14). options_status=SPEC_GIVEN: die Auswahloptionen stehen wörtlich in der Spezifikation, sie sind nicht vom Implementierer autorisiert.",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 2,
+      "structural_features": [
+        "COUNTING_SET"
+      ],
+      "question_form": "SELECT_MATCHING_EXPRESSION"
+    },
+    {
+      "task_id": "ZO04-D2-S-A",
+      "task_family_id": "FAM_ZO04_D2_COMPARE",
+      "title": "398 oder 389 - welche ist größer",
+      "primary_competency": "ZO04_NUMBER_RELATIONS",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Welche Zahl ist größer: 398 oder 389?",
+      "task_payload": {
+        "options": [
+          398,
+          389
+        ],
+        "options_status": "SPEC_GIVEN"
+      },
+      "correct_answer": {
+        "selection": 398
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "parallel_item_id": "ZO04-D2-S-B",
+      "structural_features": [
+        "NUMBER_COMPARISON"
+      ],
+      "surface_features": [
+        "MULTIPLE_CHOICE",
+        "SYMBOLIC_ONLY"
+      ],
+      "spec_section": "§48",
+      "note": "Zehner und Einer sind vertauscht, der Hunderter ist gleich. options_status=SPEC_GIVEN: die Auswahloptionen stehen wörtlich in der Spezifikation, sie sind nicht vom Implementierer autorisiert.",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "question_form": "COMPARE_NUMBERS"
+    },
+    {
+      "task_id": "ZO04-D2-S-B",
+      "task_family_id": "FAM_ZO04_D2_COMPARE",
+      "title": "507 oder 570 - welche ist größer",
+      "primary_competency": "ZO04_NUMBER_RELATIONS",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Welche Zahl ist größer: 507 oder 570?",
+      "task_payload": {
+        "options": [
+          507,
+          570
+        ],
+        "options_status": "SPEC_GIVEN"
+      },
+      "correct_answer": {
+        "selection": 570
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "VERIFY",
+      "numeric_features": [
+        "PLACE_VALUE_CHANGE"
+      ],
+      "structural_features": [
+        "NUMBER_COMPARISON"
+      ],
+      "surface_features": [
+        "MULTIPLE_CHOICE",
+        "SYMBOLIC_ONLY"
+      ],
+      "spec_section": "§48",
+      "note": "Das Paar variiert zusätzlich die Position der Null, damit gegenüber ZO04-D2-S-A nicht nur die Zahlen (§116). F-13. options_status=SPEC_GIVEN: die Auswahloptionen stehen wörtlich in der Spezifikation, sie sind nicht vom Implementierer autorisiert.",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "question_form": "COMPARE_NUMBERS"
+    },
+    {
+      "task_id": "ZO04-D2-S-C",
+      "task_family_id": null,
+      "title": "Zahl zwischen 48 und 50",
+      "primary_competency": "ZO04_NUMBER_RELATIONS",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Welche Zahl liegt zwischen 48 und 50?",
+      "task_payload": {},
+      "correct_answer": {
+        "value": 49
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "NUMBER_SEQUENCE"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COUNTING_ON"
+      ],
+      "spec_section": "§48",
+      "note": null,
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 2,
+      "question_form": "NAME_NEIGHBOUR"
+    },
+    {
+      "task_id": "ZO04-D3-S-A",
+      "task_family_id": null,
+      "title": "Vorgänger von 1000",
+      "primary_competency": "ZO04_NUMBER_RELATIONS",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Vorgänger von 1.000?",
+      "task_payload": {},
+      "correct_answer": {
+        "value": 999
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "CROSSES_HUNDRED",
+        "CROSSES_TEN",
+        "CROSSES_THOUSAND",
+        "PLACE_VALUE_CHANGE",
+        "REPEATED_DIGITS"
+      ],
+      "structural_features": [
+        "NUMBER_SEQUENCE"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COUNTING_BACK"
+      ],
+      "spec_section": "§48",
+      "note": "§20 kennt kein Merkmal CROSSES_THOUSAND; der Tausenderübergang ist derzeit nur über CROSSES_HUNDRED und PLACE_VALUE_CHANGE abbildbar (F-12).",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "question_form": "NAME_NEIGHBOUR"
+    },
+    {
+      "task_id": "ZO04-D3-I-A",
+      "task_family_id": null,
+      "title": "Abstand auf dem Zahlenstrahl 0-100",
+      "primary_competency": "ZO04_NUMBER_RELATIONS",
+      "internal_difficulty": "D3",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Wie groß ist der Abstand?",
+      "task_payload": {
+        "range": [
+          0,
+          100
+        ],
+        "marks": [
+          40,
+          70
+        ]
+      },
+      "correct_answer": {
+        "value": 30
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "secondary_leitideen": [
+        "SPACE_SHAPE",
+        "MEASUREMENT",
+        "PATTERN_FUNCTION"
+      ],
+      "structural_features": [
+        "MEASUREMENT_STRUCTURE"
+      ],
+      "surface_features": [
+        "NUMBER_LINE"
+      ],
+      "additional_demands": [
+        "SPATIAL_PROCESSING"
+      ],
+      "spec_section": "§14, §48",
+      "note": "§14 spezifiziert genau dieses Item: PRIMARY_COMPETENCY ZO04_NUMBER_RELATIONS, SECONDARY DARSTELLEN, ADDITIONAL_DEMAND SPATIAL_PROCESSING. §14 nennt zusätzlich Größenrelationen und Mustererkennung, daher die secondary_leitideen (siehe REL_001 bis REL_003). §14 ausdrücklich: ein Fehler bedeutet NICHT 'räumliches Vorstellungsvermögen schwach'.",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 2,
+      "question_form": "MEASURE_DISTANCE"
+    },
+    {
+      "task_id": "ZO04-D4-S-A",
+      "task_family_id": null,
+      "title": "Näher an 500: 487 oder 541",
+      "primary_competency": "ZO04_NUMBER_RELATIONS",
+      "internal_difficulty": "D4",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Welche Zahl liegt näher an 500: 487 oder 541?",
+      "task_payload": {
+        "options": [
+          487,
+          541
+        ],
+        "reference": 500,
+        "options_status": "SPEC_GIVEN"
+      },
+      "correct_answer": {
+        "selection": 487
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "NEAR_ROUND_NUMBER"
+      ],
+      "structural_features": [
+        "NUMBER_COMPARISON"
+      ],
+      "surface_features": [
+        "MULTIPLE_CHOICE",
+        "SYMBOLIC_ONLY"
+      ],
+      "spec_section": "§48",
+      "note": "NEAR_ROUND_NUMBER ist hier belegt, weil das Item die Nähe zu einer runden Zahl selbst zum Gegenstand macht. options_status=SPEC_GIVEN: die Auswahloptionen stehen wörtlich in der Spezifikation, sie sind nicht vom Implementierer autorisiert.",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "question_form": "COMPARE_TO_REFERENCE"
+    },
+    {
+      "task_id": "ZO05-D1-S-A",
+      "task_family_id": "FAM_ZO05_D1_DECOMPOSE",
+      "title": "8 = 5 + __",
+      "primary_competency": "ZO05_PART_WHOLE",
+      "internal_difficulty": "D1",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "8 = 5 + __",
+      "task_payload": {
+        "whole": 8,
+        "known_part": 5
+      },
+      "correct_answer": {
+        "value": 3
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "parallel_item_id": "ZO05-D1-S-B",
+      "numeric_features": [
+        "FIVE_RELATION"
+      ],
+      "structural_features": [
+        "PART_WHOLE"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "DECOMPOSITION"
+      ],
+      "spec_section": "§49",
+      "note": null,
+      "language_demand": "NONE",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "question_form": "COMPLETE_EQUATION"
+    },
+    {
+      "task_id": "ZO05-D1-S-B",
+      "task_family_id": "FAM_ZO05_D1_DECOMPOSE",
+      "title": "9 = 6 + __",
+      "primary_competency": "ZO05_PART_WHOLE",
+      "internal_difficulty": "D1",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "9 = 6 + __",
+      "task_payload": {
+        "whole": 9,
+        "known_part": 6
+      },
+      "correct_answer": {
+        "value": 3
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "VERIFY",
+      "structural_features": [
+        "PART_WHOLE"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "DECOMPOSITION"
+      ],
+      "spec_section": "§49",
+      "note": null,
+      "language_demand": "NONE",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "question_form": "COMPLETE_EQUATION"
+    },
+    {
+      "task_id": "ZO05-D2-I-A",
+      "task_family_id": null,
+      "title": "13 im 20er-Feld als 10+3",
+      "primary_competency": "ZO05_PART_WHOLE",
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Welche Zerlegung passt?",
+      "task_payload": {
+        "field": "TWENTY_FIELD",
+        "shown": 13,
+        "shown_structure": "10+3",
+        "options": [
+          "10+3",
+          "1+3",
+          "10-3",
+          "10+4"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "10+3"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "TEN_RELATION"
+      ],
+      "structural_features": [
+        "PART_WHOLE",
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT",
+        "MULTIPLE_CHOICE"
+      ],
+      "strategy_affordances": [
+        "DECOMPOSITION"
+      ],
+      "spec_section": "§49",
+      "note": "§49 nennt keine Distraktoren (F-17). Entscheidung D-09: Distraktoren autorisiert. 1+3 = Die gefüllte Zehnerreihe wird als Eins gelesen: die Ziffern von 13 werden zu 1 und 3, der Zehner behält seinen Stellenwert nicht. (ERR_PLACE_VALUE); 10-3 = Zerlegen wird mit Wegnehmen verwechselt: die beiden im Bild sichtbaren Teile werden durch ein Minuszeichen verbunden. (ERR_OPERATION_SELECTION); 10+4 = Die Zerlegungsstruktur Zehner plus Einer ist erfasst, die Einerzahl im Bild wird falsch abgezählt (4 statt 3); die Teile ergeben 14 statt der gezeigten 13. (ERR_CALCULATION).",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "question_form": "SELECT_DECOMPOSITION"
+    },
+    {
+      "task_id": "ZO05-D3-S-A",
+      "task_family_id": null,
+      "title": "37 + __ = 50",
+      "primary_competency": "ZO05_PART_WHOLE",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "37 + __ = 50",
+      "task_payload": {
+        "known_part": 37,
+        "whole": 50
+      },
+      "correct_answer": {
+        "value": 13
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "CROSSES_TEN",
+        "NEAR_ROUND_NUMBER"
+      ],
+      "structural_features": [
+        "COMPLEMENT_TO_ROUND",
+        "PART_WHOLE"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COMPLEMENT_TO_TEN",
+        "COUNTING_ON"
+      ],
+      "spec_section": "§49",
+      "note": "Inhaltlich identisch mit ZO08-D3-S-A (§53, 'Ergänze 37 auf 50'), dort mit primary_competency ZO08. Beide Items bleiben erhalten, weil die Spezifikation sie in unterschiedlichen Kompetenzkapiteln führt. NEAR_ROUND_NUMBER ist belegt, weil das Ziel 50 eine runde Zahl ist.",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "COMPLETE_EQUATION"
+    },
+    {
+      "task_id": "ZO05-D4-S-A",
+      "task_family_id": null,
+      "title": "Welche Zerlegung von 64 hilft bei 64 + 28",
+      "primary_competency": "ZO05_PART_WHOLE",
+      "internal_difficulty": "D4",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Welche Zerlegung von 64 hilft dir bei 64 + 28?",
+      "task_payload": {
+        "target_calculation": "64+28",
+        "decompose": 64
+      },
+      "correct_answer": {
+        "accepted": [
+          "60+4",
+          "62+2"
+        ],
+        "normalisierung": "Vergleich als Zeichenkette nach deterministischer Normalisierung, ohne LLM (§75 verbietet das LLM im Entscheidungspfad, §76 führt numerische Eingaben ausdrücklich als LLM-frei): (1) alle Leerzeichen entfernen; (2) ein vorangestelltes '64=' und ein angehängtes '=64' entfernen; (3) an '+' zerlegen, die Summanden als Zahlen lesen und aufsteigend sortieren, weil die Addition kommutativ ist; (4) die sortierte Summandenfolge mit den akzeptierten Zerlegungen vergleichen. Damit gelten '60+4', '4+60', '64 = 60 + 4' und '60+4=64' als dieselbe Antwort. Keine weitergehende Termumformung: Eingaben mit anderen Rechenzeichen als '+' werden nicht umgeformt, sondern als nicht akzeptiert behandelt. Empfehlung an den Task Renderer (Sprint 4): die Eingabe als '64 = ___ + ___' mit zwei Zahlenfeldern anbieten; dann entfällt die Freitextnormalisierung und die Auswertung ist der Vergleich zweier Zahlenpaare. Zusatzregel für die Fehlerbeobachtung: eine Eingabe, deren Summanden nicht 64 ergeben, ist nicht akzeptiert und als ERR_CALCULATION zu protokollieren; eine Eingabe, deren Summanden 64 ergeben, die aber keine der akzeptierten Zerlegungen ist (etwa '50+14'), ist nicht akzeptiert und als ERR_STRATEGY zu protokollieren, weil die Zerlegung korrekt, für 64 + 28 aber ohne Nutzen ist."
+      },
+      "scoring_rule": "ANY_OF_ACCEPTED",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "CROSSES_TEN"
+      ],
+      "structural_features": [
+        "PART_WHOLE",
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COMPENSATION",
+        "DECOMPOSITION"
+      ],
+      "spec_section": "§49",
+      "note": "§49: 'Mehrere Antworten können mathematisch sinnvoll sein. Scoring darf nicht unnötig nur eine Strategie akzeptieren.' §49 gibt die Liste der akzeptierten Antworten nicht an, daher correct_answer.status=UNDEFINED. Das Item ist bis zur fachlichen Festlegung nicht auslieferbar (F-18). Dieses Item belegt REL_010 (ZO05 stützt ZO07). Entscheidung D-10: akzeptierte Antworten autorisiert. Die beiden akzeptierten Zerlegungen entsprechen eins zu eins den beiden strategy_affordances, die das Item aus §49 bereits trägt (DECOMPOSITION und COMPENSATION). Die Liste ist damit nicht frei gewählt, sondern aus den vorhandenen Merkmalen des Items begründet. Zerlegungen ohne Nutzen für 64 + 28 (etwa '50+14') sind bewusst nicht akzeptiert: §49 verlangt Offenheit für mehrere sinnvolle Strategien, nicht für jede richtige Zerlegung - sonst verliert das Item seinen diagnostischen Wert. Nicht akzeptiert ist auch '70-6': das ist eine Differenzdarstellung, keine Zerlegung im Sinne der Teil-Ganzes-Kompetenz ZO05; diese Entscheidung ist als offener Punkt vermerkt.",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "PROBLEMLOESEN"
+      ],
+      "question_form": "NAME_DECOMPOSITION"
+    },
+    {
+      "task_id": "ZO06-D1-I-A",
+      "task_family_id": "FAM_ZO06_D1_ICONIC",
+      "title": "4 Zehnerstangen und 7 Einer",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Welche Zahl?",
+      "task_payload": {
+        "tens": 4,
+        "ones": 7,
+        "material": "BASE_TEN_RODS"
+      },
+      "correct_answer": {
+        "value": 47
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "parallel_item_id": "ZO06-D1-I-B",
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "spec_section": "§50, §69",
+      "note": "§69 nutzt dieses Item als ikonische Gegenprobe zu den symbolischen ZO06-D2-Items. Achtung: es liegt auf D1, die symbolischen Items auf D2 - der Darstellungsvergleich ist damit mit der Schwierigkeit vermischt (§116 verletzt, F-21).",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 2,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "question_form": "READ_NUMBER_FROM_MATERIAL"
+    },
+    {
+      "task_id": "ZO06-D1-I-B",
+      "task_family_id": "FAM_ZO06_D1_ICONIC",
+      "title": "6 Zehner und 3 Einer",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Welche Zahl?",
+      "task_payload": {
+        "tens": 6,
+        "ones": 3,
+        "material": "BASE_TEN_RODS"
+      },
+      "correct_answer": {
+        "value": 63
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "VERIFY",
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "spec_section": "§50, §69",
+      "note": "§69 verlangt nach einer ikonisch richtigen Antwort ein 'zweites I/S-Paar'; dieses Item ist die ikonische Hälfte davon.",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 2,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "question_form": "READ_NUMBER_FROM_MATERIAL"
+    },
+    {
+      "task_id": "ZO06-D2-S-A",
+      "task_family_id": "FAM_ZO06_D2_SYMBOLIC",
+      "title": "Wert der Ziffer 6 in 364",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Welchen Wert hat die Ziffer 6 in 364?",
+      "task_payload": {
+        "number": 364,
+        "digit": 6
+      },
+      "correct_answer": {
+        "value": 60
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "parallel_item_id": "ZO06-D2-S-B",
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "spec_section": "§50, §69",
+      "note": "§69 nutzt genau dieses Item als Ausgangspunkt des Stellenwert-Routings (Route R002).",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "question_form": "VALUE_OF_NAMED_DIGIT"
+    },
+    {
+      "task_id": "ZO06-D2-S-B",
+      "task_family_id": "FAM_ZO06_D2_SYMBOLIC",
+      "title": "Wert der Ziffer 7 in 572",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Welchen Wert hat die Ziffer 7 in 572?",
+      "task_payload": {
+        "number": 572,
+        "digit": 7
+      },
+      "correct_answer": {
+        "value": 70
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "VERIFY",
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "spec_section": "§50, §69",
+      "note": "Ziel der Route R002 bei falscher Antwort auf ZO06-D2-S-A.",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "question_form": "VALUE_OF_NAMED_DIGIT"
+    },
+    {
+      "task_id": "ZO06-D3-S-A",
+      "task_family_id": "FAM_ZO06_D3_ZERO",
+      "title": "5 Hunderter, 0 Zehner, 8 Einer",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "5 Hunderter + 0 Zehner + 8 Einer.",
+      "task_payload": {
+        "hundreds": 5,
+        "tens": 0,
+        "ones": 8
+      },
+      "correct_answer": {
+        "value": 508
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "parallel_item_id": "ZO06-D3-S-B",
+      "numeric_features": [
+        "PLACE_VALUE_CHANGE"
+      ],
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "spec_section": "§50, §66, §92",
+      "note": "§66 nutzt die Fehlantwort 58 auf dieses Item als Musterbeispiel: Rohbeobachtung answer=58 -> Fehlercode ERR_ZERO_PLACEHOLDER -> Evidenz DIRECT_NEGATIVE ZO06 -> Hypothese ZERO_PLACEHOLDER_HYPOTHESIS erst nach Replikation. §92 führt 508 -> 704 als Förderroute.",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "question_form": "COMPOSE_FROM_PLACES"
+    },
+    {
+      "task_id": "ZO06-D3-S-B",
+      "task_family_id": "FAM_ZO06_D3_ZERO",
+      "title": "7 Hunderter, 0 Zehner, 4 Einer",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "7 Hunderter + 0 Zehner + 4 Einer.",
+      "task_payload": {
+        "hundreds": 7,
+        "tens": 0,
+        "ones": 4
+      },
+      "correct_answer": {
+        "value": 704
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "VERIFY",
+      "numeric_features": [
+        "PLACE_VALUE_CHANGE"
+      ],
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "spec_section": "§50, §92",
+      "note": null,
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "question_form": "COMPOSE_FROM_PLACES"
+    },
+    {
+      "task_id": "ZO06-D4-S-A",
+      "task_family_id": "FAM_ZO06_D4_TENS_CONTRAST",
+      "title": "Anzahl der Zehner in 430",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "internal_difficulty": "D4",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Wie viele Zehner sind insgesamt in 430 enthalten?",
+      "task_payload": {
+        "number": 430,
+        "asked_unit": "TENS_TOTAL"
+      },
+      "correct_answer": {
+        "value": 43
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "numeric_features": [
+        "PLACE_VALUE_CHANGE"
+      ],
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "spec_section": "§50",
+      "note": "§50 zu diesem Paar: 'Dieses Paar gezielt vergleichen.'",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "question_form": "VALUE_OF_NAMED_PLACE"
+    },
+    {
+      "task_id": "ZO06-D4-S-B",
+      "task_family_id": "FAM_ZO06_D4_TENS_CONTRAST",
+      "title": "Ziffer an der Zehnerstelle von 430",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "internal_difficulty": "D4",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Welche Ziffer steht bei 430 an der Zehnerstelle?",
+      "task_payload": {
+        "number": 430,
+        "asked_unit": "TENS_DIGIT"
+      },
+      "correct_answer": {
+        "value": 3
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "spec_section": "§50",
+      "note": "Gleiche Zahl wie ZO06-D4-S-A, nur die Frage variiert. §116 vorbildlich erfüllt.",
+      "language_demand": "LOW",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "question_form": "DIGIT_AT_NAMED_PLACE"
+    },
+    {
+      "task_id": "ZO07-GV-D1-I-A",
+      "task_family_id": null,
+      "title": "6 Kugeln und 3 weitere - welche Rechnung",
+      "primary_competency": "ZO07_ADDITION",
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Welche Rechnung passt?",
+      "task_payload": {
+        "objects_first": 6,
+        "objects_added": 3,
+        "options": [
+          "6+3",
+          "6-3",
+          "6*3",
+          "6:3"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "6+3"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "PART_WHOLE"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT",
+        "MULTIPLE_CHOICE"
+      ],
+      "spec_section": "§51",
+      "note": "GV = Grundvorstellung (Kürzel aus der Item-ID in §51). §51 nennt keine Distraktoren (F-17). Entscheidung D-09: Distraktoren autorisiert. 6-3 = Das Hinzukommen der drei Kugeln wird als Wegnehmen gedeutet; die Operation passt nicht zur Handlung im Bild. (ERR_OPERATION_SELECTION); 9+6 = Die Gesamtzahl 9 wird als Teil eingesetzt: das Ganze und ein Teil werden addiert statt der beiden Teile. Die Operation ist richtig, die Rollen der Zahlen sind vertauscht. (ERR_OPERATION_CONCEPT); 9 = Statt einer Rechnung wird das Ergebnis gewählt: die Aufgabe verlangt ein Modell der Situation, geliefert wird deren Resultat. (ERR_SINGLE). Korrektur nach Kritikbefunden 6 und 7: die vorherige Optionsliste enthielt den Zahlenwert der richtigen Rechnung. Wer ihn waehlt, hat die Situation richtig modelliert und ausgerechnet, waere aber als falsch gewertet und nach §70 in die Foerderkette 'Grundvorstellung pruefen' geleitet worden. Ausserdem war ein Distraktor aus zwei Gruenden waehlbar. Die drei Distraktoren pruefen jetzt genau eine Frage: welche Operationsklasse passt zur Situation. Rollentausch ist kein Distraktor, weil er bei kommutativen Operationen denselben Wert ergibt und vom Scoring als richtig gilt.",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "question_form": "SELECT_MATCHING_EXPRESSION"
+    },
+    {
+      "task_id": "ZO07-D2-S-A",
+      "task_family_id": "FAM_ZO07_D2_TWO_DIGIT",
+      "title": "38 + 27",
+      "primary_competency": "ZO07_ADDITION",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "38 + 27",
+      "task_payload": {
+        "operands": [
+          38,
+          27
+        ],
+        "operation": "ADD"
+      },
+      "correct_answer": {
+        "value": 65
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "parallel_item_id": "ZO07-D2-S-C",
+      "numeric_features": [
+        "CROSSES_TEN",
+        "NEAR_ROUND_NUMBER"
+      ],
+      "structural_features": [
+        "TWO_DIGIT_ADDITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COMPENSATION",
+        "DECOMPOSITION"
+      ],
+      "spec_section": "§51",
+      "note": "Dieselbe Aufgabe erscheint in §56 als gegebener Fakt in ZO11-D2-S-B.",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO07-D2-S-B",
+      "task_family_id": "FAM_ZO07_D2_TWO_DIGIT",
+      "title": "46 + 38",
+      "primary_competency": "ZO07_ADDITION",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "46 + 38",
+      "task_payload": {
+        "operands": [
+          46,
+          38
+        ],
+        "operation": "ADD"
+      },
+      "correct_answer": {
+        "value": 84
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "numeric_features": [
+        "CROSSES_TEN",
+        "NEAR_ROUND_NUMBER"
+      ],
+      "structural_features": [
+        "TWO_DIGIT_ADDITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "DECOMPOSITION"
+      ],
+      "spec_section": "§51",
+      "note": null,
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "parallel_item_id": "ZO07-D2-S-D",
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO07-D3-S-A",
+      "task_family_id": null,
+      "title": "38+20=58 nutzen für 38+23",
+      "primary_competency": "ZO07_ADDITION",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Du weißt: 38 + 20 = 58. Wie hilft dir das bei 38 + 23?",
+      "task_payload": {
+        "given_fact": "38+20=58",
+        "target_calculation": "38+23"
+      },
+      "correct_answer": {
+        "expression": "58+3=61",
+        "value": 61
+      },
+      "scoring_rule": "EXPRESSION_EQUIVALENT",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "CROSSES_TEN",
+        "NEAR_ROUND_NUMBER",
+        "TEN_RELATION"
+      ],
+      "structural_features": [
+        "TWO_DIGIT_ADDITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "COUNTING_ON",
+        "DECOMPOSITION",
+        "USE_TEN_FACT"
+      ],
+      "spec_section": "§51",
+      "note": "ID-KOLLISION: §24 definiert ZO07-D3-S-A als '49 + 36 = ?' mit Antwort 85. Hier gilt §51 (Aufgabenbank-Kapitel); das Item aus §24 ist unter der provisorischen ID ZO07-CONTRAST-01-A geführt. Fachliche Klärung erforderlich: F-10.",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "PROBLEMLOESEN"
+      ],
+      "additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "question_form": "DERIVE_FROM_KNOWN_FACT"
+    },
+    {
+      "task_id": "ZO07-D3-S-C",
+      "task_family_id": "ZO07-CONTRAST-01",
+      "title": "37 + 28",
+      "primary_competency": "ZO07_ADDITION",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "37 + 28",
+      "task_payload": {
+        "operands": [
+          37,
+          28
+        ],
+        "operation": "ADD"
+      },
+      "correct_answer": {
+        "value": 65
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "numeric_features": [
+        "CROSSES_TEN",
+        "NEAR_ROUND_NUMBER"
+      ],
+      "structural_features": [
+        "TWO_DIGIT_ADDITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "DECOMPOSITION"
+      ],
+      "spec_section": "§51, §52, §71",
+      "note": "Mitglied der Contrast Family ZO07-CONTRAST-01. §71 ordnet dieses Item der Seite ohne NEAR_ROUND_NUMBER zu; deshalb ist NEAR_ROUND_NUMBER hier bewusst NICHT gesetzt, obwohl 28 nahe an 30 liegt. Genau darin liegt der Kontrast zu 49+36 und 48+37. §19 nennt 37+28 als Beispiel dafür, dass Aufgaben derselben Kompetenz nicht austauschbar sind.",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO07-D3-S-D",
+      "task_family_id": "ZO07-CONTRAST-01",
+      "title": "46 + 27",
+      "primary_competency": "ZO07_ADDITION",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "46 + 27",
+      "task_payload": {
+        "operands": [
+          46,
+          27
+        ],
+        "operation": "ADD"
+      },
+      "correct_answer": {
+        "value": 73
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "numeric_features": [
+        "CROSSES_TEN"
+      ],
+      "structural_features": [
+        "TWO_DIGIT_ADDITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "DECOMPOSITION"
+      ],
+      "spec_section": "§51, §52, §71",
+      "note": "Mitglied der Contrast Family ZO07-CONTRAST-01, ohne NEAR_ROUND_NUMBER (§71).",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO07-D4-L-A",
+      "task_family_id": null,
+      "title": "48 Bücher, 27 kommen hinzu",
+      "primary_competency": "ZO07_ADDITION",
+      "internal_difficulty": "D4",
+      "representation_mode": "NATURAL_LANGUAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "In einer Kiste liegen 48 Bücher. 27 kommen hinzu. Wie viele sind es?",
+      "task_payload": {
+        "operands": [
+          48,
+          27
+        ],
+        "operation": "ADD"
+      },
+      "correct_answer": {
+        "value": 75
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "CROSSES_TEN",
+        "NEAR_ROUND_NUMBER"
+      ],
+      "structural_features": [
+        "TWO_DIGIT_ADDITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "WORD_PROBLEM"
+      ],
+      "strategy_affordances": [
+        "COMPENSATION",
+        "DECOMPOSITION"
+      ],
+      "spec_section": "§51",
+      "note": "Prozesskompetenz MODELLIEREN wäre fachlich naheliegend, wird aber nicht eigenständig gesetzt (F-19).",
+      "language_demand": "HIGH",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "MODELLIEREN"
+      ],
+      "additional_demands": [
+        "LANGUAGE_DEMAND"
+      ],
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO07-D3-S-E",
+      "task_family_id": "ZO07-CONTRAST-01",
+      "title": "49 + 36",
+      "primary_competency": "ZO07_ADDITION",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "49 + 36 = ?",
+      "task_payload": {
+        "operands": [
+          49,
+          36
+        ],
+        "operation": "ADD"
+      },
+      "correct_answer": {
+        "value": 85
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "numeric_features": [
+        "NEAR_ROUND_NUMBER",
+        "CROSSES_TEN"
+      ],
+      "structural_features": [
+        "TWO_DIGIT_ADDITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COMPENSATION",
+        "DECOMPOSITION"
+      ],
+      "spec_section": "§24, §52, §71",
+      "note": "Metadaten wörtlich aus §24 (Beispiel vollständige Aufgabenmetadaten): DIFFICULTY D3, REPRESENTATION MATHEMATICAL_SYMBOL, INTERACTION ENTER, NUMERIC_FEATURES NEAR_ROUND_NUMBER und CROSSES_TEN, STRUCTURAL_FEATURES TWO_DIGIT_ADDITION, STRATEGY_AFFORDANCES COMPENSATION und DECOMPOSITION, SURFACE_FEATURES NO_CONTEXT und SYMBOLIC_ONLY. Die in §24 angegebene TASK_ID ZO07-D3-S-A kollidiert mit §51; die hier verwendete ID ist provisorisch (F-10). Entscheidung D-01/D-02: ID von ZO07-CONTRAST-01-A auf ZO07-D3-S-E geändert, damit sie dem Muster {Kompetenz}-{Stufe}-{Darstellung}-{Variante} aus §42-57 folgt. Die Familie behält den Namen ZO07-CONTRAST-01 aus §52. Korrektur nach Kritikbefund 12: die Merkmalszuordnung lief ueber die alte ID und griff nach der Umbenennung (D-01) nicht mehr.",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO07-D3-S-F",
+      "task_family_id": "ZO07-CONTRAST-01",
+      "title": "48 + 37",
+      "primary_competency": "ZO07_ADDITION",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "48 + 37 = ?",
+      "task_payload": {
+        "operands": [
+          48,
+          37
+        ],
+        "operation": "ADD"
+      },
+      "correct_answer": {
+        "value": 85
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "numeric_features": [
+        "NEAR_ROUND_NUMBER",
+        "CROSSES_TEN"
+      ],
+      "structural_features": [
+        "TWO_DIGIT_ADDITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COMPENSATION",
+        "DECOMPOSITION"
+      ],
+      "spec_section": "§52, §71",
+      "note": "§52 und §71 führen 48+37 als Mitglied der Contrast Family, geben aber weder TASK_ID noch Metadaten noch Lösung an. ID provisorisch, Metadaten von ZO07-CONTRAST-01-A übernommen, Lösung 85 arithmetisch bestimmt. Fachliche Bestätigung erforderlich: F-11. Entscheidung D-01/D-02: ID von ZO07-CONTRAST-01-B auf ZO07-D3-S-F geändert, damit sie dem Muster {Kompetenz}-{Stufe}-{Darstellung}-{Variante} aus §42-57 folgt. Die Familie behält den Namen ZO07-CONTRAST-01 aus §52. Korrektur nach Kritikbefund 12: die Merkmalszuordnung lief ueber die alte ID und griff nach der Umbenennung (D-01) nicht mehr.",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO08-GV-D1-I-A",
+      "task_family_id": null,
+      "title": "15 Objekte, 6 werden entfernt - welche Rechnung",
+      "primary_competency": "ZO08_SUBTRACTION",
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Welche Rechnung passt?",
+      "task_payload": {
+        "objects_before": 15,
+        "objects_removed": 6,
+        "options": [
+          "15-6",
+          "15+6",
+          "15*6",
+          "15:6"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "15-6"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "PART_WHOLE"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT",
+        "MULTIPLE_CHOICE"
+      ],
+      "spec_section": "§53",
+      "note": "Keine Distraktoren angegeben (F-17). Entscheidung D-09: Distraktoren autorisiert. 15+6 = Das Entfernen der sechs Objekte wird als Hinzufügen gedeutet; die Operation passt nicht zur Handlung im Bild. (ERR_OPERATION_SELECTION); 9-6 = Der Rest 9 wird als Ausgangsmenge eingesetzt: Ganzes und Rest sind vertauscht. Die Operation ist richtig, die Rollen der Zahlen sind vertauscht. (ERR_OPERATION_CONCEPT); 9 = Statt einer Rechnung wird das Ergebnis gewählt: die Aufgabe verlangt ein Modell der Situation, geliefert wird deren Resultat. (ERR_SINGLE). Korrektur nach Kritikbefunden 6 und 7: die vorherige Optionsliste enthielt den Zahlenwert der richtigen Rechnung. Wer ihn waehlt, hat die Situation richtig modelliert und ausgerechnet, waere aber als falsch gewertet und nach §70 in die Foerderkette 'Grundvorstellung pruefen' geleitet worden. Ausserdem war ein Distraktor aus zwei Gruenden waehlbar. Die drei Distraktoren pruefen jetzt genau eine Frage: welche Operationsklasse passt zur Situation. Rollentausch ist kein Distraktor, weil er bei kommutativen Operationen denselben Wert ergibt und vom Scoring als richtig gilt.",
+      "language_demand": "LOW",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "question_form": "SELECT_MATCHING_EXPRESSION"
+    },
+    {
+      "task_id": "ZO08-D2-S-A",
+      "task_family_id": null,
+      "title": "15 - 6",
+      "primary_competency": "ZO08_SUBTRACTION",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "15 - 6",
+      "task_payload": {
+        "operands": [
+          15,
+          6
+        ],
+        "operation": "SUBTRACT"
+      },
+      "correct_answer": {
+        "value": 9
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "CROSSES_TEN"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COMPLEMENT_TO_TEN",
+        "DECOMPOSITION"
+      ],
+      "spec_section": "§53",
+      "note": null,
+      "language_demand": "NONE",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO08-GV-D2-L-A",
+      "task_family_id": null,
+      "title": "Mia und Ben - wie viele mehr",
+      "primary_competency": "ZO08_SUBTRACTION",
+      "internal_difficulty": "D2",
+      "representation_mode": "NATURAL_LANGUAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Mia hat 15 Sticker. Ben hat 9. Wie viele mehr hat Mia?",
+      "task_payload": {
+        "operands": [
+          15,
+          9
+        ],
+        "operation": "SUBTRACT"
+      },
+      "correct_answer": {
+        "value": 6
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "COMPARISON_DIFFERENCE"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "WORD_PROBLEM"
+      ],
+      "spec_section": "§53",
+      "note": "Vergleichskontext statt Wegnahmekontext - eine andere Grundvorstellung der Subtraktion als ZO08-GV-D1-I-A.",
+      "language_demand": "HIGH",
+      "grade_reference_min": 1,
+      "grade_reference_max": 1,
+      "process_competencies": [
+        "MODELLIEREN"
+      ],
+      "additional_demands": [
+        "LANGUAGE_DEMAND"
+      ],
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO08-D3-S-A",
+      "task_family_id": null,
+      "title": "37 auf 50 ergänzen",
+      "primary_competency": "ZO08_SUBTRACTION",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Ergänze 37 auf 50.",
+      "task_payload": {
+        "start": 37,
+        "target": 50
+      },
+      "correct_answer": {
+        "value": 13
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "CROSSES_TEN",
+        "NEAR_ROUND_NUMBER"
+      ],
+      "structural_features": [
+        "COMPLEMENT_TO_ROUND"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COMPLEMENT_TO_TEN",
+        "COUNTING_ON"
+      ],
+      "spec_section": "§53",
+      "note": "Inhaltlich identisch mit ZO05-D3-S-A (§49, '37 + __ = 50'), dort mit primary_competency ZO05.",
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "COMPLEMENT_TO_TARGET"
+    },
+    {
+      "task_id": "ZO08-D4-S-A",
+      "task_family_id": "FAM_ZO08_D4_STRATEGY",
+      "title": "403 - 198",
+      "primary_competency": "ZO08_SUBTRACTION",
+      "internal_difficulty": "D4",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "403 - 198",
+      "task_payload": {
+        "operands": [
+          403,
+          198
+        ],
+        "operation": "SUBTRACT"
+      },
+      "correct_answer": {
+        "value": 205
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "CROSSES_HUNDRED",
+        "NEAR_ROUND_NUMBER",
+        "PLACE_VALUE_CHANGE"
+      ],
+      "structural_features": [
+        "THREE_DIGIT_SUBTRACTION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COMPENSATION"
+      ],
+      "spec_section": "§53",
+      "note": "NEAR_ROUND_NUMBER ist belegt, weil §53 im Folgeitem ausdrücklich '403-200+2' als günstige Strategie nennt, also die Nähe von 198 zu 200 nutzt.",
+      "language_demand": "NONE",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO08-D4-STRATEGY-A",
+      "task_family_id": "FAM_ZO08_D4_STRATEGY",
+      "title": "Günstige Strategie für 403 - 198",
+      "primary_competency": "ZO08_SUBTRACTION",
+      "internal_difficulty": "D4",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Welche Strategie ist günstig?",
+      "task_payload": {
+        "target_calculation": "403-198",
+        "options": [
+          "403-200+2",
+          "403-200",
+          "403-200-2",
+          "401-200"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "403-200+2"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "CONTRAST",
+      "numeric_features": [
+        "CROSSES_HUNDRED",
+        "NEAR_ROUND_NUMBER",
+        "PLACE_VALUE_CHANGE"
+      ],
+      "structural_features": [
+        "THREE_DIGIT_SUBTRACTION"
+      ],
+      "surface_features": [
+        "MULTIPLE_CHOICE",
+        "NO_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "COMPENSATION"
+      ],
+      "spec_section": "§53",
+      "note": "Eines der wenigen Items, bei denen die Strategie selbst erfragt wird und damit beobachtbar ist (siehe Hinweis zu ERR_STRATEGY). Keine Distraktoren angegeben (F-17). Entscheidung D-09: Distraktoren autorisiert. 403-200 = Der Subtrahend wird zur runden Zahl aufgefüllt, der Ausgleich wird unterlassen; es werden zwei zu viel abgezogen. (ERR_STRATEGY); 403-200-2 = Der Ausgleich erfolgt in die falsche Richtung: die zwei zu viel abgezogenen Einheiten werden noch einmal abgezogen statt zurückgegeben. (ERR_STRATEGY); 401-200 = Die Ausgleichsregel der Addition wird auf die Subtraktion übertragen: beide Zahlen werden gegensinnig verändert, obwohl die Differenz nur bei gleichsinniger Veränderung erhalten bleibt. (ERR_STRATEGY). Korrektur nach Kritikbefund 14: dieselbe Rechnung wie ZO08-D4-S-A muss dieselben Zahlmerkmale tragen.",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "process_competencies": [
+        "PROBLEMLOESEN"
+      ],
+      "question_form": "SELECT_STRATEGY"
+    },
+    {
+      "task_id": "ZO09-GV-D1-I-A",
+      "task_family_id": null,
+      "title": "4 Gruppen mit je 3 Punkten - welche Rechnung",
+      "primary_competency": "ZO09_MULTIPLICATION",
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Welche Rechnung passt?",
+      "task_payload": {
+        "groups": 4,
+        "per_group": 3,
+        "options": [
+          "4*3",
+          "4+3",
+          "4-3",
+          "4:3"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "4*3"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "EQUAL_GROUPS"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT",
+        "MULTIPLE_CHOICE"
+      ],
+      "spec_section": "§54, §70",
+      "note": "§70 nutzt dieses Item zur Prüfung der Grundvorstellung Multiplikation (Route R007). Keine Distraktoren angegeben (F-17). Entscheidung D-09: Distraktoren autorisiert. 4+3 = Die Gruppenstruktur wird additiv gedeutet: Gruppenanzahl und Gruppengröße werden addiert statt vervielfacht. (ERR_OPERATION_SELECTION); 4*4 = Die Gruppenanzahl wird auch als Gruppengröße gelesen; die Punkte je Gruppe werden nicht erfasst. Die Operation ist richtig, die Rollen der Zahlen sind vertauscht. (ERR_OPERATION_CONCEPT); 12 = Statt einer Rechnung wird das Ergebnis gewählt: die Aufgabe verlangt ein Modell der Gruppenstruktur, geliefert wird die Gesamtzahl der Punkte. (ERR_SINGLE). Korrektur nach Kritikbefunden 6 und 7: die vorherige Optionsliste enthielt den Zahlenwert der richtigen Rechnung. Wer ihn waehlt, hat die Situation richtig modelliert und ausgerechnet, waere aber als falsch gewertet und nach §70 in die Foerderkette 'Grundvorstellung pruefen' geleitet worden. Ausserdem war ein Distraktor aus zwei Gruenden waehlbar. Die drei Distraktoren pruefen jetzt genau eine Frage: welche Operationsklasse passt zur Situation. Rollentausch ist kein Distraktor, weil er bei kommutativen Operationen denselben Wert ergibt und vom Scoring als richtig gilt. Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "question_form": "SELECT_MATCHING_EXPRESSION"
+    },
+    {
+      "task_id": "ZO09-D1-S-A",
+      "task_family_id": null,
+      "title": "4 mal 3",
+      "primary_competency": "ZO09_MULTIPLICATION",
+      "internal_difficulty": "D1",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "4 * 3",
+      "task_payload": {
+        "operands": [
+          4,
+          3
+        ],
+        "operation": "MULTIPLY"
+      },
+      "correct_answer": {
+        "value": 12
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "EQUAL_GROUPS"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "spec_section": "§54",
+      "note": "SMALL_FACTS wäre naheliegend, §20 definiert aber keine Schwelle zwischen SMALL_FACTS und LARGE_FACTS (F-12).",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "numeric_features": [
+        "SMALL_FACTS"
+      ],
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO09-GV-D2-L-A",
+      "task_family_id": null,
+      "title": "5 Schachteln mit je 6 Stiften",
+      "primary_competency": "ZO09_MULTIPLICATION",
+      "internal_difficulty": "D2",
+      "representation_mode": "NATURAL_LANGUAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "5 Schachteln enthalten jeweils 6 Stifte.",
+      "task_payload": {
+        "groups": 5,
+        "per_group": 6,
+        "operation": "MULTIPLY"
+      },
+      "correct_answer": {
+        "value": 30
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "FIVE_RELATION"
+      ],
+      "structural_features": [
+        "EQUAL_GROUPS"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "WORD_PROBLEM"
+      ],
+      "spec_section": "§54",
+      "note": "§54 formuliert das Item als Aussage ohne Frage. Der Renderer muss die Frage ergänzen ('Wie viele Stifte sind es insgesamt?'); der Wortlaut ist in §54 nicht vorgegeben. Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "language_demand": "HIGH",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "MODELLIEREN"
+      ],
+      "additional_demands": [
+        "LANGUAGE_DEMAND"
+      ],
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO09-D2-S-A",
+      "task_family_id": "FAM_ZO09_6X8_REPRESENTATION",
+      "title": "6 mal 8",
+      "primary_competency": "ZO09_MULTIPLICATION",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "6 * 8",
+      "task_payload": {
+        "operands": [
+          6,
+          8
+        ],
+        "operation": "MULTIPLY"
+      },
+      "correct_answer": {
+        "value": 48
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "EQUAL_GROUPS"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "spec_section": "§54, §70, §93, §102",
+      "note": "§70 nutzt 6*8 als Ausgangsitem des Multiplikationsroutings: symbolisch falsch -> Parallelitem -> erneut falsch -> ikonische Darstellung. Ein Parallelitem zu 6*8 fehlt in der Aufgabenbank (F-21). §102 zeigt an diesem Item, dass dieselbe Ausgangsantwort bei zwei Schüler:innen zu unterschiedlichen Lernpfaden führen darf.",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "parallel_item_id": "ZO09-D2-S-B",
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO09-REL-D3-S-A",
+      "task_family_id": "FAM_ZO09_REL_D3_DERIVE",
+      "title": "Aus 5x8=40 6x8 bestimmen",
+      "primary_competency": "ZO09_MULTIPLICATION",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Du weißt 5 * 8 = 40. Bestimme 6 * 8.",
+      "task_payload": {
+        "given_fact": "5*8=40",
+        "target_calculation": "6*8"
+      },
+      "correct_answer": {
+        "value": 48
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "parallel_item_id": "ZO09-REL-D3-S-B",
+      "numeric_features": [
+        "FIVE_RELATION"
+      ],
+      "structural_features": [
+        "DISTRIBUTIVE_STRUCTURE"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "DISTRIBUTIVE_REASONING",
+        "USE_FIVE_FACT"
+      ],
+      "spec_section": "§54, §83",
+      "note": "§83 definiert für dieses Item die Route R001: WRONG -> ZO09-REL-D3-S-B, reason REPLICATE_ERROR, priority 100, enabled TRUE. REL = Beziehungen (Kürzel aus der Item-ID in §54). Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "question_form": "DERIVE_FROM_KNOWN_FACT"
+    },
+    {
+      "task_id": "ZO09-REL-D3-I-A",
+      "task_family_id": null,
+      "title": "6x8-Rechteckfeld als 5x8 + 1x8",
+      "primary_competency": "ZO09_MULTIPLICATION",
+      "internal_difficulty": "D3",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Welche Zerlegung passt?",
+      "task_payload": {
+        "array": [
+          6,
+          8
+        ],
+        "shown_decomposition": "5*8 + 1*8",
+        "options": [
+          "5*8 + 1*8",
+          "5*8 + 1",
+          "5*8 + 2*8",
+          "5*8 * 1*8"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "5*8 + 1*8"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "CONTRAST",
+      "structural_features": [
+        "ARRAY_STRUCTURE",
+        "DISTRIBUTIVE_STRUCTURE"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT",
+        "MULTIPLE_CHOICE"
+      ],
+      "strategy_affordances": [
+        "DISTRIBUTIVE_REASONING"
+      ],
+      "spec_section": "§54, §70, §93",
+      "note": "Das einzige ikonische 6*8-Item der Aufgabenbank und damit die ikonische Gegenprobe in §70. Es liegt aber auf D3 statt D2 und fragt eine Zerlegung statt eines Ergebnisses - der Darstellungsvergleich ist damit dreifach konfundiert (§116 verletzt, F-21). Entscheidung D-09: Distraktoren autorisiert. 5*8 + 1 = Die abgetrennte Zeile wird als ein einzelnes Element gezählt, nicht als eine Gruppe von acht; die Zeile des Rechteckfeldes wird nicht als Vielfaches gelesen. (ERR_OPERATION_CONCEPT); 5*8 + 2*8 = Die Teile werden nicht auf das Ganze zurückbezogen: 5 und 2 Zeilen ergeben 7 statt der gezeigten 6 Zeilen. (ERR_CALCULATION); 5*8 * 1*8 = Die beiden Teilprodukte werden multipliziert statt addiert; das Zusammenfügen der Teilfelder wird mit einer Verknüpfung der Faktoren verwechselt. (ERR_OPERATION_SELECTION).",
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "DARSTELLEN"
+      ],
+      "numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "question_form": "SELECT_DECOMPOSITION"
+    },
+    {
+      "task_id": "ZO09-REL-D3-S-B",
+      "task_family_id": "FAM_ZO09_REL_D3_DERIVE",
+      "title": "Aus 5x8=40 7x8 bestimmen",
+      "primary_competency": "ZO09_MULTIPLICATION",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Du weißt 5 * 8 = 40. Bestimme 7 * 8.",
+      "task_payload": {
+        "given_fact": "5*8=40",
+        "target_calculation": "7*8"
+      },
+      "correct_answer": {
+        "value": 56
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "VERIFY",
+      "numeric_features": [
+        "FIVE_RELATION"
+      ],
+      "structural_features": [
+        "DISTRIBUTIVE_STRUCTURE"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "DISTRIBUTIVE_REASONING",
+        "USE_FIVE_FACT"
+      ],
+      "spec_section": "§54, §83, §93",
+      "note": "Ziel der Route R001 (§83). §93 nutzt 7*8 zusätzlich als Schritt 'mit neuer Beziehung' der Förderroute. Der Ableitungsschritt ist +2*8 statt +1*8, damit variiert gegenüber ZO09-REL-D3-S-A nicht nur die Zielzahl. Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "additional_demands": [
+        "WORKING_MEMORY_DEMAND"
+      ],
+      "question_form": "DERIVE_FROM_KNOWN_FACT"
+    },
+    {
+      "task_id": "ZO09-D4-S-B",
+      "task_family_id": null,
+      "title": "23 mal 4",
+      "primary_competency": "ZO09_MULTIPLICATION",
+      "internal_difficulty": "D4",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "23 * 4",
+      "task_payload": {
+        "operands": [
+          23,
+          4
+        ],
+        "operation": "MULTIPLY"
+      },
+      "correct_answer": {
+        "value": 92
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "DISTRIBUTIVE_STRUCTURE",
+        "MULTI_DIGIT_MULTIPLICATION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "DECOMPOSITION",
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "spec_section": "§54",
+      "note": "Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "language_demand": "NONE",
+      "grade_reference_min": 4,
+      "grade_reference_max": 4,
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO09-D5-S-A",
+      "task_family_id": null,
+      "title": "23 mal 14",
+      "primary_competency": "ZO09_MULTIPLICATION",
+      "internal_difficulty": "D5",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "23 * 14",
+      "task_payload": {
+        "operands": [
+          23,
+          14
+        ],
+        "operation": "MULTIPLY"
+      },
+      "correct_answer": {
+        "value": 322
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CEILING",
+      "structural_features": [
+        "DISTRIBUTIVE_STRUCTURE",
+        "MULTI_DIGIT_MULTIPLICATION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "DECOMPOSITION",
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "spec_section": "§54",
+      "note": "§54: 'D5 dient hier nur zur Ceiling-Suche.' Deshalb task_purpose CEILING. Testfall A (§98) erwartet, dass ein Kind mit hoher Kompetenz von D3 nach D5 gelangt, ohne unnötige D1/D2-Aufgaben. Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "language_demand": "NONE",
+      "grade_reference_min": 5,
+      "grade_reference_max": 5,
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO10-GV-D1-ACTION-A",
+      "task_family_id": "FAM_ZO10_D1_DIVISION_MEANING",
+      "title": "12 Plättchen gerecht auf 3 Kinder verteilen",
+      "primary_competency": "ZO10_DIVISION",
+      "internal_difficulty": "D1",
+      "representation_mode": "ACTION",
+      "interaction_mode": "DRAG",
+      "task_prompt": "Verteile sie gerecht auf 3 Kinder.",
+      "task_payload": {
+        "objects": 12,
+        "recipients": 3,
+        "mode": "PARTITIVE"
+      },
+      "correct_answer": {
+        "groups": 3,
+        "per_group": 4
+      },
+      "scoring_rule": "GROUP_PARTITION",
+      "task_purpose": "CONTRAST",
+      "structural_features": [
+        "EQUAL_GROUPS",
+        "PARTITIVE_DIVISION"
+      ],
+      "surface_features": [
+        "MANIPULATIVE"
+      ],
+      "spec_section": "§55",
+      "note": "§55: 'Diese beiden Aufgaben unterscheiden: VERTEILEN und AUFTEILEN.' Hier VERTEILEN (Anzahl der Gruppen gegeben). Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "question_form": "PARTITION_OBJECTS"
+    },
+    {
+      "task_id": "ZO10-GV-D1-ACTION-B",
+      "task_family_id": "FAM_ZO10_D1_DIVISION_MEANING",
+      "title": "Aus 12 Plättchen Gruppen mit je 3 bilden",
+      "primary_competency": "ZO10_DIVISION",
+      "internal_difficulty": "D1",
+      "representation_mode": "ACTION",
+      "interaction_mode": "DRAG",
+      "task_prompt": "Bilde Gruppen mit jeweils 3.",
+      "task_payload": {
+        "objects": 12,
+        "per_group": 3,
+        "mode": "QUOTATIVE"
+      },
+      "correct_answer": {
+        "groups": 4,
+        "per_group": 3
+      },
+      "scoring_rule": "GROUP_PARTITION",
+      "task_purpose": "CONTRAST",
+      "structural_features": [
+        "EQUAL_GROUPS",
+        "QUOTATIVE_DIVISION"
+      ],
+      "surface_features": [
+        "MANIPULATIVE"
+      ],
+      "spec_section": "§55",
+      "note": "Hier AUFTEILEN (Gruppengröße gegeben). Gleiche Objektanzahl und gleiche Bedienform wie ZO10-GV-D1-ACTION-A, nur die Grundvorstellung variiert. §116 vorbildlich erfüllt. Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "OBJEKTE_WERKZEUGE"
+      ],
+      "question_form": "PARTITION_OBJECTS"
+    },
+    {
+      "task_id": "ZO10-D2-S-A",
+      "task_family_id": "FAM_ZO10_D2_SYMBOLIC",
+      "title": "24 geteilt durch 6",
+      "primary_competency": "ZO10_DIVISION",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "24 : 6",
+      "task_payload": {
+        "operands": [
+          24,
+          6
+        ],
+        "operation": "DIVIDE"
+      },
+      "correct_answer": {
+        "value": 4
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "parallel_item_id": "ZO10-D2-S-B",
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "spec_section": "§55",
+      "note": "Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO10-D2-S-B",
+      "task_family_id": "FAM_ZO10_D2_SYMBOLIC",
+      "title": "35 geteilt durch 5",
+      "primary_competency": "ZO10_DIVISION",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "35 : 5",
+      "task_payload": {
+        "operands": [
+          35,
+          5
+        ],
+        "operation": "DIVIDE"
+      },
+      "correct_answer": {
+        "value": 7
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "VERIFY",
+      "numeric_features": [
+        "FIVE_RELATION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "spec_section": "§55",
+      "note": "Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "language_demand": "NONE",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO10-D3-S-A",
+      "task_family_id": null,
+      "title": "Passende Divisionsaufgabe zu 7x8=56",
+      "primary_competency": "ZO10_DIVISION",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "SELECT",
+      "task_prompt": "7 * 8 = 56. Welche Divisionsaufgabe passt?",
+      "task_payload": {
+        "given_fact": "7*8=56",
+        "options": [
+          "56:8=7",
+          "56:8=6",
+          "8:56=7",
+          "56-8=48"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "56:8=7"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "INVERSE_OPERATION"
+      ],
+      "surface_features": [
+        "MULTIPLE_CHOICE",
+        "NO_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "spec_section": "§55",
+      "note": "Überschneidet sich inhaltlich mit ZO11-D2-S-A (§56). Keine Distraktoren angegeben (F-17). Entscheidung D-09: Distraktoren autorisiert. 56:8=6 = Die Umkehroperation ist richtig gebildet, das Ergebnis stimmt nicht mit dem gegebenen Faktor 7 überein; der Zusammenhang zur gegebenen Malaufgabe wird nicht zur Kontrolle genutzt. (ERR_CALCULATION); 8:56=7 = Dividend und Divisor sind vertauscht: geteilt wird die kleinere Zahl. Die Operation ist richtig, die Rollen der Zahlen sind vertauscht. (ERR_OPERATION_CONCEPT); 56-8=48 = Die Umkehrung der Multiplikation wird als Subtraktion gedeutet; gefragt ist eine Divisionsaufgabe. (ERR_OPERATION_SELECTION). Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "MATCH_INVERSE"
+    },
+    {
+      "task_id": "ZO10-D3-L-A",
+      "task_family_id": null,
+      "title": "72 Bonbons in Tüten mit je 8",
+      "primary_competency": "ZO10_DIVISION",
+      "internal_difficulty": "D3",
+      "representation_mode": "NATURAL_LANGUAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "72 Bonbons werden in Tüten mit jeweils 8 Bonbons gepackt. Wie viele Tüten?",
+      "task_payload": {
+        "objects": 72,
+        "per_group": 8,
+        "mode": "QUOTATIVE"
+      },
+      "correct_answer": {
+        "value": 9
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "QUOTATIVE_DIVISION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "WORD_PROBLEM"
+      ],
+      "spec_section": "§55",
+      "note": "Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "language_demand": "HIGH",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "MODELLIEREN"
+      ],
+      "additional_demands": [
+        "LANGUAGE_DEMAND"
+      ],
+      "question_form": "COUNT_OBJECTS"
+    },
+    {
+      "task_id": "ZO11-D2-S-A",
+      "task_family_id": null,
+      "title": "Aus 7x8=56 die Division ergänzen",
+      "primary_competency": "ZO11_INVERSE_OPERATIONS",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "7 * 8 = 56. Ergänze: 56 : __ = 7",
+      "task_payload": {
+        "given_fact": "7*8=56",
+        "blank_position": "DIVISOR"
+      },
+      "correct_answer": {
+        "value": 8
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "INVERSE_OPERATION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "spec_section": "§56",
+      "note": "Belegt REL_008 und REL_009 (ZO09 und ZO10 als Voraussetzungen von ZO11). Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "COMPLETE_EQUATION"
+    },
+    {
+      "task_id": "ZO11-D2-S-B",
+      "task_family_id": null,
+      "title": "Aus 38+27=65 die Subtraktion ergänzen",
+      "primary_competency": "ZO11_INVERSE_OPERATIONS",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "38 + 27 = 65. Ergänze: 65 - 27 = __",
+      "task_payload": {
+        "given_fact": "38+27=65",
+        "blank_position": "RESULT"
+      },
+      "correct_answer": {
+        "value": 38
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "CROSSES_TEN"
+      ],
+      "structural_features": [
+        "INVERSE_OPERATION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "spec_section": "§56",
+      "note": "Belegt REL_006 und REL_007 (ZO07 und ZO08 als Voraussetzungen von ZO11). Der gegebene Fakt ist identisch mit Item ZO07-D2-S-A (§51).",
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "COMPLETE_EQUATION"
+    },
+    {
+      "task_id": "ZO11-D3-S-A",
+      "task_family_id": null,
+      "title": "Zusammengehörige Aufgaben erkennen",
+      "primary_competency": "ZO11_INVERSE_OPERATIONS",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Welche Aufgaben gehören zusammen?",
+      "task_payload": {
+        "options": [
+          "6*7=42",
+          "42:7=6",
+          "42-7=35",
+          "6+7=13"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": [
+          "6*7=42",
+          "42:7=6"
+        ]
+      },
+      "scoring_rule": "SELECT_MULTIPLE",
+      "task_purpose": "SCREEN",
+      "structural_features": [
+        "INVERSE_OPERATION"
+      ],
+      "surface_features": [
+        "MULTIPLE_CHOICE",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "spec_section": "§56",
+      "note": "§56 nennt die richtige Paarung, aber keine weiteren Auswahloptionen (F-17). Entscheidung D-09: Distraktoren autorisiert. 42:7=7 = Die Zugehörigkeit wird an den vorkommenden Zahlen 42 und 7 festgemacht, ohne das Ergebnis zu prüfen; die Gleichung ist falsch. (ERR_CALCULATION); 6+7=13 = Das Zahlentripel wird erkannt, die Verknüpfung aber additiv gedeutet; Addition und Multiplikation werden als zusammengehörig behandelt. (ERR_OPERATION_SELECTION); 42-7=35 = Die Umkehrung der Multiplikation wird als Subtraktion gedeutet: es wird abgezogen statt geteilt. (ERR_OPERATION_SELECTION); 24:6=4 = Statt 42 wird die ziffernvertauschte 24 verwendet; die Ziffern werden ohne Stellenwert gelesen. (ERR_PLACE_VALUE). Korrektur nach Kritikbefund 5: von den fuer sich richtig gerechneten Distraktoren bleibt nur '42-7=35' (Verwechslung der Umkehroperation: Subtraktion statt Division). '24:6=4' ist entfallen, weil eine Ziffernumkehrung an einem Item ueber das Tripel (6, 7, 42) nicht interpretierbar ist. Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "language_demand": "LOW",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "question_form": "MATCH_INVERSE"
+    },
+    {
+      "task_id": "ZO12-D2-S-A",
+      "task_family_id": null,
+      "title": "Gleichwertige günstige Rechnung zu 49+36",
+      "primary_competency": "ZO12_TASK_RELATIONS",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Welche Rechnung hat denselben Wert wie 49+36 und ist besonders günstig?",
+      "task_payload": {
+        "target_calculation": "49+36",
+        "options": [
+          "50+35",
+          "50+36",
+          "50+37",
+          "50+34"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "50+35"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "CROSSES_TEN",
+        "NEAR_ROUND_NUMBER"
+      ],
+      "structural_features": [
+        "TWO_DIGIT_ADDITION"
+      ],
+      "surface_features": [
+        "MULTIPLE_CHOICE",
+        "NO_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "COMPENSATION"
+      ],
+      "spec_section": "§57, §70",
+      "note": "Ziel der Route R008 (§70: 'Grundvorstellung ok -> Aufgabenbeziehungen prüfen'). Inhaltlich identisch mit ZO07-D3-S-B (§51), dort primary_competency ZO07 und D3 statt D2 (F-20). Keine Distraktoren angegeben (F-17). Entscheidung D-03: das inhaltlich identische Item ZO07-D3-S-B ist entfallen; ZO07_ADDITION ist als Sekundärkompetenz eingetreten, damit die Evidenz weiterhin dort ankommt (INDIRECT_*, §28). Entscheidung D-09: Distraktoren autorisiert. 50+36 = Der erste Summand wird zur runden Zahl aufgefüllt, der Ausgleich beim zweiten Summanden wird unterlassen; der Wert steigt um eins. (ERR_STRATEGY); 50+37 = Beide Zahlen werden gleichsinnig vergrößert; die bei der Subtraktion richtige Regel der gleichsinnigen Veränderung wird auf die Addition übertragen, wo gegensinnig ausgeglichen werden muss. (ERR_STRATEGY); 40+36 = Die 49 wird auf den Zehner abgeschnitten statt zur nächsten runden Zahl ergänzt; die Einerziffer wird verworfen. (ERR_PLACE_VALUE). Korrektur nach Kritikbefund 13: '40+36' war aus zwei Gruenden waehlbar (Ziffernabschneiden oder Abrunden ohne Ausgleich) und damit nicht diskriminierend. Ersetzt durch '50+34': Ausgleich in der falschen Richtung, eindeutig ein Strategiefehler.",
+      "secondary_competencies": [
+        "ZO07_ADDITION"
+      ],
+      "language_demand": "MEDIUM",
+      "grade_reference_min": 2,
+      "grade_reference_max": 3,
+      "process_competencies": [
+        "PROBLEMLOESEN"
+      ],
+      "question_form": "SELECT_EQUIVALENT_EXPRESSION"
+    },
+    {
+      "task_id": "ZO12-D3-S-A",
+      "task_family_id": null,
+      "title": "99 + 47",
+      "primary_competency": "ZO12_TASK_RELATIONS",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "99 + 47",
+      "task_payload": {
+        "operands": [
+          99,
+          47
+        ],
+        "operation": "ADD",
+        "intended_transformation": "100+46"
+      },
+      "correct_answer": {
+        "value": 146
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "numeric_features": [
+        "CROSSES_HUNDRED",
+        "CROSSES_TEN",
+        "NEAR_ROUND_NUMBER"
+      ],
+      "structural_features": [
+        "TWO_DIGIT_ADDITION"
+      ],
+      "surface_features": [
+        "FREE_ENTRY",
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "COMPENSATION"
+      ],
+      "spec_section": "§57",
+      "note": "§57 nennt sowohl das Ziel (100+46) als auch das Ergebnis (146). Gescored wird das Ergebnis; die beabsichtigte Transformation steht im payload, ist im MVP aber nicht beobachtbar, weil §76 für numerische Eingaben kein LLM vorsieht.",
+      "language_demand": "NONE",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO13-D3-S-A",
+      "task_family_id": "FAM_ZO13_D3_DISTRIBUTIVE",
+      "title": "Rechnung zu 17x6",
+      "primary_competency": "ZO13_ARITHMETIC_LAWS",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Welche Rechnung entspricht 17 * 6?",
+      "task_payload": {
+        "target_calculation": "17*6",
+        "options": [
+          "10*6 + 7*6",
+          "1*6 + 7*6",
+          "10*6 + 7",
+          "10*6 * 7*6"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "10*6 + 7*6"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "parallel_item_id": "ZO13-D3-S-B",
+      "numeric_features": [
+        "TEN_RELATION"
+      ],
+      "structural_features": [
+        "DISTRIBUTIVE_STRUCTURE",
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "MULTIPLE_CHOICE",
+        "NO_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "DISTRIBUTIVE_REASONING",
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "spec_section": "§57",
+      "note": "Identisch mit ZO09-D4-S-A (§54), dort als D4 und mit primary_competency ZO09 geführt (F-20). Keine Distraktoren angegeben (F-17). Entscheidung D-03: das inhaltlich identische Item ZO09-D4-S-A ist entfallen; ZO09_MULTIPLICATION ist als Sekundärkompetenz eingetreten, damit die Evidenz weiterhin dort ankommt (INDIRECT_*, §28). Entscheidung D-09: Distraktoren autorisiert. 1*6 + 7*6 = Die Zehnerziffer der 17 wird als Eins statt als Zehn gelesen; die Zerlegung 17 = 10 + 7 wird zur Ziffernzerlegung 1 und 7. (ERR_PLACE_VALUE); 10*6 + 7 = Nur der erste Teil wird vervielfacht, der zweite Teil wird unverändert addiert; die Zerlegung des Faktors wird nicht auf beide Teilprodukte angewendet. (ERR_OPERATION_CONCEPT); 10*6 * 7*6 = Die beiden Teilprodukte werden multipliziert statt addiert; das Zusammenfügen der Teilaufgaben wird mit einer Verknüpfung der Faktoren verwechselt. (ERR_OPERATION_SELECTION). Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "secondary_competencies": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "language_demand": "LOW",
+      "grade_reference_min": 4,
+      "grade_reference_max": 4,
+      "process_competencies": [
+        "PROBLEMLOESEN"
+      ],
+      "question_form": "SELECT_EQUIVALENT_EXPRESSION"
+    },
+    {
+      "task_id": "ZO13-D3-S-B",
+      "task_family_id": "FAM_ZO13_D3_DISTRIBUTIVE",
+      "title": "Rechnung zu 8x23",
+      "primary_competency": "ZO13_ARITHMETIC_LAWS",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "SELECT",
+      "task_prompt": "Welche Rechnung entspricht 8 * 23?",
+      "task_payload": {
+        "target_calculation": "8*23",
+        "options": [
+          "8*20 + 8*3",
+          "8*2 + 8*3",
+          "8*20 + 3",
+          "8*20 * 8*3"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "8*20 + 8*3"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "VERIFY",
+      "numeric_features": [
+        "TEN_RELATION"
+      ],
+      "structural_features": [
+        "DISTRIBUTIVE_STRUCTURE",
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "MULTIPLE_CHOICE",
+        "NO_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "DISTRIBUTIVE_REASONING",
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "spec_section": "§57",
+      "note": "Hier wird der zweite Faktor zerlegt, bei ZO13-D3-S-A der erste - gegenüber §116 variiert damit mehr als die Zahlen (F-13). Keine Distraktoren angegeben (F-17). Entscheidung D-09: Distraktoren autorisiert. 8*2 + 8*3 = Die Zehnerziffer der 23 wird als Zwei statt als Zwanzig gelesen; die Zerlegung 23 = 20 + 3 wird zur Ziffernzerlegung 2 und 3. (ERR_PLACE_VALUE); 8*20 + 3 = Nur der erste Teil wird vervielfacht, der zweite Teil wird unverändert addiert; die Zerlegung des Faktors wird nicht auf beide Teilprodukte angewendet. (ERR_OPERATION_CONCEPT); 8*20 * 8*3 = Die beiden Teilprodukte werden multipliziert statt addiert; das Zusammenfügen der Teilaufgaben wird mit einer Verknüpfung der Faktoren verwechselt. (ERR_OPERATION_SELECTION). Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "language_demand": "LOW",
+      "grade_reference_min": 4,
+      "grade_reference_max": 4,
+      "process_competencies": [
+        "PROBLEMLOESEN"
+      ],
+      "question_form": "SELECT_EQUIVALENT_EXPRESSION"
+    },
+    {
+      "task_id": "ZO09-D2-I-A",
+      "task_family_id": "FAM_ZO09_6X8_REPRESENTATION",
+      "title": "6x8-Rechteckfeld, Anzahl der Punkte",
+      "primary_competency": "ZO09_MULTIPLICATION",
+      "secondary_competencies": [],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Wie viele Punkte sind es insgesamt?",
+      "task_payload": {
+        "array": [
+          6,
+          8
+        ],
+        "material": "ARRAY_WITH_COVER",
+        "interior_covered": true,
+        "visible": "ROW_AND_COLUMN_MARKERS",
+        "decomposition_shown": false
+      },
+      "correct_answer": {
+        "value": 48
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "parallel_item_id": "ZO09-D2-I-B",
+      "numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "structural_features": [
+        "EQUAL_GROUPS",
+        "ARRAY_STRUCTURE"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT",
+        "FREE_ENTRY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "process_competencies": [],
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "spec_section": "§70, §100, §102, §116",
+      "note": "Die ikonische Gegenprobe zu ZO09-D2-S-A, die §70 voraussetzt und die die Aufgabenbank nicht enthielt (F-21). Gegenüber ZO09-D2-S-A verändert sich genau eine Variable: die Darstellung. Schwierigkeit (D2), Bedienform (ENTER), Antwortformat (EXACT_NUMERIC), gefragte Größe (das Ergebnis von 6x8) und Zahlenpaar sind identisch. Damit ersetzt dieses Item ZO09-REL-D3-I-A als ikonische Gegenprobe; jenes liegt auf D3 und fragt eine Zerlegung statt eines Ergebnisses, wechselte also Darstellung, Schwierigkeit und Frageform gleichzeitig. decomposition_shown = false ist die inhaltliche Abgrenzung zu ZO09-REL-D3-I-A: das Feld zeigt kein markiertes 5x8 + 1x8, sonst wäre es dasselbe Item. Nach §32 besagt ein Unterschied zwischen ZO09-D2-S-A und diesem Item ausschließlich, dass die Leistung unter dieser ikonischen Darstellung anders war als unter der symbolischen; ein Lerntyp folgt daraus nicht. Ob der Unterschied reproduzierbar ist, prüft erst ZO09-D2-I-B (Route R024). structural_features enthält zusätzlich ARRAY_STRUCTURE, weil §21 die gezeigte Struktur verlangt und ein Rechteckfeld diese Struktur hat; das ist die strukturelle Entsprechung der ikonischen Darstellung und keine zweite unabhängige Variable. strategy_affordances bleibt leer wie bei ZO09-D2-S-A, damit der Vergleich nicht zusätzlich über die Strategieaffordanz variiert. Offen: ein 6x8-Punktfeld lässt prinzipiell auch Einzelnzählen zu (48 Punkte); ob das Item eine Fünfergliederung der Zeilen braucht, ist fachlich zu entscheiden. §62 verbietet, aus Bearbeitungszeit auf Kompetenz zu schließen - eine Zeitgrenze wäre also nur als Darbietungsmerkmal zulässig, nicht als Indikator. §70 ('wieder falsch -> ikonische Darstellung 6*8') und §102 (Testfall E: '6*8 SYMBOL -> 6*8 IMAGE') verlangen dieses Item ausdrücklich; §116 verlangt, dass dabei nur die Darstellung wechselt. Ausgestaltung (Rechteckfeld ohne markierte Zerlegung, Ergebniseingabe): Entscheidung des Implementierers, didaktischer Grund: nur bei gleicher Schwierigkeit und gleichem Antwortformat ist ein Leistungsunterschied der Darstellung zuzuordnen (§32). Korrektur nach Kritikbefund 2: ein offenes Punktfeld waere durch Abzaehlen loesbar, der symbolische Partner nicht - der Vergleich haette neben der Darstellung auch die zulaessigen Loesungswege variiert. Als Malwinkel mit verdecktem Inneren bleiben Zeilen- und Spaltenzahl sichtbar, das Ergebnis muss multiplikativ bestimmt werden. §62 verbietet, Abzaehlen ueber eine Zeitgrenze auszuschliessen. Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet. question_form auf COMPUTE_RESULT korrigiert: die Ableitungsregel liest den Payload, nicht den Aufgabentext, und traf hier das Falsche.",
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO09-D2-I-B",
+      "task_family_id": "FAM_ZO09_6X8_REPRESENTATION",
+      "title": "7x6-Rechteckfeld, Anzahl der Punkte",
+      "primary_competency": "ZO09_MULTIPLICATION",
+      "secondary_competencies": [],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Wie viele Punkte sind es insgesamt?",
+      "task_payload": {
+        "array": [
+          6,
+          7
+        ],
+        "material": "ARRAY_WITH_COVER",
+        "interior_covered": true,
+        "visible": "ROW_AND_COLUMN_MARKERS",
+        "decomposition_shown": false
+      },
+      "correct_answer": {
+        "value": 42
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "VERIFY",
+      "parallel_item_id": null,
+      "numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "structural_features": [
+        "EQUAL_GROUPS",
+        "ARRAY_STRUCTURE"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT",
+        "FREE_ENTRY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "process_competencies": [],
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "spec_section": "§70, §100, §116",
+      "note": "Parallelitem zu ZO09-D2-I-A: gegenüber jenem ändert sich nur das Zahlenpaar (6x8 auf 7x6), nicht Darstellung, Schwierigkeit oder Bedienform. §32 verlangt für einen Darstellungsunterschied eine zweite Beobachtung ('Erst weitere Aufgaben können prüfen, ob der Effekt reproduzierbar ist'); §100 (Testfall C) nennt diesen Schritt 'Parallel IMAGE'. 7x6 ist bewusst gewählt: 7x8 ist als ZO09-REL-D3-S-B belegt, und 7x6 lässt sich nicht in einem Schritt aus 6x8 ableiten, das Ergebnis ist also nicht aus dem Vorgängeritem erinnerbar. parallel_item_id ist null, weil dieses Item selbst der Partner von ZO09-D2-I-A ist; die Bank setzt die Referenz durchgehend nur beim A-Item. §32 und §100 (Testfall C, Schritt 'Parallel IMAGE') verlangen eine zweite ikonische Beobachtung, bevor eine REPRESENTATION_HYPOTHESIS gestützt werden darf. Zahlenwahl 7x6: Entscheidung des Implementierers, didaktischer Grund: kein Ableitungsschritt aus 6x8 und keine Kollision mit ZO09-REL-D3-S-B (7x8). Korrektur nach Kritikbefund 2: ein offenes Punktfeld waere durch Abzaehlen loesbar, der symbolische Partner nicht - der Vergleich haette neben der Darstellung auch die zulaessigen Loesungswege variiert. Als Malwinkel mit verdecktem Inneren bleiben Zeilen- und Spaltenzahl sichtbar, das Ergebnis muss multiplikativ bestimmt werden. §62 verbietet, Abzaehlen ueber eine Zeitgrenze auszuschliessen. Zeilenzahl 6 wie bei ZO09-D2-I-A, nur die Zeilenlaenge variiert (§25). Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet. question_form auf COMPUTE_RESULT korrigiert: die Ableitungsregel liest den Payload, nicht den Aufgabentext, und traf hier das Falsche.",
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO09-D2-S-B",
+      "task_family_id": "FAM_ZO09_6X8_REPRESENTATION",
+      "title": "7 mal 6",
+      "primary_competency": "ZO09_MULTIPLICATION",
+      "secondary_competencies": [],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "6 * 7",
+      "task_payload": {
+        "operands": [
+          6,
+          7
+        ],
+        "operation": "MULTIPLY"
+      },
+      "correct_answer": {
+        "value": 42
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "VERIFY",
+      "parallel_item_id": null,
+      "numeric_features": [
+        "LARGE_FACTS"
+      ],
+      "structural_features": [
+        "EQUAL_GROUPS"
+      ],
+      "surface_features": [
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY",
+        "FREE_ENTRY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "process_competencies": [],
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "spec_section": "§70, §30, §116",
+      "note": "Das Parallelitem zu ZO09-D2-S-A, das §70 als Zwischenschritt verlangt ('6*8 falsch -> Parallelitem -> wieder falsch -> ikonische Darstellung') und das die Aufgabenbank nicht enthielt (F-21). Alle Merkmale von ZO09-D2-S-A werden gehalten, nur das Zahlenpaar wechselt - damit ist die Bedingung WRONG_REPLICATED aus §30 erstmals über zwei verschiedene Aufgaben erfüllbar und nicht nur über zwei Versuche derselben Aufgabe. Das Zahlenpaar 7x6 ist dasselbe wie bei ZO09-D2-I-B; damit stehen die vier D2-Items als 2x2-Anordnung aus Darstellung und Zahlenpaar zur Verfügung, in der jeder einzelne Vergleich genau eine Variable verändert. Der Hauptagent muss ZO09-D2-S-A.parallel_item_id auf ZO09-D2-S-B setzen; ohne das bleibt §70 Schritt 1 unabbildbar. §70 nennt den Schritt 'Parallelitem' ausdrücklich, §30 verlangt Replikation vor jeder Ursachensuche. Zahlenwahl 7x6: Entscheidung des Implementierers, didaktischer Grund: gleiches Zahlenpaar wie ZO09-D2-I-B, damit der ikonisch-symbolische Vergleich auf beiden Zahlenpaaren geführt werden kann (§32 Reproduzierbarkeit). Korrektur nach Kritikbefund 3: vorher 7*6, was gegenueber 6*8 beide Faktoren und ihre Rollen aenderte. Mit 6*7 bleibt die Gruppenanzahl konstant und nur die Gruppengroesse variiert (§25, §116). Faktenmerkmal nach Kritikhinweis neu bestimmt: SMALL_FACTS und LARGE_FACTS gelten nur fuer einstellige Multiplikation und Division, weil 'Fakt' im Sinne von §20 ein abrufbares Einsmaleins-Ergebnis bezeichnet.",
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO06-D2-I-A",
+      "task_family_id": "FAM_ZO06_D2_ICONIC",
+      "title": "Wert der Zehnerstangen bei 3 Hundertern, 6 Zehnern, 4 Einern",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "secondary_competencies": [],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Welchen Wert haben die Zehnerstangen zusammen?",
+      "task_payload": {
+        "hundreds": 3,
+        "tens": 6,
+        "ones": 4,
+        "material": "BASE_TEN_BLOCKS",
+        "asked_place": "TENS"
+      },
+      "correct_answer": {
+        "value": 60
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "parallel_item_id": "ZO06-D2-I-B",
+      "numeric_features": [],
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT",
+        "FREE_ENTRY"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "additional_demands": [],
+      "process_competencies": [],
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "spec_section": "§69, §100, §116",
+      "note": "Die ikonische Gegenprobe zu ZO06-D2-S-A auf derselben Stufe. Bisher führte §69 von ZO06-D2-S-A/B (D2, symbolisch) auf ZO06-D1-I-A (D1, ikonisch) - dort wechselten Darstellung und Schwierigkeit gleichzeitig, ein ikonischer Erfolg konnte also auch an der leichteren Stufe liegen (F-21). Das Material 3H+6Z+4E stellt 364 dar, die Zahl aus ZO06-D2-S-A; gefragt ist derselbe Wert (60) mit derselben Frageform (Wert einer Stelle, nicht Ziffer und nicht Gesamtzahl), derselben Bedienform und demselben Antwortformat. Die Hunderter und Einer müssen mit im Bild liegen, sonst wäre die Frage trivial: die Schüler:in muss die richtige Stelle auswählen und ihren Wert bilden, genau wie in der symbolischen Fassung. D2 und nicht D1, weil die Anforderung dieselbe ist wie bei ZO06-D2-S-A; die D1-Items ZO06-D1-I-A/B fragen die Gesamtzahl ('Welche Zahl?'), also weniger. Nach §32 besagt ein Unterschied zwischen ZO06-D2-S-A und diesem Item nur, dass die Leistung unter dieser Darstellung anders war als unter jener; ZO06-D2-I-B prüft die Reproduzierbarkeit. material BASE_TEN_BLOCKS erweitert die bei ZO06-D1-I-A verwendete Bezeichnung BASE_TEN_RODS um Hunderterplatten; task_payload ist freies JSON und wird nicht gegen ein Vokabular geprüft. §69 verlangt die ikonische Gegenprobe zum symbolischen Stellenwertitem, §116 verlangt, dass dabei nur die Darstellung wechselt; beides zusammen ist mit ZO06-D1-I-A nicht erfüllbar (F-21). Zahlenwahl 364 und Frageform: Entscheidung des Implementierers, didaktischer Grund: identische Zahl und identische Frage wie ZO06-D2-S-A, damit der Vergleich interpretierbar bleibt. question_form auf VALUE_OF_NAMED_PLACE korrigiert: die Ableitungsregel liest den Payload, nicht den Aufgabentext, und traf hier das Falsche.",
+      "question_form": "VALUE_OF_NAMED_PLACE"
+    },
+    {
+      "task_id": "ZO06-D2-I-B",
+      "task_family_id": "FAM_ZO06_D2_ICONIC",
+      "title": "Wert der Zehnerstangen bei 5 Hundertern, 7 Zehnern, 2 Einern",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "secondary_competencies": [],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Welchen Wert haben die Zehnerstangen zusammen?",
+      "task_payload": {
+        "hundreds": 5,
+        "tens": 7,
+        "ones": 2,
+        "material": "BASE_TEN_BLOCKS",
+        "asked_place": "TENS"
+      },
+      "correct_answer": {
+        "value": 70
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "VERIFY",
+      "parallel_item_id": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT",
+        "FREE_ENTRY"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "additional_demands": [],
+      "process_competencies": [],
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "spec_section": "§69, §116",
+      "note": "Parallelitem zu ZO06-D2-I-A: nur die Ziffern wechseln (364 auf 572), Struktur und Darstellung bleiben konstant. Das Material 5H+7Z+2E stellt 572 dar, die Zahl aus ZO06-D2-S-B - damit bilden die vier D2-Items eine 2x2-Anordnung aus Darstellung und Zahl, in der jeder einzelne Vergleich genau eine Variable verändert. Dieses Item ist die ikonische Hälfte des 'zweiten I/S-Paars', das §69 nach einem ikonischen Erfolg verlangt, und der Schritt 'Parallel IMAGE' aus §100 (Testfall C). §69 ('ikonisch richtig -> Representation Hypothesis -> zweites I/S-Paar') und §32 ('Erst weitere Aufgaben können prüfen, ob der Effekt reproduzierbar ist'). Zahlenwahl 572: Entscheidung des Implementierers, didaktischer Grund: dieselbe Zahl wie im symbolischen Parallelitem ZO06-D2-S-B, damit das zweite I/S-Paar tatsächlich ein Paar ist. question_form auf VALUE_OF_NAMED_PLACE korrigiert: die Ableitungsregel liest den Payload, nicht den Aufgabentext, und traf hier das Falsche.",
+      "question_form": "VALUE_OF_NAMED_PLACE"
+    },
+    {
+      "task_id": "ZO06-1-D1-ACTION-A",
+      "task_family_id": "FAM_ZO06_1_D1_BUNDLING",
+      "title": "13 Einerwürfel zu Zehnern bündeln",
+      "primary_competency": "ZO06_1_BUNDLING",
+      "secondary_competencies": [],
+      "internal_difficulty": "D1",
+      "representation_mode": "ACTION",
+      "interaction_mode": "MANIPULATE",
+      "task_prompt": "Hier liegen 13 Einerwürfel. Bündle so viele Fünfer, wie du kannst. Wie viele Fünferbündel und wie viele einzelne Würfel bleiben übrig?",
+      "task_payload": {
+        "loose_ones": 13,
+        "material": "UNIT_CUBES",
+        "bundle_size": 5
+      },
+      "correct_answer": {
+        "bundles": 2,
+        "remaining": 3
+      },
+      "scoring_rule": "GROUP_PARTITION",
+      "task_purpose": "SCREEN",
+      "parallel_item_id": "ZO06-1-D1-ACTION-B",
+      "numeric_features": [
+        "PLACE_VALUE_CHANGE"
+      ],
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "MANIPULATIVE"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "additional_demands": [],
+      "process_competencies": [],
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "spec_section": "§69, §10",
+      "note": "§69 verlangt ausdrücklich, nach einem auch ikonisch falschen Stellenwertitem die 'Bündelung / Stellenwert-Voraussetzungen' zu prüfen. Für ZO06_1_BUNDLING gab es kein Item, weshalb R005 auf einen Kompetenzknoten statt auf eine Aufgabe zeigte (F-22). Dies ist das erste Item, dessen primary_competency ein ZO06-Unterknoten ist; die übrigen ZO06-Items liegen auf der Gruppenebene (F-16). Das ist hier vertretbar, weil §69 die Bündelung als eigene Prüfebene benennt und §10 sie als ZO06.1 führt. interaction_mode MANIPULATE und nicht DRAG, weil das Bündeln das Material verändert (zehn Einer werden zu einer Zehnerstange) und nicht nur verschiebt; §17 trennt Bedienform und Darstellung ausdrücklich, die Wahl liegt damit beim Implementierer. numeric_feature PLACE_VALUE_CHANGE, weil genau der Stellenwertwechsel Gegenstand der Aufgabe ist - dieselbe Verwendung wie bei ZO06-D3-S-A und ZO06-D4-S-A. 13 statt einer größeren Zahl, damit genau eine Bündelung möglich ist und die Aufgabe auf D1 bleibt. §69 ('ikonisch ebenfalls falsch -> Bündelung / Stellenwert-Voraussetzungen prüfen') und §10 (Knoten ZO06.1 Bündelung). Zahlenwahl 13 und Materialwahl: Entscheidung des Implementierers, didaktischer Grund: genau eine mögliche Bündelung mit Rest, damit die Handlung eindeutig auswertbar bleibt. Korrektur nach Kritikbefund 1: die vorherige Fassung buendelte Zehner, wodurch die Antwort (1 Zehner, 3 Einer) genau die Ziffern der genannten Zahl 13 waren - das Item war ohne Buendelungshandlung loesbar und konnte ZO06_1_BUNDLING nicht messen. Mit Fuenferbuendeln steht die Antwort nicht in den Ziffern.",
+      "question_form": "PARTITION_OBJECTS"
+    },
+    {
+      "task_id": "ZO06-1-D1-ACTION-B",
+      "task_family_id": "FAM_ZO06_1_D1_BUNDLING",
+      "title": "27 Einerwürfel zu Zehnern bündeln",
+      "primary_competency": "ZO06_1_BUNDLING",
+      "secondary_competencies": [],
+      "internal_difficulty": "D1",
+      "representation_mode": "ACTION",
+      "interaction_mode": "MANIPULATE",
+      "task_prompt": "Hier liegen 13 Einerwürfel. Bündle so viele Zehner, wie du kannst. Wie viele Zehnerbündel und wie viele einzelne Würfel bleiben übrig?",
+      "task_payload": {
+        "loose_ones": 13,
+        "material": "UNIT_CUBES",
+        "bundle_size": 10
+      },
+      "correct_answer": {
+        "bundles": 1,
+        "remaining": 3
+      },
+      "scoring_rule": "GROUP_PARTITION",
+      "task_purpose": "CONTRAST",
+      "parallel_item_id": null,
+      "numeric_features": [
+        "PLACE_VALUE_CHANGE"
+      ],
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "MANIPULATIVE"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "additional_demands": [],
+      "process_competencies": [],
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "spec_section": "§69, §10, §30",
+      "note": "Parallelitem zu ZO06-1-D1-ACTION-A: nur die Anzahl wechselt (13 auf 27), Material, Handlung und Bedienform bleiben konstant. §116 erfüllt. Zwei Bündelungen statt einer sind kein Schwierigkeitssprung im Sinne von §18, sondern dieselbe Handlung zweimal ausgeführt; darin unterscheidet sich das Item von einer Anzahlvariation, die die Struktur verändert. Für die Replikation nach §30 wird keine eigene Route angelegt - das folgt generisch aus parallel_item_id, so wie die README es für §30 festhält. §30 verlangt die Replikation eines Fehlers vor der Ursachensuche; §25 nennt als Ziel eines Parallelitems ausdrücklich 'Fehler replizieren'. Zahlenwahl 27: Entscheidung des Implementierers, didaktischer Grund: gleiche Handlung, anderer Rest, kein aus dem Vorgängeritem erinnerbares Ergebnis. Kontrastpartner zu ZO06-1-D1-ACTION-A: dieselbe Menge, nur die Buendelungsgroesse variiert (§116). Bei diesem Item stimmt die Antwort zufaellig mit den Ziffern von 13 ueberein - gelingt es und das Fuenferitem nicht, spricht das fuer Ziffernablesen statt Buendeln. Genau dieser Vergleich ist der diagnostische Zweck.",
+      "question_form": "PARTITION_OBJECTS"
+    },
+    {
+      "task_id": "ZO06-SUP-D1-I-A",
+      "task_family_id": null,
+      "title": "Ikonische Stellenwerttafel: 5 Hunderter, keine Zehner, 8 Einer",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "secondary_competencies": [
+        "ZO06_6_ZERO_PLACEHOLDER"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Welche Zahl zeigt die Stellenwerttafel?",
+      "task_payload": {
+        "place_value_chart": {
+          "hundreds": 5,
+          "tens": 0,
+          "ones": 8
+        },
+        "column_labels": [
+          "H",
+          "Z",
+          "E"
+        ],
+        "material": "BASE_TEN_BLOCKS",
+        "empty_tens_column": true
+      },
+      "correct_answer": {
+        "value": 508
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SUPPORT",
+      "parallel_item_id": null,
+      "numeric_features": [
+        "PLACE_VALUE_CHANGE"
+      ],
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT",
+        "TABLE",
+        "FREE_ENTRY"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "additional_demands": [],
+      "process_competencies": [],
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "spec_section": "§92, §91, §66",
+      "note": "Schritt 'ikonische Stellenwerttafel' der Förderroute aus §92; bisher fehlte das Item, weshalb R011 auf einen Kompetenzknoten zeigte (F-22). Es ist der ACCESSIBLE ENTRY der Kette nach §91: die Zehnerspalte ist sichtbar leer, die unbesetzte Stelle wird also nicht behauptet, sondern gezeigt - genau der Punkt, an dem die Fehlantwort 58 aus §66 entsteht. task_purpose SUPPORT nach §90, damit Förderung und Diagnostik unterscheidbar bleiben: dieses Item darf keine Screening-Evidenz erzeugen. D1, weil das Ablesen einer bereits eingeteilten Tafel weniger verlangt als die symbolische Fassung ZO06-D3-S-A. Erstes Item der Bank mit einer secondary_competency: ZO06_6_ZERO_PLACEHOLDER ist der Knoten, auf den R011 zeigt, und ohne diese Zuordnung hätte die Förderkette kein Item am Zielknoten (F-16). §92 nennt den Schritt 'ikonische Stellenwerttafel' wörtlich, §91 ordnet ihn als ACCESSIBLE ENTRY ein, §66 nennt 508 auf 58 als Ausgangsbeobachtung. Ausgestaltung (leere Zehnerspalte sichtbar, Material in der Tafel): Entscheidung des Implementierers, didaktischer Grund: die unbesetzte Stelle muss wahrnehmbar sein, sonst prüft das Item sie nicht.",
+      "question_form": "READ_NUMBER_FROM_MATERIAL"
+    },
+    {
+      "task_id": "ZO06-SUP-D2-MIXED-A",
+      "task_family_id": null,
+      "title": "Stellenwerttafel mit den Ziffern 5, 0, 8",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "secondary_competencies": [
+        "ZO06_6_ZERO_PLACEHOLDER"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MIXED",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Welche Zahl steht in der Stellenwerttafel?",
+      "task_payload": {
+        "place_value_chart": {
+          "hundreds": 5,
+          "tens": 0,
+          "ones": 8
+        },
+        "column_labels": [
+          "H",
+          "Z",
+          "E"
+        ],
+        "notation": "DIGITS"
+      },
+      "correct_answer": {
+        "value": 508
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SUPPORT",
+      "parallel_item_id": null,
+      "numeric_features": [
+        "PLACE_VALUE_CHANGE"
+      ],
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "TABLE",
+        "FREE_ENTRY"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "additional_demands": [],
+      "process_competencies": [],
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "spec_section": "§92, §91",
+      "note": "Schritt 'H/Z/E mit Symbolen' der Förderroute aus §92 (F-22). Gegenüber ZO06-SUP-D1-I-A wird das Material durch Ziffern ersetzt, die Tafel als Stütze bleibt - das ist der Schritt SUPPORTED PRACTICE bzw. DIFFICULTY INCREASE aus §91. representation_mode MIXED, weil die Aufgabe eine tabellarische Stütze mit mathematischen Symbolen verbindet; §16 führt MIXED genau für diese Kombination. Die nächste Stufe ZO06-D3-S-A entfernt die Tafel und nennt die Stellen nur noch sprachlich ('5 Hunderter + 0 Zehner + 8 Einer'), das ist REMOVE SUPPORT. Kein Vergleich mit ZO06-SUP-D1-I-A im Sinne von §116 beabsichtigt: die beiden Items liegen absichtlich auf verschiedenen Stufen, sie sind aufeinanderfolgende Förderschritte und keine Contrast Items. Deshalb auch keine gemeinsame Aufgabenfamilie. §92 nennt den Schritt 'H/Z/E mit Symbolen' wörtlich, §91 ordnet ihn als Steigerung nach dem ACCESSIBLE ENTRY ein. Ausgestaltung (dieselbe Zahl 508, Tafel bleibt, Material entfällt): Entscheidung des Implementierers, didaktischer Grund: nur wenn die Zahl gleich bleibt, ist der Schritt eine Entlastungsstufe und keine neue Aufgabe.",
+      "question_form": "COMPOSE_FROM_PLACES"
+    },
+    {
+      "task_id": "ZO06-SUP-D3-L-A",
+      "task_family_id": null,
+      "title": "Zahlwort neunhundertsechs als Zahlzeichen",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "secondary_competencies": [
+        "ZO06_7_WORD_TO_NUMERAL"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "NATURAL_LANGUAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "Schreibe die Zahl als Zahlzeichen: neunhundertsechs.",
+      "task_payload": {
+        "number_word": "neunhundertsechs"
+      },
+      "correct_answer": {
+        "value": 906
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "TRANSFER",
+      "parallel_item_id": null,
+      "numeric_features": [
+        "PLACE_VALUE_CHANGE"
+      ],
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "NO_CONTEXT",
+        "FREE_ENTRY"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "additional_demands": [],
+      "process_competencies": [],
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "spec_section": "§92, §91, §72",
+      "note": "Letzter Schritt 'symbolisches Transferitem' der Förderroute aus §92 (F-22). Es muss eine andere Frageform haben als ZO06-D3-S-A/B, sonst ist es ein weiteres Parallelitem und kein Transfer: dort werden die Stellen genannt ('5 Hunderter + 0 Zehner + 8 Einer'), hier muss die Schüler:in sie selbst aus dem Zahlwort erschließen. Die unbesetzte Zehnerstelle bleibt der Kern - neunhundertsechs nennt keine Zehner, 906 muss trotzdem drei Stellen haben. Das ist die Variation über die Darstellung, die §72 für Transferevidenz verlangt. ABWEICHUNG: §92 nennt den Schritt 'symbolisches Transferitem', dieses Item hat representation_mode NATURAL_LANGUAGE. Symbolisch ist die Antwort (das Zahlzeichen), sprachlich der Reiz. Sollte §92 einen auch im Reiz symbolischen Transfer meinen, braucht das Item eine andere Frageform - fachliche Rückfrage. Prozesskompetenz DARSTELLEN wäre naheliegend (Wechsel der Darstellungsform), wird aber nicht eigenständig gesetzt (F-19). additional_demands enthält kein LANGUAGE_DEMAND, weil die Skala fehlt (F-03); die sprachliche Anforderung ist über die surface_features abgebildet. §92 nennt den Schritt 'symbolisches Transferitem' wörtlich, §91 führt TRANSFER als letzte Stufe, §72 verlangt für Transferevidenz Variation. Frageform Zahlwort auf Zahlzeichen und Zahl 906: Entscheidung des Implementierers, didaktischer Grund: andere Frageform als ZO06-D3-S-A/B bei gleicher Struktur (unbesetzte Zehnerstelle), sonst prüft der Schritt keinen Transfer.",
+      "question_form": "WORD_TO_NUMERAL"
+    },
+    {
+      "task_id": "ZO09-SUP-D3-L-A",
+      "task_family_id": null,
+      "title": "6 Kisten mit je 9 Flaschen",
+      "primary_competency": "ZO09_MULTIPLICATION",
+      "secondary_competencies": [],
+      "internal_difficulty": "D3",
+      "representation_mode": "NATURAL_LANGUAGE",
+      "interaction_mode": "ENTER",
+      "task_prompt": "In einem Regal stehen 6 Kisten. In jeder Kiste sind 9 Flaschen. Wie viele Flaschen sind es zusammen?",
+      "task_payload": {
+        "groups": 6,
+        "per_group": 9,
+        "operation": "MULTIPLY"
+      },
+      "correct_answer": {
+        "value": 54
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "TRANSFER",
+      "parallel_item_id": null,
+      "numeric_features": [
+        "TEN_RELATION"
+      ],
+      "structural_features": [
+        "EQUAL_GROUPS"
+      ],
+      "surface_features": [
+        "WORD_PROBLEM",
+        "FREE_ENTRY"
+      ],
+      "strategy_affordances": [
+        "DISTRIBUTIVE_REASONING",
+        "USE_TEN_FACT"
+      ],
+      "additional_demands": [],
+      "process_competencies": [],
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "spec_section": "§93, §91, §72",
+      "note": "Letzter Schritt 'Transfer' der Förderroute aus §93 (F-22). Die Frageform unterscheidet sich von allen REL-Items: dort ist der Ausgangsfakt gegeben ('Du weißt 5*8=40'), hier muss die Schüler:in die Beziehung selbst wählen. 6x9 ist bewusst keines der geübten Fakten (6x8, 7x8) - wäre es eines, ließe sich das Item durch Erinnern lösen und würde keinen Transfer zeigen. Die günstige Beziehung wechselt dabei von der Fünferaufgabe zur Zehneraufgabe (6x9 = 6x10 - 6, alternativ 6x5 + 6x4); genau diese Variation der Zahlbeziehung, verbunden mit dem Sachkontext, ist die Transfervariation nach §72. NEAR_ROUND_NUMBER ist nicht gesetzt: die operationale Regel gilt für zwei- und dreistellige Operanden, 6 und 9 sind einstellig. Prozesskompetenz MODELLIEREN wäre naheliegend, wird aber wie bei den vier übrigen Textaufgaben der Bank nicht eigenständig gesetzt (F-19). §93 nennt 'Transfer' als letzten Schritt der Förderroute Multiplikation, §91 führt TRANSFER als Stufe, §72 verlangt Variation. Sachkontext und Zahlenwahl 6x9: Entscheidung des Implementierers, didaktischer Grund: neues Zahlenpaar und neue Oberfläche, damit das Ergebnis nicht aus der Förderkette erinnerbar ist.",
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO07-D2-S-C",
+      "task_family_id": "FAM_ZO07_D2_TWO_DIGIT",
+      "title": "39 + 24",
+      "primary_competency": "ZO07_ADDITION",
+      "secondary_competencies": [],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "39 + 24",
+      "task_payload": {
+        "operands": [
+          39,
+          24
+        ],
+        "operation": "ADD"
+      },
+      "correct_answer": {
+        "value": 63
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "VERIFY",
+      "parallel_item_id": null,
+      "numeric_features": [
+        "NEAR_ROUND_NUMBER",
+        "CROSSES_TEN"
+      ],
+      "structural_features": [
+        "TWO_DIGIT_ADDITION"
+      ],
+      "surface_features": [
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY",
+        "FREE_ENTRY"
+      ],
+      "strategy_affordances": [
+        "COMPENSATION",
+        "DECOMPOSITION"
+      ],
+      "additional_demands": [],
+      "process_competencies": [],
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "spec_section": "§51, §71, §116",
+      "note": "ZAHLENWAHL KORRIGIERT: vorgeschlagen war 39+26. Das erfüllt die operationale NEAR_ROUND_NUMBER-Regel, ergibt aber 65 - genau die Summe von ZO07-D2-S-A (38+27). Als Parallelitem ist das unbrauchbar: erstens wäre eine richtige Antwort nach dem unmittelbar vorangegangenen Item nicht unabhängig (die 65 ist erinnerbar), zweitens ist 39+26 die gegensinnige Veränderung von 38+27 (+1/-1), das Paar würde also eine Kompensationsbeziehung einführen und damit eine zweite Variable variieren - §116 verletzt und §30 (Replikation als unabhängige Bestätigung) unterlaufen. 39+24 = 63 hält alle Merkmale von 38+27 und vermeidet beides. Prüfung der operationalen Regel: erster Operand 39, Abstand 1 zum Vielfachen 40, also NEAR_ROUND_NUMBER; Einerziffern 9+4=13, also CROSSES_TEN; zweiter Operand 24 mit Abstand 4 zum nächsten Zehner, also kein zusätzlicher Anker - dieselbe Konstellation wie bei 38+27 (Abstand 2 bzw. 3). strategy_affordances trägt nur DECOMPOSITION, exakt wie ZO07-D2-S-A im heutigen Stand; wird dort im Zuge der neuen Regel COMPENSATION ergänzt (§24 führt sie für 49+36 zusammen mit NEAR_ROUND_NUMBER), muss sie hier ebenfalls ergänzt werden, sonst ist das Paar nicht mehr parallel. §71 gruppiert die Additionsitems nach dem Merkmal NEAR_ROUND_NUMBER; nachdem die operationale Regel dieses Merkmal auch an 38+27 vergibt, ist ZO07-D2-S-B kein Parallelitem mehr, und §25/§116 verlangen für ZO07-D2-S-A ein Partneritem mit identischem Merkmalsprofil. Zahlenwahl 39+24: Entscheidung des Implementierers, didaktischer Grund: gleiches Merkmalsprofil, andere Summe, keine Kompensationsbeziehung zum Ausgangsitem.",
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO07-D2-S-D",
+      "task_family_id": "FAM_ZO07_D2_TWO_DIGIT",
+      "title": "47 + 35",
+      "primary_competency": "ZO07_ADDITION",
+      "secondary_competencies": [],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "task_prompt": "47 + 35",
+      "task_payload": {
+        "operands": [
+          47,
+          35
+        ],
+        "operation": "ADD"
+      },
+      "correct_answer": {
+        "value": 82
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "VERIFY",
+      "parallel_item_id": null,
+      "numeric_features": [
+        "CROSSES_TEN"
+      ],
+      "structural_features": [
+        "TWO_DIGIT_ADDITION"
+      ],
+      "surface_features": [
+        "NO_CONTEXT",
+        "SYMBOLIC_ONLY",
+        "FREE_ENTRY"
+      ],
+      "strategy_affordances": [
+        "DECOMPOSITION"
+      ],
+      "additional_demands": [],
+      "process_competencies": [],
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "spec_section": "§51, §71, §116",
+      "note": "Parallelitem zu ZO07-D2-S-B (46+38): beide ohne NEAR_ROUND_NUMBER, beide mit CROSSES_TEN, gleiche Struktur, gleiche Darstellung, gleiche Bedienform. Prüfung der operationalen Regel: erster Operand 47, Abstand 3 zum nächsten Vielfachen von zehn, also kein NEAR_ROUND_NUMBER; Einerziffern 7+5=12, also CROSSES_TEN. Summe 82 gegen 84 bei ZO07-D2-S-B, kein erinnerbares Ergebnis und keine Kompensationsbeziehung zwischen den beiden Items. RESTASYMMETRIE, bewusst nicht eigenmächtig behoben: der zweite Operand von 46+38 liegt 2 von 40 entfernt, der von 47+35 liegt 5 vom nächsten Zehner entfernt. Die operationale Regel erklärt den zweiten Operanden bei Rechenaufgaben für unerheblich, die Merkmalsprofile sind also identisch; didaktisch bietet 46+38 aber einen Anker am zweiten Operanden, 47+35 nicht. Wer das Paar auch in dieser nicht modellierten Eigenschaft gleich haben will, nimmt 47+39 = 86 statt 47+35. Das ist eine Folge der Regel und keine Eigenschaft dieses Items, deshalb als offener Punkt vermerkt statt still geändert. §71 gruppiert die Additionsitems nach NEAR_ROUND_NUMBER; §25/§116 verlangen für ZO07-D2-S-B ein Partneritem mit identischem Merkmalsprofil, nachdem 38+27 auf die andere Seite gewechselt ist. Zahlenwahl 47+35: Vorschlag des Hauptagenten, arithmetisch und merkmalsseitig geprüft und bestätigt.",
+      "question_form": "COMPUTE_RESULT"
+    },
+    {
+      "task_id": "ZO06-D3-S-C",
+      "task_family_id": "FAM_ZO06_D3_ZERO",
+      "title": "5 Hunderter, 3 Zehner, 8 Einer",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "language_demand": "LOW",
+      "task_prompt": "5 Hunderter + 3 Zehner + 8 Einer.",
+      "task_payload": {
+        "hundreds": 5,
+        "tens": 3,
+        "ones": 8
+      },
+      "correct_answer": {
+        "value": 538
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY",
+        "FREE_ENTRY",
+        "NO_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "spec_section": "§50",
+      "note": "Ergaenzt nach Kritikbefund 10. Beide bisherigen Mitglieder von FAM_ZO06_D3_ZERO tragen eine Null an der Zehnerstelle; die Familie konnte den Fehler ERR_ZERO_PLACEHOLDER replizieren, aber nicht von einer allgemeinen Schwaeche der Stellenwertzerlegung unterscheiden. Gegenueber ZO06-D3-S-A variiert genau eine Variable: die Zehnerstelle ist besetzt (§116). Gelingt 538 und misslingt 508, liegt der Fehler an der unbesetzten Stelle; misslingen beide, an der Stellenwertzerlegung.",
+      "question_form": "COMPOSE_FROM_PLACES"
+    },
+    {
+      "task_id": "ZO06-D2-S-C",
+      "task_family_id": "FAM_ZO06_D2_SAME_QUESTION",
+      "title": "Wert der Zehner in 364",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "language_demand": "LOW",
+      "task_prompt": "Welchen Wert haben die Zehner in 364 zusammen?",
+      "task_payload": {
+        "number": 364,
+        "asked_unit": "TENS_VALUE"
+      },
+      "correct_answer": {
+        "value": 60
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "parallel_item_id": "ZO06-D2-S-D",
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY",
+        "FREE_ENTRY",
+        "NO_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "spec_section": "§69, §116",
+      "note": "Ergaenzt nach Kritikbefund 6. Die Seed-Items ZO06-D2-S-A/-S-B fragen nach dem Wert einer genannten ZIFFER, das ikonische Gegenstueck ZO06-D2-I-A nach dem Wert einer genannten STELLE. Der Darstellungsvergleich aus §69 variierte damit weiterhin zwei Dinge. Dieses Item traegt dieselbe Frageform wie das ikonische und macht den Vergleich nach §116 sauber. Die Seed-Items bleiben unberuehrt (§1).",
+      "question_form": "VALUE_OF_NAMED_PLACE"
+    },
+    {
+      "task_id": "ZO06-D2-S-D",
+      "task_family_id": "FAM_ZO06_D2_SAME_QUESTION",
+      "title": "Wert der Zehner in 572",
+      "primary_competency": "ZO06_PLACE_VALUE",
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "language_demand": "LOW",
+      "task_prompt": "Welchen Wert haben die Zehner in 572 zusammen?",
+      "task_payload": {
+        "number": 572,
+        "asked_unit": "TENS_VALUE"
+      },
+      "correct_answer": {
+        "value": 70
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "source_type": "IMPLEMENTER_AUTHORED",
+      "parallel_item_id": null,
+      "grade_reference_min": 3,
+      "grade_reference_max": 4,
+      "structural_features": [
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY",
+        "FREE_ENTRY",
+        "NO_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "PLACE_VALUE_STRATEGY"
+      ],
+      "spec_section": "§69, §116",
+      "note": "Ergaenzt nach Kritikbefund 6. Die Seed-Items ZO06-D2-S-A/-S-B fragen nach dem Wert einer genannten ZIFFER, das ikonische Gegenstueck ZO06-D2-I-A nach dem Wert einer genannten STELLE. Der Darstellungsvergleich aus §69 variierte damit weiterhin zwei Dinge. Dieses Item traegt dieselbe Frageform wie das ikonische und macht den Vergleich nach §116 sauber. Die Seed-Items bleiben unberuehrt (§1).",
+      "question_form": "VALUE_OF_NAMED_PLACE"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kompetenzanalyse – Zahl und Operation</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<header class="kopf">
+  <div class="kopf-titel">
+    <h1>Kompetenzanalyse</h1>
+    <p class="kopf-bereich" id="kopf-bereich">wird aus dem Katalog gefüllt</p>
+  </div>
+  <div class="kopf-auswahl">
+    <label for="schueler">Schüler:in</label>
+    <select id="schueler" aria-describedby="schueler-hinweis"></select>
+    <p id="schueler-hinweis" class="hinweis">Pseudonyme Kennung (§86). Klarnamen werden nicht gespeichert.</p>
+  </div>
+</header>
+
+<!--
+  Die Begriffsleiste steht fest im Gerüst, nicht in einer einzelnen Ansicht.
+  Die Grundregel der Spezifikation verlangt, dass die Oberfläche "jederzeit"
+  zwischen den sechs Ebenen unterscheidet. Jederzeit heißt: auch dann, wenn
+  jemand nur eine Zahl sucht und die Erklärung nicht liest.
+-->
+<section class="begriffe" aria-label="Unterschiedene Ebenen">
+  <button type="button" class="begriffe-schalter" id="begriffe-schalter"
+          aria-expanded="false" aria-controls="begriffe-liste">
+    Sechs unterschiedene Ebenen – Erläuterung einblenden
+  </button>
+  <ol class="begriffe-liste" id="begriffe-liste" hidden>
+    <li><span class="ebene ebene-b">B</span> <b>Beobachtung</b> – was tatsächlich eingegeben wurde. Roh, unbewertet.</li>
+    <li><span class="ebene ebene-f">F</span> <b>Fehler</b> – eine Beobachtung mit einem Fehlercode. Der Code beschreibt, <em>was</em> abweicht, nicht <em>warum</em>.</li>
+    <li><span class="ebene ebene-e">E</span> <b>Evidenz</b> – aus Beobachtungen abgeleitete Belege für oder gegen eine Kompetenz.</li>
+    <li><span class="ebene ebene-k">K</span> <b>Kompetenzzustand</b> – der aus Evidenz fortgeschriebene Status eines Knotens.</li>
+    <li><span class="ebene ebene-h">H</span> <b>Hypothese</b> – eine Vermutung über einen Zusammenhang. Keine Feststellung.</li>
+    <li><span class="ebene ebene-p">P</span> <b>Hypothesenprüfung</b> – die Aufgabe, die eine Hypothese widerlegen würde.</li>
+  </ol>
+  <p class="begriffe-regel">
+    Diese Ebenen werden nicht gleichgesetzt. Ein wiederholter Fehler ist ein
+    <em>Fehlermuster</em> – keine Ursache und keine Diagnose.
+  </p>
+</section>
+
+<div class="rahmen">
+  <nav class="navigation" id="navigation" aria-label="Hauptnavigation"></nav>
+  <main id="inhalt" tabindex="-1">
+    <p class="laedt">Daten werden geladen …</p>
+  </main>
+</div>
+
+<footer class="fuss">
+  <p>
+    Alle Angaben stammen aus dem Backend (schreibgeschützter Zugriff). Diese
+    Oberfläche berechnet keine Kompetenzen, leitet keine Ursachen ab und wählt
+    keine Aufgaben aus.
+  </p>
+  <p>
+    Kein Gesamtwert, keine Prozentangaben, keine Klassenstufenäquivalente –
+    die zugrundeliegenden Aufgaben sind nicht kalibriert.
+  </p>
+</footer>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

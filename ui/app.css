@@ -1,0 +1,333 @@
+/* Schlicht, wissenschaftlich, übersichtlich. Desktop zuerst, responsive.
+ *
+ * Zur Farbcodierung: jede farbcodierte Angabe trägt zusätzlich ein Zeichen und
+ * einen Text. Die Spezifikation verlangt das ausdrücklich – Farbe ist hier
+ * eine zweite Codierung, nie die einzige. Wer die Seite in Graustufen druckt
+ * oder Farben nicht unterscheidet, verliert keine Information.
+ */
+
+:root {
+  --grund: #ffffff;
+  --flaeche: #f6f7f9;
+  --flaeche-2: #eceef2;
+  --linie: #d3d7de;
+  --linie-stark: #9aa2ae;
+  --text: #14181e;
+  --text-leise: #5c6572;
+
+  --ressource: #10603a;
+  --ressource-flaeche: #e3f1ea;
+  --offen: #8a4a05;
+  --offen-flaeche: #fbeede;
+  --ungeprueft: #3f4753;
+  --ungeprueft-flaeche: #e9ebef;
+
+  --akzent: #1c4c8c;
+  --akzent-flaeche: #e6edf7;
+
+  --b: #4a3f8f;  /* Beobachtung */
+  --f: #8a2f2f;  /* Fehler */
+  --e: #1c4c8c;  /* Evidenz */
+  --k: #10603a;  /* Kompetenzzustand */
+  --h: #7a4a00;  /* Hypothese */
+  --p: #3f4753;  /* Hypothesenprüfung */
+
+  --schrift: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: "Cascadia Mono", "SF Mono", Consolas, "Liberation Mono", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --grund: #14171c;
+    --flaeche: #1b1f26;
+    --flaeche-2: #242932;
+    --linie: #333a45;
+    --linie-stark: #6d7785;
+    --text: #e8eaee;
+    --text-leise: #a2abb8;
+    --ressource: #63c996;
+    --ressource-flaeche: #163024;
+    --offen: #e0a45e;
+    --offen-flaeche: #322415;
+    --ungeprueft: #a2abb8;
+    --ungeprueft-flaeche: #252a33;
+    --akzent: #7fb0ee;
+    --akzent-flaeche: #172231;
+    --b: #a79ce8;
+    --f: #e88f8f;
+    --e: #7fb0ee;
+    --k: #63c996;
+    --h: #e0a45e;
+    --p: #a2abb8;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--schrift);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--grund);
+}
+
+h1, h2, h3, h4 { font-weight: 600; line-height: 1.25; margin: 0 0 .4rem; }
+h1 { font-size: 1.15rem; }
+h2 { font-size: 1.05rem; margin-top: 0; }
+h3 { font-size: .95rem; }
+h4 { font-size: .82rem; text-transform: uppercase; letter-spacing: .04em; color: var(--text-leise); }
+p { margin: 0 0 .6rem; }
+a { color: var(--akzent); }
+code, .mono { font-family: var(--mono); font-size: .92em; }
+
+/* ------------------------------------------------------------------ Kopf */
+
+.kopf {
+  display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: flex-start;
+  justify-content: space-between;
+  padding: .9rem 1.25rem;
+  border-bottom: 1px solid var(--linie);
+  background: var(--flaeche);
+}
+.kopf-bereich { margin: 0; color: var(--text-leise); font-size: .85rem; }
+.kopf-auswahl { display: flex; flex-direction: column; gap: .2rem; }
+.kopf-auswahl label { font-size: .8rem; color: var(--text-leise); }
+.hinweis { margin: 0; font-size: .75rem; color: var(--text-leise); max-width: 34ch; }
+
+select, input[type="search"], input[type="text"], button {
+  font: inherit; color: var(--text);
+  background: var(--grund);
+  border: 1px solid var(--linie-stark);
+  border-radius: 3px; padding: .3rem .5rem;
+}
+button { cursor: pointer; }
+button:hover { background: var(--flaeche-2); }
+select:focus-visible, button:focus-visible, input:focus-visible, a:focus-visible,
+[tabindex]:focus-visible, .knoten:focus-visible {
+  outline: 2px solid var(--akzent); outline-offset: 2px;
+}
+
+/* -------------------------------------------------------------- Begriffe */
+
+.begriffe {
+  padding: .5rem 1.25rem;
+  border-bottom: 1px solid var(--linie);
+  background: var(--flaeche-2);
+}
+.begriffe-schalter {
+  border: none; background: none; padding: .1rem 0;
+  color: var(--akzent); text-decoration: underline; font-size: .82rem;
+}
+.begriffe-schalter:hover { background: none; }
+.begriffe-liste {
+  list-style: none; margin: .5rem 0 .3rem; padding: 0;
+  display: grid; gap: .3rem .9rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
+  font-size: .82rem;
+}
+.begriffe-liste[hidden] { display: none; }
+.begriffe-regel { margin: .3rem 0 0; font-size: .8rem; color: var(--text-leise); }
+
+.ebene {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.35em; height: 1.35em; border-radius: 3px;
+  font-size: .78em; font-weight: 700; color: #fff;
+  vertical-align: .05em;
+}
+.ebene-b { background: var(--b); } .ebene-f { background: var(--f); }
+.ebene-e { background: var(--e); } .ebene-k { background: var(--k); }
+.ebene-h { background: var(--h); } .ebene-p { background: var(--p); }
+@media (prefers-color-scheme: dark) { .ebene { color: #14171c; } }
+
+/* ------------------------------------------------------------- Navigation */
+
+.rahmen { display: flex; align-items: stretch; min-height: 60vh; }
+
+.navigation {
+  flex: 0 0 13.5rem;
+  border-right: 1px solid var(--linie);
+  padding: .75rem 0;
+  background: var(--flaeche);
+}
+.navigation button {
+  display: block; width: 100%; text-align: left;
+  border: none; border-left: 3px solid transparent; border-radius: 0;
+  background: none; padding: .45rem 1.1rem; font-size: .9rem;
+}
+.navigation button:hover { background: var(--flaeche-2); }
+.navigation button[aria-current="page"] {
+  border-left-color: var(--akzent);
+  background: var(--akzent-flaeche);
+  font-weight: 600;
+}
+.navigation .nav-zahl { float: right; color: var(--text-leise); font-size: .8rem; font-weight: 400; }
+
+main { flex: 1 1 auto; padding: 1.25rem 1.5rem 3rem; min-width: 0; }
+main:focus { outline: none; }
+
+/* ----------------------------------------------------------- Grundbausteine */
+
+.abschnitt { margin-bottom: 1.75rem; }
+.abschnitt > h2 { padding-bottom: .3rem; border-bottom: 1px solid var(--linie); }
+.quelle { font-size: .75rem; color: var(--text-leise); font-weight: 400; }
+
+.karten { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
+.karte {
+  border: 1px solid var(--linie); border-radius: 4px;
+  padding: .7rem .85rem; background: var(--grund);
+}
+.karte.wahl { cursor: pointer; text-align: left; width: 100%; font: inherit; }
+.karte.wahl:hover { background: var(--flaeche); }
+.karte-kopf { display: flex; gap: .5rem; align-items: baseline; justify-content: space-between; flex-wrap: wrap; }
+
+table { border-collapse: collapse; width: 100%; font-size: .85rem; }
+th, td { text-align: left; padding: .35rem .55rem; border-bottom: 1px solid var(--linie); vertical-align: top; }
+th { font-weight: 600; color: var(--text-leise); font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; }
+tbody tr:hover { background: var(--flaeche); }
+.tabelle-rahmen { overflow-x: auto; }
+
+.kv { display: grid; grid-template-columns: minmax(9rem, auto) 1fr; gap: .15rem .8rem; font-size: .85rem; margin: 0; }
+.kv dt { color: var(--text-leise); }
+.kv dd { margin: 0; }
+
+.marke {
+  display: inline-flex; align-items: center; gap: .3em;
+  padding: .05rem .4rem; border-radius: 3px;
+  border: 1px solid var(--linie-stark);
+  font-size: .78rem; white-space: nowrap;
+}
+.marke-zeichen { font-size: .9em; line-height: 1; }
+.marke-ressource { color: var(--ressource); background: var(--ressource-flaeche); border-color: var(--ressource); }
+.marke-offen     { color: var(--offen);     background: var(--offen-flaeche);     border-color: var(--offen); }
+.marke-ungeprueft{ color: var(--ungeprueft);background: var(--ungeprueft-flaeche);border-color: var(--linie-stark); }
+
+.chips { display: flex; flex-wrap: wrap; gap: .25rem; }
+.chip {
+  display: inline-block; padding: .05rem .4rem; border-radius: 3px;
+  background: var(--flaeche-2); border: 1px solid var(--linie);
+  font-size: .76rem;
+}
+.chip-leer { color: var(--text-leise); font-style: italic; background: none; border-style: dashed; }
+
+/* Nur für Vorlesegeräte. Wo ein Zeichen die Bedeutung trägt, steht das Wort
+   dazu - sichtbar, wenn Platz ist, sonst wenigstens hörbar. Farbe und Zeichen
+   sind nie die einzige Information. */
+.vh {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+.leer { color: var(--text-leise); font-style: italic; font-size: .85rem; }
+.laedt { color: var(--text-leise); }
+.fehlermeldung { border: 1px solid var(--f); background: var(--offen-flaeche); padding: .7rem .9rem; border-radius: 4px; }
+
+.merkzettel {
+  border-left: 3px solid var(--linie-stark);
+  background: var(--flaeche);
+  padding: .5rem .75rem; margin: .5rem 0 1rem;
+  font-size: .82rem; color: var(--text-leise);
+}
+
+.filterleiste { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin-bottom: .9rem; }
+.filterleiste label { font-size: .8rem; color: var(--text-leise); display: flex; gap: .3rem; align-items: center; }
+
+/* --------------------------------------------------------- Kompetenzkarte */
+
+.karte-flaeche {
+  border: 1px solid var(--linie); border-radius: 4px;
+  background: var(--flaeche); overflow: auto; max-height: 72vh;
+}
+.karte-flaeche svg { display: block; }
+.knoten { cursor: pointer; }
+.knoten rect { fill: var(--grund); stroke: var(--linie-stark); stroke-width: 1; }
+.knoten:hover rect { stroke: var(--akzent); stroke-width: 2; }
+.knoten[data-gewaehlt="ja"] rect { stroke: var(--akzent); stroke-width: 2.5; }
+.knoten text { font-size: 11px; fill: var(--text); }
+.knoten .knoten-id { font-family: var(--mono); font-size: 9.5px; fill: var(--text-leise); }
+.knoten-ressource rect { fill: var(--ressource-flaeche); }
+.knoten-offen rect     { fill: var(--offen-flaeche); }
+.knoten-ungeprueft rect{ fill: var(--ungeprueft-flaeche); }
+.knoten-ohne rect      { fill: var(--grund); stroke-dasharray: 3 2; }
+.kante { fill: none; stroke: var(--linie-stark); stroke-width: 1.2; }
+.kante-HARD_PREREQUISITE   { stroke-width: 2.4; }
+.kante-SUPPORTING_RELATION { stroke-dasharray: 6 3; }
+.kante-CROSS_DOMAIN_RELATION { stroke-dasharray: 1.5 3; }
+.kante-REPRESENTATION_RELATION { stroke-dasharray: 9 3 2 3; }
+.kante-SUCCESSOR { stroke-dasharray: 11 4; }
+.kante-hervor { stroke: var(--akzent); stroke-width: 2.4; }
+.schicht-titel { font-size: 10px; fill: var(--text-leise); font-family: var(--mono); }
+
+.legende { display: flex; flex-wrap: wrap; gap: .35rem 1rem; font-size: .76rem; color: var(--text-leise); margin-top: .5rem; align-items: center; }
+.legende svg { vertical-align: middle; }
+
+.zweispaltig { display: grid; gap: 1.1rem; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: start; }
+
+/* ------------------------------------------------------------ Detailspalte */
+
+.detail { border: 1px solid var(--linie); border-radius: 4px; padding: .85rem 1rem; background: var(--grund); position: sticky; top: .5rem; max-height: 85vh; overflow-y: auto; }
+.detail h3 { margin-bottom: .1rem; }
+.detail .detail-id { font-family: var(--mono); font-size: .76rem; color: var(--text-leise); }
+.detail-block { margin-top: .9rem; }
+.detail-block > h4 { margin-bottom: .25rem; }
+
+.balken { display: flex; align-items: center; gap: .4rem; font-size: .8rem; }
+.balken-spur { display: flex; height: .7rem; border: 1px solid var(--linie-stark); border-radius: 2px; overflow: hidden; min-width: 6rem; }
+.balken-dafuer  { background: var(--ressource); }
+.balken-dagegen { background: var(--f); }
+
+.gestrichen { text-decoration: line-through; color: var(--text-leise); }
+.wichtig { font-weight: 600; }
+
+@media (max-width: 950px) {
+  /* minmax(0, 1fr), nicht 1fr: eine Rasterspalte hat voreingestellt
+     min-width:auto und wächst auf die Breite ihres Inhalts. Der Graph ist
+     rund 3100px breit; mit 1fr schiebt er Kopfzeile und Navigation aus dem
+     Bild, statt selbst zu scrollen. */
+  .zweispaltig { grid-template-columns: minmax(0, 1fr); }
+  .detail { position: static; max-height: none; }
+}
+@media (max-width: 760px) {
+  .rahmen { display: block; }
+  .navigation {
+    display: flex; overflow-x: auto; border-right: none;
+    border-bottom: 1px solid var(--linie); padding: 0;
+  }
+  .navigation button { width: auto; white-space: nowrap; border-left: none; border-bottom: 3px solid transparent; }
+  .navigation button[aria-current="page"] { border-left: none; border-bottom-color: var(--akzent); }
+  .navigation .nav-zahl { float: none; margin-left: .3rem; }
+  main { padding: 1rem .9rem 2.5rem; }
+}
+
+.fuss {
+  margin: 1.6rem 0 0; padding: .7rem 1rem 1.2rem;
+  border-top: 1px solid var(--linie);
+  color: var(--text-leise); font-size: .8rem;
+}
+.fuss p { margin: .15rem 0; }
+
+@media print {
+  .navigation, .kopf-auswahl, .begriffe-schalter { display: none; }
+  .detail { position: static; }
+  body { font-size: 11px; }
+
+  /* Auf Papier sind die Statusfarben voreingestellt weg - Browser drucken
+     Hintergruende nicht mit. Die Zeichen und Woerter blieben, die Farbcodierung
+     nicht; ein Ausdruck waere also aermer als der Bildschirm, ohne es zu sagen. */
+  * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+  /* Die Legende der sechs Ebenen bleibt sichtbar. Ein Ausdruck wird
+     weitergereicht, und wer ihn bekommt, war beim Aufklappen nicht dabei:
+     ohne die Erlaeuterung stehen K, E, H, B, F und P unerklaert auf dem
+     Blatt - genau die Gleichsetzung, die die Grundregel verhindern soll. */
+  .begriffe-liste[hidden] { display: block; }
+
+  /* Nichts wird mitten in einer Aussage getrennt. */
+  .karte, .abschnitt, tr { break-inside: avoid; }
+  h2, h3, h4 { break-after: avoid; }
+
+  /* Verweise auf andere Ansichten sind auf Papier tote Knoepfe. Sie bleiben
+     lesbar, geben sich aber nicht mehr als bedienbar aus. */
+  .chip { border-style: dotted; }
+}

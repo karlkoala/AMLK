@@ -1,0 +1,1579 @@
+{
+  "_comment": [
+    "Kontrollierte Vokabulare. Single Source of Truth für alle Enum-Werte.",
+    "Nichts davon steht im Programmcode (§108).",
+    "notes = 'SPEC' : Wert ist in der Spezifikation wörtlich vorgegeben.",
+    "notes = 'TECHNICAL' : technische Mechanik, vom Implementierer definiert,",
+    "                     keine fachliche Aussage (zulässig nach §1).",
+    "notes = 'UNDEFINED' : fachliche Festlegung fehlt, siehe OFFENE_FRAGEN.md."
+  ],
+  "vocabularies": [
+    {
+      "vocabulary": "DOMAIN",
+      "vocabulary_kind": "STRUCTURAL",
+      "spec_section": "§79",
+      "description": "Fachdomäne. MVP V1 nur Mathematik, Feld existiert für spätere Fächer (§126).",
+      "terms": [
+        {
+          "term": "MATHEMATICS",
+          "label_de": "Mathematik",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "LEITIDEE",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§7",
+      "description": "Die fünf inhaltsbezogenen Leitideen. Alle fünf müssen ab V1 referenzierbar sein, auch wenn nur L1 inhaltlich gefüllt ist.",
+      "terms": [
+        {
+          "term": "NUMBER_OPERATION",
+          "label_de": "Zahl und Operation",
+          "notes": "SPEC L1"
+        },
+        {
+          "term": "MEASUREMENT",
+          "label_de": "Größen und Messen",
+          "notes": "SPEC L2"
+        },
+        {
+          "term": "PATTERN_FUNCTION",
+          "label_de": "Muster, Strukturen und funktionaler Zusammenhang",
+          "notes": "SPEC L3"
+        },
+        {
+          "term": "SPACE_SHAPE",
+          "label_de": "Raum und Form",
+          "notes": "SPEC L4"
+        },
+        {
+          "term": "DATA_CHANCE",
+          "label_de": "Daten und Zufall",
+          "notes": "SPEC L5"
+        }
+      ]
+    },
+    {
+      "vocabulary": "PROCESS_COMPETENCY",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§8",
+      "description": "Prozessbezogene Kompetenzen. Getrennt von der inhaltsbezogenen Kompetenz gespeichert.",
+      "terms": [
+        {
+          "term": "ARGUMENTIEREN",
+          "label_de": "Argumentieren",
+          "notes": "SPEC"
+        },
+        {
+          "term": "KOMMUNIZIEREN",
+          "label_de": "Kommunizieren",
+          "notes": "SPEC"
+        },
+        {
+          "term": "PROBLEMLOESEN",
+          "label_de": "Problemlösen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "MODELLIEREN",
+          "label_de": "Modellieren",
+          "notes": "SPEC"
+        },
+        {
+          "term": "DARSTELLEN",
+          "label_de": "Darstellen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "OBJEKTE_WERKZEUGE",
+          "label_de": "Mit Objekten und Werkzeugen umgehen",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "RELATION_TYPE",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§12",
+      "description": "Relationstypen im Kompetenzgraphen.",
+      "terms": [
+        {
+          "term": "HARD_PREREQUISITE",
+          "label_de": "harte Voraussetzung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "STRONG_PREREQUISITE",
+          "label_de": "starke Voraussetzung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "SUPPORTING_RELATION",
+          "label_de": "unterstützende Beziehung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "SUCCESSOR",
+          "label_de": "Nachfolger",
+          "notes": "SPEC"
+        },
+        {
+          "term": "CROSS_DOMAIN_RELATION",
+          "label_de": "leitideenübergreifende Beziehung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "REPRESENTATION_RELATION",
+          "label_de": "Darstellungsbeziehung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "CORRELATION",
+          "label_de": "Korrelation",
+          "notes": "SPEC"
+        },
+        {
+          "term": "HYPOTHESIS",
+          "label_de": "Hypothese",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "EVIDENCE_STATUS",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§13",
+      "description": "Evidenzgrad einer fachlichen Beziehung. §13: eine C- oder D-Beziehung darf eine Kontrollaufgabe auslösen, aber keine Aussage über die Schüler:in erzeugen.",
+      "terms": [
+        {
+          "term": "A",
+          "label_de": "direkt wissenschaftlich/empirisch gestützt",
+          "notes": "SPEC"
+        },
+        {
+          "term": "B",
+          "label_de": "indirekt wissenschaftlich gestützt",
+          "notes": "SPEC"
+        },
+        {
+          "term": "C",
+          "label_de": "theoretisch plausibel",
+          "notes": "SPEC"
+        },
+        {
+          "term": "D",
+          "label_de": "Systemhypothese",
+          "notes": "SPEC"
+        },
+        {
+          "term": "E",
+          "label_de": "individuell beobachtetes Muster",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "ADDITIONAL_DEMAND",
+      "vocabulary_kind": "FEATURE",
+      "spec_section": "§15",
+      "description": "Zusätzliche Aufgabenanforderungen. §15: Diese Merkmale beschreiben die Aufgabe, nicht die Schüler:in.",
+      "terms": [
+        {
+          "term": "SPATIAL_PROCESSING",
+          "label_de": "räumliche Verarbeitung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "MENTAL_ROTATION",
+          "label_de": "mentale Rotation",
+          "notes": "SPEC"
+        },
+        {
+          "term": "WORKING_MEMORY_DEMAND",
+          "label_de": "Arbeitsgedächtnisanforderung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "INFORMATION_SELECTION",
+          "label_de": "Informationsauswahl",
+          "notes": "SPEC"
+        },
+        {
+          "term": "RELATIONAL_REASONING",
+          "label_de": "relationales Denken",
+          "notes": "SPEC"
+        },
+        {
+          "term": "PATTERN_RECOGNITION",
+          "label_de": "Mustererkennung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "PLANNING",
+          "label_de": "Planung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "MONITORING",
+          "label_de": "Überwachung des eigenen Vorgehens",
+          "notes": "SPEC"
+        },
+        {
+          "term": "COGNITIVE_FLEXIBILITY",
+          "label_de": "kognitive Flexibilität",
+          "notes": "SPEC"
+        },
+        {
+          "term": "LANGUAGE_DEMAND",
+          "label_de": "sprachliche Anforderung",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "REPRESENTATION_MODE",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§16",
+      "description": "Erweitertes EIS-Modell. Getrennt von interaction_mode zu speichern (§17).",
+      "terms": [
+        {
+          "term": "ACTION",
+          "label_de": "enaktive Handlung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "IMAGE",
+          "label_de": "ikonische Darstellung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "MATHEMATICAL_SYMBOL",
+          "label_de": "mathematisch-symbolische Darstellung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "NATURAL_LANGUAGE",
+          "label_de": "sprachliche Darstellung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "MIXED",
+          "label_de": "Kombination",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "INTERACTION_MODE",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§17",
+      "description": "Bedienform. §17: Darstellung und Bedienform sind zwei unterschiedliche Variablen.",
+      "terms": [
+        {
+          "term": "SELECT",
+          "label_de": "auswählen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "ENTER",
+          "label_de": "eingeben",
+          "notes": "SPEC"
+        },
+        {
+          "term": "DRAG",
+          "label_de": "ziehen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "SORT",
+          "label_de": "sortieren",
+          "notes": "SPEC"
+        },
+        {
+          "term": "CLICK_SEQUENCE",
+          "label_de": "Klickfolge",
+          "notes": "SPEC"
+        },
+        {
+          "term": "MANIPULATE",
+          "label_de": "manipulieren",
+          "notes": "SPEC"
+        },
+        {
+          "term": "CONSTRUCT",
+          "label_de": "konstruieren",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "INTERNAL_DIFFICULTY",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§18",
+      "description": "Interne Schwierigkeit. §6: D1-D5 sind NICHT die IQB-Kompetenzstufen I-V und nicht empirisch kalibriert.",
+      "terms": [
+        {
+          "term": "D1",
+          "label_de": "elementare Anforderung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "D2",
+          "label_de": "grundlegende Anwendung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "D3",
+          "label_de": "vernetzte/sichere Anwendung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "D4",
+          "label_de": "anspruchsvollere Beziehungen/Transfer",
+          "notes": "SPEC"
+        },
+        {
+          "term": "D5",
+          "label_de": "komplexere bzw. verallgemeinernde Anwendung",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "CALIBRATION_STATUS",
+      "vocabulary_kind": "STATUS",
+      "spec_section": "§6",
+      "description": "Kalibrierungsstatus eines Items. Alle MVP-Aufgaben sind UNCALIBRATED_MVP_ITEM. CALIBRATED existiert nur als Platzhalter für Phase 2 (§97) und darf in V1 nicht vergeben werden.",
+      "terms": [
+        {
+          "term": "UNCALIBRATED_MVP_ITEM",
+          "label_de": "nicht kalibriertes MVP-Item",
+          "notes": "SPEC"
+        },
+        {
+          "term": "EMPIRICALLY_CALIBRATED",
+          "label_de": "empirisch kalibriert",
+          "notes": "TECHNICAL - Platzhalter Phase 2, in V1 unbenutzt"
+        }
+      ]
+    },
+    {
+      "vocabulary": "NUMERIC_FEATURE",
+      "vocabulary_kind": "FEATURE",
+      "spec_section": "§20",
+      "description": "Zahlbezogene Aufgabenmerkmale. §112: verbindliches Feld.",
+      "terms": [
+        {
+          "term": "NEAR_ROUND_NUMBER",
+          "label_de": "nahe an einer runden Zahl",
+          "notes": "SPEC"
+        },
+        {
+          "term": "CROSSES_TEN",
+          "label_de": "Zehnerüberschreitung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "CROSSES_HUNDRED",
+          "label_de": "Hunderterüberschreitung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "REPEATED_DIGITS",
+          "label_de": "wiederholte Ziffern",
+          "notes": "SPEC"
+        },
+        {
+          "term": "PLACE_VALUE_CHANGE",
+          "label_de": "Stellenwertwechsel",
+          "notes": "SPEC"
+        },
+        {
+          "term": "SMALL_FACTS",
+          "label_de": "kleines Einsmaleins/kleine Fakten",
+          "notes": "SPEC"
+        },
+        {
+          "term": "LARGE_FACTS",
+          "label_de": "große Fakten",
+          "notes": "SPEC"
+        },
+        {
+          "term": "HALF_DOUBLE_RELATION",
+          "label_de": "Halbieren/Verdoppeln-Beziehung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "FIVE_RELATION",
+          "label_de": "Fünferbeziehung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "TEN_RELATION",
+          "label_de": "Zehnerbeziehung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "EASY_DECOMPOSITION",
+          "label_de": "einfache Zerlegung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "UNFAMILIAR_NUMBER_COMBINATION",
+          "label_de": "unvertraute Zahlenkombination",
+          "notes": "SPEC"
+        },
+        {
+          "term": "CROSSES_THOUSAND",
+          "label_de": "überschreitet einen Tausender",
+          "notes": "§20 kennt nur CROSSES_TEN und CROSSES_HUNDRED. ZO04-D3-S-A (Vorgänger von 1000) überschreitet einen Tausender; ohne diesen Term wäre das Merkmal nicht darstellbar. Entscheidung D-19."
+        }
+      ]
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "vocabulary_kind": "FEATURE",
+      "spec_section": "§21",
+      "description": "Strukturelle Aufgabenmerkmale. §21 nennt Beispiele, die Liste ist erweiterbar.",
+      "terms": [
+        {
+          "term": "TWO_DIGIT_ADDITION",
+          "label_de": "zweistellige Addition",
+          "notes": "SPEC"
+        },
+        {
+          "term": "PART_WHOLE",
+          "label_de": "Teil-Ganzes",
+          "notes": "SPEC"
+        },
+        {
+          "term": "INVERSE_OPERATION",
+          "label_de": "Umkehroperation",
+          "notes": "SPEC"
+        },
+        {
+          "term": "EQUAL_GROUPS",
+          "label_de": "gleich große Gruppen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "ARRAY_STRUCTURE",
+          "label_de": "Rechteckfeld",
+          "notes": "SPEC"
+        },
+        {
+          "term": "DISTRIBUTIVE_STRUCTURE",
+          "label_de": "distributive Struktur",
+          "notes": "SPEC"
+        },
+        {
+          "term": "PLACE_VALUE_DECOMPOSITION",
+          "label_de": "Stellenwertzerlegung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "MEASUREMENT_STRUCTURE",
+          "label_de": "Messstruktur",
+          "notes": "SPEC"
+        },
+        {
+          "term": "FUNCTIONAL_RELATION",
+          "label_de": "funktionale Beziehung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "COUNTING_SET",
+          "label_de": "abzuzählende Menge",
+          "notes": "TECHNICAL - für die Zählprinzip-Items aus §42-46 benötigt, in §21 nicht aufgeführt"
+        },
+        {
+          "term": "NUMBER_SEQUENCE",
+          "label_de": "Zahlwortreihe/Zahlenfolge",
+          "notes": "TECHNICAL - für §43 benötigt, in §21 nicht aufgeführt"
+        },
+        {
+          "term": "NUMBER_COMPARISON",
+          "label_de": "Zahlenvergleich",
+          "notes": "TECHNICAL - für §48 benötigt, in §21 nicht aufgeführt"
+        },
+        {
+          "term": "TWO_DIGIT_SUBTRACTION",
+          "label_de": "zweistellige Subtraktion",
+          "notes": "TECHNICAL - Analogiebildung zu TWO_DIGIT_ADDITION"
+        },
+        {
+          "term": "THREE_DIGIT_SUBTRACTION",
+          "label_de": "dreistellige Subtraktion",
+          "notes": "TECHNICAL - für §53 (403-198) benötigt"
+        },
+        {
+          "term": "MULTI_DIGIT_MULTIPLICATION",
+          "label_de": "mehrstellige Multiplikation",
+          "notes": "TECHNICAL - für §54 (23x4, 23x14) benötigt"
+        },
+        {
+          "term": "PARTITIVE_DIVISION",
+          "label_de": "Verteilen",
+          "notes": "SPEC §55 unterscheidet VERTEILEN"
+        },
+        {
+          "term": "QUOTATIVE_DIVISION",
+          "label_de": "Aufteilen",
+          "notes": "SPEC §55 unterscheidet AUFTEILEN"
+        },
+        {
+          "term": "COMPARISON_DIFFERENCE",
+          "label_de": "Unterschied als Vergleich",
+          "notes": "TECHNICAL - für §53 (Mia/Ben) benötigt"
+        },
+        {
+          "term": "COMPLEMENT_TO_ROUND",
+          "label_de": "Ergänzen auf eine runde Zahl",
+          "notes": "TECHNICAL - für §49/§53 (37 auf 50) benötigt"
+        },
+        {
+          "term": "EVENT_COUNTING",
+          "label_de": "Zählen von Ereignissen oder eigenen Handlungen",
+          "notes": "§45 verlangt für ZP04 das Zählen flüchtiger Signale und eigener Tipp-Handlungen. §21 kennt nur Strukturen an Objektmengen. Entscheidung D-19."
+        }
+      ]
+    },
+    {
+      "vocabulary": "SURFACE_FEATURE",
+      "vocabulary_kind": "FEATURE",
+      "spec_section": "§22",
+      "description": "Oberflächenmerkmale. §22 nennt Beispiele, die Liste ist erweiterbar.",
+      "terms": [
+        {
+          "term": "NO_CONTEXT",
+          "label_de": "ohne Kontext",
+          "notes": "SPEC"
+        },
+        {
+          "term": "WORD_PROBLEM",
+          "label_de": "Textaufgabe",
+          "notes": "SPEC"
+        },
+        {
+          "term": "IMAGE_CONTEXT",
+          "label_de": "Bildkontext",
+          "notes": "SPEC"
+        },
+        {
+          "term": "TABLE",
+          "label_de": "Tabelle",
+          "notes": "SPEC"
+        },
+        {
+          "term": "DIAGRAM",
+          "label_de": "Diagramm",
+          "notes": "SPEC"
+        },
+        {
+          "term": "NUMBER_LINE",
+          "label_de": "Zahlenstrahl",
+          "notes": "SPEC"
+        },
+        {
+          "term": "MANIPULATIVE",
+          "label_de": "Handlungsmaterial",
+          "notes": "SPEC"
+        },
+        {
+          "term": "SYMBOLIC_ONLY",
+          "label_de": "nur symbolisch",
+          "notes": "SPEC"
+        },
+        {
+          "term": "MULTIPLE_CHOICE",
+          "label_de": "Auswahlaufgabe",
+          "notes": "SPEC"
+        },
+        {
+          "term": "FREE_ENTRY",
+          "label_de": "freie Eingabe",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "STRATEGY_AFFORDANCE",
+      "vocabulary_kind": "FEATURE",
+      "spec_section": "§23",
+      "description": "Von der Aufgabe nahegelegte Strategien. §23 nennt Beispiele. Affordanz heißt: die Strategie ist günstig, nicht dass sie verwendet wurde.",
+      "terms": [
+        {
+          "term": "COMPENSATION",
+          "label_de": "Kompensation/gegensinniges Verändern",
+          "notes": "SPEC"
+        },
+        {
+          "term": "DECOMPOSITION",
+          "label_de": "Zerlegen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "DOUBLING",
+          "label_de": "Verdoppeln",
+          "notes": "SPEC"
+        },
+        {
+          "term": "HALVING",
+          "label_de": "Halbieren",
+          "notes": "SPEC"
+        },
+        {
+          "term": "USE_FIVE_FACT",
+          "label_de": "Fünferaufgabe nutzen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "USE_TEN_FACT",
+          "label_de": "Zehneraufgabe nutzen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "DISTRIBUTIVE_REASONING",
+          "label_de": "distributives Schliessen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "INVERSE_OPERATION",
+          "label_de": "Umkehroperation nutzen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "COUNTING_ON",
+          "label_de": "Weiterzählen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "COUNTING_BACK",
+          "label_de": "Rückwärtszählen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "PLACE_VALUE_STRATEGY",
+          "label_de": "stellenweises Rechnen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "STRUCTURED_SUBITIZING",
+          "label_de": "strukturierte Mengenerfassung",
+          "notes": "TECHNICAL - für §47 (5+3-Struktur) benötigt"
+        },
+        {
+          "term": "ONE_BY_ONE_COUNTING",
+          "label_de": "Einzelnzählen",
+          "notes": "TECHNICAL - für §42-46 benötigt"
+        },
+        {
+          "term": "COMPLEMENT_TO_TEN",
+          "label_de": "Ergänzen zum Zehner",
+          "notes": "TECHNICAL - Spezialfall von USE_TEN_FACT für §49/§53"
+        }
+      ]
+    },
+    {
+      "vocabulary": "TASK_FAMILY_TYPE",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§25",
+      "description": "Die vier Variantenarten einer Aufgabe. Bestimmt, welche Variable innerhalb der Familie variiert (§116 Grundsatz der minimalen Veränderung).",
+      "terms": [
+        {
+          "term": "PARALLEL_ITEM",
+          "label_de": "Parallelitem - nur Zahlen ändern, Ziel: Fehler replizieren",
+          "notes": "SPEC"
+        },
+        {
+          "term": "STRATEGY_VARIATION",
+          "label_de": "Strategievariation - Ziel: Strategieabhängigkeit untersuchen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "SURFACE_VARIATION",
+          "label_de": "Oberflächenvariation - Ziel: Oberflächenabhängigkeit untersuchen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "CONTRAST_ITEM",
+          "label_de": "Contrast Item - Ziel: zwischen zwei Hypothesen unterscheiden",
+          "notes": "SPEC"
+        },
+        {
+          "term": "REPRESENTATION_VARIATION",
+          "label_de": "Darstellungsvariation - gleicher Kern, anderer Repräsentationsmodus",
+          "notes": "TECHNICAL - §69/§70/§100 verlangen I/S-Paare, §25 führt sie nicht als eigene Variante"
+        }
+      ]
+    },
+    {
+      "vocabulary": "PROFILE_MARKER",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§26",
+      "description": "Kompetenzprofilmarker. §26: Diese Marker sind keine Diagnosen.",
+      "terms": [
+        {
+          "term": "ITEM_SPECIFIC_SUCCESS",
+          "label_de": "itemspezifischer Erfolg",
+          "notes": "SPEC"
+        },
+        {
+          "term": "STRUCTURE_STABLE",
+          "label_de": "strukturstabil",
+          "notes": "SPEC"
+        },
+        {
+          "term": "STRATEGY_DEPENDENT",
+          "label_de": "strategieabhängig",
+          "notes": "SPEC"
+        },
+        {
+          "term": "SURFACE_DEPENDENT",
+          "label_de": "oberflächenabhängig",
+          "notes": "SPEC"
+        },
+        {
+          "term": "REPRESENTATION_DEPENDENT",
+          "label_de": "darstellungsabhängig",
+          "notes": "SPEC"
+        },
+        {
+          "term": "TRANSFER_STABLE",
+          "label_de": "transferstabil",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "COMPETENCY_STATUS",
+      "vocabulary_kind": "STATUS",
+      "spec_section": "§27",
+      "description": "Status einer Kompetenz je Schüler:in. §27: SECURE bedeutet nicht dauerhaft beherrscht, sondern aktuell ausreichend konsistente Evidenz.",
+      "terms": [
+        {
+          "term": "UNKNOWN",
+          "label_de": "unbekannt",
+          "notes": "SPEC"
+        },
+        {
+          "term": "ACTIVE",
+          "label_de": "aktiv in Bearbeitung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "SECURE",
+          "label_de": "aktuell ausreichend konsistente Evidenz",
+          "notes": "SPEC"
+        },
+        {
+          "term": "UNCERTAIN",
+          "label_de": "unsicher/inkonsistente Evidenz",
+          "notes": "SPEC"
+        },
+        {
+          "term": "SUPPORT_FOCUS",
+          "label_de": "Förderschwerpunkt",
+          "notes": "SPEC"
+        },
+        {
+          "term": "PARKED",
+          "label_de": "geparkt",
+          "notes": "SPEC"
+        },
+        {
+          "term": "BLOCKED",
+          "label_de": "gesperrt (z.B. durch Lehrkraft, §3)",
+          "notes": "SPEC"
+        },
+        {
+          "term": "REACTIVATED",
+          "label_de": "reaktiviert",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "EVIDENCE_TYPE",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§28",
+      "description": "Evidenzarten.",
+      "terms": [
+        {
+          "term": "DIRECT_POSITIVE",
+          "label_de": "direkt positiv",
+          "notes": "SPEC"
+        },
+        {
+          "term": "DIRECT_NEGATIVE",
+          "label_de": "direkt negativ",
+          "notes": "SPEC"
+        },
+        {
+          "term": "INDIRECT_POSITIVE",
+          "label_de": "indirekt positiv",
+          "notes": "SPEC"
+        },
+        {
+          "term": "INDIRECT_NEGATIVE",
+          "label_de": "indirekt negativ",
+          "notes": "SPEC"
+        },
+        {
+          "term": "REPRESENTATION_EVIDENCE",
+          "label_de": "Darstellungsevidenz",
+          "notes": "SPEC"
+        },
+        {
+          "term": "STRATEGY_EVIDENCE",
+          "label_de": "Strategieevidenz",
+          "notes": "SPEC"
+        },
+        {
+          "term": "TRANSFER_EVIDENCE",
+          "label_de": "Transferevidenz",
+          "notes": "SPEC"
+        },
+        {
+          "term": "SUPPORT_EVIDENCE",
+          "label_de": "Evidenz unter Unterstützung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "CROSS_DOMAIN_EVIDENCE",
+          "label_de": "leitideenübergreifende Evidenz",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "EVIDENCE_DIRECTION",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§65",
+      "description": "Richtung einer Evidenz. §65 führt das Feld 'direction', enumeriert es aber nicht. Technische Minimalbelegung.",
+      "terms": [
+        {
+          "term": "POSITIVE",
+          "label_de": "stützend",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "NEGATIVE",
+          "label_de": "gegenläufig",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "NEUTRAL",
+          "label_de": "ohne Richtung",
+          "notes": "TECHNICAL"
+        }
+      ]
+    },
+    {
+      "vocabulary": "EVENT_TYPE",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§61",
+      "description": "Interaktionsereignistypen.",
+      "terms": [
+        {
+          "term": "CLICK",
+          "label_de": "Klick",
+          "notes": "SPEC"
+        },
+        {
+          "term": "DRAG",
+          "label_de": "Ziehen begonnen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "DROP",
+          "label_de": "Ablegen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "SELECT",
+          "label_de": "Auswahl",
+          "notes": "SPEC"
+        },
+        {
+          "term": "DESELECT",
+          "label_de": "Auswahl aufgehoben",
+          "notes": "SPEC"
+        },
+        {
+          "term": "ANSWER_CHANGE",
+          "label_de": "Antwort geändert",
+          "notes": "SPEC"
+        },
+        {
+          "term": "HELP_OPEN",
+          "label_de": "Hilfe geöffnet",
+          "notes": "SPEC"
+        },
+        {
+          "term": "HELP_CLOSE",
+          "label_de": "Hilfe geschlossen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "RESTART",
+          "label_de": "Neustart",
+          "notes": "SPEC"
+        },
+        {
+          "term": "PAUSE",
+          "label_de": "Pause",
+          "notes": "SPEC"
+        },
+        {
+          "term": "SUBMIT",
+          "label_de": "Abgabe",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "HYPOTHESIS_STATUS",
+      "vocabulary_kind": "STATUS",
+      "spec_section": "§64",
+      "description": "Status einer Hypothese.",
+      "terms": [
+        {
+          "term": "OPEN",
+          "label_de": "offen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "SUPPORTED",
+          "label_de": "gestützt",
+          "notes": "SPEC"
+        },
+        {
+          "term": "WEAKENED",
+          "label_de": "geschwächt",
+          "notes": "SPEC"
+        },
+        {
+          "term": "REJECTED",
+          "label_de": "verworfen",
+          "notes": "SPEC"
+        },
+        {
+          "term": "CLOSED",
+          "label_de": "abgeschlossen",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "HYPOTHESIS_TYPE",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§66, §69, §71",
+      "description": "Hypothesentypen. Die Spezifikation benennt drei namentlich; die Liste ist erweiterbar (§108). §115: jede Hypothese muss durch eine Aufgabe widerlegbar sein.",
+      "terms": [
+        {
+          "term": "REPRESENTATION_HYPOTHESIS",
+          "label_de": "darstellungsbezogener Unterschied",
+          "notes": "SPEC §69/§70/§100"
+        },
+        {
+          "term": "STRATEGY_DEPENDENCY_HYPOTHESIS",
+          "label_de": "Strategie-/Zahlenabhängigkeit",
+          "notes": "SPEC §71"
+        },
+        {
+          "term": "ZERO_PLACEHOLDER_HYPOTHESIS",
+          "label_de": "Null als unbesetzte Stelle",
+          "notes": "SPEC §66"
+        },
+        {
+          "term": "PREREQUISITE_HYPOTHESIS",
+          "label_de": "fehlende Voraussetzung",
+          "notes": "TECHNICAL - §31 Schritt 3 verlangt diese Prüfrichtung, benennt den Typ aber nicht"
+        },
+        {
+          "term": "SURFACE_DEPENDENCY_HYPOTHESIS",
+          "label_de": "Oberflächenabhängigkeit",
+          "notes": "TECHNICAL - §25 Surface Variation verlangt diese Prüfrichtung"
+        }
+      ]
+    },
+    {
+      "vocabulary": "TASK_PURPOSE",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§90",
+      "description": "Zweck einer Aufgabe. §90: Diagnostik und Förderung müssen unterscheidbar sein.",
+      "terms": [
+        {
+          "term": "SCREEN",
+          "label_de": "Screening",
+          "notes": "SPEC"
+        },
+        {
+          "term": "VERIFY",
+          "label_de": "Bestätigen/Replizieren",
+          "notes": "SPEC"
+        },
+        {
+          "term": "CONTRAST",
+          "label_de": "Kontrastieren",
+          "notes": "SPEC"
+        },
+        {
+          "term": "SUPPORT",
+          "label_de": "Förderung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "TRANSFER",
+          "label_de": "Transfer",
+          "notes": "SPEC"
+        },
+        {
+          "term": "RECHECK",
+          "label_de": "Wiederholungsprüfung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "CEILING",
+          "label_de": "Obergrenzensuche",
+          "notes": "SPEC"
+        },
+        {
+          "term": "FLOOR",
+          "label_de": "Untergrenzensuche",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "SOURCE_TYPE",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§110",
+      "description": "Quellenstatus.",
+      "terms": [
+        {
+          "term": "OFFICIAL_STANDARD",
+          "label_de": "amtlicher Bildungsstandard",
+          "notes": "SPEC"
+        },
+        {
+          "term": "EMPIRICAL_RESEARCH",
+          "label_de": "empirische Forschung",
+          "notes": "SPEC"
+        },
+        {
+          "term": "DIDACTIC_FRAMEWORK",
+          "label_de": "didaktisches Rahmenwerk",
+          "notes": "SPEC"
+        },
+        {
+          "term": "THEORETICAL",
+          "label_de": "theoretisch",
+          "notes": "SPEC"
+        },
+        {
+          "term": "MVP_HYPOTHESIS",
+          "label_de": "MVP-Hypothese",
+          "notes": "SPEC"
+        },
+        {
+          "term": "SYSTEM_OBSERVATION",
+          "label_de": "Systembeobachtung",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "TASK_SOURCE_TYPE",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§81",
+      "description": "Herkunft eines Items. §81 führt das Feld, enumeriert es nicht.",
+      "terms": [
+        {
+          "term": "SPEC_SEED_MVP",
+          "label_de": "Seed-Item aus der MVP-Spezifikation",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "TEACHER_AUTHORED",
+          "label_de": "von Lehrkraft erstellt",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "LLM_GENERATED",
+          "label_de": "LLM-generiert (§77)",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "EXTERNAL_REFERENCE",
+          "label_de": "aus externer Quelle übernommen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "IMPLEMENTER_AUTHORED",
+          "label_de": "vom Implementierer ergänzt, fachliche Freigabe offen",
+          "notes": "Items, die nicht aus §42-57 stammen, sondern zur Schließung von F-21 und F-22 ergänzt wurden. Der eigene Wert macht sie in jeder Abfrage von den Seed-Items unterscheidbar. Entscheidung D-11."
+        }
+      ]
+    },
+    {
+      "vocabulary": "SCORING_RULE",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§81, §49, §113",
+      "description": "Technische Auswertungsmechanik. Keine fachliche Aussage. §49: Scoring darf nicht unnötig nur eine Strategie akzeptieren, daher ANY_OF_ACCEPTED.",
+      "terms": [
+        {
+          "term": "EXACT_NUMERIC",
+          "label_de": "genau eine Zahl",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "SEQUENCE_EXACT",
+          "label_de": "Zahlenfolge in exakter Reihenfolge",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "SET_EXACT",
+          "label_de": "Menge, Reihenfolge irrelevant",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "SELECT_ONE",
+          "label_de": "eine Option aus einer Auswahl",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "SELECT_MULTIPLE",
+          "label_de": "mehrere Optionen aus einer Auswahl",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "ANY_OF_ACCEPTED",
+          "label_de": "eine von mehreren gleichwertig akzeptierten Antworten",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "EXPRESSION_EQUIVALENT",
+          "label_de": "Rechenausdruck, normalisiert verglichen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "INTERACTION_COUNT",
+          "label_de": "Anzahl der Interaktionen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "PLACED_OBJECT_COUNT",
+          "label_de": "Anzahl platzierter Objekte",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "GROUP_PARTITION",
+          "label_de": "Gruppierung von Objekten",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "BOOLEAN",
+          "label_de": "ja/nein",
+          "notes": "TECHNICAL"
+        }
+      ]
+    },
+    {
+      "vocabulary": "LANGUAGE_DEMAND",
+      "vocabulary_kind": "FEATURE",
+      "spec_section": "§81",
+      "description": "§81 führt das Feld language_demand, definiert aber keine Skala. Nach §1 bleibt der Wert UNDEFINED, bis die Skala fachlich festgelegt ist. Die Ausprägungen sind vorbereitet, werden aber in V1 nicht vergeben. Ersatzweise tragen alle Items NO_CONTEXT bzw. WORD_PROBLEM als surface_feature (§22).",
+      "terms": [
+        {
+          "term": "UNDEFINED",
+          "label_de": "nicht festgelegt",
+          "notes": "UNDEFINED - siehe OFFENE_FRAGEN.md F-03"
+        },
+        {
+          "term": "NONE",
+          "label_de": "keine sprachliche Anforderung",
+          "notes": "UNDEFINED - Skala unbestätigt"
+        },
+        {
+          "term": "LOW",
+          "label_de": "gering",
+          "notes": "UNDEFINED - Skala unbestätigt"
+        },
+        {
+          "term": "MEDIUM",
+          "label_de": "mittel",
+          "notes": "UNDEFINED - Skala unbestätigt"
+        },
+        {
+          "term": "HIGH",
+          "label_de": "hoch",
+          "notes": "UNDEFINED - Skala unbestätigt"
+        }
+      ]
+    },
+    {
+      "vocabulary": "ROUTE_CONDITION",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§83, §30, §69",
+      "description": "Bedingung, unter der eine Route greift. §83 nennt WRONG. §30 unterscheidet zusätzlich, ob ein Fehler mit ähnlichem Muster wiederholt auftrat.",
+      "terms": [
+        {
+          "term": "CORRECT",
+          "label_de": "richtig",
+          "notes": "SPEC §69/§70"
+        },
+        {
+          "term": "WRONG",
+          "label_de": "falsch",
+          "notes": "SPEC §83"
+        },
+        {
+          "term": "WRONG_REPLICATED",
+          "label_de": "erneut falsch (Fehler wiederholt)",
+          "notes": "SPEC §30"
+        },
+        {
+          "term": "WRONG_SAME_ERROR_CODE",
+          "label_de": "erneut falsch mit gleichem Fehlercode",
+          "notes": "SPEC §30 'mit ähnlichem Fehlermuster'"
+        },
+        {
+          "term": "INCONSISTENT",
+          "label_de": "inkonsistente Evidenz",
+          "notes": "SPEC §30"
+        },
+        {
+          "term": "ANY",
+          "label_de": "unabhängig vom Ergebnis",
+          "notes": "TECHNICAL - für Förderketten §92/§93"
+        }
+      ]
+    },
+    {
+      "vocabulary": "ROUTE_REASON",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§67, §83, §31",
+      "description": "Begründung einer Route. Die ersten fünf entsprechen der Priorisierung aus §67, die weiteren der Prüfreihenfolge aus §31.",
+      "terms": [
+        {
+          "term": "REPLICATE_ERROR",
+          "label_de": "Fehler replizieren",
+          "notes": "SPEC §67/§83"
+        },
+        {
+          "term": "DISCRIMINATE_HYPOTHESIS",
+          "label_de": "Hypothesen unterscheiden",
+          "notes": "SPEC §67"
+        },
+        {
+          "term": "LOCATE_BOUNDARY",
+          "label_de": "Kompetenzgrenze eingrenzen",
+          "notes": "SPEC §67"
+        },
+        {
+          "term": "EVALUATE_SUPPORT",
+          "label_de": "Unterstützung bewerten",
+          "notes": "SPEC §67"
+        },
+        {
+          "term": "UPDATE_EVIDENCE",
+          "label_de": "alte Evidenz aktualisieren",
+          "notes": "SPEC §67"
+        },
+        {
+          "term": "CHECK_PREREQUISITE",
+          "label_de": "direkte Voraussetzung prüfen",
+          "notes": "SPEC §31 Schritt 3"
+        },
+        {
+          "term": "CHECK_RELATED_COMPETENCY",
+          "label_de": "andere Kompetenz derselben Leitidee prüfen",
+          "notes": "SPEC §31 Schritt 10, §70 'Aufgabenbeziehungen prüfen'"
+        },
+        {
+          "term": "CHECK_NUMBER_STRUCTURE",
+          "label_de": "Zahlenstruktur prüfen",
+          "notes": "SPEC §31 Schritt 4"
+        },
+        {
+          "term": "CHECK_STRATEGY",
+          "label_de": "Strategie prüfen",
+          "notes": "SPEC §31 Schritt 5"
+        },
+        {
+          "term": "CHANGE_DIFFICULTY",
+          "label_de": "Schwierigkeit verändern",
+          "notes": "SPEC §31 Schritt 6 / §34"
+        },
+        {
+          "term": "CHECK_TASK_TYPE",
+          "label_de": "Aufgabentyp prüfen",
+          "notes": "SPEC §31 Schritt 7. §31 führt Aufgabentyp (7) und Darstellung (8) als getrennte Prüfebenen; ohne diesen Grund ließe sich ein Wechsel der Frageform nicht von einem Darstellungswechsel unterscheiden (§116)."
+        },
+        {
+          "term": "CHANGE_REPRESENTATION",
+          "label_de": "Darstellung wechseln",
+          "notes": "SPEC §31 Schritt 8 / §69"
+        },
+        {
+          "term": "SUPPORT_ROUTE",
+          "label_de": "Förderroute (§91)",
+          "notes": "SPEC §91/§92/§93"
+        },
+        {
+          "term": "CEILING_SEARCH",
+          "label_de": "Obergrenze suchen",
+          "notes": "SPEC §54/§98"
+        },
+        {
+          "term": "TRANSFER_CHECK",
+          "label_de": "Transfer prüfen",
+          "notes": "SPEC §72/§91"
+        }
+      ]
+    },
+    {
+      "vocabulary": "REACTIVATION_REASON",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§39",
+      "description": "Gründe für die Reaktivierung einer geparkten Kompetenz. §39: Zeitgrenzen nicht hardcoden.",
+      "terms": [
+        {
+          "term": "CONTRADICTORY_EVIDENCE",
+          "label_de": "widersprüchliche Evidenz",
+          "notes": "SPEC"
+        },
+        {
+          "term": "EVIDENCE_TOO_OLD",
+          "label_de": "Evidenz zu alt",
+          "notes": "SPEC"
+        },
+        {
+          "term": "NEW_TARGET_REQUIRES_PREREQUISITE",
+          "label_de": "neues Ziel benötigt Voraussetzung und vorhandene Evidenz reicht nicht",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "CONFIG_STATUS",
+      "vocabulary_kind": "STATUS",
+      "spec_section": "§35, §41",
+      "description": "Verbindlichkeitsgrad eines Konfigurationswerts.",
+      "terms": [
+        {
+          "term": "CONFIGURABLE",
+          "label_de": "konfigurierbarer Default, empirisch zu prüfen",
+          "notes": "SPEC §41"
+        },
+        {
+          "term": "CONFIGURABLE_HEURISTIC",
+          "label_de": "konfigurierbare Heuristik ohne Kalibrierung",
+          "notes": "SPEC §35"
+        },
+        {
+          "term": "UNDEFINED",
+          "label_de": "fachlich nicht festgelegt",
+          "notes": "SPEC §1"
+        },
+        {
+          "term": "STRUCTURAL",
+          "label_de": "technische Struktureinstellung",
+          "notes": "TECHNICAL"
+        }
+      ]
+    },
+    {
+      "vocabulary": "CONFIDENCE_LEVEL",
+      "vocabulary_kind": "STATUS",
+      "spec_section": "§88",
+      "description": "Konfidenzangabe in der Lehrkraftansicht.",
+      "terms": [
+        {
+          "term": "LOW",
+          "label_de": "niedrig",
+          "notes": "SPEC"
+        },
+        {
+          "term": "MEDIUM",
+          "label_de": "mittel",
+          "notes": "SPEC"
+        },
+        {
+          "term": "HIGH",
+          "label_de": "hoch",
+          "notes": "SPEC"
+        }
+      ]
+    },
+    {
+      "vocabulary": "OPTIONS_STATUS",
+      "vocabulary_kind": "STATUS",
+      "spec_section": "§113",
+      "description": "Herkunft der Auswahloptionen eines Items. Dokumentiert, ob die Distraktoren aus der Spezifikation stammen oder vom Implementierer autorisiert wurden. Steht in task_payload.options_status und ist damit nicht per Fremdschlüssel erzwungen; der Validator prüft es.",
+      "terms": [
+        {
+          "term": "UNDEFINED",
+          "label_de": "nicht festgelegt",
+          "notes": "Item ist nach §113 nicht auslieferbar."
+        },
+        {
+          "term": "SPEC_GIVEN",
+          "label_de": "wörtlich aus der Spezifikation",
+          "notes": "Nur ZO02-D3-MIXED-A, ZP05-D2-B sowie die Zweiwahl-Items in §48."
+        },
+        {
+          "term": "IMPLEMENTER_AUTHORED",
+          "label_de": "vom Implementierer autorisiert",
+          "notes": "Distraktoren nach Entscheidung D-09, fachliche Freigabe offen."
+        }
+      ]
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "vocabulary_kind": "CLASSIFICATION",
+      "spec_section": "§116",
+      "description": "Was die Aufgabe verlangt, unabhängig von Darstellung (§16) und Bedienform (§17). Dritte Variable, die ein Vergleich konstant halten muss: 'Welchen Wert hat die Ziffer 6 in 364?' und 'Welchen Wert haben die Zehnerstangen zusammen?' fragen Verschiedenes, auch wenn Stufe und Antwortformat übereinstimmen. §116 verlangt, dass nur eine relevante Variable variiert; ohne dieses Feld wäre die Frageform eine unbeobachtete zweite. Entscheidung D-28.",
+      "terms": [
+        {
+          "term": "COUNT_OBJECTS",
+          "label_de": "Anzahl einer gezeigten Menge nennen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "STATE_TOTAL_AFTER_COUNTING",
+          "label_de": "nach dem Zählen die Gesamtanzahl nennen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "PLACE_EXACT_COUNT",
+          "label_de": "genau n Objekte legen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "PRODUCE_ACTION_COUNT",
+          "label_de": "genau n Handlungen ausführen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "PARTITION_OBJECTS",
+          "label_de": "Objekte verteilen, aufteilen oder bündeln",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "JUDGE_INVARIANCE",
+          "label_de": "beurteilen, ob eine Anzahl gleich bleibt",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "CONTINUE_SEQUENCE",
+          "label_de": "eine Zahlenfolge fortsetzen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "NAME_NEIGHBOUR",
+          "label_de": "Vorgänger, Nachfolger oder Zwischenzahl nennen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "COMPARE_NUMBERS",
+          "label_de": "zwei Zahlen vergleichen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "COMPARE_TO_REFERENCE",
+          "label_de": "Nähe zu einem genannten Bezugswert beurteilen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "MEASURE_DISTANCE",
+          "label_de": "Abstand zweier markierter Zahlen bestimmen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "COMPUTE_RESULT",
+          "label_de": "das Ergebnis einer gegebenen Rechnung angeben",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "COMPLETE_EQUATION",
+          "label_de": "eine Lücke in einer Gleichung füllen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "COMPLEMENT_TO_TARGET",
+          "label_de": "auf einen genannten Zielwert ergänzen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "DERIVE_FROM_KNOWN_FACT",
+          "label_de": "aus einer gegebenen Aufgabe eine andere ableiten",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "READ_NUMBER_FROM_MATERIAL",
+          "label_de": "eine Zahl aus Stellenwertmaterial ablesen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "COMPOSE_FROM_PLACES",
+          "label_de": "eine Zahl aus genannten Stellenwerten bilden",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "VALUE_OF_NAMED_DIGIT",
+          "label_de": "Wert einer genannten Ziffer bestimmen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "VALUE_OF_NAMED_PLACE",
+          "label_de": "Wert einer genannten Stelle bestimmen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "DIGIT_AT_NAMED_PLACE",
+          "label_de": "Ziffer an einer genannten Stelle nennen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "WORD_TO_NUMERAL",
+          "label_de": "ein Zahlwort als Zahlzeichen schreiben",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "SELECT_MATCHING_EXPRESSION",
+          "label_de": "die zur Situation passende Rechnung auswählen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "SELECT_EQUIVALENT_EXPRESSION",
+          "label_de": "eine wertgleiche, günstigere Rechnung auswählen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "SELECT_DECOMPOSITION",
+          "label_de": "die passende Zerlegung auswählen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "SELECT_STRATEGY",
+          "label_de": "die günstige Strategie auswählen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "MATCH_INVERSE",
+          "label_de": "die zugehörige Umkehraufgabe zuordnen",
+          "notes": "TECHNICAL"
+        },
+        {
+          "term": "NAME_DECOMPOSITION",
+          "label_de": "eine hilfreiche Zerlegung selbst angeben",
+          "notes": "TECHNICAL"
+        }
+      ]
+    }
+  ]
+}
