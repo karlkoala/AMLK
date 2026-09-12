@@ -25,7 +25,7 @@ import mimetypes
 import sqlite3
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import unquote, urlparse
+from urllib.parse import quote, unquote, urlparse
 
 from . import api
 from .clock import Clock
@@ -39,9 +39,34 @@ ALLOWED_SUFFIXES = {".html", ".css", ".js", ".json", ".svg", ".woff2", ".map"}
 
 
 def _readonly(path: Path) -> sqlite3.Connection:
-    conn = sqlite3.connect(f"file:{path.as_posix()}?mode=ro", uri=True,
-                           check_same_thread=False)
+    """Schreibgeschuetzte Verbindung - und der Nachweis, dass sie es ist.
+
+    Der Pfad wird in die URI *kodiert* eingesetzt, nicht angehaengt. Ein ``#``
+    oder ``?`` im Verzeichnisnamen beendet die URI sonst vor dem Parameter:
+    aus ``file:/…/Kunde #3/mathkomp.sqlite3?mode=ro`` liest SQLite die Datei
+    ``/…/Kunde``, legt sie notfalls neu an, und ``mode=ro`` ist verschwunden -
+    ohne Warnung. Die im Modulkopf zugesagte Eigenschaft "eine Betrachtung
+    darf keine Diagnostik veraendern" waere damit aufgehoben, und die
+    Oberflaeche zeigte eine leere Datenbank statt eines Fehlers.
+
+    Unter Windows ist das latent, weil ``?`` dort kein gueltiger Dateiname
+    ist. Auf APFS ist er es. Der Schutz lag also im Dateisystem, nicht im
+    Code. Deshalb wird zusaetzlich nachgesehen, welche Datei SQLite
+    tatsaechlich geoeffnet hat: nur wenn das die gemeinte ist, stimmt auch
+    alles andere an dieser Verbindung.
+    """
+    ziel = path.resolve()
+    conn = sqlite3.connect("file:" + quote(ziel.as_posix(), safe="/:") + "?mode=ro",
+                           uri=True, check_same_thread=False)
     conn.row_factory = sqlite3.Row
+    geoeffnet = conn.execute("PRAGMA database_list").fetchone()["file"]
+    if not geoeffnet or Path(geoeffnet).resolve() != ziel:
+        conn.close()
+        raise sqlite3.OperationalError(
+            f"Geoeffnet wurde {geoeffnet or '(keine Datei)'}, gemeint war {ziel}. "
+            "Der Pfad enthaelt vermutlich ein Zeichen, das SQLite in einer URI "
+            "anders liest. Datenbank an einen Pfad ohne '#', '?' oder '%' legen "
+            "oder mit --db ausdruecklich angeben.")
     return conn
 
 
@@ -135,10 +160,16 @@ class Handler(BaseHTTPRequestHandler):
         target = (self.ui_root / path.lstrip("/")).resolve()
         if not target.is_relative_to(self.ui_root.resolve()):
             return self._error(403, "Pfad ausserhalb des UI-Verzeichnisses")
-        if target.suffix not in ALLOWED_SUFFIXES or not target.is_file():
+        # Kleingeschrieben verglichen, weil `resolve()` nur unter Windows die
+        # Schreibweise auf dem Datentraeger zurueckgibt. Auf macOS findet
+        # `is_file()` die Datei ebenfalls (APFS ist gross-/kleinschreibungs-
+        # unabhaengig), aber `suffix` bliebe ".JS" - dieselbe URL waere hier
+        # 200 und dort 404.
+        suffix = target.suffix.lower()
+        if suffix not in ALLOWED_SUFFIXES or not target.is_file():
             return self._error(404, f"Nicht gefunden: {path}")
-        ctype = mimetypes.types_map.get(target.suffix, "application/octet-stream")
-        if ctype.startswith("text/") or target.suffix in (".js", ".json", ".svg"):
+        ctype = mimetypes.types_map.get(suffix, "application/octet-stream")
+        if ctype.startswith("text/") or suffix in (".js", ".json", ".svg"):
             ctype = f"{ctype}; charset=utf-8"
         self._send(200, target.read_bytes(), ctype)
 

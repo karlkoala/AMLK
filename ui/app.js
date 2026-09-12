@@ -202,9 +202,9 @@ async function start() {
       leeren(inhalt).append(el("div.fehlermeldung", {},
         el("h2", "Keine Schüler:innen in der Datenbank"),
         el("p", "Ein Durchlauf entsteht mit "),
-        el("p.mono", "py -m mathkomp session KIND-01 --grade 3"),
+        el("p.mono", "mathkomp session KIND-01 --grade 3"),
         el("p", "oder, für die sechs Testfälle aus §98–§103: "),
-        el("p.mono", "py -m mathkomp simulate")));
+        el("p.mono", "mathkomp simulate")));
       return;
     }
 
@@ -226,7 +226,7 @@ async function start() {
       el("h2", "Das Backend antwortet nicht"),
       el("p", String(fehler.message || fehler)),
       el("p", "Die Oberfläche erfindet keine Ersatzdaten. Server starten mit:"),
-      el("p.mono", "py -m mathkomp ui")));
+      el("p.mono", "mathkomp ui")));
   }
 }
 

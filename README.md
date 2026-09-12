@@ -13,16 +13,43 @@ auf diese Spezifikation.
 
 ## Schnellstart
 
-**1. Einmalig einrichten.** Datenbank aus dem Content aufbauen:
+**0. Einmalig einrichten.** Eine virtuelle Umgebung anlegen und das Projekt
+hineininstallieren. Danach steht der Befehl `mathkomp` zur Verfügung — auf jedem
+System gleich geschrieben, ohne `PYTHONPATH` und ohne die Frage, ob der
+Interpreter `python`, `python3` oder `py` heißt.
 
 ```bash
-python -m mathkomp build --force
+python3 -m venv .venv && source .venv/bin/activate && pip install -e ".[dev]"
 ```
+
+Unter Windows in PowerShell:
+
+```powershell
+py -m venv .venv; .\.venv\Scripts\Activate.ps1; pip install -e ".[dev]"
+```
+
+Der Selbsttest der Voraussetzungen — Python ≥ 3.11 und ein SQLite, das
+`json_valid()` kennt (beides wird gebraucht, siehe unten):
+
+```bash
+python -c "import sys,sqlite3;print(sys.version.split()[0], sqlite3.sqlite_version, sqlite3.connect(':memory:').execute(\"select json_valid('[]')\").fetchone()[0])"
+```
+
+**1. Datenbank aus dem Content aufbauen.**
+
+```bash
+mathkomp build
+```
+
+`build` legt die Datei `mathkomp.sqlite3` an. Existiert sie schon, ist `--force`
+nötig — und enthält sie bereits erhobene Schüler:innendaten, verweigert `build`
+den Neuaufbau und nennt, was verloren ginge. Content kommt aus `content/`
+zurück, eine Sitzung mit einem Kind nicht.
 
 **2. Prüfen, dass alles stimmt.** 19 Prüfregeln gegen die Spezifikation:
 
 ```bash
-python -m mathkomp validate
+mathkomp validate
 ```
 
 **3. Mit einem Kind arbeiten.** Das ist der eigentliche Betrieb — die
@@ -30,7 +57,7 @@ Schüler:innenansicht aus §105. Die ID ist frei wählbar und pseudonym (§86: *
 Klarname**):
 
 ```bash
-python -m mathkomp session KIND-01 --grade 3
+mathkomp session KIND-01 --grade 3
 ```
 
 Das System zeigt eine Aufgabe, nimmt die Antwort entgegen, wählt die nächste. `:hilfe`
@@ -41,7 +68,7 @@ Aufgabe kommt (§89); `:weiter` übergeht den Vorschlag, weil nach §3 die Lehrk
 **4. Ergebnis ansehen.** Die Lehrkraftansicht nach §106:
 
 ```bash
-python -m mathkomp student KIND-01
+mathkomp student KIND-01
 ```
 
 **5. Die Analyseoberfläche öffnen.** Dieselben Daten im Browser, nach dem
@@ -49,7 +76,7 @@ Implementierungsauftrag für die UI — acht Bereiche von der Übersicht über d
 Kompetenzkarte bis zum Entscheidungsprotokoll:
 
 ```bash
-python -m mathkomp ui
+mathkomp ui
 ```
 
 Dann `http://127.0.0.1:8765/` aufrufen. Der Server bindet **nur lokal** und öffnet die
@@ -66,11 +93,13 @@ Ohne Kind ausprobieren geht auch — `simulate` spielt die sechs Testfälle aus 
 vorgegebenem Antwortverhalten durch:
 
 ```bash
-python -m mathkomp simulate
+mathkomp simulate
 ```
 
+Die Tests (`pytest` kommt aus dem `[dev]`-Extra in Schritt 0):
+
 ```bash
-python -m pytest tests -q
+pytest tests -q
 ```
 
 Weitere Kommandos und Schalter: `report` (Content-Übersicht), `routes <task_id>` (Routen
@@ -80,11 +109,61 @@ einer Aufgabe), `student <id> --profile` (Zielbild nach §118), `student <id> --
 `session <id> --diagnose` (Fehlercodes, Status und Hypothesen mitschreiben — das gehört
 nach §106 in die Lehrkraftansicht und ist deshalb **nicht** voreingestellt).
 
-Voraussetzungen: Python ≥ 3.11, SQLite ≥ 3.31 (beides in der Standardinstallation),
-`pytest` für die Tests. **Keine Laufzeitabhängigkeiten.** Unter Windows `PYTHONUTF8=1`
-setzen, sonst zerlegt die Konsole das §-Zeichen. `PYTHONPATH=src` setzen oder
-`pip install -e .`. Falls `python` unter Windows den Microsoft-Store öffnet, stattdessen
-`py -m mathkomp …` verwenden.
+## Voraussetzungen
+
+**Keine Laufzeitabhängigkeiten** — nur Standardbibliothek. Gebraucht werden aber:
+
+| | | |
+|---|---|---|
+| Python | ≥ 3.11 | `pyproject.toml` setzt diese Untergrenze; `pip` bricht darunter ab |
+| SQLite | ≥ 3.38 | `schema.sql` nutzt 29 `GENERATED … VIRTUAL`-Spalten (ab 3.31) und 13 `CHECK (json_valid(…))` — Funktionsnamen in `CHECK` löst SQLite schon beim `CREATE TABLE` auf, ohne JSON1 stirbt der Build |
+| pytest | ≥ 8 | nur für die Tests, im `[dev]`-Extra |
+
+**macOS.** `python3` aus den Xcode Command Line Tools ist 3.9.6 und damit zu alt.
+Erst ein eigenes Python installieren, etwa `brew install python@3.12`, dann
+Schritt 0. Ohne aktivierte virtuelle Umgebung lehnt Homebrew-`pip` die
+Installation nach PEP 668 mit `externally-managed-environment` ab — das ist
+kein Fehler des Projekts, sondern der fehlende Schritt 0.
+
+**Windows.** `PYTHONUTF8=1` setzen, sonst zerlegt die Konsole das §-Zeichen.
+Öffnet `python` den Microsoft Store, ist es der Store-Platzhalter; dann `py`
+verwenden. Beides erledigt sich innerhalb der aktivierten virtuellen Umgebung.
+
+**Ohne Installation** geht es auch — dann muss `PYTHONPATH=src` gesetzt sein und
+statt `mathkomp …` heißt es `python3 -m mathkomp …` (macOS, Linux) oder
+`py -m mathkomp …` (Windows). Nur `pip install -e .` wird unterstützt, nicht
+`pip install .`: `content/`, `ui/` und der Standardpfad der Datenbank liegen
+neben dem Paket, nicht darin, und wären nach einem Kopier-Install nicht mehr
+auffindbar.
+
+## Übergabe an eine andere Person
+
+Weitergegeben wird der **Quellbaum ohne erzeugte Dateien**. Das Projekt ist kein
+Git-Repository, die `.gitignore` filtert beim Kopieren also nichts — vor dem
+Packen von Hand aufräumen:
+
+```bash
+find . -name __pycache__ -type d -prune -exec rm -rf {} + && rm -rf .pytest_cache *.egg-info .venv
+```
+
+**`mathkomp.sqlite3` gehört nicht dazu.** Sie enthält erhobene Daten (§86) und
+lässt sich aus `content/` vollständig neu erzeugen — zwei frische Builds ergeben
+dieselbe Datei. Wird sie dennoch mitgegeben, findet `simulate` die acht Profile
+bereits vor, spielt je Fall nur einen Schritt und meldet *„§123 Kriterium 20 —
+unterschiedliche Pfade: NICHT erfüllt"*: eine falsche Abnahmeaussage aus
+richtigen Daten. Wer die erhobenen Daten trotzdem zeigen will, gibt die Datei
+unter anderem Namen mit und liest sie nur: `mathkomp --db referenz.sqlite3 ui`.
+
+Die empfangende Person führt dann Schritt 0 bis 5 des Schnellstarts aus. Auf
+einem frischen macOS zusätzlich davor: ein eigenes Python installieren, siehe
+Voraussetzungen.
+
+Was dabei entsteht: `build` importiert den Content, `simulate` erzeugt aus den
+sechs Testfällen §98–§103 die sieben Profile `SIM-A` bis `SIM-F` (Fall E zerfällt
+in `SIM-E1` und `SIM-E2`). Das achte Profil des Entwicklungsstands,
+`DEMO-LAUFEND`, ist ein bewusst abgebrochener Durchlauf und
+entsteht mit `mathkomp session DEMO-LAUFEND --grade 3 --max-tasks 4` — die
+Übersicht zeigt danach den offenen Aufgabenvorschlag statt „nicht weiter testen".
 
 ## Stand
 
@@ -100,7 +179,7 @@ setzen, sonst zerlegt die Konsole das §-Zeichen. `PYTHONPATH=src` setzen oder
 | Konfigurationsschlüssel | 46, davon 0 `UNDEFINED` |
 | Vokabulare / Terme | 34 / 259 |
 | Prüfregeln | 19 → **0 Fehler**, 3 Hinweise |
-| Tests | 156 |
+| Tests | 169 (1 nur auf Unix-Dateisystemen) |
 | Module | 23 |
 
 Die drei verbleibenden Hinweise betreffen bewusst offene fachliche Fragen, siehe
@@ -128,7 +207,7 @@ ENTSCHEIDUNGEN.md D-06).
 
 ## Die sechs Testfälle (§98–§103)
 
-`python -m mathkomp simulate` spielt sie durch. Das ist Kriterium 20 der Definition of
+`mathkomp simulate` spielt sie durch. Das ist Kriterium 20 der Definition of
 Done: dasselbe System muss bei unterschiedlichem Antwortverhalten unterschiedliche,
 fachlich begründete Wege wählen.
 
@@ -197,11 +276,12 @@ ui/                 Analyseoberfläche — reine Darstellung, ohne Fachlogik
   views/            übersicht, karte, fehleranalyse, darstellung, hypothesen,
                     evidenz, verlauf, debug
 
-tests/              156 Tests
+tests/              169 Tests, darunter test_portabilitaet.py (Windows/macOS)
 tools/              Einmalige Werkzeuge (Fragment-Merge, Korrekturen aus der Prüfrunde)
 ENTSCHEIDUNGEN.md   Was die Spezifikation offenlässt und wie entschieden wurde
 OFFENE_FRAGEN.md    7 offene, 24 entschiedene fachliche Punkte
 SPEC_VOLLTEXT.txt   Extrahierter Volltext der Spezifikation, zum Nachschlagen
+.editorconfig       Erzwingt UTF-8 — siehe Schreibkonvention
 ```
 
 ## Die drei Ebenen (§85)
@@ -308,8 +388,15 @@ Bezeichner sind ASCII und englisch: `competency_id`, `ZO02_NUMBER_UNDERSTANDING`
 „Problemlösen", `task_prompt` „Zähle die Punkte." Damit bleiben IDs in Dateinamen, URLs und
 SQL unproblematisch, während alles, was Kind oder Lehrkraft liest, korrekt geschrieben ist.
 
-Kommentare in `schema.sql` und in den Python-Modulen sind ASCII-transliteriert, damit die
-Quelldateien unabhängig von der Encoding-Einstellung des Editors lesbar bleiben.
+Umlaute in Kommentaren sind überwiegend transliteriert (`ue`, `ae`, `oe`), das
+Paragraphenzeichen § dagegen nicht — 117-mal in `schema.sql`, in 21 der 23 Module.
+Alle Quelldateien sind **UTF-8 ohne BOM und in NFC**; der Editor muss auf UTF-8
+stehen, eine `.editorconfig` im Wurzelverzeichnis setzt das durch. Das ist keine
+Stilfrage: `scoring.py` bildet in `_OP_ALIASES` die Operatorzeichen `·`, `×`,
+`÷`, `−` und `–` auf ASCII ab. Schreibt ein als Latin-1 eingestellter Editor
+diese Datei zurück, erkennt `normalize_expression()` die Schreibweisen nicht
+mehr — und eine richtige Antwort wird still als falsch gewertet. Ebenso betroffen
+wären die lehrkraftsichtbaren Texte in `teacher.py`, `api.py` und unter `ui/`.
 
 ## Notation der Item-IDs
 

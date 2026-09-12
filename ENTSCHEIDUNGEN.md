@@ -942,3 +942,113 @@ Bleibt der Fall, in dem die Kandidaten wirklich gleichauf liegen: bei DEMO-LAUFE
 fünf Aufgaben mit identischem Score nebeneinander. Warum eine davon gewann, ist aus dem
 Protokoll nicht zu beantworten — `margin` wird berechnet und nicht gespeichert (offene
 Frage F-29). Die Ansicht schreibt diesen Satz jetzt hin, statt die Frage offenzulassen.
+
+## Sechste Prüfrunde — die Übergabe auf ein anderes Betriebssystem
+
+Das Projekt ist ausschließlich unter Windows entstanden. Eine Prüfung in sieben Richtungen
+— Pfade, Kodierung, Python- und SQLite-Version, Server, Konsole, Packaging, Übergabe — hat
+43 belegte Befunde ergeben. Der überwiegende Teil betrifft die Anleitung. Drei Befunde
+betreffen den Code, und sie haben dieselbe Form: **eine Eigenschaft von Windows hat einen
+Fehler verdeckt, der im Programm steht.**
+
+### D-49 — Der Schreibschutz der Ansicht lag im Dateinamen, nicht im Code
+
+`server._readonly()` hat den Pfad in die SQLite-URI eingesetzt statt ihn zu kodieren:
+`f"file:{path.as_posix()}?mode=ro"`. Enthält ein Verzeichnisname ein `#`, endet die URI
+dort — alles danach ist Fragment, auch `mode=ro`. Gemessen: bei `…/Kunde #3/db.sqlite3`
+öffnet SQLite die Datei `…/Kunde`, legt sie an, wenn es sie nicht gibt, und die Verbindung
+ist **schreibbar**. `CREATE TABLE` gelingt. Die Oberfläche meldet „0 Schüler:innen" und
+nennt keinen Grund.
+
+Damit war die Zusage aus dem Modulkopf — „eine Betrachtung darf keine Diagnostik verändern"
+(§89) — nicht durch den Code gesichert, sondern dadurch, dass NTFS `?` als Dateinamen
+verbietet und `#` selten vorkommt. APFS erlaubt `?`.
+
+Der Pfad wird jetzt mit `quote()` kodiert. Zusätzlich sieht `_readonly()` über
+`PRAGMA database_list` nach, **welche** Datei SQLite geöffnet hat, und bricht mit einer
+lesbaren Meldung ab, wenn es nicht die gemeinte ist. Aus einem stillen Verlust wird ein
+Startfehler. Dieselbe Kodierung in `cli._erhobene_daten()`.
+
+### D-50 — Was `content/` nicht zurückgibt, wird nicht mehr kommentarlos gelöscht
+
+`build --force` rief `dbpath.unlink()`. Läuft nebenher eine `session`, wirft das unter
+Windows `PermissionError` — die Sitzung war geschützt, ohne dass das je entschieden worden
+wäre. Unter macOS und Linux verschwindet nur der Verzeichniseintrag: die Sitzung schreibt
+in den nun namenlosen Inode weiter und verliert beim Beenden alles. Keine Meldung auf
+keiner Seite.
+
+Unabhängig vom Betriebssystem galt ohnehin: der erste Befehl des Schnellstarts löschte 598
+erhobene Zeilen — acht Profile, 47 Versuche, 168 Evidenzereignisse, 84 Entscheidungen —
+und sagte nichts. Der Content kommt aus `content/` zurück, eine Sitzung mit einem Kind
+nicht (§85, USER STATE).
+
+`build --force` zählt jetzt vor dem Löschen die Zeilen der USER-STATE-Ebene, bricht ab,
+wenn welche da sind, nennt sie nach Tabelle und weist auf eine mögliche laufende Sitzung
+hin. Der ausdrückliche Weg bleibt offen und heißt `--force --discard-data`.
+
+### D-51 — Keine Aussage ohne Datengrundlage
+
+`sqlite3.connect()` legt eine fehlende Datei stillschweigend an. Wer `validate` vor `build`
+aufrief, bekam deshalb eine leere Datenbank — und darauf drei gemeldete **Verstöße** gegen
+§75, §62 und §115, also genau die drei Sperren, mit denen dieses Projekt seine strukturelle
+Absicherung begründet. Gemeldet wurde das Fehlen der Konfiguration als ihre Verletzung.
+Nebenbei lag danach eine leere Datei am Standardpfad, und der nächste `build` verlangte
+`--force`, ohne dass je etwas gebaut worden wäre.
+
+Alle lesenden Befehle gehen jetzt durch `_lesen()`: Datei vorhanden, Schema vollständig,
+Content vorhanden — sonst Abbruch mit dem Befehl, der fehlt. Eine Regel gegen Nichts zu
+prüfen ergibt keine Aussage, sondern nur eine, die wie eine aussieht.
+
+### D-52 — Was sonst noch am Betriebssystem hing
+
+- **Die Startbefehle.** README, Fehlermeldungen der Kommandozeile und die Oberfläche selbst
+  nannten `python -m mathkomp …` beziehungsweise `py -m mathkomp …`. Auf einem frischen
+  macOS existiert **keines von beiden** — `py` ist der Windows-Launcher, `python` gibt es
+  dort nicht, nur `python3`. Der Leser auf dem Mac hatte damit keinen Befehl, der
+  funktioniert. Überall steht jetzt `mathkomp …`, der Konsolenbefehl aus `pyproject.toml`;
+  er heißt nach `pip install -e .` auf jedem System gleich. Ein Test hält Zeichenketten in
+  `src/` und `ui/` frei von plattformgebundenen Aufrufen. Der Hilfetext nennt den
+  Unterschied weiterhin ausdrücklich — dort ist er der Gegenstand, keine Anweisung.
+- **Die Zeilenbearbeitung.** `interactive.py` importierte `readline` nicht. Unter Windows
+  liefert die Konsole Historie und Cursorbewegung selbst; auf macOS und Linux nicht. Pfeil
+  hoch schickte dort `ESC [ A` in die Zeile, und §59 reicht eine nichtnumerische Eingabe
+  bewusst als Antwort durch, statt sie abzuweisen — derselbe Reflex bedeutete auf den
+  beiden Systemen Gegenteiliges, hier Wiederholung, dort ein falscher Versuch in
+  `task_attempts`. Der Import steht jetzt da, in `try/except ImportError`, weil das Modul
+  unter Windows in der Standardinstallation fehlt.
+- **Die Dateiendung.** `_static()` verglich `target.suffix` gegen eine kleingeschriebene
+  Positivliste. `resolve()` gibt aber nur unter Windows die Schreibweise auf dem Datenträger
+  zurück: `/index.HTML` war hier 200 und auf dem case-insensitiven APFS 404. Verglichen
+  wird jetzt kleingeschrieben.
+- **Der belegte Port.** `SO_REUSEADDR` bedeutet auf beiden Systemen Verschiedenes: unter
+  Windows binden zwei Server denselben Port **stillschweigend**, unter macOS scheitert der
+  zweite mit `EADDRINUSE`. Beides ist unerfreulich, das zweite aber sichtbar — `cmd_ui`
+  erkennt den Fall jetzt und nennt Portnummer und Ausweg statt nur „Server nicht gestartet".
+- **`SPEC_VOLLTEXT.txt`** war die einzige Datei des Projekts, die nicht UTF-8 war, sondern
+  cp1252. Unter Windows öffnet sie sich mangels BOM lesbar, auf macOS als Zeichensalat —
+  ausgerechnet das Dokument, auf das jeder §-Verweis zeigt. Konvertiert; die 35 weichen
+  Trennzeichen (`U+00AD`), die dort standen, wo ein Gedankenstrich gemeint war, sind jetzt
+  Gedankenstriche. Ein Test hält alle Textdateien auf UTF-8 ohne BOM.
+- **Die Zusage in der README**, Kommentare seien ASCII-transliteriert, war falsch: 117 `§`
+  allein in `schema.sql`, in 21 der 23 Module. Der Satz sagte der neuen Kollegin, die
+  Encoding-Einstellung ihres Editors sei folgenlos. Sie ist es nicht: `scoring.py` bildet
+  `·`, `×`, `÷`, `−` und `–` auf ASCII ab — schreibt ein Latin-1-Editor die Datei zurück,
+  wird eine richtige Antwort still als falsch gewertet. Der Satz nennt jetzt die Lage, und
+  eine `.editorconfig` setzt UTF-8 durch, statt es zu behaupten.
+
+### D-53 — Die fertige Datenbank gehört nicht zur Übergabe
+
+`mathkomp.sqlite3` lag im Projektordner, war in keiner `.md` erwähnt und ist durch
+`.gitignore` ausdrücklich ausgeschlossen — ein Git-Verzeichnis gibt es allerdings nicht,
+die Auswahl trug beim Kopieren also nichts.
+
+Wird die Datei mitgegeben, findet `simulate` seine sieben Profile bereits vor. `ensure_student`
+kehrt bei vorhandener ID sofort zurück, der alte Zustand bleibt stehen, die Engine hält die
+Knoten für hinreichend informiert: jeder der sechs Fälle endet nach **einem** Schritt, und
+die letzte Zeile lautet „§123 Kriterium 20 — unterschiedliche Pfade: **NICHT erfüllt**".
+Eine falsche Abnahmeaussage aus richtigen Daten. Auf frischem Build: erfüllt.
+
+Übergeben wird deshalb der Quellbaum ohne erzeugte Dateien. Das ist vertretbar, weil der
+Aufbau nachweislich reproduzierbar ist — zwei frische Builds ergeben dieselbe Datei, SHA-256
+`fb6d6459286cd790b6790b660a4c63b7b95ef8f93aa3d6c46c301fbd446dc1ab`. Wer die erhobenen Daten
+zeigen will, gibt die Datei unter anderem Namen mit und liest sie nur.

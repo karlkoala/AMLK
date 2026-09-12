@@ -1,0 +1,26 @@
+# Die Quelldateien sind UTF-8 ohne BOM und in NFC. Das ist keine Stilfrage:
+# scoring.py bildet in _OP_ALIASES die Operatorzeichen ·, ×, ÷, − und – auf
+# ASCII ab. Schreibt ein als Latin-1 eingestellter Editor diese Datei zurueck,
+# erkennt normalize_expression() die Schreibweisen nicht mehr - und eine
+# richtige Antwort wird still als falsch gewertet. Ebenso betroffen sind die
+# lehrkraftsichtbaren Texte in teacher.py, api.py und unter ui/.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.py]
+indent_style = space
+indent_size = 4
+
+[*.{js,css,html,json}]
+indent_style = space
+indent_size = 2
+
+[SPEC_VOLLTEXT.txt]
+# Extrahierter Volltext, Zeilenenden unveraendert aus der Quelle.
+end_of_line = unset
+trim_trailing_whitespace = false

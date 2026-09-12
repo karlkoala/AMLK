@@ -1,79 +1,79 @@
-MVP V1.0 ­ Adaptives Mathematik-Lern- und
+MVP V1.0 â€“ Adaptives Mathematik-Lern- und
 Kompetenzsystem
 
 Fachliche und technische Spezifikation zur Umsetzung
 
 Version: 1.0
 Status: Implementierbarer MVP-Entwurf
-Fachlicher Fokus: Mathematik ­ zunächst Zahl und Operation
-Referenzbereich: Primarstufe mit besonderem Interesse am Übergang Klasse 4  Sekundarstufe
-Architektur: von Beginn an jahrgangsübergreifend erweiterbar
+Fachlicher Fokus: Mathematik â€“ zunÃ¤chst Zahl und Operation
+Referenzbereich: Primarstufe mit besonderem Interesse am Ãœbergang Klasse 4  Sekundarstufe
+Architektur: von Beginn an jahrgangsÃ¼bergreifend erweiterbar
 
 1. Zweck dieses Dokuments
 
-Dieses Dokument beschreibt verbindlich, was für MVP V1 gebaut werden soll.
+Dieses Dokument beschreibt verbindlich, was fÃ¼r MVP V1 gebaut werden soll.
 
-Die umsetzende Person ist primär für die technische Realisierung zuständig.
+Die umsetzende Person ist primÃ¤r fÃ¼r die technische Realisierung zustÃ¤ndig.
 
 Fachliche Beziehungen, diagnostische Interpretationen, Schwierigkeitsgrade oder psychologische
-Schlussfolgerungen sollen nicht eigenständig ergänzt werden.
+Schlussfolgerungen sollen nicht eigenstÃ¤ndig ergÃ¤nzt werden.
 
 Wenn eine fachliche Information fehlt:
  UNDEFINED
 
-setzen und fachliche Rückfrage stellen.
+setzen und fachliche RÃ¼ckfrage stellen.
 
 2. Vision des Gesamtsystems
 
 Langfristig soll ein digitales Lernsystem entstehen, das durch die Nutzung ein zunehmend
-differenziertes Bild darüber entwickelt,
+differenziertes Bild darÃ¼ber entwickelt,
 
-        · welche mathematischen Kompetenzen eine Schüler:in sicher besitzt,
-        · welche Kompetenzen noch nicht stabil sind,
-        · wo Schwierigkeiten auftreten,
-        · unter welchen Aufgabenbedingungen diese Schwierigkeiten auftreten,
-        · welche Darstellungsformen unterstützen,
-        · welche mathematischen Voraussetzungen fehlen könnten,
-        · welche höheren Kompetenzen bereits vorhanden sind,
-        · welche Förderung als Nächstes sinnvoll sein könnte.
+        Â· welche mathematischen Kompetenzen eine SchÃ¼ler:in sicher besitzt,
+        Â· welche Kompetenzen noch nicht stabil sind,
+        Â· wo Schwierigkeiten auftreten,
+        Â· unter welchen Aufgabenbedingungen diese Schwierigkeiten auftreten,
+        Â· welche Darstellungsformen unterstÃ¼tzen,
+        Â· welche mathematischen Voraussetzungen fehlen kÃ¶nnten,
+        Â· welche hÃ¶heren Kompetenzen bereits vorhanden sind,
+        Â· welche FÃ¶rderung als NÃ¤chstes sinnvoll sein kÃ¶nnte.
 Das System soll nicht nur Defizite suchen.
 
                                                                          1
-Es soll gleichermaßen erkennen:
+Es soll gleichermaÃŸen erkennen:
 
-        · Defizite,
-        · vorhandene Kompetenzen,
-        · überdurchschnittliche Fähigkeiten,
-        · ungewöhnlich hohe Kompetenzstände,
-        · mögliche Entwicklungspotenziale.
-Eine Schüler:in soll daher nicht künstlich auf Aufgaben der eigenen Klassenstufe begrenzt werden.
+        Â· Defizite,
+        Â· vorhandene Kompetenzen,
+        Â· Ã¼berdurchschnittliche FÃ¤higkeiten,
+        Â· ungewÃ¶hnlich hohe KompetenzstÃ¤nde,
+        Â· mÃ¶gliche Entwicklungspotenziale.
+Eine SchÃ¼ler:in soll daher nicht kÃ¼nstlich auf Aufgaben der eigenen Klassenstufe begrenzt werden.
 
 3. Rolle der Lehrkraft
 
-Das System trifft keine endgültigen pädagogischen oder diagnostischen Entscheidungen.
+Das System trifft keine endgÃ¼ltigen pÃ¤dagogischen oder diagnostischen Entscheidungen.
 
 Grundprinzip:
 
-          KI/System + Schüler:in + Lehrkraft
+          KI/System + SchÃ¼ler:in + Lehrkraft
 
 Das System liefert:
 
-        · Beobachtungen,
-        · Kompetenz-Evidenz,
-        · Muster,
-        · offene Hypothesen,
-        · mögliche nächste Prüfschritte,
-        · Fördervorschläge.
+        Â· Beobachtungen,
+        Â· Kompetenz-Evidenz,
+        Â· Muster,
+        Â· offene Hypothesen,
+        Â· mÃ¶gliche nÃ¤chste PrÃ¼fschritte,
+        Â· FÃ¶rdervorschlÃ¤ge.
 Die Lehrkraft kann:
 
-        · Ergebnisse einsehen,
-        · Hypothesen überprüfen,
-        · Aufgaben auswählen,
-        · Aufgaben sperren,
-        · Förderpfade verändern,
-        · Beobachtungen ergänzen,
-        · Systementscheidungen übersteuern.
-Spätere medizinische oder psychologische Diagnosen ­ beispielsweise ADHS ­ sind nicht Bestandteil
+        Â· Ergebnisse einsehen,
+        Â· Hypothesen Ã¼berprÃ¼fen,
+        Â· Aufgaben auswÃ¤hlen,
+        Â· Aufgaben sperren,
+        Â· FÃ¶rderpfade verÃ¤ndern,
+        Â· Beobachtungen ergÃ¤nzen,
+        Â· Systementscheidungen Ã¼bersteuern.
+SpÃ¤tere medizinische oder psychologische Diagnosen â€“ beispielsweise ADHS â€“ sind nicht Bestandteil
 dieses MVP.
 
 4. Was MVP V1 beweisen soll
@@ -82,12 +82,12 @@ Der MVP muss zeigen, dass ein System nicht einfach:
 
           richtig / falsch
 
-zählt, sondern durch gezielte Aufgaben herausfinden kann:
+zÃ¤hlt, sondern durch gezielte Aufgaben herausfinden kann:
 
                                                                          2
-          Was kann die Schüler:in? Wo beginnt eine reproduzierbare Schwierigkeit? Welche
-          Voraussetzung, Zahlenstruktur, Strategie oder Darstellung könnte diese erklären?
-          Und welche nächste Aufgabe liefert den höchsten zusätzlichen Informationswert?
+          Was kann die SchÃ¼ler:in? Wo beginnt eine reproduzierbare Schwierigkeit? Welche
+          Voraussetzung, Zahlenstruktur, Strategie oder Darstellung kÃ¶nnte diese erklÃ¤ren?
+          Und welche nÃ¤chste Aufgabe liefert den hÃ¶chsten zusÃ¤tzlichen Informationswert?
 
 5. Wissenschaftlicher Bezugsrahmen
 
@@ -96,26 +96,26 @@ Die fachliche Struktur orientiert sich insbesondere an:
       1. KMK Bildungsstandards Mathematik Primarbereich
       2. IQB Kompetenz- und Aufgabenstrukturen
       3. IQB VERA-3 Mathematik
-      4. PIKAS/DZLM ­ Arithmetische Basiskompetenzen
-      5. Forschung zu Zählprinzipien
+      4. PIKAS/DZLM â€“ Arithmetische Basiskompetenzen
+      5. Forschung zu ZÃ¤hlprinzipien
       6. Forschung zu mathematischen Strategien und Aufgabenvariation
       7. Forschung zu adaptivem Testen
-Die KMK unterscheidet fünf inhaltsbezogene Leitideen und sechs prozessbezogene mathematische
-Kompetenzen. Sie betont ausdrücklich vernetztes Lernen, individuelle Lernwege sowie das flexible
+Die KMK unterscheidet fÃ¼nf inhaltsbezogene Leitideen und sechs prozessbezogene mathematische
+Kompetenzen. Sie betont ausdrÃ¼cklich vernetztes Lernen, individuelle Lernwege sowie das flexible
 Anwenden mathematischen Wissens.
 
 Die Leitidee Zahl und Operation umfasst insbesondere Zahlvorstellungen, Zahlbeziehungen,
-Stellenwertverständnis, die vier Grundoperationen, Rechenstrategien, Rechengesetze und die
+StellenwertverstÃ¤ndnis, die vier Grundoperationen, Rechenstrategien, Rechengesetze und die
 Anwendung in Kontexten.
 
 PIKAS/DZLM differenziert arithmetische Basiskompetenzen unter anderem in:
 
-        · Zahlverständnis,
-        · Operationsverständnis,
-        · Stellenwertverständnis,
-        · schnelles Kopfrechnen,
-        · Zahlenrechnen,
-        · Ziffernrechnen.
+        Â· ZahlverstÃ¤ndnis,
+        Â· OperationsverstÃ¤ndnis,
+        Â· StellenwertverstÃ¤ndnis,
+        Â· schnelles Kopfrechnen,
+        Â· Zahlenrechnen,
+        Â· Ziffernrechnen.
 
 6. Wichtige wissenschaftliche Grenze
 
@@ -125,25 +125,25 @@ Die im MVP neu erstellten Aufgaben sind:
 
 Sie sind keine psychometrisch validierten diagnostischen Testitems.
 
-Die internen Schwierigkeitsstufen D1­D5 sind ebenfalls keine IQB-Kompetenzstufen.
+Die internen Schwierigkeitsstufen D1â€“D5 sind ebenfalls keine IQB-Kompetenzstufen.
 
 Deshalb:
 
- D1­D5  IQB I­V
+ D1â€“D5  IQB Iâ€“V
 
                                                                          3
 IQB-Kompetenzstufen entstehen auf Basis empirischer Normierungsdaten.
-Eine spätere Version des Systems kann die eigenen Aufgaben empirisch kalibrieren.
+Eine spÃ¤tere Version des Systems kann die eigenen Aufgaben empirisch kalibrieren.
 
-7. Die fünf mathematischen Leitideen
+7. Die fÃ¼nf mathematischen Leitideen
 
-Die Datenbank muss technisch von Anfang an folgende Bereiche unterstützen:
+Die Datenbank muss technisch von Anfang an folgende Bereiche unterstÃ¼tzen:
 
    L1 NUMBER_OPERATION
         Zahl und Operation
 
    L2 MEASUREMENT
-        Größen und Messen
+        GrÃ¶ÃŸen und Messen
 
    L3 PATTERN_FUNCTION
         Muster, Strukturen und funktionaler Zusammenhang
@@ -154,13 +154,13 @@ Die Datenbank muss technisch von Anfang an folgende Bereiche unterstützen:
    L5 DATA_CHANCE
         Daten und Zufall
 
-MVP V1 enthält schwerpunktmäßig Aufgaben für:
+MVP V1 enthÃ¤lt schwerpunktmÃ¤ÃŸig Aufgaben fÃ¼r:
  L1 NUMBER_OPERATION
-Die übrigen Bereiche müssen aber bereits als Querverbindungen referenzierbar sein.
+Die Ã¼brigen Bereiche mÃ¼ssen aber bereits als Querverbindungen referenzierbar sein.
 
 8. Prozessbezogene Kompetenzen
 
-Jede Aufgabe kann zusätzlich eine oder mehrere Prozesskompetenzen adressieren:
+Jede Aufgabe kann zusÃ¤tzlich eine oder mehrere Prozesskompetenzen adressieren:
 
    ARGUMENTIEREN
    KOMMUNIZIEREN
@@ -172,9 +172,9 @@ Jede Aufgabe kann zusätzlich eine oder mehrere Prozesskompetenzen adressieren:
 Diese Ebene muss getrennt von der inhaltsbezogenen Kompetenz gespeichert werden.
 
                                                                          4
-9. Grundlegende Zählprinzipien
+9. Grundlegende ZÃ¤hlprinzipien
 
-Als zusätzliche Basisebene werden die fünf klassischen Zählprinzipien nach Gelman/Gallistel modelliert:
+Als zusÃ¤tzliche Basisebene werden die fÃ¼nf klassischen ZÃ¤hlprinzipien nach Gelman/Gallistel modelliert:
 
    ZP01 ONE_TO_ONE
             Eins-zu-eins-Zuordnung
@@ -189,32 +189,32 @@ Als zusätzliche Basisebene werden die fünf klassischen Zählprinzipien nach Gelma
             Abstraktionsprinzip
 
    ZP05 ORDER_IRRELEVANCE
-            Irrelevanz der Anordnung/Zählreihenfolge
+            Irrelevanz der Anordnung/ZÃ¤hlreihenfolge
 
 Wichtig:
 
-Die Anwendung dieser Prinzipien kann von Eigenschaften der Aufgabe abhängen.
+Die Anwendung dieser Prinzipien kann von Eigenschaften der Aufgabe abhÃ¤ngen.
 
-Beispielsweise kann eine Menge in einer Reihe korrekt gezählt werden, während dieselbe Anzahl
-kreisförmig oder ungeordnet Schwierigkeiten verursacht.
+Beispielsweise kann eine Menge in einer Reihe korrekt gezÃ¤hlt werden, wÃ¤hrend dieselbe Anzahl
+kreisfÃ¶rmig oder ungeordnet Schwierigkeiten verursacht.
 
-Deshalb muss auch bei Zählaufgaben die Anordnung der Objekte als Aufgabenmerkmal gespeichert
+Deshalb muss auch bei ZÃ¤hlaufgaben die Anordnung der Objekte als Aufgabenmerkmal gespeichert
 werden.
 
-10. Kompetenzgraph für Zahl und Operation
+10. Kompetenzgraph fÃ¼r Zahl und Operation
 
 Basisebene
 
    ZP01 Eins-zu-eins
    ZP02 stabile Reihenfolge
-   ZP03 Kardinalität
+   ZP03 KardinalitÃ¤t
    ZP04 Abstraktion
    ZP05 Irrelevanz der Reihenfolge
 
-Zahlverständnis
+ZahlverstÃ¤ndnis
 
-   ZO02.1 kardinales Zahlverständnis
-   ZO02.2 ordinales Zahlverständnis
+   ZO02.1 kardinales ZahlverstÃ¤ndnis
+   ZO02.2 ordinales ZahlverstÃ¤ndnis
    ZO02.3 strukturierte Mengenerfassung
 
                                                                          5
@@ -223,8 +223,8 @@ Zahlverständnis
 
 Zahlbeziehungen
 
-   ZO04.1 größer / kleiner
-   ZO04.2 Vorgänger / Nachfolger
+   ZO04.1 grÃ¶ÃŸer / kleiner
+   ZO04.2 VorgÃ¤nger / Nachfolger
    ZO04.3 Abstand
    ZO04.4 Zahlen ordnen
    ZO04.5 Zahlen vergleichen
@@ -233,22 +233,22 @@ Teil-Ganzes
 
    ZO05.1 Zahlzerlegung
    ZO05.2 Zahlzusammensetzung
-   ZO05.3 Ergänzen
+   ZO05.3 ErgÃ¤nzen
    ZO05.4 flexible Zerlegung
 
 Stellenwert
 
-   ZO06.1 Bündelungsprinzip
-   ZO06.2 Entbündeln
+   ZO06.1 BÃ¼ndelungsprinzip
+   ZO06.2 EntbÃ¼ndeln
    ZO06.3 Stellenwertprinzip
    ZO06.4 Zahlenwert
    ZO06.5 Stellenwertzerlegung
    ZO06.6 Null als unbesetzte Stelle
    ZO06.7 Zahlwort  Zahlzeichen
    ZO06.8 Darstellungsvernetzung
-   ZO06.9 größere Zahlenräume
+   ZO06.9 grÃ¶ÃŸere ZahlenrÃ¤ume
 
-Operationsverständnis
+OperationsverstÃ¤ndnis
 
    ZO07 Addition
    ZO08 Subtraktion
@@ -265,14 +265,14 @@ Operationsbeziehungen
    ZO14 Ableitungsstrategien
    ZO15 flexible Strategiewahl
 
-Weiterführende Anwendung
+WeiterfÃ¼hrende Anwendung
 
    ZO16 Kopfrechnen
    ZO17 halbschriftliches Rechnen
    ZO18 Rechnen in Kontexten
-   ZO19 Transfer / Problemlösen
+   ZO19 Transfer / ProblemlÃ¶sen
 
-11. Der Kompetenzgraph ist ausdrücklich kein
+11. Der Kompetenzgraph ist ausdrÃ¼cklich kein
 linearer Baum
 
 Nicht:
@@ -292,10 +292,10 @@ Stattdessen:
 
 Eine Kompetenz kann:
 
-        · mehrere Voraussetzungen haben,
-        · mehrere Nachfolger haben,
-        · eine andere Kompetenz unterstützen,
-        · leitideenübergreifend relevant sein.
+        Â· mehrere Voraussetzungen haben,
+        Â· mehrere Nachfolger haben,
+        Â· eine andere Kompetenz unterstÃ¼tzen,
+        Â· leitideenÃ¼bergreifend relevant sein.
 
 12. Relationstypen
 
@@ -312,32 +312,32 @@ Eine Kompetenz kann:
 
 13. Evidenzgrad fachlicher Beziehungen
 
-Jede Relation erhält zusätzlich:
+Jede Relation erhÃ¤lt zusÃ¤tzlich:
 
-   A = direkt wissenschaftlich/empirisch gestützt
-   B = indirekt wissenschaftlich gestützt
+   A = direkt wissenschaftlich/empirisch gestÃ¼tzt
+   B = indirekt wissenschaftlich gestÃ¼tzt
    C = theoretisch plausibel
    D = Systemhypothese
    E = individuell beobachtetes Muster
 
 Wichtig:
 
-Eine C- oder D-Beziehung darf eine neue Kontrollaufgabe auslösen.
+Eine C- oder D-Beziehung darf eine neue Kontrollaufgabe auslÃ¶sen.
 
-Sie darf aber nicht automatisch eine Aussage über die Schüler:in erzeugen.
+Sie darf aber nicht automatisch eine Aussage Ã¼ber die SchÃ¼ler:in erzeugen.
 
-14. Beispiel für leitideenübergreifende
+14. Beispiel fÃ¼r leitideenÃ¼bergreifende
 Beziehungen
 
-Eine Zahlenstrahlaufgabe kann primär messen:
+Eine Zahlenstrahlaufgabe kann primÃ¤r messen:
  Zahlbeziehungen
 
 aber gleichzeitig Anforderungen enthalten an:
 
-        · räumliche Verarbeitung,
-        · Darstellungsverarbeitung,
-        · Größenrelationen,
-        · Mustererkennung.
+        Â· rÃ¤umliche Verarbeitung,
+        Â· Darstellungsverarbeitung,
+        Â· GrÃ¶ÃŸenrelationen,
+        Â· Mustererkennung.
 Deshalb:
 
    PRIMARY_COMPETENCY:
@@ -351,13 +351,13 @@ Deshalb:
 
 Ein Fehler bedeutet aber nicht:
 
-          räumliches Vorstellungsvermögen schwach.
+          rÃ¤umliches VorstellungsvermÃ¶gen schwach.
 
-Erst mehrere unabhängige Beobachtungen können eine entsprechende Hypothese aktivieren.
+Erst mehrere unabhÃ¤ngige Beobachtungen kÃ¶nnen eine entsprechende Hypothese aktivieren.
 
 15. Aufgabenanforderungen
 
-Zusätzlich zur Mathematik können Aufgaben Anforderungen besitzen wie:
+ZusÃ¤tzlich zur Mathematik kÃ¶nnen Aufgaben Anforderungen besitzen wie:
 
    SPATIAL_PROCESSING
    MENTAL_ROTATION
@@ -372,11 +372,11 @@ Zusätzlich zur Mathematik können Aufgaben Anforderungen besitzen wie:
 
 Diese Merkmale beschreiben die Aufgabe.
 
-Nicht die Schüler:in.
+Nicht die SchÃ¼ler:in.
 
-16. Repräsentationen ­ erweitertes EIS-Modell
+16. ReprÃ¤sentationen â€“ erweitertes EIS-Modell
 
-Das ursprüngliche EIS-Prinzip wird technisch erweitert.
+Das ursprÃ¼ngliche EIS-Prinzip wird technisch erweitert.
 
    ACTION
    IMAGE
@@ -386,20 +386,20 @@ Das ursprüngliche EIS-Prinzip wird technisch erweitert.
 
 Damit werden getrennt erfasst:
 
-        · enaktive Handlung,
-        · ikonische Darstellung,
-        · mathematisch-symbolische Darstellung,
-        · sprachliche Darstellung,
+        Â· enaktive Handlung,
+        Â· ikonische Darstellung,
+        Â· mathematisch-symbolische Darstellung,
+        Â· sprachliche Darstellung,
 
                                                                          9
-        · Kombinationen.
-PIKAS/DZLM hebt ausdrücklich die Vernetzung von Handlung, Bild, Sprache und mathematischer
+        Â· Kombinationen.
+PIKAS/DZLM hebt ausdrÃ¼cklich die Vernetzung von Handlung, Bild, Sprache und mathematischer
 Symbolik hervor.
 
 17. Interaktion getrennt von Darstellung
 speichern
 
-Zusätzlich:
+ZusÃ¤tzlich:
 
    interaction_mode:
    SELECT
@@ -411,13 +411,13 @@ Zusätzlich:
    CONSTRUCT
 
 Grund:
-Wenn eine Schüler:in bei einer Drag-Aufgabe schlechter abschneidet als bei einer Auswahlaufgabe, darf
+Wenn eine SchÃ¼ler:in bei einer Drag-Aufgabe schlechter abschneidet als bei einer Auswahlaufgabe, darf
 nicht automatisch auf einen Darstellungseffekt geschlossen werden.
 Darstellung und Bedienform sind zwei unterschiedliche Variablen.
 
 18. Interne Schwierigkeit
 
-Für MVP:
+FÃ¼r MVP:
 
    D1 = elementare Anforderung
    D2 = grundlegende Anwendung
@@ -429,7 +429,7 @@ Alle Aufgaben:
  calibration_status = UNCALIBRATED_MVP_ITEM
 
                                                                         10
-19. Aufgabenvariation ­ zentraler Bestandteil
+19. Aufgabenvariation â€“ zentraler Bestandteil
 
 Aufgaben derselben Kompetenz sind nicht automatisch austauschbar.
 Beispiel:
@@ -440,16 +440,16 @@ und
 
    37 + 28
 
-können unterschiedliche Strategien nahelegen.
+kÃ¶nnen unterschiedliche Strategien nahelegen.
 Forschung zeigt, dass konkrete Problemmerkmale und Zahlenwerte Strategieauswahl und Leistung
-beeinflussen können.
-Deshalb bekommt jede Aufgabe zusätzliche Merkmale.
+beeinflussen kÃ¶nnen.
+Deshalb bekommt jede Aufgabe zusÃ¤tzliche Merkmale.
 
 20. Numeric Features
 
    numeric_features[]
 
-Mögliche Werte:
+MÃ¶gliche Werte:
 
    NEAR_ROUND_NUMBER
    CROSSES_TEN
@@ -517,7 +517,7 @@ Beispiele:
    COUNTING_BACK
    PLACE_VALUE_STRATEGY
 
-24. Beispiel vollständige Aufgabenmetadaten
+24. Beispiel vollstÃ¤ndige Aufgabenmetadaten
 
    TASK_ID:
    ZO07-D3-S-A
@@ -563,8 +563,8 @@ Beispiele:
 
 Parallelitem
 
-Struktur, Darstellung und Schwierigkeit bleiben möglichst konstant.
-Zahlen ändern sich.
+Struktur, Darstellung und Schwierigkeit bleiben mÃ¶glichst konstant.
+Zahlen Ã¤ndern sich.
 Ziel:
 
           Fehler replizieren.
@@ -572,22 +572,22 @@ Ziel:
 Strategy Variation
 
 Kompetenz bleibt gleich.
-Zahlen werden so verändert, dass eine andere Strategie günstig wird.
+Zahlen werden so verÃ¤ndert, dass eine andere Strategie gÃ¼nstig wird.
 Ziel:
 
-          Strategieabhängigkeit untersuchen.
+          StrategieabhÃ¤ngigkeit untersuchen.
 
 Surface Variation
 
 Mathematischer Kern bleibt konstant.
-Kontext oder Darstellung verändert sich.
+Kontext oder Darstellung verÃ¤ndert sich.
 Ziel:
 
-          Oberflächenabhängigkeit untersuchen.
+          OberflÃ¤chenabhÃ¤ngigkeit untersuchen.
 
 Contrast Item
 
-Aufgabe wird gezielt so ausgewählt, dass sie zwischen zwei Hypothesen unterscheidet.
+Aufgabe wird gezielt so ausgewÃ¤hlt, dass sie zwischen zwei Hypothesen unterscheidet.
 Ziel:
 
           Ursache eingrenzen.
@@ -595,7 +595,7 @@ Ziel:
                                                                         14
 26. Kompetenzprofilmarker
 
-Neben dem allgemeinen Kompetenzstatus können gespeichert werden:
+Neben dem allgemeinen Kompetenzstatus kÃ¶nnen gespeichert werden:
 
    ITEM_SPECIFIC_SUCCESS
    STRUCTURE_STABLE
@@ -644,9 +644,9 @@ Es bedeutet:
    TASK A
    
    WRONG
-führt nicht zu:
+fÃ¼hrt nicht zu:
    COMPETENCY = NOT_MASTERED
-sondern zunächst zu:
+sondern zunÃ¤chst zu:
    OBSERVATION = ERROR
 Dann:
    Parallelitem
@@ -659,13 +659,13 @@ Dann:
 B :
    inkonsistente Evidenz
     weiter beobachten
-B  mit ähnlichem Fehlermuster:
+B  mit Ã¤hnlichem Fehlermuster:
 
                                                                         16
    reproduzierbares Muster
     Ursache lokalisieren
 
-31. Reihenfolge der Ursachenprüfung
+31. Reihenfolge der UrsachenprÃ¼fung
 
 Verbindliche Priorisierung:
 
@@ -677,12 +677,12 @@ Verbindliche Priorisierung:
    6 Schwierigkeit
    7 Aufgabentyp
    8 Darstellung
-   9 Unterstützung
+   9 UnterstÃ¼tzung
    10 andere Kompetenz derselben Leitidee
-   11 leitideenübergreifende Beziehung
+   11 leitideenÃ¼bergreifende Beziehung
    12 kognitive Hypothese
 
-Je weiter die Schlussfolgerung vom direkt beobachteten Verhalten entfernt ist, desto stärkere Evidenz
+Je weiter die Schlussfolgerung vom direkt beobachteten Verhalten entfernt ist, desto stÃ¤rkere Evidenz
 muss erforderlich sein.
 
 32. Keine Lerntypen ableiten
@@ -701,12 +701,12 @@ Es bedeutet:
           unter dieser ikonischen Darstellung war die Leistung besser als unter dieser
           symbolischen Darstellung.
 
-Erst weitere Aufgaben können prüfen, ob der Effekt reproduzierbar ist.
+Erst weitere Aufgaben kÃ¶nnen prÃ¼fen, ob der Effekt reproduzierbar ist.
 
                                                                         17
-33. Schwächere Darstellung nicht vermeiden
+33. SchwÃ¤chere Darstellung nicht vermeiden
 
-Wenn eine Schüler:in ikonische Aufgaben löst, symbolische aber nicht:
+Wenn eine SchÃ¼ler:in ikonische Aufgaben lÃ¶st, symbolische aber nicht:
 Nicht:
 
           nur noch Bilder zeigen.
@@ -748,13 +748,13 @@ oder:
     D2
 Dadurch kann das Kompetenzfenster effizient eingegrenzt werden.
 
-35. Wichtig: Skip-Level ist zunächst heuristisch
+35. Wichtig: Skip-Level ist zunÃ¤chst heuristisch
 
 Die D-Stufen sind nicht empirisch kalibriert.
-Deshalb dürfen diese Sprünge im MVP nur als:
+Deshalb dÃ¼rfen diese SprÃ¼nge im MVP nur als:
  CONFIGURABLE_HEURISTIC
 implementiert werden.
-Später können sie durch empirische Modelle wie IRT/CAT ersetzt werden.
+SpÃ¤ter kÃ¶nnen sie durch empirische Modelle wie IRT/CAT ersetzt werden.
 
 36. Dateneffiziente Suche im Kompetenzgraphen
 
@@ -766,7 +766,7 @@ E ist nicht erfolgreich.
 Nicht automatisch:
 
    DCB
-Wenn fachlich zulässig:
+Wenn fachlich zulÃ¤ssig:
 
    teste C
 C :
@@ -778,12 +778,12 @@ C :
    teste B
 
 Prinzip:
-          Möglichst wenige Aufgaben stellen, die möglichst viel Information liefern.
+          MÃ¶glichst wenige Aufgaben stellen, die mÃ¶glichst viel Information liefern.
 
 37. Individueller Datenpfad
 
-Es existiert ein großer globaler Kompetenzgraph.
-Für jede Schüler:in wird aber nur ein kleiner Teil aktiviert.
+Es existiert ein groÃŸer globaler Kompetenzgraph.
+FÃ¼r jede SchÃ¼ler:in wird aber nur ein kleiner Teil aktiviert.
 
    GLOBAL GRAPH
               
@@ -799,7 +799,7 @@ Für jede Schüler:in wird aber nur ein kleiner Teil aktiviert.
 
    NEXT TASK
 
-Bereits geklärte Pfade werden nicht ständig erneut geladen.
+Bereits geklÃ¤rte Pfade werden nicht stÃ¤ndig erneut geladen.
 
 38. Parken
 
@@ -828,7 +828,7 @@ oder:
    EXISTING_EVIDENCE_INSUFFICIENT
 Zeitgrenzen nicht hardcoden.
 
-40. Zeitliche Kompetenzstabilität
+40. Zeitliche KompetenzstabilitÃ¤t
 
 Eine Kompetenz ist keine permanente Eigenschaft.
 Deshalb speichern:
@@ -838,14 +838,14 @@ Deshalb speichern:
    last_indirect_evidence
    last_review
    next_review
-Später kann ein Spaced-Retrieval-/Recheck-System ergänzt werden.
+SpÃ¤ter kann ein Spaced-Retrieval-/Recheck-System ergÃ¤nzt werden.
 
 41. Mastery-Schwellen
 
 Keine feste Behauptung wie:
           Zwei richtige Aufgaben = Kompetenz sicher.
 
-Für MVP dürfen Defaults existieren:
+FÃ¼r MVP dÃ¼rfen Defaults existieren:
 
    success_confirmation_required = 2
    failure_replication_required = 2
@@ -855,40 +855,40 @@ Aber:
                                                                         21
    status = CONFIGURABLE
 
-Diese Werte müssen später empirisch überprüft werden.
-Einfache Regeln wie ,,n richtige Antworten hintereinander" sind für einen MVP praktikabel, können aber
-zufällige Fehler, unterschiedliche Aufgabenmerkmale und unterschiedliche Antwortsequenzen schlecht
-berücksichtigen.
+Diese Werte mÃ¼ssen spÃ¤ter empirisch Ã¼berprÃ¼ft werden.
+Einfache Regeln wie ,,n richtige Antworten hintereinander" sind fÃ¼r einen MVP praktikabel, kÃ¶nnen aber
+zufÃ¤llige Fehler, unterschiedliche Aufgabenmerkmale und unterschiedliche Antwortsequenzen schlecht
+berÃ¼cksichtigen.
 
-42. Aufgabenbank ­ Zählprinzipien
+42. Aufgabenbank â€“ ZÃ¤hlprinzipien
 
 ZP01 Eins-zu-eins-Zuordnung
 
 ZP01-D1-I-A
 
 6 Punkte in Reihe.
-          Zähle die Punkte.
+          ZÃ¤hle die Punkte.
 
-Lösung: 6
+LÃ¶sung: 6
 Interaktion:
  CLICK_SEQUENCE
 Speichern:
 
-        · Klickreihenfolge
-        · ausgelassene Objekte
-        · doppelte Klicks
-        · Antwort
+        Â· Klickreihenfolge
+        Â· ausgelassene Objekte
+        Â· doppelte Klicks
+        Â· Antwort
 
 ZP01-D1-I-B
 
 7 Punkte in Reihe.
-Lösung: 7
+LÃ¶sung: 7
 Parallelitem.
 
 ZP01-D2-I-A
 
 12 ungeordnete Punkte.
-Lösung: 12
+LÃ¶sung: 12
 
                                                                         22
 ZP01-D2-ACTION-A
@@ -896,12 +896,12 @@ Lösung: 12
 12 verschiebbare Objekte.
           Wie viele Objekte sind es?
 
-Objekte dürfen beim Zählen verschoben werden.
+Objekte dÃ¼rfen beim ZÃ¤hlen verschoben werden.
 
 ZP01-D3-I-A
 
 18 ungeordnete Objekte.
-Lösung: 18
+LÃ¶sung: 18
 
 43. ZP02 stabile Reihenfolge
 
@@ -917,7 +917,7 @@ ZP02-D1-S-B
 
 ZP02-D2-S-A
 
-          Beginne bei 27 und nenne die nächsten drei Zahlen.
+          Beginne bei 27 und nenne die nÃ¤chsten drei Zahlen.
  28,29,30
 
 ZP02-D2-S-B
@@ -929,7 +929,7 @@ ZP02-D3-S-A
 
           15,14, ,
  13,12
-Rückwärtszählen liefert zusätzliche Evidenz und darf nicht allein mit dem Kernprinzip gleichgesetzt
+RÃ¼ckwÃ¤rtszÃ¤hlen liefert zusÃ¤tzliche Evidenz und darf nicht allein mit dem Kernprinzip gleichgesetzt
 werden.
 
                                                                         23
@@ -937,7 +937,7 @@ werden.
 
 ZP03-D1-I-A
 
-8 Objekte zählen lassen.
+8 Objekte zÃ¤hlen lassen.
 Danach:
 
           Wie viele sind es insgesamt?
@@ -952,14 +952,14 @@ Gleicher Ablauf.
 
 ZP03-D2-ACTION-A
 
-15 Objekte verfügbar.
+15 Objekte verfÃ¼gbar.
           Lege genau 9 Objekte in das Feld.
 
  9
 
 ZP03-D2-I-A
 
-8 Objekte anzeigen, anschließend eines hinzufügen.
+8 Objekte anzeigen, anschlieÃŸend eines hinzufÃ¼gen.
           Wie viele sind es jetzt?
 
  9
@@ -968,7 +968,7 @@ ZP03-D2-I-A
 
 ZP04-D1-I-A
 
-8 unterschiedliche Gegenstände.
+8 unterschiedliche GegenstÃ¤nde.
           Wie viele Dinge sind es insgesamt?
 
                                                                         24
@@ -990,7 +990,7 @@ ZP04-D2-I-A
 
 ZP05-D1-A
 
-7 Objekte linksrechts zählen.
+7 Objekte linksrechts zÃ¤hlen.
 Danach rechtslinks.
 
           Bleibt die Anzahl gleich?
@@ -999,7 +999,7 @@ Danach rechtslinks.
 ZP05-D2-A
 
 8 ungeordnete Objekte.
-Startpunkt wird verändert.
+Startpunkt wird verÃ¤ndert.
 
           Wie viele werden es sein?
  8
@@ -1007,12 +1007,12 @@ Startpunkt wird verändert.
 ZP05-D2-B
 
 10 Objekte.
-          Wenn du mit einem anderen Gegenstand anfängst: mehr, weniger oder gleich viele?
+          Wenn du mit einem anderen Gegenstand anfÃ¤ngst: mehr, weniger oder gleich viele?
 
  GLEICH
 
                                                                         25
-47. Zahlverständnis ­ ZO02
+47. ZahlverstÃ¤ndnis â€“ ZO02
 
 ZO02-D1-I-A
 
@@ -1028,7 +1028,7 @@ ZO02-D1-I-B
 
 ZO02-D2-ACTION-A
 
-13 Plättchen.
+13 PlÃ¤ttchen.
           Lege genau 9 in das Feld.
 
  9
@@ -1043,21 +1043,21 @@ ZO02-D3-MIXED-A
 Menge mit 24 Elementen.
 Antwort:
  20 / 22 / 24 / 42
-Lösung:
+LÃ¶sung:
  24
 
-48. Zahlbeziehungen ­ ZO04
+48. Zahlbeziehungen â€“ ZO04
 
 ZO04-D2-S-A
 
-          Welche Zahl ist größer: 398 oder 389?
+          Welche Zahl ist grÃ¶ÃŸer: 398 oder 389?
 
                                                                         26
  398
 
 ZO04-D2-S-B
 
-          Welche Zahl ist größer: 507 oder 570?
+          Welche Zahl ist grÃ¶ÃŸer: 507 oder 570?
  570
 
 ZO04-D2-S-C
@@ -1067,23 +1067,23 @@ ZO04-D2-S-C
 
 ZO04-D3-S-A
 
-          Vorgänger von 1.000?
+          VorgÃ¤nger von 1.000?
  999
 
 ZO04-D3-I-A
 
-Zahlenstrahl 0­100.
+Zahlenstrahl 0â€“100.
 40 und 70 markiert.
 
-          Wie groß ist der Abstand?
+          Wie groÃŸ ist der Abstand?
  30
 
 ZO04-D4-S-A
 
-          Welche Zahl liegt näher an 500: 487 oder 541?
+          Welche Zahl liegt nÃ¤her an 500: 487 oder 541?
  487
 
-49. Teil-Ganzes ­ ZO05
+49. Teil-Ganzes â€“ ZO05
 
 ZO05-D1-S-A
 
@@ -1112,10 +1112,10 @@ ZO05-D3-S-A
 ZO05-D4-S-A
 
           Welche Zerlegung von 64 hilft dir bei 64 + 28?
-Mehrere Antworten können mathematisch sinnvoll sein.
-Scoring darf nicht unnötig nur eine Strategie akzeptieren.
+Mehrere Antworten kÃ¶nnen mathematisch sinnvoll sein.
+Scoring darf nicht unnÃ¶tig nur eine Strategie akzeptieren.
 
-50. Stellenwert ­ ZO06
+50. Stellenwert â€“ ZO06
 
 ZO06-D1-I-A
 
@@ -1161,7 +1161,7 @@ ZO06-D4-S-B
  3
 Dieses Paar gezielt vergleichen.
 
-51. Addition ­ ZO07
+51. Addition â€“ ZO07
 
 ZO07-GV-D1-I-A
 
@@ -1183,12 +1183,12 @@ ZO07-D2-S-A
 
 ZO07-D3-S-A
 
-          Du weißt: 38 + 20 = 58. Wie hilft dir das bei 38 + 23?
+          Du weiÃŸt: 38 + 20 = 58. Wie hilft dir das bei 38 + 23?
  58+3=61
 
 ZO07-D3-S-B
 
-          Welche Rechnung ist für 49+36 besonders günstig?
+          Welche Rechnung ist fÃ¼r 49+36 besonders gÃ¼nstig?
  50+35
 
 ZO07-D3-S-C
@@ -1203,10 +1203,10 @@ ZO07-D3-S-D
 
 ZO07-D4-L-A
 
-          In einer Kiste liegen 48 Bücher. 27 kommen hinzu. Wie viele sind es?
+          In einer Kiste liegen 48 BÃ¼cher. 27 kommen hinzu. Wie viele sind es?
  75
 
-52. Addition ­ Contrast Family
+52. Addition â€“ Contrast Family
 
 Familie:
  ZO07-CONTRAST-01
@@ -1219,14 +1219,14 @@ Items:
    37+28
    46+27
 Ziel:
-Prüfen, ob Erfolg möglicherweise mit
+PrÃ¼fen, ob Erfolg mÃ¶glicherweise mit
  COMPENSATION / NEAR_ROUND_NUMBER
-zusammenhängt.
+zusammenhÃ¤ngt.
 Nicht automatisch:
 
           Addition sicher/unsicher.
 
-53. Subtraktion ­ ZO08
+53. Subtraktion â€“ ZO08
 
 ZO08-GV-D1-I-A
 
@@ -1248,7 +1248,7 @@ ZO08-GV-D2-L-A
 
 ZO08-D3-S-A
 
-          Ergänze 37 auf 50.
+          ErgÃ¤nze 37 auf 50.
  13
 
                                                                         31
@@ -1259,21 +1259,21 @@ ZO08-D3-S-A
 
 ZO08-D4-STRATEGY-A
 
-          Welche Strategie ist günstig?
+          Welche Strategie ist gÃ¼nstig?
  403-200+2
 
-54. Multiplikation ­ ZO09
+54. Multiplikation â€“ ZO09
 
 ZO09-GV-D1-I-A
 
 4 Gruppen mit jeweils 3 Punkten.
           Welche Rechnung?
 
- 4×3
+ 4Ã—3
 
 ZO09-D1-S-A
 
-          4×3
+          4Ã—3
  12
 
 ZO09-GV-D2-L-A
@@ -1283,49 +1283,49 @@ ZO09-GV-D2-L-A
 
 ZO09-D2-S-A
 
-          6×8
+          6Ã—8
  48
 
 ZO09-REL-D3-S-A
 
-          Du weißt 5×8=40. Bestimme 6×8.
+          Du weiÃŸt 5Ã—8=40. Bestimme 6Ã—8.
  48
 
                                                                         32
 ZO09-REL-D3-I-A
 
-6×8-Rechteckfeld zerlegt in:
- 5×8 + 1×8
+6Ã—8-Rechteckfeld zerlegt in:
+ 5Ã—8 + 1Ã—8
 
           Welche Zerlegung passt?
- 5×8 + 1×8
+ 5Ã—8 + 1Ã—8
 
 ZO09-REL-D3-S-B
 
-          Du weißt 5×8=40. Bestimme 7×8.
+          Du weiÃŸt 5Ã—8=40. Bestimme 7Ã—8.
  56
 
 ZO09-D4-S-A
 
-          Welche Zerlegung entspricht 17×6?
- 10×6 + 7×6
+          Welche Zerlegung entspricht 17Ã—6?
+ 10Ã—6 + 7Ã—6
 
 ZO09-D4-S-B
 
-          23×4
+          23Ã—4
  92
 
 ZO09-D5-S-A
 
-          23×14
+          23Ã—14
  322
 D5 dient hier nur zur Ceiling-Suche.
 
-55. Division ­ ZO10
+55. Division â€“ ZO10
 
 ZO10-GV-D1-ACTION-A
 
-12 Plättchen.
+12 PlÃ¤ttchen.
           Verteile sie gerecht auf 3 Kinder.
 
  4 pro Kind
@@ -1333,7 +1333,7 @@ ZO10-GV-D1-ACTION-A
                                                                         33
 ZO10-GV-D1-ACTION-B
 
-12 Plättchen.
+12 PlÃ¤ttchen.
           Bilde Gruppen mit jeweils 3.
 
  4 Gruppen
@@ -1344,49 +1344,49 @@ und
 
 ZO10-D2-S-A
 
-          24÷6
+          24Ã·6
  4
 
 ZO10-D2-S-B
 
-          35÷5
+          35Ã·5
  7
 
 ZO10-D3-S-A
 
-          7×8=56. Welche Divisionsaufgabe passt?
- 56÷8=7
+          7Ã—8=56. Welche Divisionsaufgabe passt?
+ 56Ã·8=7
 
 ZO10-D3-L-A
 
-          72 Bonbons werden in Tüten mit jeweils 8 Bonbons gepackt. Wie viele Tüten?
+          72 Bonbons werden in TÃ¼ten mit jeweils 8 Bonbons gepackt. Wie viele TÃ¼ten?
  9
 
-56. Operationsbeziehungen ­ ZO11
+56. Operationsbeziehungen â€“ ZO11
 
 ZO11-D2-S-A
 
-          7×8=56. Ergänze: 56÷__=7
+          7Ã—8=56. ErgÃ¤nze: 56Ã·__=7
  8
 
                                                                         34
 ZO11-D2-S-B
 
-          38+27=65. Ergänze: 65-27=__
+          38+27=65. ErgÃ¤nze: 65-27=__
  38
 
 ZO11-D3-S-A
 
-          Welche Aufgaben gehören zusammen?
- 6×7=42
+          Welche Aufgaben gehÃ¶ren zusammen?
+ 6Ã—7=42
 und
- 42÷7=6
+ 42Ã·7=6
 
-57. Strategien ­ ZO12/13
+57. Strategien â€“ ZO12/13
 
 ZO12-D2-S-A
 
-          Welche Rechnung hat denselben Wert wie 49+36 und ist besonders günstig?
+          Welche Rechnung hat denselben Wert wie 49+36 und ist besonders gÃ¼nstig?
  50+35
 
 ZO12-D3-S-A
@@ -1399,26 +1399,26 @@ Ergebnis:
 
 ZO13-D3-S-A
 
-          Welche Rechnung entspricht 17×6?
- 10×6 + 7×6
+          Welche Rechnung entspricht 17Ã—6?
+ 10Ã—6 + 7Ã—6
 
 ZO13-D3-S-B
 
-          Welche Rechnung entspricht 8×23?
- 8×20 + 8×3
+          Welche Rechnung entspricht 8Ã—23?
+ 8Ã—20 + 8Ã—3
 
                                                                         35
-58. Aufgabenfamilien müssen erweitert werden
+58. Aufgabenfamilien mÃ¼ssen erweitert werden
 
 Die oben genannten Aufgaben sind der Seed-Content.
 
-Für jede diagnostisch relevante Kernaufgabe soll mindestens vorhanden sein:
+FÃ¼r jede diagnostisch relevante Kernaufgabe soll mindestens vorhanden sein:
 
    A = Ausgangsitem
    B = Parallelitem
    C = ggf. zweites Parallel-/Contrast-Item
 
-Nicht mechanisch 3 Varianten für jede Aufgabe erzeugen.
+Nicht mechanisch 3 Varianten fÃ¼r jede Aufgabe erzeugen.
 
 Nur wenn der Vergleich diagnostischen Informationswert besitzt.
 
@@ -1447,7 +1447,7 @@ Keine psychologischen Diagnosen.
 
 60. Rohdaten speichern
 
-Für jeden Versuch:
+FÃ¼r jeden Versuch:
 
                                                                         36
    attempt_id
@@ -1495,11 +1495,11 @@ Aber:
           langsam = schwache Kompetenz
 
                                                                         37
-ist nicht zulässig.
+ist nicht zulÃ¤ssig.
 
-Bearbeitungszeit wird zunächst nur als Kontextinformation gespeichert.
+Bearbeitungszeit wird zunÃ¤chst nur als Kontextinformation gespeichert.
 
-Später kann empirisch untersucht werden, wann sie zusätzliche Aussagekraft besitzt.
+SpÃ¤ter kann empirisch untersucht werden, wann sie zusÃ¤tzliche Aussagekraft besitzt.
 
 63. Student State
 
@@ -1564,7 +1564,7 @@ Tabelle:
 Hypothese
 
 Beispiel:
-Schüler:in beantwortet:
+SchÃ¼ler:in beantwortet:
  508
 
 als:
@@ -1592,9 +1592,9 @@ erst nach Replikation:
 
    ZERO_PLACEHOLDER_HYPOTHESIS = OPEN
 
-Diese Ebenen dürfen technisch nicht vermischt werden.
+Diese Ebenen dÃ¼rfen technisch nicht vermischt werden.
 
-67. Routing ­ Hauptalgorithmus
+67. Routing â€“ Hauptalgorithmus
 
    LOAD student_state
    IDENTIFY:
@@ -1626,7 +1626,7 @@ Diese Ebenen dürfen technisch nicht vermischt werden.
 
 68. Task Selection Score
 
-Für MVP kann jede Kandidatenaufgabe einen einfachen Score erhalten:
+FÃ¼r MVP kann jede Kandidatenaufgabe einen einfachen Score erhalten:
 
    TASK_SCORE =
    information_need
@@ -1660,32 +1660,32 @@ ikonisch richtig:
 ikonisch ebenfalls falsch:
 
    
-   Bündelung / Stellenwert-Voraussetzungen prüfen
+   BÃ¼ndelung / Stellenwert-Voraussetzungen prÃ¼fen
 
 70. Beispiel Multiplikationsrouting
 
-   6×8 
+   6Ã—8 
    
    Parallelitem
    
    wieder 
    
-   ikonische Darstellung 6×8
+   ikonische Darstellung 6Ã—8
 Ikonisch :
 
    REPRESENTATION_HYPOTHESIS
 Ikonisch :
 
-   Grundvorstellung Multiplikation prüfen
+   Grundvorstellung Multiplikation prÃ¼fen
 Grundvorstellung :
 
-   Aufgabenbeziehungen prüfen
+   Aufgabenbeziehungen prÃ¼fen
 Grundvorstellung :
 
    SUPPORT_FOCUS = MULTIPLICATION_CONCEPT
 
                                                                         42
-71. Zahlenabhängige Leistung
+71. ZahlenabhÃ¤ngige Leistung
 
 Beispiel:
 
@@ -1713,11 +1713,11 @@ Dann:
 
    STRATEGY_DEPENDENCY_HYPOTHESIS
 
-und Contrast Item auswählen.
+und Contrast Item auswÃ¤hlen.
 
-72. Kompetenzstabilität
+72. KompetenzstabilitÃ¤t
 
-Eine Kompetenz erhält stärkere Evidenz, wenn sie erfolgreich gezeigt wird über Variation von:
+Eine Kompetenz erhÃ¤lt stÃ¤rkere Evidenz, wenn sie erfolgreich gezeigt wird Ã¼ber Variation von:
 
    numbers
    representation
@@ -1731,7 +1731,7 @@ Eine Kompetenz erhält stärkere Evidenz, wenn sie erfolgreich gezeigt wird über V
    TRANSFER_STABLE
 gesetzt werden.
 
-73. Nicht übertesten
+73. Nicht Ã¼bertesten
 
 Wenn bereits ausreichend Information vorliegt:
 
@@ -1740,15 +1740,15 @@ Das ist ein Kernprinzip.
 Ziel ist nicht maximale Datenerhebung.
 Ziel ist:
 
-          maximal relevante Datenerhebung mit möglichst wenigen Aufgaben.
+          maximal relevante Datenerhebung mit mÃ¶glichst wenigen Aufgaben.
 
 74. Global Graph vs. Student Graph
 
 Global
 
-   10.000+ mögliche Knoten/Items später möglich
+   10.000+ mÃ¶gliche Knoten/Items spÃ¤ter mÃ¶glich
 
-Schüler:in
+SchÃ¼ler:in
 
 beispielsweise:
 
@@ -1775,7 +1775,7 @@ Nicht:
 
    gesamte Datenbank
     LLM
-    nächste Aufgabe
+    nÃ¤chste Aufgabe
 
 Sondern:
 
@@ -1789,33 +1789,33 @@ Sondern:
 
 76. Aufgaben ohne LLM
 
-Kein LLM erforderlich für:
+Kein LLM erforderlich fÃ¼r:
 
-        · Multiple Choice,
-        · numerische Eingaben,
-        · richtig/falsch,
-        · Routing,
-        · Kompetenzstatus,
-        · Parallelitem-Auswahl,
-        · Skip-Level,
-        · Parken,
-        · Reaktivierung,
-        · einfache Fehlercodes.
+        Â· Multiple Choice,
+        Â· numerische Eingaben,
+        Â· richtig/falsch,
+        Â· Routing,
+        Â· Kompetenzstatus,
+        Â· Parallelitem-Auswahl,
+        Â· Skip-Level,
+        Â· Parken,
+        Â· Reaktivierung,
+        Â· einfache Fehlercodes.
 
                                                                         45
-77. Sinnvolle spätere LLM-Nutzung
+77. Sinnvolle spÃ¤tere LLM-Nutzung
 
-LLM optional für:
+LLM optional fÃ¼r:
 
-        · Freitext-Lösungswege,
-        · Erklärung von Fehlern,
-        · individuelle Hilfestellung,
-        · Zusammenfassung für Lehrkräfte,
-        · Aufgabenvariation,
-        · sprachliche Anpassung,
-        · komplexe Musterinterpretation.
+        Â· Freitext-LÃ¶sungswege,
+        Â· ErklÃ¤rung von Fehlern,
+        Â· individuelle Hilfestellung,
+        Â· Zusammenfassung fÃ¼r LehrkrÃ¤fte,
+        Â· Aufgabenvariation,
+        Â· sprachliche Anpassung,
+        Â· komplexe Musterinterpretation.
 
-Auch hier sollen nur relevante Daten übergeben werden.
+Auch hier sollen nur relevante Daten Ã¼bergeben werden.
 
 78. Datenbanktabellen
 
@@ -1918,7 +1918,7 @@ Beispiel:
    100
    TRUE
 
-84. Wichtig für Entwickler: Routing nicht
+84. Wichtig fÃ¼r Entwickler: Routing nicht
 hardcoden
 
 Nicht:
@@ -1933,7 +1933,7 @@ Sondern:
                                                                         48
    task_routes
 aus Datenbank laden.
-Damit können fachliche Regeln später verändert werden, ohne den Programmcode umzuschreiben.
+Damit kÃ¶nnen fachliche Regeln spÃ¤ter verÃ¤ndert werden, ohne den Programmcode umzuschreiben.
 
 85. Content und Algorithmus trennen
 
@@ -1947,13 +1947,13 @@ Drei Ebenen:
 
 Diese Ebenen strikt trennen.
 
-86. Datenschutzprinzip für MVP
+86. Datenschutzprinzip fÃ¼r MVP
 
-Nur Daten speichern, die für die Funktion notwendig sind.
-Für Entwicklungs-/Testsystem:
+Nur Daten speichern, die fÃ¼r die Funktion notwendig sind.
+FÃ¼r Entwicklungs-/Testsystem:
 
    student_id = pseudonymous UUID
-Keine unnötigen personenbezogenen Daten.
+Keine unnÃ¶tigen personenbezogenen Daten.
 Keine medizinischen Diagnosen speichern.
 
 87. Keine ADHS-Erkennung im MVP
@@ -1964,8 +1964,8 @@ Nicht implementieren:
     ADHD
 
                                                                         49
-Auch wenn später Aufgabenmerkmale wie Aufmerksamkeit oder Arbeitsgedächtnisanforderung
-untersucht werden, sind dies zunächst Leistungs-/Nutzungsmuster, keine medizinischen Diagnosen.
+Auch wenn spÃ¤ter Aufgabenmerkmale wie Aufmerksamkeit oder ArbeitsgedÃ¤chtnisanforderung
+untersucht werden, sind dies zunÃ¤chst Leistungs-/Nutzungsmuster, keine medizinischen Diagnosen.
 
 88. Lehrkraft-Supervision
 
@@ -1986,13 +1986,13 @@ Beispiel:
    Next:
    mixed representation task
 
-Die Lehrkraft soll erkennen können:
+Die Lehrkraft soll erkennen kÃ¶nnen:
 
-          Warum hat das System diesen Pfad gewählt?
+          Warum hat das System diesen Pfad gewÃ¤hlt?
 
 89. Explainability Logging
 
-Für jede Routingentscheidung speichern:
+FÃ¼r jede Routingentscheidung speichern:
 
    decision_id
    student_id
@@ -2005,9 +2005,9 @@ Für jede Routingentscheidung speichern:
    alternatives_considered
 
                                                                         50
-90. Förderaufgaben
+90. FÃ¶rderaufgaben
 
-Diagnostik und Förderung müssen unterscheidbar sein.
+Diagnostik und FÃ¶rderung mÃ¼ssen unterscheidbar sein.
 
    task_purpose:
 
@@ -2020,7 +2020,7 @@ Diagnostik und Förderung müssen unterscheidbar sein.
    CEILING
    FLOOR
 
-91. Förderlogik
+91. FÃ¶rderlogik
 
 Wenn Defizit lokalisiert:
 
@@ -2040,7 +2040,7 @@ Sondern:
    
    TRANSFER
 
-92. Beispiel Förderroute Stellenwert
+92. Beispiel FÃ¶rderroute Stellenwert
 
 Problem:
 
@@ -2061,25 +2061,25 @@ Nach Replikation:
    
    symbolisches Transferitem
 
-93. Beispiel Förderroute Multiplikation
+93. Beispiel FÃ¶rderroute Multiplikation
 
 Problem:
 
-   6×8
+   6Ã—8
 
 Symbolisch unsicher, ikonisch erfolgreich.
 
 Route:
 
-   6×8 array
+   6Ã—8 array
    
-   5×8 + 1×8 markieren
+   5Ã—8 + 1Ã—8 markieren
    
-   5×8 + 1×8 symbolisch
+   5Ã—8 + 1Ã—8 symbolisch
    
-   6×8
+   6Ã—8
    
-   7×8 mit neuer Beziehung
+   7Ã—8 mit neuer Beziehung
    
    Transfer
 
@@ -2089,21 +2089,21 @@ Aufgabe speichert:
 
    grade_reference
 
-Aber das Routing darf bei hoher Kompetenz darüber hinausgehen.
+Aber das Routing darf bei hoher Kompetenz darÃ¼ber hinausgehen.
 
                                                                         52
 Beispiel:
-Schüler:in Klasse 4 zeigt hohe Kompetenz.
-Dann können ­ wenn Content vorhanden ­ Aufgaben aus Klasse 5/6 aktiviert werden.
-Langfristig theoretisch auch deutlich darüber.
+SchÃ¼ler:in Klasse 4 zeigt hohe Kompetenz.
+Dann kÃ¶nnen â€“ wenn Content vorhanden â€“ Aufgaben aus Klasse 5/6 aktiviert werden.
+Langfristig theoretisch auch deutlich darÃ¼ber.
 
-95. Für MVP zunächst begrenzen
+95. FÃ¼r MVP zunÃ¤chst begrenzen
 
 Technisch:
  ALLOW_ABOVE_GRADE = TRUE
 Contentseitig:
-zunächst nur ausgewählte Ceiling-Items.
-Damit bleibt MVP überschaubar.
+zunÃ¤chst nur ausgewÃ¤hlte Ceiling-Items.
+Damit bleibt MVP Ã¼berschaubar.
 
 96. Startlogik
 
@@ -2121,15 +2121,15 @@ bei Misserfolg:
    down
 
                                                                         53
-97. Spätere CAT-Entwicklung
+97. SpÃ¤tere CAT-Entwicklung
 
 Nach empirischer Kalibrierung kann die heuristische Auswahl durch Computerized Adaptive Testing
 erweitert werden.
-Bei klassischem CAT werden nach einer vorläufigen Kompetenzschätzung Items ausgewählt, die
-möglichst viel Information über das aktuelle Fähigkeitsniveau liefern.
+Bei klassischem CAT werden nach einer vorlÃ¤ufigen KompetenzschÃ¤tzung Items ausgewÃ¤hlt, die
+mÃ¶glichst viel Information Ã¼ber das aktuelle FÃ¤higkeitsniveau liefern.
 Das ist Phase 2, nicht MVP V1.
 
-98. Testfall A ­ hohe Kompetenz
+98. Testfall A â€“ hohe Kompetenz
 
    Start D3
    
@@ -2140,9 +2140,9 @@ Das ist Phase 2, nicht MVP V1.
     SECURE
     PARKED
 Erwartung:
-Keine unnötigen D1/D2-Aufgaben.
+Keine unnÃ¶tigen D1/D2-Aufgaben.
 
-99. Testfall B ­ grundlegende Schwierigkeit
+99. Testfall B â€“ grundlegende Schwierigkeit
 
    D3 
    Parallel 
@@ -2152,7 +2152,7 @@ Keine unnötigen D1/D2-Aufgaben.
     SUPPORT_FOCUS
 
                                                                         54
-100. Testfall C ­ Repräsentation
+100. Testfall C â€“ ReprÃ¤sentation
 
    D3 SYMBOL 
    Parallel SYMBOL 
@@ -2164,7 +2164,7 @@ Keine unnötigen D1/D2-Aufgaben.
     SYMBOL
     TRANSFER
 
-101. Testfall D ­ Zahlen-/Strategieabhängigkeit
+101. Testfall D â€“ Zahlen-/StrategieabhÃ¤ngigkeit
 
    49+36 
    48+37 
@@ -2177,21 +2177,21 @@ System soll:
 
       1. Features vergleichen
       2. Hypothese erzeugen
-      3. Contrast Item auswählen
+      3. Contrast Item auswÃ¤hlen
       4. Strategiepfad untersuchen.
 
-102. Testfall E ­ scheinbar gleiche Fehler,
+102. Testfall E â€“ scheinbar gleiche Fehler,
 unterschiedliche Ursache
 
-Schüler:in A:
+SchÃ¼ler:in A:
 
-   6×8 SYMBOL 
-   6×8 IMAGE 
+   6Ã—8 SYMBOL 
+   6Ã—8 IMAGE 
 
                                                                         55
-Schüler:in B:
-   6×8 SYMBOL 
-   6×8 IMAGE 
+SchÃ¼ler:in B:
+   6Ã—8 SYMBOL 
+   6Ã—8 IMAGE 
    GROUPING 
 
 Erwartung:
@@ -2201,12 +2201,12 @@ A:
 B:
 
    multiplication concept route
-Gleiche Ausgangsantwort darf zu unterschiedlichen Lernpfaden führen.
+Gleiche Ausgangsantwort darf zu unterschiedlichen Lernpfaden fÃ¼hren.
 
-103. Testfall F ­ Wiederaktivierung
+103. Testfall F â€“ Wiederaktivierung
 
    ZO06 = PARKED
-Später mehrere Stellenwertfehler.
+SpÃ¤ter mehrere Stellenwertfehler.
 System:
 
    ZO06
@@ -2269,11 +2269,11 @@ Numeric/Strategy Features + Contrast Items.
                                                                         57
 Sprint 12
 
-Simulation der sechs Testfälle.
+Simulation der sechs TestfÃ¤lle.
 
 105. MVP User Interface
 
-Schüler:innenansicht zunächst sehr einfach:
+SchÃ¼ler:innenansicht zunÃ¤chst sehr einfach:
 
    Aufgabe
    
@@ -2281,7 +2281,7 @@ Schüler:innenansicht zunächst sehr einfach:
    
    Antwort
    
-   Feedback / nächste Aufgabe
+   Feedback / nÃ¤chste Aufgabe
 
 Keine komplexen Dashboards notwendig.
 
@@ -2294,34 +2294,34 @@ Mindestens:
    Evidenz
    letzte Aufgaben
    offene Hypothesen
-   aktueller Förderbereich
-   nächster geplanter Schritt
+   aktueller FÃ¶rderbereich
+   nÃ¤chster geplanter Schritt
 
 Optional als Kompetenzgraph visualisieren.
 
-107. Was ausdrücklich NICHT MVP V1 ist
+107. Was ausdrÃ¼cklich NICHT MVP V1 ist
 
 Nicht bauen:
 
-        · ADHS-Diagnostik
-        · psychologische Diagnostik
-        · Elternportal
-        · Elternfragebögen
-        · Berufsempfehlungen
-        · Gruppenmatching
+        Â· ADHS-Diagnostik
+        Â· psychologische Diagnostik
+        Â· Elternportal
+        Â· ElternfragebÃ¶gen
+        Â· Berufsempfehlungen
+        Â· Gruppenmatching
 
                                                                         58
-        · vollständiger Lernkalender
-        · komplette Mathematik aller Klassen
-        · alle fünf Leitideen vollständig
-        · automatisches Persönlichkeitsprofil
-        · LLM als zentrale Entscheidungsinstanz
-Diese Funktionen gehören zur langfristigen Vision.
+        Â· vollstÃ¤ndiger Lernkalender
+        Â· komplette Mathematik aller Klassen
+        Â· alle fÃ¼nf Leitideen vollstÃ¤ndig
+        Â· automatisches PersÃ¶nlichkeitsprofil
+        Â· LLM als zentrale Entscheidungsinstanz
+Diese Funktionen gehÃ¶ren zur langfristigen Vision.
 
-108. Was bereits für spätere Erweiterungen
+108. Was bereits fÃ¼r spÃ¤tere Erweiterungen
 vorbereitet werden muss
 
-Architektur muss später ermöglichen:
+Architektur muss spÃ¤ter ermÃ¶glichen:
 
    new domains
    new competencies
@@ -2331,9 +2331,9 @@ Architektur muss später ermöglichen:
    new user roles
    new algorithms
 
-Keine Tabellenstruktur bauen, die ausschließlich ZO07 , ZO08 usw. kennt.
+Keine Tabellenstruktur bauen, die ausschlieÃŸlich ZO07 , ZO08 usw. kennt.
 
-Kompetenzen müssen datengetrieben sein.
+Kompetenzen mÃ¼ssen datengetrieben sein.
 
 109. Quellenverwaltung
 
@@ -2349,12 +2349,12 @@ Tabelle:
    access_date
    notes
 
-Jede Kompetenzrelation sollte ­ wenn vorhanden ­ auf Quellen verweisen können.
+Jede Kompetenzrelation sollte â€“ wenn vorhanden â€“ auf Quellen verweisen kÃ¶nnen.
 
                                                                         59
 110. Quellenstatus
 
-Zusätzlich:
+ZusÃ¤tzlich:
 
    OFFICIAL_STANDARD
    EMPIRICAL_RESEARCH
@@ -2363,40 +2363,40 @@ Zusätzlich:
    MVP_HYPOTHESIS
    SYSTEM_OBSERVATION
 
-111. Primäre Referenzen
+111. PrimÃ¤re Referenzen
 
 KMK
 
 Bildungsstandards Mathematik Primarbereich, Fassung 2022.
-Verbindliche Grundlage für die übergeordnete Kompetenzstruktur.
+Verbindliche Grundlage fÃ¼r die Ã¼bergeordnete Kompetenzstruktur.
 
 IQB
 
 Kompetenzstufenmodelle Mathematik Primarstufe und VERA-3-Aufgaben.
-Referenz für empirische Kompetenzmodellierung und Aufgabenmetadaten.
+Referenz fÃ¼r empirische Kompetenzmodellierung und Aufgabenmetadaten.
 
 PIKAS/DZLM
 
 Arithmetische Basiskompetenzen.
-Besonders relevant für:
+Besonders relevant fÃ¼r:
 
-        · Zahlverständnis,
-        · Operationsverständnis,
-        · Stellenwertverständnis,
-        · Darstellungsvernetzung,
-        · Aufgabenbeziehungen,
-        · Rechenstrategien.
+        Â· ZahlverstÃ¤ndnis,
+        Â· OperationsverstÃ¤ndnis,
+        Â· StellenwertverstÃ¤ndnis,
+        Â· Darstellungsvernetzung,
+        Â· Aufgabenbeziehungen,
+        Â· Rechenstrategien.
 
 Gelman & Gallistel
 
-Referenz für die fünf grundlegenden Zählprinzipien.
+Referenz fÃ¼r die fÃ¼nf grundlegenden ZÃ¤hlprinzipien.
 
                                                                         60
 112. Quellen zur Aufgabenvariation
 
 Forschung zur Strategieauswahl zeigt:
 Leistung bei mathematisch verwandten Aufgaben kann sich durch konkrete Problemmerkmale,
-Zahlenwerte und Präsentation verändern.
+Zahlenwerte und PrÃ¤sentation verÃ¤ndern.
 Deshalb sind folgende Felder verbindlich:
 
    numeric_features
@@ -2404,7 +2404,7 @@ Deshalb sind folgende Felder verbindlich:
    surface_features
    strategy_affordances
 
-113. Qualitätsregel für neue Aufgaben
+113. QualitÃ¤tsregel fÃ¼r neue Aufgaben
 
 Eine neue Aufgabe darf nur in die Datenbank aufgenommen werden, wenn mindestens angegeben
 sind:
@@ -2418,14 +2418,14 @@ sind:
    task_purpose
    calibration_status
 
-Für diagnostisch relevante Aufgaben zusätzlich:
+FÃ¼r diagnostisch relevante Aufgaben zusÃ¤tzlich:
 
    numeric_features
    structural_features
    strategy_affordances
    parallel_item
 
-114. Qualitätsregel für neue Relationen
+114. QualitÃ¤tsregel fÃ¼r neue Relationen
 
 Keine Relation ohne:
 
@@ -2439,22 +2439,22 @@ und nicht A.
 
 115. Grundsatz der Widerlegbarkeit
 
-Eine Hypothese muss durch eine Aufgabe auch widerlegt werden können.
+Eine Hypothese muss durch eine Aufgabe auch widerlegt werden kÃ¶nnen.
 Schlecht:
 
-          ,,Schüler:in hat möglicherweise Schwierigkeiten mit Mathematik."
+          ,,SchÃ¼ler:in hat mÃ¶glicherweise Schwierigkeiten mit Mathematik."
 Gut:
 
-          ,,Die Leistung könnte bei symbolischer Darstellung niedriger sein als bei ikonischer
+          ,,Die Leistung kÃ¶nnte bei symbolischer Darstellung niedriger sein als bei ikonischer
           Darstellung."
 Dann kann gezielt:
 
    IMAGE vs SYMBOL
 getestet werden.
 
-116. Grundsatz der minimalen Veränderung
+116. Grundsatz der minimalen VerÃ¤nderung
 
-Contrast Items sollen nach Möglichkeit nur eine relevante Variable verändern.
+Contrast Items sollen nach MÃ¶glichkeit nur eine relevante Variable verÃ¤ndern.
 Beispiel:
 
    gleiche Kompetenz
@@ -2570,13 +2570,13 @@ Wenn A beobachtet wurde, darf nicht automatisch:
 
    E = TRUE
 gesetzt werden.
-Stattdessen kann die Kette genutzt werden, um ein informationsreiches E- oder C-Item auszuwählen.
+Stattdessen kann die Kette genutzt werden, um ein informationsreiches E- oder C-Item auszuwÃ¤hlen.
 Das spart Aufgaben, ohne Evidenz zu erfinden.
 
                                                                         65
 122. Individuelle Pfade als Entscheidungsbaum
 
-Das System verhält sich ähnlich wie ein entscheidungsbasiertes Spiel:
+Das System verhÃ¤lt sich Ã¤hnlich wie ein entscheidungsbasiertes Spiel:
 
    Student response
    
@@ -2588,32 +2588,32 @@ Das System verhält sich ähnlich wie ein entscheidungsbasiertes Spiel:
 
 Der Unterschied:
 
-Ein Pfad wird nicht endgültig gelöscht.
+Ein Pfad wird nicht endgÃ¼ltig gelÃ¶scht.
 
 Er wird:
 
    PARKED
 
-und kann später reaktiviert werden.
+und kann spÃ¤ter reaktiviert werden.
 
 123. Definition of Done
 
 MVP V1 ist fachlich-technisch erfolgreich, wenn:
 
-      1. Kompetenzknoten importiert werden können.
+      1. Kompetenzknoten importiert werden kÃ¶nnen.
       2. Relationen datenbankbasiert funktionieren.
       3. Aufgaben Metadaten besitzen.
       4. Aufgabenfamilien funktionieren.
-      5. Parallelitems verfügbar sind.
+      5. Parallelitems verfÃ¼gbar sind.
       6. Fehler als Beobachtungen gespeichert werden.
       7. Fehler nicht automatisch Diagnosen erzeugen.
       8. Schwierigkeit hoch/runter navigiert.
       9. Skip-Level funktioniert.
      10. Darstellung gewechselt werden kann.
-     11. Zahlenstruktur berücksichtigt wird.
+     11. Zahlenstruktur berÃ¼cksichtigt wird.
      12. Strategy Variation funktioniert.
-     13. Contrast Items ausgelöst werden können.
-     14. Voraussetzungen rückwärts untersucht werden.
+     13. Contrast Items ausgelÃ¶st werden kÃ¶nnen.
+     14. Voraussetzungen rÃ¼ckwÃ¤rts untersucht werden.
      15. Kompetenzen geparkt werden.
      16. Kompetenzen reaktiviert werden.
      17. individueller aktiver Teilgraph entsteht.
@@ -2621,41 +2621,41 @@ MVP V1 ist fachlich-technisch erfolgreich, wenn:
      19. Entscheidungen protokolliert werden.
 
                                                                         66
-     20. die sechs Testfälle unterschiedliche erwartete Pfade erzeugen.
+     20. die sechs TestfÃ¤lle unterschiedliche erwartete Pfade erzeugen.
 
-124. Wichtigster Satz für die Entwicklung
+124. Wichtigster Satz fÃ¼r die Entwicklung
 
-          Baue kein Quizsystem, das richtige und falsche Antworten zählt. Baue einen
-          Kompetenzgraphen, der mit möglichst wenigen gezielt ausgewählten Aufgaben
-          herausfindet, was eine Schüler:in sicher kann, wo eine Schwierigkeit beginnt, unter
-          welchen Bedingungen sie auftritt, welche mathematische Voraussetzung dafür
-          relevant sein könnte und welcher nächste Datenpunkt den größten zusätzlichen
+          Baue kein Quizsystem, das richtige und falsche Antworten zÃ¤hlt. Baue einen
+          Kompetenzgraphen, der mit mÃ¶glichst wenigen gezielt ausgewÃ¤hlten Aufgaben
+          herausfindet, was eine SchÃ¼ler:in sicher kann, wo eine Schwierigkeit beginnt, unter
+          welchen Bedingungen sie auftritt, welche mathematische Voraussetzung dafÃ¼r
+          relevant sein kÃ¶nnte und welcher nÃ¤chste Datenpunkt den grÃ¶ÃŸten zusÃ¤tzlichen
           Informationswert besitzt.
 
-125. Wichtigster Satz für die pädagogische
+125. Wichtigster Satz fÃ¼r die pÃ¤dagogische
 Interpretation
 
           Das System beobachtet Leistung unter definierten Bedingungen und erzeugt
-          überprüfbare Hypothesen; es diagnostiziert aus einzelnen Aufgaben keine
-          persönlichen, psychologischen oder medizinischen Eigenschaften.
+          Ã¼berprÃ¼fbare Hypothesen; es diagnostiziert aus einzelnen Aufgaben keine
+          persÃ¶nlichen, psychologischen oder medizinischen Eigenschaften.
 
 126. Langfristige Erweiterungsvision
 
-Nach erfolgreichem MVP können schrittweise ergänzt werden:
+Nach erfolgreichem MVP kÃ¶nnen schrittweise ergÃ¤nzt werden:
 
    weitere Bereiche Zahl & Operation
    
-   Größen & Messen
+   GrÃ¶ÃŸen & Messen
    
    Raum & Form
    
-   Muster & funktionale Zusammenhänge
+   Muster & funktionale ZusammenhÃ¤nge
    
    Daten & Zufall
    
    Sekundarstufe
    
-   weitere Fächer
+   weitere FÃ¤cher
 
 Parallel:
 
@@ -2669,11 +2669,11 @@ Parallel:
    
    Gruppenmatching
    
-   Interessen/Fähigkeiten
+   Interessen/FÃ¤higkeiten
    
    Berufsorientierung
 
-Diese Erweiterungen dürfen erst erfolgen, wenn der Kernmechanismus zuverlässig funktioniert.
+Diese Erweiterungen dÃ¼rfen erst erfolgen, wenn der Kernmechanismus zuverlÃ¤ssig funktioniert.
 
 127. Empirische Weiterentwicklung
 
@@ -2682,11 +2682,11 @@ Nach MVP:
       1. Pilotierung mit Testnutzer:innen
       2. Itemanalyse
       3. Analyse der Fehlermuster
-      4. Überprüfung der D1­D5-Reihenfolge
-      5. Überprüfung der Kompetenzrelationen
+      4. ÃœberprÃ¼fung der D1â€“D5-Reihenfolge
+      5. ÃœberprÃ¼fung der Kompetenzrelationen
       6. Analyse der Strategy-/Contrast-Items
-      7. Überprüfung der Routing-Heuristiken
-      8. Überprüfung der Park-/Reaktivierungsregeln
+      7. ÃœberprÃ¼fung der Routing-Heuristiken
+      8. ÃœberprÃ¼fung der Park-/Reaktivierungsregeln
       9. psychometrische Kalibrierung
      10. ggf. IRT/CAT bzw. Knowledge-Tracing-Verfahren
 Das System soll langfristig aus empirischen Daten lernen.
@@ -2697,7 +2697,7 @@ MVP V1 verfolgt damit drei miteinander verbundene Ziele:
 
 1. Kompetenz erkennen
 
-          Was kann die Schüler:in?
+          Was kann die SchÃ¼ler:in?
 
 2. Schwierigkeit lokalisieren
 
@@ -2705,15 +2705,15 @@ MVP V1 verfolgt damit drei miteinander verbundene Ziele:
 
 3. Lernweg adaptieren
 
-          Welche nächste Aufgabe oder Unterstützung ist fachlich am sinnvollsten und liefert
-          gleichzeitig möglichst viel neue Information?
+          Welche nÃ¤chste Aufgabe oder UnterstÃ¼tzung ist fachlich am sinnvollsten und liefert
+          gleichzeitig mÃ¶glichst viel neue Information?
 
                                                                         68
 Die zentrale Einheit des Systems ist deshalb nicht die Klassenstufe, nicht die Note und nicht die
 einzelne richtige/falsche Antwort.
 Die zentrale Einheit ist:
 
-          Kompetenz × Aufgabe × Aufgabenmerkmale × beobachtetes Verhalten × Evidenz ×
+          Kompetenz Ã— Aufgabe Ã— Aufgabenmerkmale Ã— beobachtetes Verhalten Ã— Evidenz Ã—
           Zeit.
 Aus dieser Kombination entsteht der individuelle Lernpfad.
 

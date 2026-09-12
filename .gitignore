@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.sqlite3
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# macOS: der Finder legt das in jedem geoeffneten Ordner an
+.DS_Store
+
+# Editoren
+.idea/
+.vscode/

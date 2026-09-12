@@ -34,6 +34,19 @@ import re
 import sqlite3
 from typing import Any, Callable
 
+# Der Import allein genuegt: er haengt sich in input() ein und gibt der Zeile
+# Cursorbewegung und Historie. Ohne ihn liefert ein Terminal unter macOS und
+# Linux bei Pfeil-hoch die rohen Bytes ESC [ A - und §59 reicht eine
+# nichtnumerische Eingabe bewusst als Antwort durch, statt sie abzuweisen.
+# Derselbe Reflex haette dann auf Windows (wo die Konsole die Historie selbst
+# liefert) die letzte Antwort geholt und auf dem Mac einen falschen Versuch in
+# task_attempts geschrieben. Unter Windows fehlt das Modul in der
+# Standardinstallation; dort bleibt alles wie bisher.
+try:
+    import readline  # noqa: F401
+except ImportError:
+    pass
+
 from . import attempts, renderer, teacher
 from .attempts import Submission
 from .clock import Clock
@@ -364,7 +377,7 @@ def run(conn: sqlite3.Connection, student_id: str, *, grade: int | None = None,
     conn.commit()
     if answered:
         write(f"\n{answered} Aufgabe{'n' if answered != 1 else ''} bearbeitet."
-              f" Auswertung:  python -m mathkomp student {student_id}")
+              f" Auswertung:  mathkomp student {student_id}")
     return 0
 
 
