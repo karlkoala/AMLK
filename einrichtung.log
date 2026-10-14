@@ -1,0 +1,240 @@
+Datenbank: mathkomp.sqlite3.neu
+Tabellen:  20 (§78 verlangt 13)
+
+  competencies              54
+  error_codes               16
+  relations                 85
+  sources                    8
+  system_config             46
+  task_families             21
+  task_features            478
+  task_routes               33
+  tasks                     97
+  vocabularies              34
+  vocabulary_terms         259
+  SUMME                   1131
+==============================================================================
+TESTFALL A - §98 hohe Kompetenz
+==============================================================================
+TESTFALL policy_high_competence  Schueler:in SIM-A
+
+ 1. ZO09-REL-D3-S-A          D3 MATHEMATICAL_SYMBOL  SCREEN    richtig
+      Status       ZO06_PLACE_VALUE: None -> UNKNOWN
+      Status       ZO07_ADDITION: None -> UNKNOWN
+      Status       ZO09_MULTIPLICATION: None -> ACTIVE
+      Naechste     ZO09-D5-S-A (CEILING_SEARCH, Konfidenz HIGH)
+ 2. ZO09-D5-S-A              D5 MATHEMATICAL_SYMBOL  CEILING   richtig
+      Naechste     ZO09-REL-D3-S-B (LOCATE_BOUNDARY, Konfidenz MEDIUM)
+ 3. ZO09-REL-D3-S-B          D3 MATHEMATICAL_SYMBOL  VERIFY    richtig
+      Status       ZO09_MULTIPLICATION: ACTIVE -> SECURE
+      Uebergang    ZO09_MULTIPLICATION:SECURE->PARKED
+      Naechste     ZO09-SUP-D3-L-A (TRANSFER_CHECK, Konfidenz LOW)
+ 4. ZO09-SUP-D3-L-A          D3 NATURAL_LANGUAGE     TRANSFER  richtig
+
+Ende: NO_CANDIDATES  (§73 - nicht uebertesten)
+
+==============================================================================
+TESTFALL B - §99 grundlegende Schwierigkeit
+==============================================================================
+TESTFALL policy_basic_difficulty  Schueler:in SIM-B
+
+ 1. ZO06-D2-S-A              D2 MATHEMATICAL_SYMBOL  SCREEN    FALSCH 
+      Beobachtung  ERR_PLACE_VALUE
+      Status       ZO06_PLACE_VALUE: None -> ACTIVE
+      Naechste     ZO06-D2-S-B (REPLICATE_ERROR, Konfidenz HIGH)
+ 2. ZO06-D2-S-B              D2 MATHEMATICAL_SYMBOL  VERIFY    FALSCH 
+      Beobachtung  ERR_PLACE_VALUE
+      Status       ZO06_PLACE_VALUE: ACTIVE -> SUPPORT_FOCUS
+      Hypothese    PREREQUISITE_HYPOTHESIS:OPENED
+      Hypothese    PREREQUISITE_HYPOTHESIS:OPENED
+      Naechste     ZO06-D2-S-C (CHECK_TASK_TYPE, Konfidenz HIGH)
+ 3. ZO06-D2-S-C              D2 MATHEMATICAL_SYMBOL  CONTRAST  FALSCH 
+      Beobachtung  ERR_PLACE_VALUE
+      Hypothese    PREREQUISITE_HYPOTHESIS:SUPPORTED
+      Hypothese    PREREQUISITE_HYPOTHESIS:SUPPORTED
+      Naechste     ZO06-D2-S-D (REPLICATE_ERROR, Konfidenz HIGH)
+ 4. ZO06-D2-S-D              D2 MATHEMATICAL_SYMBOL  CONTRAST  FALSCH 
+      Beobachtung  ERR_PLACE_VALUE
+      Naechste     ZO06-D2-I-A (CHANGE_REPRESENTATION, Konfidenz HIGH)
+ 5. ZO06-D2-I-A              D2 IMAGE                CONTRAST  FALSCH 
+      Beobachtung  ERR_PLACE_VALUE
+      Naechste     ZO06-1-D1-ACTION-A (CHECK_PREREQUISITE, Konfidenz HIGH)
+ 6. ZO06-1-D1-ACTION-A       D1 ACTION               SCREEN    richtig
+      Status       ZO02_3_STRUCTURED_QUANTITY: None -> UNKNOWN
+      Status       ZO06_1_BUNDLING: None -> ACTIVE
+      Naechste     ZO06-1-D1-ACTION-B (LOCATE_BOUNDARY, Konfidenz HIGH)
+ 7. ZO06-1-D1-ACTION-B       D1 ACTION               CONTRAST  richtig
+      Status       ZO06_1_BUNDLING: ACTIVE -> SECURE
+      Uebergang    ZO06_1_BUNDLING:SECURE->PARKED
+      Naechste     ZO06-D2-I-B (SUPPORT_ROUTE, Konfidenz MEDIUM)
+ 8. ZO06-D2-I-B              D2 IMAGE                VERIFY    FALSCH 
+      Beobachtung  ERR_PLACE_VALUE
+
+Ende: ALL_NODES_SUFFICIENTLY_INFORMED  (§73 - nicht uebertesten)
+
+==============================================================================
+TESTFALL C - §100 Repraesentation
+==============================================================================
+TESTFALL policy_representation  Schueler:in SIM-C
+
+ 1. ZO06-D2-S-A              D2 MATHEMATICAL_SYMBOL  SCREEN    FALSCH 
+      Beobachtung  ERR_PLACE_VALUE
+      Status       ZO06_PLACE_VALUE: None -> ACTIVE
+      Naechste     ZO06-D2-S-B (REPLICATE_ERROR, Konfidenz HIGH)
+ 2. ZO06-D2-S-B              D2 MATHEMATICAL_SYMBOL  VERIFY    FALSCH 
+      Beobachtung  ERR_PLACE_VALUE
+      Status       ZO06_PLACE_VALUE: ACTIVE -> SUPPORT_FOCUS
+      Hypothese    PREREQUISITE_HYPOTHESIS:OPENED
+      Hypothese    PREREQUISITE_HYPOTHESIS:OPENED
+      Naechste     ZO06-D2-S-C (CHECK_TASK_TYPE, Konfidenz HIGH)
+ 3. ZO06-D2-S-C              D2 MATHEMATICAL_SYMBOL  CONTRAST  FALSCH 
+      Beobachtung  ERR_PLACE_VALUE
+      Hypothese    PREREQUISITE_HYPOTHESIS:SUPPORTED
+      Hypothese    PREREQUISITE_HYPOTHESIS:SUPPORTED
+      Naechste     ZO06-D2-S-D (REPLICATE_ERROR, Konfidenz HIGH)
+ 4. ZO06-D2-S-D              D2 MATHEMATICAL_SYMBOL  CONTRAST  FALSCH 
+      Beobachtung  ERR_PLACE_VALUE
+      Naechste     ZO06-D2-I-A (CHANGE_REPRESENTATION, Konfidenz HIGH)
+ 5. ZO06-D2-I-A              D2 IMAGE                CONTRAST  richtig
+      Status       ZO02_NUMBER_UNDERSTANDING: None -> UNKNOWN
+      Status       ZO06_1_BUNDLING: None -> UNKNOWN
+      Status       ZO06_PLACE_VALUE: SUPPORT_FOCUS -> UNCERTAIN
+      Naechste     ZO06-D2-I-B (DISCRIMINATE_HYPOTHESIS, Konfidenz HIGH)
+ 6. ZO06-D2-I-B              D2 IMAGE                VERIFY    richtig
+      Hypothese    REPRESENTATION_HYPOTHESIS:OPENED
+      Hypothese    SURFACE_DEPENDENCY_HYPOTHESIS:OPENED
+
+Ende: ALL_NODES_SUFFICIENTLY_INFORMED  (§73 - nicht uebertesten)
+
+==============================================================================
+TESTFALL D - §101 Zahlenabhaengigkeit
+==============================================================================
+TESTFALL policy_number_dependency  Schueler:in SIM-D
+
+ 1. ZO07-D3-S-E              D3 MATHEMATICAL_SYMBOL  CONTRAST  richtig
+      Status       ZO06_PLACE_VALUE: None -> UNKNOWN
+      Status       ZO07_ADDITION: None -> ACTIVE
+      Naechste     ZO07-D3-S-C (DISCRIMINATE_HYPOTHESIS, Konfidenz HIGH)
+ 2. ZO07-D3-S-C              D3 MATHEMATICAL_SYMBOL  CONTRAST  FALSCH 
+      Beobachtung  ERR_CALCULATION
+      Status       ZO07_ADDITION: ACTIVE -> UNCERTAIN
+      Naechste     ZO07-D3-S-D (LOCATE_BOUNDARY, Konfidenz HIGH)
+ 3. ZO07-D3-S-D              D3 MATHEMATICAL_SYMBOL  CONTRAST  FALSCH 
+      Beobachtung  ERR_CALCULATION
+      Naechste     ZO07-D3-S-F (LOCATE_BOUNDARY, Konfidenz LOW)
+ 4. ZO07-D3-S-F              D3 MATHEMATICAL_SYMBOL  CONTRAST  richtig
+      Hypothese    STRATEGY_DEPENDENCY_HYPOTHESIS:OPENED
+      Naechste     ZO07-D2-S-B (DISCRIMINATE_HYPOTHESIS, Konfidenz LOW)
+ 5. ZO07-D2-S-B              D2 MATHEMATICAL_SYMBOL  CONTRAST  FALSCH 
+      Beobachtung  ERR_CALCULATION
+      Hypothese    STRATEGY_DEPENDENCY_HYPOTHESIS:SUPPORTED
+      Naechste     ZO07-D2-S-D (DISCRIMINATE_HYPOTHESIS, Konfidenz MEDIUM)
+ 6. ZO07-D2-S-D              D2 MATHEMATICAL_SYMBOL  VERIFY    FALSCH 
+      Beobachtung  ERR_CALCULATION
+
+Ende: ALL_NODES_SUFFICIENTLY_INFORMED  (§73 - nicht uebertesten)
+
+==============================================================================
+TESTFALL E1 - §102 gleiche Antwort, Darstellungsroute
+==============================================================================
+TESTFALL policy_multiplication_representation  Schueler:in SIM-E1
+
+ 1. ZO09-D2-S-A              D2 MATHEMATICAL_SYMBOL  SCREEN    FALSCH 
+      Beobachtung  ERR_CALCULATION
+      Status       ZO09_MULTIPLICATION: None -> ACTIVE
+      Naechste     ZO09-D2-S-B (REPLICATE_ERROR, Konfidenz HIGH)
+ 2. ZO09-D2-S-B              D2 MATHEMATICAL_SYMBOL  VERIFY    FALSCH 
+      Beobachtung  ERR_CALCULATION
+      Status       ZO09_MULTIPLICATION: ACTIVE -> SUPPORT_FOCUS
+      Hypothese    PREREQUISITE_HYPOTHESIS:OPENED
+      Hypothese    PREREQUISITE_HYPOTHESIS:OPENED
+      Naechste     ZO09-D2-I-A (CHANGE_REPRESENTATION, Konfidenz HIGH)
+ 3. ZO09-D2-I-A              D2 IMAGE                CONTRAST  richtig
+      Status       ZO06_PLACE_VALUE: None -> UNKNOWN
+      Status       ZO07_ADDITION: None -> UNKNOWN
+      Status       ZO09_MULTIPLICATION: SUPPORT_FOCUS -> UNCERTAIN
+      Naechste     ZO09-D2-I-B (DISCRIMINATE_HYPOTHESIS, Konfidenz HIGH)
+ 4. ZO09-D2-I-B              D2 IMAGE                VERIFY    richtig
+      Hypothese    REPRESENTATION_HYPOTHESIS:OPENED
+      Hypothese    SURFACE_DEPENDENCY_HYPOTHESIS:OPENED
+      Naechste     ZO09-REL-D3-I-A (LOCATE_BOUNDARY, Konfidenz HIGH)
+ 5. ZO09-REL-D3-I-A          D3 IMAGE                CONTRAST  richtig
+      Hypothese    REPRESENTATION_HYPOTHESIS:SUPPORTED
+      Hypothese    SURFACE_DEPENDENCY_HYPOTHESIS:SUPPORTED
+      Naechste     ZO09-D5-S-A (CEILING_SEARCH, Konfidenz LOW)
+ 6. ZO09-D5-S-A              D5 MATHEMATICAL_SYMBOL  CEILING   FALSCH 
+      Beobachtung  ERR_CALCULATION
+
+Ende: ALL_NODES_SUFFICIENTLY_INFORMED  (§73 - nicht uebertesten)
+
+==============================================================================
+TESTFALL E2 - §102 gleiche Antwort, Grundvorstellungsroute
+==============================================================================
+TESTFALL policy_multiplication_concept  Schueler:in SIM-E2
+
+ 1. ZO09-D2-S-A              D2 MATHEMATICAL_SYMBOL  SCREEN    FALSCH 
+      Beobachtung  ERR_CALCULATION
+      Status       ZO09_MULTIPLICATION: None -> ACTIVE
+      Naechste     ZO09-D2-S-B (REPLICATE_ERROR, Konfidenz HIGH)
+ 2. ZO09-D2-S-B              D2 MATHEMATICAL_SYMBOL  VERIFY    FALSCH 
+      Beobachtung  ERR_CALCULATION
+      Status       ZO09_MULTIPLICATION: ACTIVE -> SUPPORT_FOCUS
+      Hypothese    PREREQUISITE_HYPOTHESIS:OPENED
+      Hypothese    PREREQUISITE_HYPOTHESIS:OPENED
+      Naechste     ZO09-D2-I-A (CHANGE_REPRESENTATION, Konfidenz HIGH)
+ 3. ZO09-D2-I-A              D2 IMAGE                CONTRAST  FALSCH 
+      Beobachtung  ERR_SINGLE
+      Hypothese    PREREQUISITE_HYPOTHESIS:SUPPORTED
+      Hypothese    PREREQUISITE_HYPOTHESIS:SUPPORTED
+      Naechste     ZO09-D2-I-B (REPLICATE_ERROR, Konfidenz HIGH)
+ 4. ZO09-D2-I-B              D2 IMAGE                VERIFY    FALSCH 
+      Beobachtung  ERR_SINGLE
+      Naechste     ZO09-REL-D3-I-A (SUPPORT_ROUTE, Konfidenz MEDIUM)
+ 5. ZO09-REL-D3-I-A          D3 IMAGE                CONTRAST  FALSCH 
+      Beobachtung  ERR_OPERATION_SELECTION
+      Naechste     ZO09-GV-D1-I-A (CHECK_PREREQUISITE, Konfidenz LOW)
+ 6. ZO09-GV-D1-I-A           D1 IMAGE                SCREEN    FALSCH 
+      Beobachtung  ERR_OPERATION_CONCEPT, ERR_PREREQUISITE
+      Naechste     ZO09-GV-D2-L-A (SUPPORT_ROUTE, Konfidenz HIGH)
+ 7. ZO09-GV-D2-L-A           D2 NATURAL_LANGUAGE     SCREEN    FALSCH 
+      Beobachtung  ERR_CALCULATION
+
+Ende: ALL_NODES_SUFFICIENTLY_INFORMED  (§73 - nicht uebertesten)
+
+==============================================================================
+TESTFALL F1 - §103 Phase 1: sichern und parken
+==============================================================================
+TESTFALL policy_high_competence  Schueler:in SIM-F
+
+ 1. ZO06-D2-S-A              D2 MATHEMATICAL_SYMBOL  SCREEN    richtig
+      Status       ZO02_NUMBER_UNDERSTANDING: None -> UNKNOWN
+      Status       ZO06_1_BUNDLING: None -> UNKNOWN
+      Status       ZO06_PLACE_VALUE: None -> ACTIVE
+      Naechste     ZO06-SUP-D3-L-A (TRANSFER_CHECK, Konfidenz HIGH)
+ 2. ZO06-SUP-D3-L-A          D3 NATURAL_LANGUAGE     TRANSFER  richtig
+      Status       ZO06_7_WORD_TO_NUMERAL: None -> UNKNOWN
+      Naechste     ZO06-D3-S-A (LOCATE_BOUNDARY, Konfidenz LOW)
+ 3. ZO06-D3-S-A              D3 MATHEMATICAL_SYMBOL  SCREEN    richtig
+      Status       ZO06_PLACE_VALUE: ACTIVE -> SECURE
+      Uebergang    ZO06_PLACE_VALUE:SECURE->PARKED
+
+Ende: NO_CANDIDATES  (§73 - nicht uebertesten)
+
+==============================================================================
+TESTFALL F2 - §103 Phase 2: nach Reaktivierung
+==============================================================================
+TESTFALL wrong_on_place_value  Schueler:in SIM-F
+
+ 1. ZO06-D3-S-B              D3 MATHEMATICAL_SYMBOL  VERIFY    FALSCH 
+      Beobachtung  ERR_SINGLE
+      Status       ZO06_PLACE_VALUE: REACTIVATED -> UNCERTAIN
+      Naechste     ZO06-D2-S-B (LOCATE_BOUNDARY, Konfidenz LOW)
+ 2. ZO06-D2-S-B              D2 MATHEMATICAL_SYMBOL  VERIFY    FALSCH 
+      Beobachtung  ERR_PLACE_VALUE
+      Naechste     ZO06-D3-S-C (LOCATE_BOUNDARY, Konfidenz MEDIUM)
+ 3. ZO06-D3-S-C              D3 MATHEMATICAL_SYMBOL  CONTRAST  FALSCH 
+      Beobachtung  ERR_SINGLE
+
+Ende: ALL_NODES_SUFFICIENTLY_INFORMED  (§73 - nicht uebertesten)
+
+§123 Kriterium 20 - unterschiedliche Pfade: erfuellt

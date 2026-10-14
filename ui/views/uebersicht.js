@@ -66,9 +66,13 @@ function naechsteAufgabe(profil, aufgabenNachId) {
     return el("div", {},
       el("p", {}, el("span.wichtig", "Das System hat entschieden, nicht weiter zu testen."),
         " Grund: ", el("span.mono", entscheidung.rule_triggered || "–")),
-      merkzettel("Das ist keine Aussage über die Schüler:in, sondern über den "
-        + "Informationsstand: weitere Aufgaben würden im aktuellen Teilgraphen "
-        + "nichts Neues beitragen."),
+      merkzettel(entscheidung.termination?.diagnostically_complete
+        ? "Alle Ziele im angegebenen Prüfumfang sind gesichert oder geparkt. Dies ist keine empirische Gütegarantie."
+        : "Technischer Abschluss: Es ist keine geeignete Folgeaufgabe verfügbar. Offene Kompetenzbereiche bleiben bestehen."),
+      ...(entscheidung.termination?.open_areas || []).map((a) => el("p", {},
+        el("span.mono", a.competency_id), ` · ${a.status} · ${Object.keys(a.exclusion_reasons).join(", ")}`)),
+      ...(entscheidung.termination?.blocked_areas || []).map((a) => el("p", {},
+        el("span.mono", a.competency_id), " · gesperrt")),
       sprung("Begründung im Debug ansehen", { ansicht: "debug" }));
   }
   const aufgabe = aufgabenNachId.get(entscheidung.selected_task);

@@ -57,8 +57,8 @@ for noetig in pyproject.toml content ui src; do
   [ -e "$noetig" ] || abbruch \
     "Diese Startdatei liegt nicht mehr in ihrem Ordner." \
     "" \
-    "Sie gehoert in den Ordner 'mathkomp', zusammen mit allem anderen, was" \
-    "beim Auspacken entstanden ist. Alleine kann sie nichts tun." \
+    "Sie gehoert in den entpackten Programmordner, zusammen mit allem" \
+    "anderen, was beim Auspacken entstanden ist. Alleine kann sie nichts tun." \
     "" \
     "An dieser Stelle fehlt: $noetig"
 done
@@ -225,7 +225,7 @@ if ! umgebung_brauchbar; then
     "die Antwort 'Nicht erlauben', laesst sich das hier wieder aendern:" \
     "Systemeinstellungen > Datenschutz & Sicherheit > Dateien und Ordner." \
     "" \
-    "Einfacher: den ganzen Ordner 'mathkomp' in den Benutzerordner ziehen" \
+    "Einfacher: den ganzen Programmordner in den Benutzerordner ziehen" \
     "(im Finder: Menue 'Gehe zu' > 'Benutzerordner') und erneut starten."
 
   # Kein --quiet: das hier ist der einzige lange Schritt, und ein Fenster, das
@@ -271,19 +271,71 @@ MATHKOMP=(.venv/bin/python -m mathkomp)
 # Deshalb drei Antworten statt zwei: 0 = brauchbar, 1 = unbrauchbar und leer
 # (darf weg), 2 = unbrauchbar, aber mit erhobenen Daten darin. Der dritte
 # Fall wird niemals automatisch geloescht (§86).
+#
+# Entscheidend ist, in welche Richtung die Unsicherheit faellt. Eine fruehere
+# Fassung fing jede Ausnahme ab und meldete dafuer 1 - "leer, darf weg". Eine
+# Datenbank kann aber auch deshalb gerade nicht lesbar sein, weil nebenan eine
+# Sitzung mit einem Kind laeuft, weil ein Virenscanner sie festhaelt oder weil
+# sie in einem Cloud-Ordner noch nicht geladen ist. In allen diesen Faellen
+# stehen erhobene Daten darin, und die kommen aus content/ nicht zurueck.
+#
+# Deshalb gilt hier die strenge Richtung: geloescht wird nur, was NACHWEISLICH
+# heil UND NACHWEISLICH leer ist. Jede Ausnahme, jede nicht beantwortete Frage
+# faellt auf 2 und damit auf "nicht anfassen". Gefragt wird ausserdem nach
+# allen neun Erhebungstabellen, nicht nur nach students - ein abgebrochener
+# Durchlauf kann Versuche hinterlassen haben, bevor das Kind angelegt war.
 datenbank_pruefen() {
   [ -f mathkomp.sqlite3 ] || return 1
   .venv/bin/python -c '
 import sqlite3, sys
+
+TABELLEN = ("students", "task_attempts", "attempt_error_codes",
+            "interaction_events", "evidence_events", "routing_decisions",
+            "student_competency_state", "student_competency_facets",
+            "student_hypotheses")
+
+def unsicher():
+    sys.exit(2)
+
 try:
     c = sqlite3.connect("file:mathkomp.sqlite3?mode=ro", uri=True)
-    inhalt = c.execute("select count(*) from competencies").fetchone()[0]
-    kinder = c.execute("select count(*) from students").fetchone()[0]
 except Exception:
+    unsicher()
+
+# Erst die Frage, ob die Datei ueberhaupt heil ist. Ohne sie wirft eine
+# beschaedigte Datei bei jeder folgenden Frage eine Ausnahme, die sich von
+# "leer" nicht unterscheiden laesst.
+try:
+    if c.execute("PRAGMA quick_check").fetchone()[0] != "ok":
+        unsicher()
+    # Gebunden statt eingesetzt: dieser Python-Block steht in bash in
+    # einfachen Anfuehrungszeichen, ein weiteres Paar darin wuerde ihn
+    # beenden. Ein Platzhalter loest das, ohne dass jemand raten muss.
+    vorhanden = set(r[0] for r in c.execute(
+        "SELECT name FROM sqlite_master WHERE type = ?", ("table",)))
+except Exception:
+    unsicher()
+
+daten = False
+for tabelle in TABELLEN:
+    if tabelle not in vorhanden:
+        continue
+    try:
+        if c.execute("SELECT COUNT(*) FROM " + tabelle).fetchone()[0]:
+            daten = True
+            break
+    except Exception:
+        unsicher()
+
+if not daten:
     sys.exit(1)
-if inhalt and kinder:
-    sys.exit(0)
-sys.exit(2 if kinder else 1)
+
+try:
+    if c.execute("SELECT COUNT(*) FROM competencies").fetchone()[0]:
+        sys.exit(0)
+except Exception:
+    pass
+unsicher()
 ' >/dev/null 2>&1
 }
 
@@ -292,11 +344,18 @@ ZUSTAND=$?
 
 if [ "$ZUSTAND" -eq 2 ]; then
   abbruch \
-    "Die Datenbank in diesem Ordner ist beschaedigt, enthaelt aber bereits" \
-    "erhobene Daten. Sie wird deshalb nicht angetastet." \
+    "Die Datenbank in diesem Ordner ist unvollstaendig, enthaelt aber schon" \
+    "erhobene Daten. Sie wird deshalb weder angetastet noch neu aufgebaut -" \
+    "dabei gingen diese Daten verloren." \
     "" \
-    "Bitte beim Absender melden. Die Datei heisst mathkomp.sqlite3 und" \
-    "liegt in diesem Ordner."
+    "Meistens ist ein frueherer Aufbau mittendrin abgebrochen worden. Moeglich" \
+    "ist auch, dass die Datei gerade von etwas anderem festgehalten wird:" \
+    "einem Virenscanner, einer Sicherung, oder einem Fenster, das hart beendet" \
+    "wurde. Dann hilft ein Neustart des Rechners und ein zweiter Versuch." \
+    "" \
+    "Hilft das nicht, bitte beim Absender melden. Die Datei heisst" \
+    "mathkomp.sqlite3 und liegt in diesem Ordner. Sie bitte nicht loeschen -" \
+    "die erhobenen Daten lassen sich daraus retten."
 fi
 
 if [ "$ZUSTAND" -ne 0 ]; then

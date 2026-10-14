@@ -7,7 +7,7 @@ Nach §1 der Spezifikation:
 > Wenn eine fachliche Information fehlt: `UNDEFINED` setzen und fachliche Rückfrage stellen.
 
 Version 1.0 dieses Repos hat 23 Punkte so behandelt. Der Auftraggeber hat entschieden, dass
-der Implementierer sie selbst festlegt. **Zwanzig sind entschieden** und in
+der Implementierer sie selbst festlegt. **Einundzwanzig sind entschieden** und in
 [ENTSCHEIDUNGEN.md](ENTSCHEIDUNGEN.md) begründet.
 
 Eine anschließende Prüfung des autorisierten Inhalts hat 43 Befunde geliefert, davon acht
@@ -16,7 +16,7 @@ Multiplikationsitem, das durch Abzählen lösbar war, und drei Items, deren Dist
 Zahlenwert der richtigen Rechnung war. Alle inhaltlichen Befunde sind abgearbeitet; drei
 neue offene Punkte (F-25 bis F-27) sind daraus entstanden.
 
-**Sieben Punkte bleiben offen**, weil eine Festlegung dort schlechter wäre als eine offene
+**Elf Punkte bleiben offen**, weil eine Festlegung dort schlechter wäre als eine offene
 Frage.
 
 `python -m mathkomp validate` meldet die offenen Punkte weiterhin als `NOTICE` — nichts
@@ -147,6 +147,32 @@ Förderkontext.
 
 ---
 
+### F-28 — §14 zweite Hälfte: wann aktivieren mehrere Beobachtungen eine Hypothese?
+
+§14 verbietet nicht nur den Kurzschluss („ein Fehler bedeutet nicht: räumliches
+Vorstellungsvermögen schwach"), sondern stellt auch etwas in Aussicht:
+
+> Erst mehrere unabhängige Beobachtungen können eine entsprechende Hypothese aktivieren.
+
+Die erste Hälfte ist erfüllt: `CROSS_DOMAIN_EVIDENCE` steht nicht in den gewerteten
+Evidenztypen, verändert also keinen Status, und es existiert kein leitideenübergreifender
+Hypothesendetektor. Die zweite Hälfte ist **nicht umgesetzt**. Der Schlüssel
+`hypothesis.cross_domain_min_observations` steht in der Konfiguration und hat keinen
+Leser.
+
+**Warum nicht entschieden.** Die fehlende Zahl ist das kleinere Problem. Zu entscheiden
+wäre, *was* die Hypothese behauptet und *woran* sie scheitern kann. „Räumliche
+Verarbeitung ist beeinträchtigt" ist nach §32 und §87 keine zulässige Aussage, und §115
+verlangt für jede Hypothese eine Aufgabe, die sie widerlegt — für einen
+leitideenübergreifenden Befund im MVP gibt es keine, weil L2 bis L5 nach §7 keine
+inhaltlichen Knoten und damit keine Items haben. Eine erfundene Formulierung wäre genau
+die psychologische Schlussfolgerung, die §1 dem Implementierer verbietet.
+
+**Benötigt.** Eine zulässige Formulierung der leitideenübergreifenden Hypothese, die
+Bedingungen beschreibt statt Eigenschaften, und eine Angabe, welche Beobachtung sie
+widerlegen würde. Ohne beides bleibt der Schlüssel ohne Leser — sichtbar, statt still
+umgesetzt zu sein.
+
 ## Entschieden
 
 Alle Begründungen in [ENTSCHEIDUNGEN.md](ENTSCHEIDUNGEN.md).
@@ -186,7 +212,7 @@ bemerkt:
   Frageform wechselt, brechen jetzt mit `ERROR` ab. Die Frageform-Prüfung hat beim
   Einschalten drei Konfundierungen gefunden, darunter eine gerade erst ergänzte Route —
   die Regel arbeitet also.
-- **156 Tests**, darunter die sechs Testfälle aus §98–§103, alle 20 Kriterien der
+- **187 Tests**, darunter die sechs Testfälle aus §98–§103, alle 20 Kriterien der
   Definition of Done aus §123 und die Architekturregeln der Analyseoberfläche: dass genau
   eine Datei Daten lädt, dass kein Kompetenzstatus und kein Schwellenwert im Frontend
   ausgewertet wird und dass kein Zustand allein an der Farbe zu erkennen ist.
@@ -194,32 +220,6 @@ bemerkt:
   nach Literalen.
 - **Jede Festlegung als `CONFIGURABLE` markiert**, nicht als gesichert. §41 verlangt genau
   diese Unterscheidung.
-
-### F-28 — §14 zweite Hälfte: wann aktivieren mehrere Beobachtungen eine Hypothese?
-
-§14 verbietet nicht nur den Kurzschluss („ein Fehler bedeutet nicht: räumliches
-Vorstellungsvermögen schwach"), sondern stellt auch etwas in Aussicht:
-
-> Erst mehrere unabhängige Beobachtungen können eine entsprechende Hypothese aktivieren.
-
-Die erste Hälfte ist erfüllt: `CROSS_DOMAIN_EVIDENCE` steht nicht in den gewerteten
-Evidenztypen, verändert also keinen Status, und es existiert kein leitideenübergreifender
-Hypothesendetektor. Die zweite Hälfte ist **nicht umgesetzt**. Der Schlüssel
-`hypothesis.cross_domain_min_observations` steht in der Konfiguration und hat keinen
-Leser.
-
-**Warum nicht entschieden.** Die fehlende Zahl ist das kleinere Problem. Zu entscheiden
-wäre, *was* die Hypothese behauptet und *woran* sie scheitern kann. „Räumliche
-Verarbeitung ist beeinträchtigt" ist nach §32 und §87 keine zulässige Aussage, und §115
-verlangt für jede Hypothese eine Aufgabe, die sie widerlegt — für einen
-leitideenübergreifenden Befund im MVP gibt es keine, weil L2 bis L5 nach §7 keine
-inhaltlichen Knoten und damit keine Items haben. Eine erfundene Formulierung wäre genau
-die psychologische Schlussfolgerung, die §1 dem Implementierer verbietet.
-
-**Benötigt.** Eine zulässige Formulierung der leitideenübergreifenden Hypothese, die
-Bedingungen beschreibt statt Eigenschaften, und eine Angabe, welche Beobachtung sie
-widerlegen würde. Ohne beides bleibt der Schlüssel ohne Leser — sichtbar, statt still
-umgesetzt zu sein.
 
 ## Beim Bau der Oberfläche sichtbar geworden
 

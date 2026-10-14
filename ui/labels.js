@@ -33,7 +33,6 @@ export function vokabularInfo(vokabular) {
   return { beschreibung: v.description, fundstelle: v.spec_section, art: v.kind };
 }
 
-export const vokabularVorhanden = (v) => Boolean(VOKABULAR[v]);
 
 /** Überschrift für eine Merkmalsart: der erste Satz ihrer Beschreibung aus dem
  *  Vokabelregister. Damit steht auch über einer Merkmalsliste ein deutscher

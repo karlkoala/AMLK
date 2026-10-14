@@ -179,9 +179,13 @@ def test_ansichten_runden_gelieferte_zahlen_nicht_weg():
 
 
 def test_keine_prozentwerte_in_den_ansichten():
-    """§117 verbietet den Prozentwert. Ein Prozentzeichen darf deshalb nur als
-    CSS-Breite vorkommen - also in dom.js, nicht in einer Ansicht, die Text
-    erzeugt."""
+    """§117 verbietet den Prozentwert. Ein Prozentzeichen darf deshalb nur
+    im Bauplan vorkommen, nie in erzeugtem Text.
+
+    Zwei Schreibweisen bleiben erlaubt, beide sind Laengenangaben an ein
+    Element und keine Aussage ueber ein Kind: ``width`` und ``flex-basis``
+    (``karte.js`` setzt damit Spaltenbreiten).
+    """
     treffer = []
     for p in ansichtsdateien():
         for nummer, zeile in enumerate(quelle(p).splitlines(), 1):
@@ -325,7 +329,7 @@ def test_die_oberflaeche_laeuft_wirklich(adresse):
     assert status == 200
     assert kopf["Content-Type"].startswith("text/html")
     seite = rumpf.decode("utf-8")
-    assert '<div id="inhalt"' in seite or 'id="inhalt"' in seite
+    assert 'id="inhalt"' in seite
 
     module = ["/app.css", "/app.js", "/data.js", "/dom.js", "/labels.js"]
     module += [f"/views/{p.name}" for p in ansichtsdateien()]

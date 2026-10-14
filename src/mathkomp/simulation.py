@@ -248,16 +248,6 @@ def policy_multiplication_concept(task: dict, features: dict) -> bool:
     return False
 
 
-POLICIES: dict[str, Policy] = {
-    "A_hohe_kompetenz": policy_high_competence,
-    "B_grundlegende_schwierigkeit": policy_basic_difficulty,
-    "C_repraesentation": policy_representation,
-    "D_zahlenabhaengigkeit": policy_number_dependency,
-    "E1_multiplikation_darstellung": policy_multiplication_representation,
-    "E2_multiplikation_grundvorstellung": policy_multiplication_concept,
-}
-
-
 # ------------------------------------------------------------------- Ablauf
 
 

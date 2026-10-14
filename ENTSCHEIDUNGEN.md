@@ -1170,3 +1170,114 @@ vortäuschen, die es nicht gibt. Die Zuordnung von Kürzel zu Kind gehört auf P
 Nebenbei: `START-MAC.md` hieß im selben Ordner wie `START-MAC.command`. Der Finder blendet
 Endungen voreingestellt aus — dort stand „START-MAC" zweimal, einmal klickbar, einmal nicht.
 Die Anleitung heißt jetzt `ANLEITUNG-MAC.md`.
+
+### D-59 — Auf Windows gibt es keine richtige dicke `.bat`
+
+Der Kollege wechselt auf einen Windows-PC. Der naheliegende Weg wäre gewesen,
+`START-MAC.command` Zeile für Zeile nach `cmd.exe` zu übersetzen. Das geht nicht, und
+zwar nicht aus Bequemlichkeit: `cmd.exe` scheitert bei den nötigen Konstruktionen nicht,
+sondern führt lautlos etwas anderes aus. Nachgemessen, jedes einzeln:
+
+* `call :abbruch` kehrt zurück — ein `exit /b 1` dahinter bricht nicht ab.
+* `^&` wird innerhalb eines Klammerblocks zu Text.
+* `%ERRORLEVEL%` und `%CD%` liefern in einem Block die Werte von *vor* dem Block.
+* `set /p` führt Eingetipptes aus und lässt bei leerer Eingabe den vorigen Wert stehen —
+  in diesem Programm wäre das die Kennung des vorigen Kindes (§86).
+* Das Gegenmittel gegen die letzten beiden, `setlocal EnableDelayedExpansion`, löscht
+  jedes Ausrufezeichen aus jedem Pfad.
+
+Die beiden nötigen Härtungen schließen einander also aus. Deshalb sind
+`START-WINDOWS.bat` und `SITZUNG-WINDOWS.bat` **Hüllen von je rund dreißig Zeilen**:
+in den eigenen Ordner wechseln, ein brauchbares Python finden, `tools/start.py`
+beziehungsweise `tools/sitzung.py` aufrufen, im Fehlerfall anhalten. Alles Weitere steht
+in Python. `tests/test_windows_start.py` hält das fest — auch die Grenze von vierzig
+Befehlszeilen, damit Logik nicht unbemerkt zurückwandert.
+
+Drei Dinge, die auf dem Mac keine Rolle spielen und hier den Ausschlag geben:
+
+**Zeichensatz.** Eine Konsole liest eine `.bat` in Codepage 850, nicht in UTF-8. Ein
+Umlaut zerfällt beim Einlesen, ein BOM zerstört die erste Zeile. Die Hüllen sind reines
+ASCII mit CRLF, und ein Test misst beides am Byte. `PYTHONUTF8=1` setzt `start.py` für
+jeden Unterprozess selbst, weil umgeleitete Python-Ausgabe sonst cp1252 ist.
+
+**Kein trap.** Der häufigste Weg, dieses Programm zu beenden, ist das Schließen des
+Fensters — dabei läuft weder `finally` noch `atexit`. Eine selbst angelegte Sperrdatei
+bliebe also liegen und machte das Programm dauerhaft unstartbar. Gesperrt wird deshalb
+nicht durch die Existenz der Datei, sondern durch ein Schloss, das das Betriebssystem
+darauf hält und beim Prozessende von selbst freigibt. Aus demselben Grund hängt der
+Serverprozess in einem **Job Object** mit `KILL_ON_JOB_CLOSE`: ohne das überlebte er das
+Schließen des Fensters und beantwortete `127.0.0.1:8765` weiter, worauf der nächste
+Doppelklick „läuft bereits in einem anderen Fenster" meldete — ohne dass es ein solches
+gab. Der einzige Ausweg wäre der Task-Manager gewesen. Gemessen: Starter abgeschossen,
+Serverprozesse 2 → 0, Port tot.
+
+**Nichts, worauf man sich verlassen kann, heißt `python`.** `python` und `python3` sind
+auf Windows 0-Byte-Platzhalter des Microsoft Store und melden 9009. Auch `py.exe` liegt
+auf manchen Rechnern als solcher Platzhalter herum. Geprüft wird deshalb nicht, ob ein
+Befehl existiert, sondern was er zurückgibt.
+
+Gemessen im Reinraum — neuer Ordner, kein `.venv`, keine Datenbank: **25,9 s** vom
+Doppelklick bis zur antwortenden Oberfläche. Der Server band nur `127.0.0.1` und war aus
+dem LAN nicht erreichbar.
+
+### D-60 — Derselbe Name für zwei verschiedene Dinge
+
+`tools/paket_fuer_mac.py` legte alles unter einen obersten Ordner `mathkomp/` und
+begründete das damit, dass „die Anleitung sich darauf berufen kann". `ANLEITUNG-MAC.md`
+tat das auch: *„Im Ordner `mathkomp` liegen zwei Startsymbole."*
+
+`mathkomp` ist aber schon vergeben — so heißt das Python-Paket in `src/mathkomp`. Und
+seit die Übergabe über GitHubs *Download ZIP* läuft, entsteht beim Auspacken gar kein
+Ordner dieses Namens, sondern einer, der nach dem Repository heißt. Wer der Anleitung
+folgte, suchte einen Ordner, den es nicht gab, während ein Ordner gleichen Namens zwei
+Ebenen tiefer lag und nichts mit ihm zu tun hatte.
+
+Zwei Änderungen: `PAKETNAME` heißt jetzt `kompetenzanalyse`, und die Anleitungen nennen
+den Ordner **gar nicht mehr beim Namen** — sie sagen „der entpackte Programmordner". Eine
+Beschreibung überlebt den nächsten Wechsel des Übergabewegs, ein Name nicht. Dieselbe
+Formulierung steht jetzt auch in den Abbruchmeldungen aller vier Startsymbole.
+
+Abgesichert ist nicht die Umbenennung, sondern die Kollision: der Test vergleicht den
+obersten Ordner des Archivs gegen `paket_fuer_mac.PAKETNAME` statt gegen eine abgetippte
+Zeichenkette und verlangt ausdrücklich, dass dieser Name **nicht** `mathkomp` ist.
+
+### D-61 — Die Einmalwerkzeuge sind weg, ihr Ergebnis bleibt nachweisbar
+
+In `tools/` lagen sieben Skripte, die je genau einmal gelaufen sind: der Einbau des
+Frageformats, drei Runden Korrekturen aus der Prüfung des autorisierten Inhalts, die
+Reparatur einer Förderkette, das Zusammenführen der Inhaltsfragmente und eine
+Sammelanpassung der Tests. Sie sind gelöscht. Übrig sind die drei, die im Betrieb
+gebraucht werden: `start.py` und `sitzung.py` hinter den beiden Windows-Startsymbolen
+und `paket_fuer_mac.py` für den Ersatzweg.
+
+Eines davon verdient eine eigene Zeile, weil seine Abwesenheit auffallen wird:
+`merge_fragments.py` hat `content/_fragments/*.json` in die Zieldateien eingearbeitet.
+Der Ordner bleibt, das Werkzeug nicht. Das ist Absicht — `_fragments/` ist kein
+Zwischenstand, sondern der Nachweis: dort steht, welcher Inhalt autorisiert wurde und
+mit welcher Begründung (§1 verbietet, fachliche Ergänzungen nebenbei zu treffen).
+Gebraucht wird der Ordner zum Nachlesen, nicht zum erneuten Ausführen. Wer einmal
+wirklich nachmischen muss, schreibt das Werkzeug neu; was es zu tun hätte, steht
+vollständig in den Fragmenten selbst.
+
+Geprüft wurde beim Aufräumen nicht nur, ob etwas fehlt, sondern ob die Beschreibung
+des Projekts noch stimmt. Sie stimmte an mehreren Stellen nicht: drei verschiedene
+Testzahlen (169 / 156 / 187) in drei Dateien, „24 entschiedene" fachliche Punkte, wo
+die Tabelle 21 führt, „sieben offene", wo elf offen sind, und ein Abschnitt F-28, der
+unter *Entschieden* stand und in seinem eigenen Text „Warum nicht entschieden" sagt.
+Solche Zahlen veralten, weil sie abgetippt sind. Wo es ging, steht jetzt eine
+gemessene Größe statt einer gemerkten.
+
+Zwei Funde sind ausdrücklich **nicht** umgesetzt worden, obwohl sie nach totem Code
+aussehen:
+
+* Der Abschnitt *Auskunft* in `session.py` — `last_context`, `state_snapshot`,
+  `open_hypotheses` — hat keinen Aufrufer. Er löst aber den Satz des Modul-Docstrings
+  ein, der §3 wiedergibt: die Klasse *liefert Beobachtungen, Evidenz, Muster, offene
+  Hypothesen*. Drei parallel gebaute Methoden unter einer eigenen Überschrift, die
+  genau die Aufzählung der Spezifikation abbilden, sind kein Rest. Dazu kommt:
+  `state_snapshot` ist der einzige Aufrufer von `state.load`; das Löschen hätte zwei
+  Dinge auf einmal getötet.
+* `labels.anmerkung` in der Oberfläche liest das Feld `notes` eines Vokabelbegriffs,
+  das `api.py` mitliefert, und niemand ruft es auf. Ob diese Anmerkungen angezeigt
+  werden sollen, ist eine fachliche Frage und keine Aufräumfrage — gelöscht würde
+  damit nicht eine Funktion, sondern der letzte sichtbare Hinweis auf eine Lücke.

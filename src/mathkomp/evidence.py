@@ -206,13 +206,3 @@ def consistency(positive: int, negative: int) -> float | None:
     if total == 0:
         return None
     return round(abs(positive - negative) / total, 4)
-
-
-def typed_observations(conn: sqlite3.Connection, student_id: str, competency_id: str,
-                       evidence_type: str) -> list[dict]:
-    return [dict(r) for r in conn.execute(
-        "SELECT e.*, t.representation_mode, t.internal_difficulty, t.task_purpose"
-        " FROM evidence_events e JOIN tasks t ON t.task_id = e.source_task"
-        " WHERE e.student_id = ? AND e.competency_id = ? AND e.evidence_type = ?"
-        " ORDER BY e.created_at, e.evidence_id",
-        (student_id, competency_id, evidence_type))]

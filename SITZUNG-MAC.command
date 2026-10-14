@@ -41,8 +41,8 @@ for noetig in pyproject.toml content ui src; do
   [ -e "$noetig" ] || abbruch \
     "Diese Startdatei liegt nicht mehr in ihrem Ordner." \
     "" \
-    "Sie gehoert in den Ordner 'mathkomp', zusammen mit allem anderen, was" \
-    "beim Auspacken entstanden ist. Alleine kann sie nichts tun." \
+    "Sie gehoert in den entpackten Programmordner, zusammen mit allem" \
+    "anderen, was beim Auspacken entstanden ist. Alleine kann sie nichts tun." \
     "" \
     "An dieser Stelle fehlt: $noetig"
 done

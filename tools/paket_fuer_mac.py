@@ -4,8 +4,12 @@ Warum nicht einfach `Compress-Archive`: ein ZIP aus PowerShell speichert keine
 Unix-Rechte. Die .command-Dateien kaemen damit ohne Ausfuehrungsrecht an, und ein
 Doppelklick darauf oeffnete den Text im Editor statt das Programm zu starten.
 Die Datei hier setzt das Recht ausdruecklich (0755) und legt alles unter einen
-Ordner `mathkomp/`, damit beim Entpacken auf dem Mac immer derselbe Name
-herauskommt — die Anleitung kann sich dann darauf berufen.
+gemeinsamen Ordner, damit beim Entpacken nicht zwanzig Eintraege im Downloads-
+Ordner landen. Dieser Ordner heisst NICHT `mathkomp`: so heisst das Python-Paket
+in `src/mathkomp`, und derselbe Name an zwei Stellen hat die Anleitung schon
+einmal einen Ordner beschreiben lassen, den es nicht gab. Die Anleitung nennt
+den Namen deshalb gar nicht mehr — ueber GitHub heisst der Ordner ohnehin
+anders.
 
 Nicht mitgepackt wird alles, was auf dem Zielrechner neu entsteht: Bytecode,
 Testzwischenstaende, die virtuelle Umgebung — und `mathkomp.sqlite3`. Diese
@@ -24,11 +28,11 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ZIEL = ROOT.parent / "mathkomp-fuer-mac.zip"
+ZIEL = ROOT.parent / "kompetenzanalyse-fuer-mac.zip"
 
-#: Oberster Ordner im Archiv. Beim Entpacken heisst der Ordner auf dem Mac
-#: genauso - darauf beruft sich die Anleitung.
-PAKETNAME = "mathkomp"
+#: Oberster Ordner im Archiv, zugleich der Name des ZIP. Nicht "mathkomp" -
+#: siehe oben. Die Anleitung beruft sich nicht darauf.
+PAKETNAME = "kompetenzanalyse"
 
 MITNEHMEN = ("content", "src", "tests", "tools", "ui")
 EINZELDATEIEN = (

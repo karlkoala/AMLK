@@ -138,15 +138,46 @@ auffindbar.
 
 ## Übergabe an eine andere Person
 
-Weitergegeben wird der **Quellbaum ohne erzeugte Dateien**. Das Projekt ist kein
-Git-Repository, die `.gitignore` filtert beim Kopieren also nichts. Statt von Hand
-aufzuräumen:
+Weitergegeben wird der **Quellbaum ohne erzeugte Dateien**. Dafür gibt es zwei
+Wege, und sie stellen verschiedene Anforderungen.
+
+### Weg 1 — über GitHub (*Code → Download ZIP*)
+
+Dieses Archiv erzeugt GitHub serverseitig aus dem Repository. Es enthält die
+Bytes so, wie sie dort gespeichert sind — einschließlich des Dateimodus. Zwei
+Dinge müssen deshalb **im Repository** stimmen; beim Empfänger sind sie nicht
+mehr zu reparieren, und beide fallen dort als „es passiert nichts" auf:
+
+* **Zeilenenden.** `.gitattributes` legt sie fest: `*.bat` bekommt CRLF,
+  `*.command` LF. Ohne das entscheidet der Rechner, auf dem committet wurde.
+* **Das Ausführungsrecht der `.command`-Dateien.** Wird von einem
+  Windows-Rechner aus committet, speichert git `100644` — `core.fileMode` ist
+  dort standardmäßig aus, NTFS kennt kein Ausführungsrecht. Ein `chmod` vor dem
+  `git add` ändert daran nichts. Einmalig im Repository:
+
+  ```bash
+  git update-index --chmod=+x START-MAC.command SITZUNG-MAC.command
+  ```
+
+  Kontrolle: `git ls-files -s START-MAC.command` muss mit `100755` beginnen.
+  Im heruntergeladenen ZIP steht dann `create_system = 3` und Modus `0o755`;
+  bei `100644` fehlt der Modus ganz.
+
+Der entpackte Ordner heißt hier nach dem Repository (meist auf `-main` endend),
+nicht `mathkomp`. Die Anleitungen sind darauf eingestellt.
+
+### Weg 2 — als fertiges ZIP (nur Mac)
+
+Dieses Arbeitsverzeichnis ist selbst kein Git-Repository, die `.gitignore`
+filtert beim Kopieren also nichts. Statt von Hand aufzuräumen:
 
 ```bash
 py tools/paket_fuer_mac.py
 ```
 
-Das legt `../mathkomp-fuer-mac.zip` an — alles unter einem Ordner `mathkomp/`,
+Das legt `../kompetenzanalyse-fuer-mac.zip` an — alles unter einem Ordner
+`kompetenzanalyse/` (nicht `mathkomp`: so heisst das Python-Paket in
+`src/mathkomp`, und derselbe Name an zwei Stellen stiftet Verwirrung),
 ohne Bytecode, Testzwischenstände, `.venv` und `*.sqlite3`. Vor dem Schreiben
 lehnt es Windows-Zeilenenden in einem Startskript ab (auf dem Mac wäre die Folge
 `/bin/bash^M: bad interpreter`), danach liest es die Rechte im **fertigen Archiv**
@@ -155,7 +186,7 @@ falscher Hostkennung steht — siehe ENTSCHEIDUNGEN.md, D-54.
 
 **`mathkomp.sqlite3` gehört nicht dazu.** Sie enthält erhobene Daten (§86) und
 lässt sich aus `content/` vollständig neu erzeugen — zwei frische Builds ergeben
-dieselbe Datei. Wird sie dennoch mitgegeben, findet `simulate` die acht Profile
+dieselbe Datei. Wird sie dennoch mitgegeben, findet `simulate` seine sieben Profile
 bereits vor, spielt je Fall nur einen Schritt und meldet *„§123 Kriterium 20 —
 unterschiedliche Pfade: NICHT erfüllt"*: eine falsche Abnahmeaussage aus
 richtigen Daten. Wer die erhobenen Daten trotzdem zeigen will, gibt die Datei
@@ -176,6 +207,33 @@ den zweiten Doppelklick, den verschobenen oder kopierten Ordner, die aus ihrem
 Ordner gezogene Startdatei und einen unvollständig gebliebenen Aufbau — jeweils
 mit einem Satz, der sagt, was zu tun ist. Was dabei geprüft wird, hält
 `tests/test_portabilitaet.py` fest.
+
+**Auf einem Windows-PC ebenfalls nicht.** Dieselben drei Dateien noch einmal:
+
+| Datei | wofür |
+|---|---|
+| `START-WINDOWS.bat` | einrichten (beim ersten Mal) und die Analyseoberfläche öffnen |
+| `SITZUNG-WINDOWS.bat` | mit einem Kind arbeiten |
+| `ANLEITUNG-WINDOWS.md` | die drei Schritte, in Alltagssprache, ohne Paragraphen |
+
+Die `.bat`-Dateien sind **Hüllen von je ~30 Zeilen**; alles Weitere steht in
+`tools/start.py` und `tools/sitzung.py`. Das ist keine Stilfrage: `cmd.exe`
+scheitert bei Bedingungen, Eingaben und Sonderzeichen nicht, sondern führt
+lautlos etwas anderes aus — `call :abbruch` kehrt zurück statt abzubrechen,
+`set /p` führt Eingetipptes aus und behält bei leerer Eingabe den alten Wert
+(also die Kennung des vorigen Kindes, §86), und das Gegenmittel
+`EnableDelayedExpansion` löscht jedes Ausrufezeichen aus den Pfaden. Die beiden
+nötigen Härtungen schließen einander aus; eine korrekte dicke `.bat` gibt es
+nicht. Die Hüllen sind reines ASCII mit CRLF — eine Konsole liest `.bat` in
+Codepage 850, ein BOM zerstört die erste Zeile.
+
+`tools/start.py` hängt den Serverprozess in ein **Job Object** mit
+`KILL_ON_JOB_CLOSE`. Ohne das überlebt der Server das Schließen des Fensters
+(weder `finally` noch `atexit` laufen dann), und der nächste Doppelklick meldet
+„läuft bereits in einem anderen Fenster" — ohne dass es ein solches gäbe.
+Gemessen: Starter abgeschossen → Serverprozesse 2 → 0, Port tot.
+
+Was dabei geprüft wird, hält `tests/test_windows_start.py` fest.
 
 Die Anleitung enthält eine Zeile für Name und Kontakt des Absenders; sie will
 ausgefüllt werden. Sie gehört außerdem **neben** die ZIP-Datei geschickt, nicht
@@ -204,7 +262,7 @@ entsteht mit `mathkomp session DEMO-LAUFEND --grade 3 --max-tasks 4` — die
 | Konfigurationsschlüssel | 46, davon 0 `UNDEFINED` |
 | Vokabulare / Terme | 34 / 259 |
 | Prüfregeln | 19 → **0 Fehler**, 3 Hinweise |
-| Tests | 169 (1 nur auf Unix-Dateisystemen) |
+| Tests | 187 (1 nur auf Unix-Dateisystemen) |
 | Module | 23 |
 
 Die drei verbleibenden Hinweise betreffen bewusst offene fachliche Fragen, siehe
@@ -301,10 +359,13 @@ ui/                 Analyseoberfläche — reine Darstellung, ohne Fachlogik
   views/            übersicht, karte, fehleranalyse, darstellung, hypothesen,
                     evidenz, verlauf, debug
 
-tests/              169 Tests, darunter test_portabilitaet.py (Windows/macOS)
-tools/              Einmalige Werkzeuge (Fragment-Merge, Korrekturen aus der Prüfrunde)
+tests/              187 Tests, darunter test_portabilitaet.py (Übergabe an
+                    einen Mac) und test_windows_start.py (die .bat-Hüllen)
+tools/              start.py und sitzung.py — was hinter den beiden
+                    Windows-Startsymbolen steckt; paket_fuer_mac.py baut
+                    das ZIP für den Ersatzweg
 ENTSCHEIDUNGEN.md   Was die Spezifikation offenlässt und wie entschieden wurde
-OFFENE_FRAGEN.md    7 offene, 24 entschiedene fachliche Punkte
+OFFENE_FRAGEN.md    11 offene, 21 entschiedene fachliche Punkte
 SPEC_VOLLTEXT.txt   Extrahierter Volltext der Spezifikation, zum Nachschlagen
 .editorconfig       Erzwingt UTF-8 — siehe Schreibkonvention
 ```

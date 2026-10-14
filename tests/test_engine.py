@@ -149,7 +149,9 @@ def test_renderer_trennt_darstellung_von_bedienform(conn):
     spec = renderer.render(task(conn, "ZO06-D2-I-A"))
     assert spec["representation"]["mode"] == "IMAGE"
     assert spec["interaction"]["mode"] == "ENTER"
-    assert "mode" not in set(spec["representation"]) & set(spec["interaction"]) - {"mode"}
+    gemeinsam = set(spec["representation"]) & set(spec["interaction"])
+    assert gemeinsam == {"mode"}, \
+        f"Darstellung und Bedienform teilen mehr als den Modus: {gemeinsam}"
 
 
 def test_renderer_verweigert_unvollstaendiges_item(conn):

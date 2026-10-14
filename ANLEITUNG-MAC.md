@@ -35,8 +35,10 @@ Danach ist Python da. Man sieht davon nichts — es ist kein Programm, das man
 
 ## Schritt 2 — Das Programm auspacken
 
-1. Die erhaltene Datei **`mathkomp-fuer-mac.zip`** doppelklicken.
-   Daneben entsteht ein Ordner **`mathkomp`**.
+1. Die erhaltene ZIP-Datei doppelklicken.
+   Daneben entsteht ein Ordner gleichen Namens. Kommt die Datei von
+   GitHub, endet sein Name meist auf **`-main`**. Der Name darf so
+   bleiben.
 2. Diesen Ordner in den **Benutzerordner** ziehen.
    Im Finder: Menü **Gehe zu** → **Benutzerordner**.
 
@@ -57,35 +59,65 @@ Minuten und eine Internetverbindung.
 
 ## Schritt 3 — Starten
 
-Im Ordner `mathkomp` liegen zwei Startsymbole:
+Ganz oben im entpackten Ordner liegen diese zwei Startsymbole:
 
 | Symbol | wofür |
 |---|---|
 | **`START-MAC.command`** | die Auswertung ansehen |
 | **`SITZUNG-MAC.command`** | mit einem Kind arbeiten |
 
-Beim allerersten Mal: **`START-MAC.command`** doppelklicken.
+Kam der Ordner über GitHub, liegen daneben noch `START-WINDOWS.bat` und
+`SITZUNG-WINDOWS.bat`. Die sind für einen Windows-PC und tun auf dem Mac
+nichts. Sie dürfen liegen bleiben.
 
-macOS lässt das beim ersten Mal nicht zu, weil die Datei aus dem Internet
-kommt. Der Weg dahin:
+Beim allerersten Mal geht der Doppelklick **nicht** sofort. macOS legt auf
+alles, was aus dem Internet kommt, zwei Sperren — und bei Startdateien dieser
+Art meldet es das nicht, sondern tut einfach nichts. Kein Fenster, keine
+Meldung. Wer darauf wartet, wartet vergeblich.
 
-1. Doppelklicken. Es erscheint eine Meldung, dass die Datei nicht geöffnet
-   werden kann. Diese Meldung schließen.
-2. **Apfelmenü** → **Systemeinstellungen** → **Datenschutz & Sicherheit**
-3. Dort ganz nach unten scrollen. Es steht eine Zeile über die gerade
-   blockierte Datei, daneben **Dennoch öffnen**. Darauf klicken.
-4. Der Mac fragt noch einmal nach — **Öffnen** bestätigen.
+Beide Sperren werden **einmalig** gelöst, mit zweimal demselben Handgriff.
+Abzutippen ist dabei nichts außer ein paar Buchstaben.
 
-> Auf älteren Macs geht es kürzer: mit der rechten Maustaste auf die Datei
-> klicken (oder mit zwei Fingern auf dem Trackpad), im Menü **Öffnen** wählen,
-> und im Fenster noch einmal **Öffnen**.
+1. **cmd + Leertaste** drücken, `Terminal` tippen, **Enter**.
+   Es geht ein Fenster mit Text auf. Das ist richtig so.
+2. Das Fenster an den rechten Rand schieben, so dass links der Finder mit dem
+   entpackten Ordner sichtbar bleibt.
+3. Ins Terminalfenster klicken und tippen — **mit Leerzeichen am Ende**:
+   `chmod +x `
+4. Jetzt die beiden Dateien `START-MAC.command` und `SITZUNG-MAC.command` im
+   Finder markieren (die zweite mit gedrückter **cmd**-Taste anklicken) und
+   zusammen **ins Terminalfenster ziehen**. Ihre Orte setzen sich von selbst
+   ein. **Enter** drücken.
+5. Dasselbe noch einmal, diesmal mit diesem Anfang — wieder mit Leerzeichen
+   am Ende: `xattr -dr com.apple.quarantine `
+6. Und diesmal den **ganzen entpackten Ordner** ins Fenster ziehen. **Enter**.
 
-Diese Frage kommt **einmal pro Ordner**. Geht beim ersten Versuch etwas
-schief, die ZIP-Datei bitte *nicht* noch einmal auspacken — dann entsteht ein
-zweiter Ordner, und die Frage kommt wieder. Einfach den vorhandenen Ordner
-weiterbenutzen.
+Kommt nach dem Enter keine Antwort, hat es geklappt — hier ist Schweigen das
+Erfolgszeichen.
 
-**Ab dann:** einfach doppelklicken.
+> **Was die beiden Zeilen tun.** Die erste erlaubt, dass die Startdateien
+> überhaupt startbar sind; das Recht dazu geht auf dem Transportweg oft
+> verloren. Die zweite nimmt den Dateien die Markierung *aus dem Internet
+> geladen*. Beides betrifft nur diesen einen Ordner. An den Einstellungen des
+> Macs ändert sich nichts.
+
+**Ab dann:** einfach doppelklicken. Für immer.
+
+> **Falls das Terminal bei Schritt 4 oder 6 meckert** — etwa *No such file or
+> directory*: dann ist beim Ziehen etwas danebengegangen. Fenster schließen,
+> neu anfangen. Kaputt geht dabei nichts.
+
+### Wenn es heute laufen muss und die Schritte oben nicht klappen
+
+Es gibt einen Weg, der beide Sperren umgeht, ohne etwas zu reparieren: das
+Programm nicht doppelklicken, sondern aus dem Terminal heraus starten.
+
+Terminal öffnen wie oben, dann `bash ` tippen — **mit Leerzeichen** —, die
+Datei `START-MAC.command` hineinziehen, **Enter**. Danach läuft alles wie
+beschrieben.
+
+Das repariert nichts, es startet nur. Beim nächsten Mal ist der Handgriff
+wieder nötig — bis die Schritte 1 bis 6 einmal gemacht wurden.
 
 ---
 
@@ -154,13 +186,16 @@ Die linke Spalte ist das, was im Fenster steht.
 |---|---|
 | „Auf diesem Mac fehlt ein ausreichend neues Python" | Schritt 1 nachholen, dann erneut doppelklicken |
 | „Das SQLite dieses Python ist zu alt" | Schritt 1 mit einer neueren Python-Version wiederholen |
-| „Diese Startdatei liegt nicht mehr in ihrem Ordner" | Das Startsymbol zurück in den Ordner `mathkomp` legen. Es funktioniert nur dort. |
-| „Die Arbeitsumgebung liess sich nicht anlegen" | Den Ordner `mathkomp` in den Benutzerordner ziehen (Schritt 2), dann erneut starten |
+| „Diese Startdatei liegt nicht mehr in ihrem Ordner" | Das Startsymbol zurück in den entpackten Ordner legen, ganz nach oben. Es funktioniert nur dort. |
+| „Der Ordner dieses Startsymbols laesst sich nicht oeffnen" | Dasselbe — das Startsymbol liegt an einer Stelle, von der aus es seinen Ordner nicht findet. |
+| „Die Arbeitsumgebung liess sich nicht anlegen" | Den entpackten Ordner in den Benutzerordner ziehen (Schritt 2), dann erneut starten |
 | „Die Installation ist fehlgeschlagen" | Internetverbindung prüfen. Nur dieser eine Schritt braucht sie. |
 | „Das Programm wird gerade in einem anderen Fenster gestartet" | Es läuft schon. Dieses Fenster schließen, das andere benutzen. |
 | „Das Programm laeuft bereits in einem anderen Fenster" | Kein Fehler. Die Oberfläche wurde erneut geöffnet. |
-| „Die Datenbank in diesem Ordner ist beschaedigt" | Nichts löschen, bitte melden |
+| „Die Datenbank in diesem Ordner ist unvollstaendig" | Einmal den Mac neu starten und es noch einmal versuchen. Hilft das nicht: **nichts löschen**, bitte melden — die erhobenen Daten sind noch da |
 | „Die Datenbank liess sich nicht aufbauen" | Melden, und die Datei `einrichtung.log` aus dem Ordner mitschicken |
+| „Das Programm ist auf diesem Mac noch nicht eingerichtet" | Einmal `START-MAC.command` doppelklicken und warten, bis der Browser aufgeht. Danach geht es hier weiter. |
+| „Die Datenbank fehlt noch" | Dasselbe: einmal `START-MAC.command` doppelklicken. Es baut sie auf. |
 | Das Startsymbol öffnet sich als Text, oder der Mac meldet fehlende Zugriffsrechte | Schritt 3 noch nicht gemacht — oder die Datei kam beschädigt an. Bitte melden. |
 | Der Browser zeigt „nicht erreichbar" | Ist das Terminalfenster noch offen? Adresse: `http://127.0.0.1:8765/` |
 | **Eine Meldung, die hier nicht steht** | Ein Bild vom ganzen Fenster machen und mitschicken |

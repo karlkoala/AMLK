@@ -267,11 +267,12 @@ def test_keine_plattformgebundenen_startbefehle_in_meldungen():
 def test_paket_uebergibt_keine_erhobenen_daten_und_ein_klickbares_symbol(tmp_path):
     """Das fertige Archiv, nicht die Absicht des Packers.
 
-    Drei Zusagen der Anleitung haengen daran: dass beim Entpacken ein Ordner
-    ``mathkomp`` entsteht (darauf beruft sich ANLEITUNG-MAC.md woertlich),
-    dass die Startsymbole ein Ausfuehrungsrecht mitbringen (sonst oeffnet der
-    Doppelklick den Text im Editor), und dass keine erhobenen Daten mitreisen
-    (§86, siehe ENTSCHEIDUNGEN.md D-53).
+    Drei Zusagen der Anleitung haengen daran: dass beim Entpacken genau ein
+    oberster Ordner entsteht und dieser nicht heisst wie das Python-Paket in
+    src/mathkomp (die Anleitung nennt den Namen deshalb gar nicht mehr, siehe
+    ENTSCHEIDUNGEN.md D-60), dass die Startsymbole ein Ausfuehrungsrecht
+    mitbringen (sonst oeffnet der Doppelklick den Text im Editor), und dass
+    keine erhobenen Daten mitreisen (§86, siehe ENTSCHEIDUNGEN.md D-53).
 
     Die Hostkennung wird eigens geprueft, und das ist der Kern. Der Modus
     stand hier lange richtig und war trotzdem wirkungslos: ``ZipInfo`` setzt
@@ -292,7 +293,17 @@ def test_paket_uebergibt_keine_erhobenen_daten_und_ein_klickbares_symbol(tmp_pat
         namen = [e.filename for e in eintraege]
 
         oberste = {n.split("/")[0] for n in namen}
-        assert oberste == {"mathkomp"}, f"Nicht genau ein Ordner oben: {oberste}"
+        assert oberste == {paket_fuer_mac.PAKETNAME}, \
+            f"Nicht genau ein Ordner oben: {oberste}"
+
+        # Der oberste Ordner darf nicht heissen wie das Python-Paket in
+        # src/. Diese Doppelbelegung hat die Anleitung einmal einen Ordner
+        # "mathkomp" beschreiben lassen, in dem die Startsymbole lägen -
+        # sie liegen aber ganz oben, und über GitHub heißt der Ordner
+        # ohnehin nach dem Repository.
+        assert paket_fuer_mac.PAKETNAME != "mathkomp", (
+            "Der Paketordner heisst wie das Python-Paket src/mathkomp - "
+            "zwei verschiedene Dinge unter einem Namen")
 
         daten = [n for n in namen if n.endswith(".sqlite3")]
         assert not daten, f"Erhobene Daten im Paket: {daten}"
@@ -302,7 +313,8 @@ def test_paket_uebergibt_keine_erhobenen_daten_und_ein_klickbares_symbol(tmp_pat
         assert not rest, f"Zielrechner-Reste im Paket: {rest}"
 
         symbole = [e for e in eintraege if e.filename.endswith(".command")]
-        erwartet = {"mathkomp/START-MAC.command", "mathkomp/SITZUNG-MAC.command"}
+        erwartet = {f"{paket_fuer_mac.PAKETNAME}/START-MAC.command",
+                    f"{paket_fuer_mac.PAKETNAME}/SITZUNG-MAC.command"}
         assert {e.filename for e in symbole} == erwartet, \
             f"Andere Startsymbole als erwartet: {[e.filename for e in symbole]}"
 
@@ -351,11 +363,15 @@ def test_anleitung_zitiert_keine_meldung_die_es_nicht_gibt():
 
 
 def test_beide_startsymbole_sind_auf_einem_mac_startbar():
-    """Dasselbe wie oben, aber fuer jedes Startsymbol im Paket.
+    """Jedes ``*.command`` im Projektordner muss unter bash 3.2 laufen.
 
-    ``SITZUNG-MAC.command`` ist spaeter dazugekommen, und genau solche
-    Nachzuegler fallen aus einer Pruefung heraus, die einen festen Dateinamen
-    nennt.
+    Mehr liefert macOS nicht mit: seit der Lizenzwechsel von bash 4 kam,
+    steht dort eine Fassung von 2007. Was danach dazugekommen ist -
+    assoziative Arrays, ``mapfile`` -, scheitert auf dem Zielrechner.
+
+    Gesucht wird mit ``glob`` statt mit Dateinamen: ``SITZUNG-MAC.command``
+    ist spaeter dazugekommen, und genau solche Nachzuegler fallen aus einer
+    Pruefung heraus, die ihre Dateien einzeln aufzaehlt.
     """
     import re
 

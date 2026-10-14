@@ -26,7 +26,7 @@ import sqlite3
 from dataclasses import dataclass
 
 from . import ids
-from .attempts import attempt_history
+from .attempts import attempt_history, load_task, task_features
 from .clock import Clock
 from .config import Config
 from .state import facets_of
@@ -105,6 +105,9 @@ def _open_or_update(conn: sqlite3.Connection, student_id: str, hypothesis_type: 
                     target_construct: str, falsifying_task: str | None,
                     supporting: list[str], contradicting: list[str], priority: int,
                     cfg: Config, clock: Clock, spec_section: str) -> HypothesisAction:
+    supporting = sorted(set(supporting))
+    contradicting = sorted(set(contradicting))
+    supporting = [a for a in supporting if a not in contradicting]
     require_falsifiable = cfg.require("hypothesis.require_falsifying_task")
     row = _existing(conn, student_id, hypothesis_type, target_construct)
     now = clock.now_iso()
@@ -131,6 +134,12 @@ def _open_or_update(conn: sqlite3.Connection, student_id: str, hypothesis_type: 
                                 row["status"], "UNCHANGED", row["falsifying_task"],
                                 spec_section)
 
+    if (supporting == sorted(json.loads(row["supporting_evidence"]))
+            and contradicting == sorted(json.loads(row["contradicting_evidence"]))
+            and (not falsifying_task or falsifying_task == row["falsifying_task"])):
+        return HypothesisAction(row["hypothesis_id"], hypothesis_type, target_construct,
+                                row["status"], "UNCHANGED", row["falsifying_task"], spec_section)
+
     if contradicting and len(contradicting) >= cfg.require("mastery.success_confirmation_required"):
         status, action = "REJECTED", "REJECTED"
     elif contradicting:
@@ -151,10 +160,93 @@ def _open_or_update(conn: sqlite3.Connection, student_id: str, hypothesis_type: 
                             spec_section)
 
 
+def _open_new(conn, student_id, hypothesis_type, target_construct, falsifying_task,
+              supporting, contradicting, priority, cfg, clock, spec_section):
+    old = _existing(conn, student_id, hypothesis_type, target_construct)
+    if old:
+        return HypothesisAction(old["hypothesis_id"], hypothesis_type, target_construct,
+                                old["status"], "UNCHANGED", old["falsifying_task"], spec_section)
+    return _open_or_update(conn, student_id, hypothesis_type, target_construct,
+                          falsifying_task, supporting, contradicting, priority, cfg, clock, spec_section)
+
+
+def _compatible_task(conn, student_id, competency, condition, predicate):
+    candidates = []
+    for row in conn.execute("SELECT * FROM tasks WHERE primary_competency = ?", (competency,)):
+        task = dict(row)
+        task["features"] = task_features(conn, task["task_id"])
+        if (condition is None or _comparison_key(task) == condition) and predicate(task):
+            candidates.append(task["task_id"])
+    return _pick_fresh(conn, student_id, competency, set(candidates))
+
+
+def _refresh_existing(conn, student_id, changed_competency, cfg, clock):
+    """Update established hypotheses independently of their opening thresholds.
+
+    Evidence is rebuilt from attempt IDs, never incremented. Existing support
+    anchors determine the comparison key; ambiguous legacy anchors are left
+    unchanged rather than treating incomparable answers as counterevidence.
+    """
+    actions = []
+    for h in open_hypotheses(conn, student_id):
+        target = h["target_construct"]
+        competency = target.split(":", 1)[0]
+        prerequisite = target.split(":requires:", 1)[1] if ":requires:" in target else None
+        if changed_competency not in (competency, prerequisite):
+            continue
+        history = attempt_history(conn, student_id, competency)
+        old_ids = set(json.loads(h["supporting_evidence"])) | set(json.loads(h["contradicting_evidence"]))
+        supporting, contradicting = [], []
+        falsifying = h["falsifying_task"]
+        kind = h["hypothesis_type"]
+        if prerequisite:
+            if not falsifying:
+                continue
+            control = load_task(conn, falsifying)
+            relevant = [r for r in attempt_history(conn, student_id, prerequisite)
+                        if _comparison_key(r) == _comparison_key(control) and not r["support_used"]]
+            # Failures of the target are suggestive; direct prerequisite probes
+            # are the actual evidence for or against the proposed explanation.
+            supporting = [r["attempt_id"] for r in history if not r["is_correct"]]
+            supporting += [r["attempt_id"] for r in relevant if not r["is_correct"]]
+            contradicting = [r["attempt_id"] for r in relevant if r["is_correct"]]
+        elif kind == "ZERO_PLACEHOLDER_HYPOTHESIS":
+            relevant_tasks = _tasks_at_risk_for(conn, competency, "ERR_ZERO_PLACEHOLDER")
+            supporting = [r["attempt_id"] for r in history if "ERR_ZERO_PLACEHOLDER" in r["error_codes"]]
+            contradicting = [r["attempt_id"] for r in history if r["task_id"] in relevant_tasks
+                             and r["is_correct"] and not r["support_used"]]
+        else:
+            anchors = [r for r in history if r["attempt_id"] in old_ids]
+            conditions = {_comparison_key(r) for r in anchors}
+            if len(conditions) != 1:
+                continue
+            condition = next(iter(conditions))
+            scoped = [r for r in history if _comparison_key(r) == condition and not r["support_used"]]
+            _, facet, body = target.split(":", 2)
+            weak, strong = body.split("@", 1)[0].split("<", 1)
+            if kind == "REPRESENTATION_HYPOTHESIS":
+                is_weak = lambda r: r["representation_mode"] == weak
+                is_strong = lambda r: r["representation_mode"] == strong
+            else:
+                feature = strong[len("with("):-1]
+                is_weak = lambda r: feature not in r["features"].get(facet, ())
+                is_strong = lambda r: feature in r["features"].get(facet, ())
+            supporting = [r["attempt_id"] for r in scoped
+                          if (is_weak(r) and not r["is_correct"]) or (is_strong(r) and r["is_correct"])]
+            contradicting = [r["attempt_id"] for r in scoped
+                             if (is_weak(r) and r["is_correct"]) or (is_strong(r) and not r["is_correct"])]
+            # Stable matching control, not an arbitrary easier/different question.
+            if not falsifying or _comparison_key(load_task(conn, falsifying)) != condition:
+                falsifying = _compatible_task(conn, student_id, competency, condition, is_weak)
+        actions.append(_open_or_update(conn, student_id, kind, target, falsifying,
+                        supporting, contradicting, h["priority"], cfg, clock, "§64, §115"))
+    return actions
+
+
 def detect(conn: sqlite3.Connection, student_id: str, competency_id: str,
            cfg: Config, clock: Clock) -> list[HypothesisAction]:
     """Prueft alle Hypothesentypen fuer eine Kompetenz."""
-    actions: list[HypothesisAction] = []
+    actions: list[HypothesisAction] = _refresh_existing(conn, student_id, competency_id, cfg, clock)
     actions.extend(_detect_dependency(conn, student_id, competency_id, cfg, clock))
     actions.extend(_detect_presence_dependency(conn, student_id, competency_id, cfg, clock))
     actions.extend(_detect_error_pattern(conn, student_id, competency_id, cfg, clock))
@@ -193,16 +285,17 @@ def _detect_presence_dependency(conn: sqlite3.Connection, student_id: str,
                     history, facet_kind, feature, min_pos, min_neg):
                 continue
             construct = (f"{competency_id}:{facet_kind}:without({feature})"
-                         f"<with({feature})@{level or 'MIXED_LEVELS'}")
-            supporting = [r["attempt_id"] for r in history
+                         f"<with({feature})@{level[0] if level else 'MIXED_LEVELS'}")
+            scoped = [r for r in history if level is None or _comparison_key(r) == level]
+            supporting = [r["attempt_id"] for r in scoped
                           if (feature in r["features"].get(facet_kind, ()))
                           == bool(r["is_correct"])]
-            contradicting = [r["attempt_id"] for r in history
+            contradicting = [r["attempt_id"] for r in scoped
                              if r["is_correct"]
                              and feature not in r["features"].get(facet_kind, ())]
-            falsifying = _pick_falsifying_without(conn, student_id, competency_id,
-                                                  facet_kind, feature)
-            out.append(_open_or_update(
+            falsifying = _compatible_task(conn, student_id, competency_id, level,
+                lambda t: feature not in t["features"].get(facet_kind, ()))
+            out.append(_open_new(
                 conn, student_id, hypothesis_type, construct, falsifying,
                 supporting, contradicting, priority=92, cfg=cfg, clock=clock,
                 spec_section="§71, §101"))
@@ -210,7 +303,7 @@ def _detect_presence_dependency(conn: sqlite3.Connection, student_id: str,
 
 
 def _presence_level(history: list[dict], facet_kind: str, feature: str,
-                    min_pos: int, min_neg: int) -> str | None:
+                    min_pos: int, min_neg: int) -> tuple[str, str, str] | None:
     """Stufe, auf der Anwesenheit durchgaengig gelingt und Abwesenheit nicht."""
     per_condition: dict[tuple[str, str], dict[str, int]] = {}
     for row in history:
@@ -223,7 +316,7 @@ def _presence_level(history: list[dict], facet_kind: str, feature: str,
     for condition, b in sorted(per_condition.items()):
         if (b["with_pos"] >= min_pos and b["with_neg"] == 0
                 and b["without_neg"] >= min_neg and b["without_pos"] == 0):
-            return condition[0]
+            return condition
     return None
 
 
@@ -263,7 +356,7 @@ def _values_of(row: dict, facet_kind: str) -> list[str]:
     return sorted(row["features"].get(facet_kind, ()))
 
 
-def _comparison_key(row: dict) -> tuple[str, str]:
+def _comparison_key(row: dict) -> tuple[str, str, str]:
     """Die Bedingungen, die fuer einen sauberen Vergleich konstant sein muessen.
 
     §116 Grundsatz der minimalen Veraenderung: nur EINE relevante Variable darf
@@ -333,18 +426,17 @@ def _detect_dependency(conn: sqlite3.Connection, student_id: str, competency_id:
                 if same_level_required and level is None:
                     continue
                 construct = (f"{competency_id}:{facet_kind}:{weak_value}<{strong_value}"
-                             f"@{level or 'MIXED_LEVELS'}")
+                             f"@{level[0] if level else 'MIXED_LEVELS'}")
                 # §32: eine Aussage ueber die Leistung unter Bedingungen, nicht
                 # ueber die Person.
-                supporting = _attempt_ids(conn, student_id, competency_id,
-                                          facet_kind, weak_value, correct=False)
-                supporting += _attempt_ids(conn, student_id, competency_id,
-                                           facet_kind, strong_value, correct=True)
-                contradicting = _attempt_ids(conn, student_id, competency_id,
-                                             facet_kind, weak_value, correct=True)
-                falsifying = _pick_falsifying(conn, student_id, competency_id,
-                                              facet_kind, weak_value)
-                out.append(_open_or_update(
+                scoped = [r for r in history if level is None or _comparison_key(r) == level]
+                supporting = [r["attempt_id"] for r in scoped
+                    if (r["representation_mode"] == weak_value and not r["is_correct"])
+                    or (r["representation_mode"] == strong_value and r["is_correct"])]
+                contradicting = []
+                falsifying = _compatible_task(conn, student_id, competency_id, level,
+                    lambda t: t["representation_mode"] == weak_value)
+                out.append(_open_new(
                     conn, student_id, hypothesis_type, construct, falsifying,
                     supporting, contradicting, priority=90, cfg=cfg, clock=clock,
                     spec_section="§69, §71, §100"))
@@ -352,10 +444,10 @@ def _detect_dependency(conn: sqlite3.Connection, student_id: str, competency_id:
 
 
 def _common_level(tally: dict, weak_value: str, strong_value: str,
-                  min_neg: int, min_pos: int) -> str | None:
+                  min_neg: int, min_pos: int) -> tuple[str, str, str] | None:
     """Eine Bedingung, unter der der Vergleich sauber ist (§116).
 
-    Liefert die Schwierigkeitsstufe, wenn Stufe UND Antwortformat auf beiden
+    Liefert den Vergleichsschlüssel, wenn Stufe, Frageform und Antwortformat auf beiden
     Seiten uebereinstimmen.
     """
     for (value, condition), bucket in sorted(tally.items()):
@@ -363,7 +455,7 @@ def _common_level(tally: dict, weak_value: str, strong_value: str,
             continue
         other = tally.get((strong_value, condition))
         if other and other["pos"] >= min_pos and other["neg"] == 0:
-            return condition[0]
+            return condition
     return None
 
 
@@ -405,7 +497,7 @@ def _detect_error_pattern(conn: sqlite3.Connection, student_id: str, competency_
         falsifying = _pick_fresh(conn, student_id, competency_id, relevant)
         contradicting = [r["attempt_id"] for r in history
                          if r["is_correct"] and r["task_id"] in relevant]
-        out.append(_open_or_update(
+        out.append(_open_new(
             conn, student_id, hypothesis_type, construct, falsifying,
             [r["attempt_id"] for r in hits], contradicting,
             priority=95, cfg=cfg, clock=clock, spec_section="§66"))
@@ -479,7 +571,7 @@ def _detect_prerequisite(conn: sqlite3.Connection, student_id: str, competency_i
             "SELECT task_id FROM tasks WHERE primary_competency = ?"
             " ORDER BY internal_difficulty, task_id LIMIT 1", (prerequisite,)
         ).fetchone()
-        out.append(_open_or_update(
+        out.append(_open_new(
             conn, student_id, "PREREQUISITE_HYPOTHESIS",
             f"{competency_id}:requires:{prerequisite}",
             falsifying["task_id"] if falsifying else None,

@@ -1,0 +1,558 @@
+{
+  "SUS_01": {
+    "id": "SUS_01",
+    "age": 10,
+    "grade": 4,
+    "base_probability": 0.97,
+    "competencies": {
+      "ZP01_ONE_TO_ONE": 0.97,
+      "ZP02_STABLE_ORDER": 0.97,
+      "ZP03_CARDINALITY": 0.97,
+      "ZP04_ABSTRACTION": 0.97,
+      "ZP05_ORDER_IRRELEVANCE": 0.97,
+      "ZO02_NUMBER_UNDERSTANDING": 0.97,
+      "ZO04_NUMBER_RELATIONS": 0.97,
+      "ZO05_PART_WHOLE": 0.97,
+      "ZO06_PLACE_VALUE": 0.97,
+      "ZO07_ADDITION": 0.97,
+      "ZO08_SUBTRACTION": 0.97,
+      "ZO09_MULTIPLICATION": 0.97,
+      "ZO10_DIVISION": 0.97,
+      "ZO11_INVERSE_OPERATIONS": 0.97,
+      "ZO12_TASK_RELATIONS": 0.97,
+      "ZO13_ARITHMETIC_LAWS": 0.97
+    },
+    "rules": [],
+    "slip_probability": 0.01,
+    "notes": "Breit sehr sicher"
+  },
+  "SUS_02": {
+    "id": "SUS_02",
+    "age": 9,
+    "grade": 4,
+    "base_probability": 0.97,
+    "competencies": {
+      "ZP01_ONE_TO_ONE": 0.8,
+      "ZP02_STABLE_ORDER": 0.8,
+      "ZP03_CARDINALITY": 0.6,
+      "ZP04_ABSTRACTION": 0.97,
+      "ZP05_ORDER_IRRELEVANCE": 0.97,
+      "ZO02_NUMBER_UNDERSTANDING": 0.35,
+      "ZO04_NUMBER_RELATIONS": 0.97,
+      "ZO05_PART_WHOLE": 0.25,
+      "ZO06_PLACE_VALUE": 0.25,
+      "ZO07_ADDITION": 0.3,
+      "ZO08_SUBTRACTION": 0.25,
+      "ZO09_MULTIPLICATION": 0.2,
+      "ZO10_DIVISION": 0.2,
+      "ZO11_INVERSE_OPERATIONS": 0.97,
+      "ZO12_TASK_RELATIONS": 0.97,
+      "ZO13_ARITHMETIC_LAWS": 0.97
+    },
+    "rules": [],
+    "slip_probability": 0.01,
+    "notes": "Basale Unsicherheit"
+  },
+  "SUS_03": {
+    "id": "SUS_03",
+    "age": 9,
+    "grade": 4,
+    "base_probability": 0.97,
+    "competencies": {
+      "ZP01_ONE_TO_ONE": 0.97,
+      "ZP02_STABLE_ORDER": 0.97,
+      "ZP03_CARDINALITY": 0.97,
+      "ZP04_ABSTRACTION": 0.97,
+      "ZP05_ORDER_IRRELEVANCE": 0.97,
+      "ZO02_NUMBER_UNDERSTANDING": 0.97,
+      "ZO04_NUMBER_RELATIONS": 0.97,
+      "ZO05_PART_WHOLE": 0.97,
+      "ZO06_PLACE_VALUE": 0.97,
+      "ZO07_ADDITION": 0.97,
+      "ZO08_SUBTRACTION": 0.65,
+      "ZO09_MULTIPLICATION": 0.25,
+      "ZO10_DIVISION": 0.2,
+      "ZO11_INVERSE_OPERATIONS": 0.97,
+      "ZO12_TASK_RELATIONS": 0.97,
+      "ZO13_ARITHMETIC_LAWS": 0.97
+    },
+    "rules": [],
+    "slip_probability": 0.01,
+    "notes": "Heterogen: Addition sicher, Multiplikation und Division unsicher"
+  },
+  "SUS_04": {
+    "id": "SUS_04",
+    "age": 9,
+    "grade": 4,
+    "base_probability": 0.97,
+    "competencies": {
+      "ZP01_ONE_TO_ONE": 0.97,
+      "ZP02_STABLE_ORDER": 0.97,
+      "ZP03_CARDINALITY": 0.97,
+      "ZP04_ABSTRACTION": 0.97,
+      "ZP05_ORDER_IRRELEVANCE": 0.97,
+      "ZO02_NUMBER_UNDERSTANDING": 0.97,
+      "ZO04_NUMBER_RELATIONS": 0.97,
+      "ZO05_PART_WHOLE": 0.97,
+      "ZO06_PLACE_VALUE": 0.3,
+      "ZO07_ADDITION": 0.97,
+      "ZO08_SUBTRACTION": 0.97,
+      "ZO09_MULTIPLICATION": 0.97,
+      "ZO10_DIVISION": 0.97,
+      "ZO11_INVERSE_OPERATIONS": 0.97,
+      "ZO12_TASK_RELATIONS": 0.97,
+      "ZO13_ARITHMETIC_LAWS": 0.97,
+      "ZO06_1_BUNDLING": 0.25
+    },
+    "rules": [
+      {
+        "id": "place_value",
+        "probability": 0.3,
+        "competencies": [
+          "ZO06_PLACE_VALUE",
+          "ZO06_1_BUNDLING"
+        ],
+        "error_pattern": "PLACE_VALUE_SWAP"
+      }
+    ],
+    "slip_probability": 0.01,
+    "notes": "Stellenwert und Bündelung instabil"
+  },
+  "SUS_05": {
+    "id": "SUS_05",
+    "age": 9,
+    "grade": 4,
+    "base_probability": 0.97,
+    "competencies": {
+      "ZP01_ONE_TO_ONE": 0.97,
+      "ZP02_STABLE_ORDER": 0.97,
+      "ZP03_CARDINALITY": 0.97,
+      "ZP04_ABSTRACTION": 0.97,
+      "ZP05_ORDER_IRRELEVANCE": 0.97,
+      "ZO02_NUMBER_UNDERSTANDING": 0.97,
+      "ZO04_NUMBER_RELATIONS": 0.97,
+      "ZO05_PART_WHOLE": 0.97,
+      "ZO06_PLACE_VALUE": 0.97,
+      "ZO07_ADDITION": 0.97,
+      "ZO08_SUBTRACTION": 0.97,
+      "ZO09_MULTIPLICATION": 0.97,
+      "ZO10_DIVISION": 0.97,
+      "ZO11_INVERSE_OPERATIONS": 0.97,
+      "ZO12_TASK_RELATIONS": 0.97,
+      "ZO13_ARITHMETIC_LAWS": 0.97
+    },
+    "rules": [
+      {
+        "id": "addition_crosses_ten",
+        "probability": 0.2,
+        "competencies": [
+          "ZO07_ADDITION"
+        ],
+        "any_features": {
+          "NUMERIC_FEATURE": [
+            "CROSSES_TEN"
+          ]
+        },
+        "error_pattern": "OMITTED_CARRY"
+      }
+    ],
+    "slip_probability": 0.01,
+    "notes": "Addition grundsätzlich sicher; Zehnerübergang instabil"
+  },
+  "SUS_06": {
+    "id": "SUS_06",
+    "age": 10,
+    "grade": 4,
+    "base_probability": 0.97,
+    "competencies": {
+      "ZP01_ONE_TO_ONE": 0.97,
+      "ZP02_STABLE_ORDER": 0.97,
+      "ZP03_CARDINALITY": 0.97,
+      "ZP04_ABSTRACTION": 0.97,
+      "ZP05_ORDER_IRRELEVANCE": 0.97,
+      "ZO02_NUMBER_UNDERSTANDING": 0.97,
+      "ZO04_NUMBER_RELATIONS": 0.97,
+      "ZO05_PART_WHOLE": 0.97,
+      "ZO06_PLACE_VALUE": 0.97,
+      "ZO07_ADDITION": 0.97,
+      "ZO08_SUBTRACTION": 0.97,
+      "ZO09_MULTIPLICATION": 0.97,
+      "ZO10_DIVISION": 0.97,
+      "ZO11_INVERSE_OPERATIONS": 0.97,
+      "ZO12_TASK_RELATIONS": 0.97,
+      "ZO13_ARITHMETIC_LAWS": 0.97
+    },
+    "rules": [
+      {
+        "id": "subtraction_crosses_ten",
+        "probability": 0.2,
+        "competencies": [
+          "ZO08_SUBTRACTION"
+        ],
+        "any_features": {
+          "NUMERIC_FEATURE": [
+            "CROSSES_TEN"
+          ]
+        },
+        "error_pattern": "OMITTED_BORROW"
+      }
+    ],
+    "slip_probability": 0.01,
+    "notes": "Subtraktion mit Entbündeln instabil"
+  },
+  "SUS_07": {
+    "id": "SUS_07",
+    "age": 9,
+    "grade": 4,
+    "base_probability": 0.97,
+    "competencies": {
+      "ZP01_ONE_TO_ONE": 0.97,
+      "ZP02_STABLE_ORDER": 0.97,
+      "ZP03_CARDINALITY": 0.97,
+      "ZP04_ABSTRACTION": 0.97,
+      "ZP05_ORDER_IRRELEVANCE": 0.97,
+      "ZO02_NUMBER_UNDERSTANDING": 0.97,
+      "ZO04_NUMBER_RELATIONS": 0.97,
+      "ZO05_PART_WHOLE": 0.97,
+      "ZO06_PLACE_VALUE": 0.97,
+      "ZO07_ADDITION": 0.97,
+      "ZO08_SUBTRACTION": 0.97,
+      "ZO09_MULTIPLICATION": 0.97,
+      "ZO10_DIVISION": 0.97,
+      "ZO11_INVERSE_OPERATIONS": 0.97,
+      "ZO12_TASK_RELATIONS": 0.97,
+      "ZO13_ARITHMETIC_LAWS": 0.97
+    },
+    "rules": [
+      {
+        "id": "symbolic",
+        "probability": 0.3,
+        "representations": [
+          "MATHEMATICAL_SYMBOL"
+        ]
+      }
+    ],
+    "slip_probability": 0.01,
+    "notes": "Symbolische Darstellung erschwert; ikonisch und handelnd sicher"
+  },
+  "SUS_08": {
+    "id": "SUS_08",
+    "age": 9,
+    "grade": 4,
+    "base_probability": 0.97,
+    "competencies": {
+      "ZP01_ONE_TO_ONE": 0.97,
+      "ZP02_STABLE_ORDER": 0.97,
+      "ZP03_CARDINALITY": 0.97,
+      "ZP04_ABSTRACTION": 0.97,
+      "ZP05_ORDER_IRRELEVANCE": 0.97,
+      "ZO02_NUMBER_UNDERSTANDING": 0.97,
+      "ZO04_NUMBER_RELATIONS": 0.97,
+      "ZO05_PART_WHOLE": 0.97,
+      "ZO06_PLACE_VALUE": 0.97,
+      "ZO07_ADDITION": 0.97,
+      "ZO08_SUBTRACTION": 0.97,
+      "ZO09_MULTIPLICATION": 0.3,
+      "ZO10_DIVISION": 0.97,
+      "ZO11_INVERSE_OPERATIONS": 0.97,
+      "ZO12_TASK_RELATIONS": 0.97,
+      "ZO13_ARITHMETIC_LAWS": 0.97
+    },
+    "rules": [
+      {
+        "id": "group_structure",
+        "probability": 0.2,
+        "competencies": [
+          "ZO09_MULTIPLICATION"
+        ],
+        "any_features": {
+          "STRUCTURAL_FEATURE": [
+            "ARRAY_STRUCTURE",
+            "EQUAL_GROUPS"
+          ]
+        }
+      }
+    ],
+    "slip_probability": 0.01,
+    "notes": "Multiplikative Grundstruktur instabil"
+  },
+  "SUS_09": {
+    "id": "SUS_09",
+    "age": 10,
+    "grade": 4,
+    "base_probability": 0.97,
+    "competencies": {
+      "ZP01_ONE_TO_ONE": 0.97,
+      "ZP02_STABLE_ORDER": 0.97,
+      "ZP03_CARDINALITY": 0.97,
+      "ZP04_ABSTRACTION": 0.97,
+      "ZP05_ORDER_IRRELEVANCE": 0.97,
+      "ZO02_NUMBER_UNDERSTANDING": 0.97,
+      "ZO04_NUMBER_RELATIONS": 0.97,
+      "ZO05_PART_WHOLE": 0.97,
+      "ZO06_PLACE_VALUE": 0.97,
+      "ZO07_ADDITION": 0.97,
+      "ZO08_SUBTRACTION": 0.97,
+      "ZO09_MULTIPLICATION": 0.97,
+      "ZO10_DIVISION": 0.25,
+      "ZO11_INVERSE_OPERATIONS": 0.25,
+      "ZO12_TASK_RELATIONS": 0.97,
+      "ZO13_ARITHMETIC_LAWS": 0.97
+    },
+    "rules": [],
+    "slip_probability": 0.01,
+    "notes": "Division und Umkehroperationen instabil"
+  },
+  "SUS_10": {
+    "id": "SUS_10",
+    "age": 10,
+    "grade": 4,
+    "base_probability": 0.97,
+    "competencies": {
+      "ZP01_ONE_TO_ONE": 0.97,
+      "ZP02_STABLE_ORDER": 0.97,
+      "ZP03_CARDINALITY": 0.97,
+      "ZP04_ABSTRACTION": 0.97,
+      "ZP05_ORDER_IRRELEVANCE": 0.97,
+      "ZO02_NUMBER_UNDERSTANDING": 0.97,
+      "ZO04_NUMBER_RELATIONS": 0.97,
+      "ZO05_PART_WHOLE": 0.97,
+      "ZO06_PLACE_VALUE": 0.97,
+      "ZO07_ADDITION": 0.97,
+      "ZO08_SUBTRACTION": 0.97,
+      "ZO09_MULTIPLICATION": 0.97,
+      "ZO10_DIVISION": 0.97,
+      "ZO11_INVERSE_OPERATIONS": 0.97,
+      "ZO12_TASK_RELATIONS": 0.97,
+      "ZO13_ARITHMETIC_LAWS": 0.97
+    },
+    "rules": [
+      {
+        "id": "strategy_affordance_proxy",
+        "probability": 0.4,
+        "any_features": {
+          "STRATEGY_AFFORDANCE": [
+            "COMPENSATION",
+            "DECOMPOSITION",
+            "INVERSE_OPERATION",
+            "DOUBLING",
+            "HALVING"
+          ]
+        }
+      }
+    ],
+    "slip_probability": 0.01,
+    "notes": "Strategieanforderungen erschwert; Strategieaffordanz ist nur ein expliziter Simulationsproxy, kein Nachweis notwendiger Strategienutzung."
+  },
+  "SUS_11": {
+    "id": "SUS_11",
+    "age": 10,
+    "grade": 4,
+    "base_probability": 0.97,
+    "competencies": {
+      "ZP01_ONE_TO_ONE": 0.97,
+      "ZP02_STABLE_ORDER": 0.97,
+      "ZP03_CARDINALITY": 0.97,
+      "ZP04_ABSTRACTION": 0.97,
+      "ZP05_ORDER_IRRELEVANCE": 0.97,
+      "ZO02_NUMBER_UNDERSTANDING": 0.97,
+      "ZO04_NUMBER_RELATIONS": 0.97,
+      "ZO05_PART_WHOLE": 0.97,
+      "ZO06_PLACE_VALUE": 0.97,
+      "ZO07_ADDITION": 0.97,
+      "ZO08_SUBTRACTION": 0.97,
+      "ZO09_MULTIPLICATION": 0.97,
+      "ZO10_DIVISION": 0.97,
+      "ZO11_INVERSE_OPERATIONS": 0.97,
+      "ZO12_TASK_RELATIONS": 0.97,
+      "ZO13_ARITHMETIC_LAWS": 0.97
+    },
+    "rules": [
+      {
+        "id": "context",
+        "probability": 0.35,
+        "any_features": {
+          "SURFACE_FEATURE": [
+            "WORD_PROBLEM",
+            "IMAGE_CONTEXT"
+          ],
+          "ADDITIONAL_DEMAND": [
+            "INFORMATION_SELECTION",
+            "LANGUAGE_DEMAND"
+          ]
+        }
+      }
+    ],
+    "slip_probability": 0.01,
+    "notes": "Kontext und Transfer erschwert"
+  },
+  "SUS_12": {
+    "id": "SUS_12",
+    "age": 10,
+    "grade": 4,
+    "base_probability": 1.0,
+    "competencies": {
+      "ZP01_ONE_TO_ONE": 1.0,
+      "ZP02_STABLE_ORDER": 1.0,
+      "ZP03_CARDINALITY": 1.0,
+      "ZP04_ABSTRACTION": 1.0,
+      "ZP05_ORDER_IRRELEVANCE": 1.0,
+      "ZO02_NUMBER_UNDERSTANDING": 1.0,
+      "ZO04_NUMBER_RELATIONS": 1.0,
+      "ZO05_PART_WHOLE": 1.0,
+      "ZO06_PLACE_VALUE": 1.0,
+      "ZO07_ADDITION": 1.0,
+      "ZO08_SUBTRACTION": 1.0,
+      "ZO09_MULTIPLICATION": 1.0,
+      "ZO10_DIVISION": 1.0,
+      "ZO11_INVERSE_OPERATIONS": 1.0,
+      "ZO12_TASK_RELATIONS": 1.0,
+      "ZO13_ARITHMETIC_LAWS": 1.0
+    },
+    "rules": [],
+    "slip_probability": 0.07,
+    "notes": "Breit sicher mit zufälligen Slips"
+  },
+  "SUS_13": {
+    "id": "SUS_13",
+    "age": 10,
+    "grade": 4,
+    "base_probability": 0.97,
+    "competencies": {
+      "ZP01_ONE_TO_ONE": 0.97,
+      "ZP02_STABLE_ORDER": 0.97,
+      "ZP03_CARDINALITY": 0.97,
+      "ZP04_ABSTRACTION": 0.97,
+      "ZP05_ORDER_IRRELEVANCE": 0.97,
+      "ZO02_NUMBER_UNDERSTANDING": 0.97,
+      "ZO04_NUMBER_RELATIONS": 0.97,
+      "ZO05_PART_WHOLE": 0.97,
+      "ZO06_PLACE_VALUE": 0.97,
+      "ZO07_ADDITION": 0.97,
+      "ZO08_SUBTRACTION": 0.97,
+      "ZO09_MULTIPLICATION": 0.97,
+      "ZO10_DIVISION": 0.97,
+      "ZO11_INVERSE_OPERATIONS": 0.97,
+      "ZO12_TASK_RELATIONS": 0.97,
+      "ZO13_ARITHMETIC_LAWS": 0.97
+    },
+    "rules": [
+      {
+        "id": "difficulty_D1",
+        "difficulties": [
+          "D1"
+        ],
+        "probability": 0.99
+      },
+      {
+        "id": "difficulty_D2",
+        "difficulties": [
+          "D2"
+        ],
+        "probability": 0.97
+      },
+      {
+        "id": "difficulty_D3",
+        "difficulties": [
+          "D3"
+        ],
+        "probability": 0.9
+      },
+      {
+        "id": "difficulty_D4",
+        "difficulties": [
+          "D4"
+        ],
+        "probability": 0.5
+      },
+      {
+        "id": "difficulty_D5",
+        "difficulties": [
+          "D5"
+        ],
+        "probability": 0.15
+      }
+    ],
+    "slip_probability": 0.01,
+    "notes": "D4 Grenzbereich; widersprüchliche Evidenz möglich"
+  },
+  "SUS_14": {
+    "id": "SUS_14",
+    "age": 9,
+    "grade": 4,
+    "base_probability": 0.97,
+    "competencies": {
+      "ZP01_ONE_TO_ONE": 0.97,
+      "ZP02_STABLE_ORDER": 0.97,
+      "ZP03_CARDINALITY": 0.97,
+      "ZP04_ABSTRACTION": 0.97,
+      "ZP05_ORDER_IRRELEVANCE": 0.97,
+      "ZO02_NUMBER_UNDERSTANDING": 0.97,
+      "ZO04_NUMBER_RELATIONS": 0.97,
+      "ZO05_PART_WHOLE": 0.97,
+      "ZO06_PLACE_VALUE": 0.97,
+      "ZO07_ADDITION": 0.97,
+      "ZO08_SUBTRACTION": 0.97,
+      "ZO09_MULTIPLICATION": 0.97,
+      "ZO10_DIVISION": 0.97,
+      "ZO11_INVERSE_OPERATIONS": 0.97,
+      "ZO12_TASK_RELATIONS": 0.97,
+      "ZO13_ARITHMETIC_LAWS": 0.97
+    },
+    "rules": [
+      {
+        "id": "crosses_ten",
+        "probability": 0.75,
+        "competencies": [
+          "ZO07_ADDITION"
+        ],
+        "any_features": {
+          "NUMERIC_FEATURE": [
+            "CROSSES_TEN"
+          ]
+        }
+      },
+      {
+        "id": "crosses_ten_symbolic",
+        "probability": 0.25,
+        "competencies": [
+          "ZO07_ADDITION"
+        ],
+        "any_features": {
+          "NUMERIC_FEATURE": [
+            "CROSSES_TEN"
+          ]
+        },
+        "representations": [
+          "MATHEMATICAL_SYMBOL"
+        ],
+        "error_pattern": "OMITTED_CARRY"
+      },
+      {
+        "id": "crosses_ten_symbolic_strategy",
+        "probability": 0.1,
+        "competencies": [
+          "ZO07_ADDITION"
+        ],
+        "any_features": {
+          "STRATEGY_AFFORDANCE": [
+            "COMPENSATION",
+            "DECOMPOSITION",
+            "INVERSE_OPERATION"
+          ]
+        },
+        "representations": [
+          "MATHEMATICAL_SYMBOL"
+        ],
+        "error_pattern": "OMITTED_CARRY",
+        "all_features": {
+          "NUMERIC_FEATURE": [
+            "CROSSES_TEN"
+          ]
+        }
+      }
+    ],
+    "slip_probability": 0.01,
+    "notes": "Zehnerübergang × symbolisch × Strategie"
+  }
+}

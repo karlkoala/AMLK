@@ -81,6 +81,7 @@ class Decision:
     evidence_used: list[str]
     explanation: str
     stop_reason: str | None = None
+    termination: dict = field(default_factory=dict)
 
 
 # ------------------------------------------------------------ Teilgraph (§74)
@@ -268,7 +269,8 @@ def _undeliverable(conn: sqlite3.Connection) -> set[str]:
 
 def candidates(conn: sqlite3.Connection, student_id: str, cfg: Config,
                nodes: dict[str, str], forced_competencies: set[str],
-               forced_tasks: set[str] | None = None) -> list[Candidate]:
+               forced_tasks: set[str] | None = None,
+               exclusions: dict | None = None) -> list[Candidate]:
     """§119: getTasks, removeRedundant, removeParked, filterByPrerequisites.
 
     forced_competencies hebt die Sperren auf Knotenebene auf (PARKED, SECURE,
@@ -319,22 +321,30 @@ def candidates(conn: sqlite3.Connection, student_id: str, cfg: Config,
     tally_cache: dict[str, dict] = {}
 
     out: list[Candidate] = []
+    def exclude(row, reason):
+        if exclusions is not None:
+            exclusions.setdefault(row["primary_competency"], {}).setdefault(reason, []).append(row["task_id"])
     for row in rows:
         competency = row["primary_competency"]
         if row["task_id"] in undeliverable:
+            exclude(row, "UNDELIVERABLE")
             continue
         status = state.get(competency, {}).get("status", "UNKNOWN")
         # removeParkedCompetencies (§38) - ausser der Knoten ist Routenziel.
         if status in EXCLUDED_STATUSES and competency not in forced_competencies:
+            exclude(row, "STATUS_EXCLUDED")
             continue
         # §73: nicht uebertesten.
         if competency not in forced_competencies:
             if status == "SECURE":
+                exclude(row, "ALREADY_SECURE")
                 continue
             if administered_per_node.get(competency, 0) >= max_items:
+                exclude(row, "NODE_TASK_LIMIT")
                 continue
         # removeRedundantTasks: bereits richtig geloest.
         if row["task_id"] in answered_correctly:
+            exclude(row, "ALREADY_CORRECT")
             continue
         # Bereits gestellte Aufgaben werden nicht wiederholt - eine zweite
         # Falschantwort auf dasselbe Item ist keine unabhaengige Beobachtung
@@ -346,6 +356,7 @@ def candidates(conn: sqlite3.Connection, student_id: str, cfg: Config,
             if not (row["task_id"] in forced_tasks
                     or row["task_id"] in falsifying_tasks
                     or status == "REACTIVATED"):
+                exclude(row, "ALREADY_ADMINISTERED")
                 continue
         # §36 und §98: unterhalb einer abgeschlossenen Stufe liegt keine
         # Information mehr. "Moeglichst wenige Aufgaben stellen, die moeglichst
@@ -358,10 +369,12 @@ def candidates(conn: sqlite3.Connection, student_id: str, cfg: Config,
                        if level in settled and tally_cache[competency][level]["pos"] > 0]
             if secured and _difficulty_index(row["internal_difficulty"]) \
                     < _difficulty_index(secured[-1]):
+                exclude(row, "BELOW_SECURED_LEVEL")
                 continue
         # filterByPrerequisites: was nachweislich nicht erreichbar ist, wird
         # nicht angeboten (§31, §91 - erst zugaenglicher Einstieg, dann Aufbau).
         if _prerequisite_blocked(conn, row, state, competency):
+            exclude(row, "PREREQUISITE_BLOCKED")
             continue
         out.append(Candidate(task_id=row["task_id"], competency_id=competency,
                              difficulty=row["internal_difficulty"],
@@ -841,7 +854,8 @@ def next_task(conn: sqlite3.Connection, student_id: str, cfg: Config, clock: Clo
     forced.discard(None)
     forced_tasks = {r["target_task"] for r in routes if r["target_task"]}
 
-    pool = candidates(conn, student_id, cfg, nodes, forced, forced_tasks)
+    exclusions: dict = {}
+    pool = candidates(conn, student_id, cfg, nodes, forced, forced_tasks, exclusions)
     pool = score_candidates(conn, student_id, cfg, pool, nodes, hypotheses, routes, last)
 
     max_alternatives = cfg.require("routing.decision_log_alternatives")
@@ -849,13 +863,14 @@ def next_task(conn: sqlite3.Connection, student_id: str, cfg: Config, clock: Clo
                      "route_id": c.route_id} for c in pool[:max_alternatives]]
 
     if not pool:
-        stop = "NO_CANDIDATES" if not nodes else "ALL_NODES_SUFFICIENTLY_INFORMED"
+        termination = _termination_state(conn, student_id, cfg, focus, exclusions, hypotheses)
+        stop = termination["stop_reason"]
         decision = Decision(
             decision_id=ids.next_id(conn, "routing_decisions", student_id),
-            selected_task=None, reason=None, rule_triggered=stop, confidence="HIGH",
+            selected_task=None, reason=None, rule_triggered=stop, confidence="HIGH" if termination["diagnostically_complete"] else "LOW",
             alternatives=[], breakdown={}, hypothesis_used=[h["hypothesis_id"] for h in hypotheses],
             evidence_used=[], stop_reason=stop,
-            explanation=_explain_stop(stop))
+            explanation=_explain_stop(stop), termination=termination)
         _log(conn, student_id, decision, last, clock)
         return decision
 
@@ -929,22 +944,49 @@ def _explain(conn: sqlite3.Connection, student_id: str, winner: Candidate, margi
     return " ".join(parts)
 
 
+def _termination_state(conn, student_id, cfg, focus, exclusions, hypotheses):
+    states = {r["competency_id"]: r["status"] for r in conn.execute(
+        "SELECT competency_id,status FROM student_competency_state WHERE student_id=?", (student_id,))}
+    targets = set(focus) if focus else {r["competency_id"] for r in conn.execute(
+        "SELECT competency_id FROM competencies WHERE is_mvp=1")}
+    open_areas, blocked = [], []
+    for cid in sorted(targets):
+        status = states.get(cid, "UNKNOWN")
+        if status in ("SECURE", "PARKED"):
+            continue
+        reasons = exclusions.get(cid, {})
+        if not reasons:
+            count = conn.execute("SELECT COUNT(*) FROM tasks WHERE primary_competency=?", (cid,)).fetchone()[0]
+            reason = "NO_ITEMS" if not count else ("BLOCKED" if status == "BLOCKED" else "NOT_IN_CANDIDATE_SCOPE")
+            reasons = {reason: []}
+        entry = {"competency_id": cid, "status": status, "exclusion_reasons": reasons}
+        (blocked if status == "BLOCKED" else open_areas).append(entry)
+    remaining_hypotheses = [h["hypothesis_id"] for h in hypotheses
+                           if h["target_construct"].split(":",1)[0] in targets]
+    complete = bool(targets) and not open_areas and not blocked and not remaining_hypotheses
+    reason_codes = {k for a in open_areas+blocked for k in a["exclusion_reasons"]}
+    if complete:
+        reason = "ALL_NODES_SUFFICIENTLY_INFORMED"
+    elif "NODE_TASK_LIMIT" in reason_codes:
+        reason = "NODE_TASK_LIMIT_REACHED"
+    elif blocked and not open_areas:
+        reason = "TARGETS_BLOCKED"
+    else:
+        reason = "NO_ELIGIBLE_CANDIDATES"
+    return {"stop_reason": reason, "technical_ended": True,
+            "diagnostically_complete": complete, "scope": sorted(targets),
+            "open_areas": open_areas, "blocked_areas": blocked,
+            "open_hypotheses": remaining_hypotheses}
+
+
 def _explain_stop(stop: str) -> str:
-    """§73 ist ein Kernprinzip: 'Ziel ist nicht maximale Datenerhebung. Ziel
-    ist maximal relevante Datenerhebung mit moeglichst wenigen Aufgaben.'
-    Die Entscheidung, nicht weiterzutesten, ist deshalb eine Entscheidung wie
-    jede andere und wird nach §89 begruendet und protokolliert."""
-    if stop == "NO_CANDIDATES":
-        return ("Es wird nicht weitergetestet (§73). Kein aktiver Kompetenzknoten haelt"
-                " noch eine Aufgabe bereit, die Information liefern wuerde: die"
-                " erreichbaren Knoten sind gesichert oder geparkt (§38), die"
-                " verbleibenden Items sind bereits richtig geloest oder liegen"
-                " unterhalb einer abgeschlossenen Stufe (§36). Ein Item, dem nach"
-                " §113 fachliche Angaben fehlen, waere ebenfalls ausgeschlossen.")
-    return ("Es wird nicht weitergetestet (§73). Alle aktiven Knoten sind ausreichend"
-            " informiert - weitere Aufgaben wuerden die Kompetenzgrenze nicht"
-            " genauer bestimmen. §73: Ziel ist nicht maximale, sondern maximal"
-            " relevante Datenerhebung mit moeglichst wenigen Aufgaben.")
+    if stop == "ALL_NODES_SUFFICIENTLY_INFORMED":
+        return "§73: Alle Ziele im angegebenen Prüfumfang sind gesichert oder geparkt; keine offene Hypothesenprüfung. Keine Aussage über nicht geprüfte Inhalte."
+    if stop == "NODE_TASK_LIMIT_REACHED":
+        return "Keine auswählbare Folgeaufgabe; mindestens ein offener Bereich hat das Aufgabenlimit erreicht. Die Diagnostik ist nicht vollständig abgeschlossen."
+    if stop == "TARGETS_BLOCKED":
+        return "Verbleibende Ziele sind gesperrt. Dies ist ein technischer Abschluss, kein Kompetenznachweis."
+    return "Keine geeignete Folgeaufgabe verfügbar. Offene Bereiche und Ausschlussgründe bleiben ausgewiesen; ausreichende diagnostische Information ist nicht bestätigt."
 
 
 def _log(conn: sqlite3.Connection, student_id: str, decision: Decision,
@@ -960,4 +1002,4 @@ def _log(conn: sqlite3.Connection, student_id: str, decision: Decision,
          decision.rule_triggered, json.dumps(decision.evidence_used),
          json.dumps(decision.hypothesis_used),
          json.dumps(decision.alternatives, ensure_ascii=False),
-         json.dumps(decision.breakdown), decision.confidence))
+         json.dumps({**decision.breakdown, **({"_termination": decision.termination} if decision.termination else {})}), decision.confidence))

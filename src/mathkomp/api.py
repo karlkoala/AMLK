@@ -530,6 +530,7 @@ def routing_decisions(conn: sqlite3.Connection, student_id: str) -> list[dict]:
         for field, default in (("evidence_used", []), ("hypothesis_used", []),
                                ("alternatives_considered", []), ("score_breakdown", {})):
             item[field] = _json(item[field], default)
+        item["termination"] = item["score_breakdown"].pop("_termination", {})
         out.append(item)
     return out
 
