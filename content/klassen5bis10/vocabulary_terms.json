@@ -1,0 +1,552 @@
+{
+  "_comment": [
+    "Zusaetzliche Terme fuer bestehende Vokabulare. Sie legen KEIN neues",
+    "Vokabular an - die 34 Vokabulare aus §79ff. bleiben unveraendert.",
+    "",
+    "notes ist hier durchgaengig 'ERWEITERUNG KLASSE 5-10' und nicht 'SPEC':",
+    "diese Terme stehen in keiner Fundstelle der Spezifikation. §1 verlangt,",
+    "dass eine fehlende Fundstelle als fehlend sichtbar bleibt."
+  ],
+  "vocabulary_terms": [
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPARE_DECIMALS",
+      "label_de": "Dezimalzahlen vergleichen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPARE_FRACTIONS",
+      "label_de": "Brüche vergleichen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPARE_IN_DIAGRAM",
+      "label_de": "Werte in einer Darstellung vergleichen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPLETE_PROPORTION_TABLE",
+      "label_de": "Wertetabelle ergänzen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPLETE_TREE",
+      "label_de": "Baumdiagramm ergänzen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_ANGLE",
+      "label_de": "Winkelgröße berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_AREA",
+      "label_de": "Flächeninhalt berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_CIRCLE_AREA",
+      "label_de": "Kreisfläche berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_CIRCLE_PERIMETER",
+      "label_de": "Kreisumfang berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_FRACTION_RESULT",
+      "label_de": "Bruchrechnung ausführen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_HYPOTENUSE",
+      "label_de": "Hypotenuse berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_LEG",
+      "label_de": "Kathete berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_MEAN",
+      "label_de": "Arithmetisches Mittel berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_MEDIAN",
+      "label_de": "Median bestimmen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_MISSING_LENGTH",
+      "label_de": "Fehlende Länge berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_PATH_PROBABILITY",
+      "label_de": "Pfadwahrscheinlichkeit berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_PERCENT_RATE",
+      "label_de": "Prozentsatz berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_PERCENT_VALUE",
+      "label_de": "Prozentwert berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_PERIMETER",
+      "label_de": "Umfang berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_POWER",
+      "label_de": "Potenzwert berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_PROBABILITY",
+      "label_de": "Wahrscheinlichkeit berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_PROPORTION_VALUE",
+      "label_de": "Zugeordneten Wert berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_ROOT",
+      "label_de": "Quadratwurzel berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_SCALE_FACTOR",
+      "label_de": "Maßstab umrechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_SURFACE",
+      "label_de": "Oberflächeninhalt berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_TRIG_LENGTH",
+      "label_de": "Seitenlänge trigonometrisch berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_VOLUME",
+      "label_de": "Volumen berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "COMPUTE_ZERO",
+      "label_de": "Nullstelle berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "CONVERT_UNIT",
+      "label_de": "Einheit umrechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "EVALUATE_FUNCTION",
+      "label_de": "Funktionswert berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "EVALUATE_TERM",
+      "label_de": "Termwert berechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "EXTEND_FRACTION",
+      "label_de": "Bruch erweitern",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "FRACTION_OF_QUANTITY",
+      "label_de": "Bruchteil einer Größe bestimmen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "MULTIPLY_FRACTIONS",
+      "label_de": "Brüche multiplizieren",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "PLACE_ON_NUMBER_LINE",
+      "label_de": "Zahl am Zahlenstrahl eintragen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "READ_ANGLE",
+      "label_de": "Winkelgröße ablesen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "READ_FROM_DIAGRAM",
+      "label_de": "Wert aus einem Diagramm ablesen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "READ_FROM_NUMBER_LINE",
+      "label_de": "Zahl am Zahlenstrahl ablesen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "READ_INTERCEPT",
+      "label_de": "y-Achsenabschnitt ablesen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "READ_MEASURE",
+      "label_de": "Messwert ablesen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "READ_SLOPE",
+      "label_de": "Steigung ablesen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "SELECT_PROBABILITY",
+      "label_de": "Wahrscheinlicheres Ereignis auswählen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "SELECT_TRIG_RATIO",
+      "label_de": "Seite am rechtwinkligen Dreieck benennen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "SET_UP_TERM",
+      "label_de": "Term aufstellen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "SHADE_FRACTION",
+      "label_de": "Bruchteil einfärben",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "SIMPLIFY_TERM",
+      "label_de": "Term umformen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "QUESTION_FORM",
+      "term": "SOLVE_EQUATION",
+      "label_de": "Gleichung lösen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "ANGLE_RELATION",
+      "label_de": "Winkelbeziehung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "AREA_RELATION",
+      "label_de": "Flächeninhaltsbeziehung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "AVERAGE_RELATION",
+      "label_de": "Mittelwertbeziehung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "CIRCLE_RELATION",
+      "label_de": "Kreisbeziehung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "DATA_DISPLAY",
+      "label_de": "Datendarstellung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "DECIMAL_PLACE_VALUE",
+      "label_de": "Stellenwert hinter dem Komma",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "EQUATION_BALANCE",
+      "label_de": "Gleichung als Gleichgewicht",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "FRACTION_OPERATION",
+      "label_de": "Rechnen mit Brüchen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "FRACTION_PART_WHOLE",
+      "label_de": "Bruch als Teil eines Ganzen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "INVERSE_PROPORTIONAL_RELATION",
+      "label_de": "Antiproportionale Zuordnung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "LINEAR_RELATION",
+      "label_de": "Linearer Zusammenhang",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "MULTISTAGE_EXPERIMENT",
+      "label_de": "Mehrstufiger Zufallsversuch",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "NEGATIVE_NUMBER",
+      "label_de": "Negative Zahl",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "PERCENT_RELATION",
+      "label_de": "Prozentbeziehung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "PERIMETER_RELATION",
+      "label_de": "Umfangsbeziehung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "POWER_RELATION",
+      "label_de": "Potenzbeziehung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "PROBABILITY_RELATION",
+      "label_de": "Wahrscheinlichkeitsbeziehung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "PROPORTIONAL_RELATION",
+      "label_de": "Proportionale Zuordnung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "PYTHAGOREAN_RELATION",
+      "label_de": "Satz des Pythagoras",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "QUADRATIC_RELATION",
+      "label_de": "Quadratischer Zusammenhang",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "SIMILARITY_RELATION",
+      "label_de": "Ähnlichkeitsbeziehung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "SURFACE_RELATION",
+      "label_de": "Oberflächenbeziehung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "TRIGONOMETRIC_RELATION",
+      "label_de": "Trigonometrische Beziehung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "UNIT_RELATION",
+      "label_de": "Einheitenbeziehung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "VARIABLE_AS_UNKNOWN",
+      "label_de": "Variable als Unbekannte",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRUCTURAL_FEATURE",
+      "term": "VOLUME_RELATION",
+      "label_de": "Volumenbeziehung",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "SURFACE_FEATURE",
+      "term": "BAR_CHART",
+      "label_de": "Säulendiagramm",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "SURFACE_FEATURE",
+      "term": "COORDINATE_GRID",
+      "label_de": "Koordinatensystem",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "SURFACE_FEATURE",
+      "term": "DOT_PLOT",
+      "label_de": "Punktdiagramm",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "SURFACE_FEATURE",
+      "term": "GRID",
+      "label_de": "Kästchenraster",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "SURFACE_FEATURE",
+      "term": "PIE_CHART",
+      "label_de": "Kreisdiagramm",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "SURFACE_FEATURE",
+      "term": "TREE_DIAGRAM",
+      "label_de": "Baumdiagramm",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRATEGY_AFFORDANCE",
+      "term": "EQUIVALENT_FRACTION",
+      "label_de": "Gleichwertigen Bruch bilden",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRATEGY_AFFORDANCE",
+      "term": "UNIT_CONVERSION",
+      "label_de": "Einheit umrechnen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "STRATEGY_AFFORDANCE",
+      "term": "UNIT_RATE",
+      "label_de": "Über den Wert für eine Einheit gehen",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "NUMERIC_FEATURE",
+      "term": "COMMON_DENOMINATOR",
+      "label_de": "Gleiche Nenner",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "NUMERIC_FEATURE",
+      "term": "HUNDREDTHS",
+      "label_de": "Hundertstel",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "NUMERIC_FEATURE",
+      "term": "NEGATIVE_RESULT",
+      "label_de": "Negatives Ergebnis",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "NUMERIC_FEATURE",
+      "term": "SIMPLE_PERCENT",
+      "label_de": "Einfacher Prozentsatz",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "NUMERIC_FEATURE",
+      "term": "SQUARE_NUMBER",
+      "label_de": "Quadratzahl",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "NUMERIC_FEATURE",
+      "term": "TENTHS",
+      "label_de": "Zehntel",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "NUMERIC_FEATURE",
+      "term": "UNEQUAL_DENOMINATOR",
+      "label_de": "Ungleiche Nenner",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    },
+    {
+      "vocabulary": "NUMERIC_FEATURE",
+      "term": "UNIT_FRACTION",
+      "label_de": "Stammbruch",
+      "notes": "ERWEITERUNG KLASSE 5-10"
+    }
+  ]
+}

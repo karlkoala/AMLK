@@ -9,6 +9,13 @@ Vorwaertsreferenzen (competencies.parent_id, tasks.parallel_item_id) werden
 in einem zweiten Durchgang nachgetragen, damit die Reihenfolge innerhalb
 einer Datei keine Rolle spielt.
 
+Nach den Dateien in content/ laufen die Zusatzpakete aus EXTENSIONS. Sie
+liegen in eigenen Unterverzeichnissen, weil content/*.json die Inhalte
+traegt, die §42-57 der Spezifikation nennt. Ein Zusatzpaket beruft sich auf
+keine Fundstelle; beides im selben Verzeichnis zu mischen wuerde diese
+Unterscheidung unsichtbar machen (§1). Ein Paket laesst sich weglassen,
+indem sein Verzeichnis geloescht oder aus EXTENSIONS entfernt wird.
+
 Der Importer validiert vor dem Schreiben. §1: fehlt eine fachliche Angabe,
 wird sie nicht ergaenzt - der Import bricht ab oder traegt den in der
 Content-Datei hinterlegten UNDEFINED-Wert ein.
@@ -29,6 +36,9 @@ FEATURE_KINDS = (
     "strategy_affordances",
     "additional_demands",
 )
+
+#: Zusatzpakete unterhalb von content/, in Importreihenfolge.
+EXTENSIONS = ("klassen5bis10",)
 
 #: Abbildung Feldname in tasks.json -> Vokabularname in der Datenbank.
 FEATURE_KIND_VOCABULARY = {
@@ -86,6 +96,29 @@ def import_vocabularies(conn: sqlite3.Connection, data: dict, rep: ImportReport)
                 (voc["vocabulary"], term["term"], term.get("label_de"), term.get("notes")),
             )
             rep.add("vocabulary_terms", 1)
+
+
+def import_vocabulary_terms(conn: sqlite3.Connection, data: dict, rep: ImportReport) -> None:
+    """Zusaetzliche Terme in bereits angelegte Vokabulare eintragen.
+
+    Ein Zusatzpaket darf kein neues Vokabular anlegen. Die Liste der
+    Vokabulare stammt aus §79ff.; sie zu erweitern waere eine fachliche
+    Entscheidung, die nicht nebenbei beim Import eines Aufgabenpakets
+    fallen soll (§1).
+    """
+    bekannt = {r["vocabulary"] for r in conn.execute("SELECT vocabulary FROM vocabularies")}
+    for term in data["vocabulary_terms"]:
+        if term["vocabulary"] not in bekannt:
+            raise ImportError_(
+                f"vocabulary_terms: '{term['vocabulary']}' ist kein bestehendes"
+                " Vokabular. Zusatzpakete erweitern Vokabulare, sie legen keine an."
+            )
+        conn.execute(
+            "INSERT INTO vocabulary_terms (vocabulary, term, label_de, notes)"
+            " VALUES (?, ?, ?, ?)",
+            (term["vocabulary"], term["term"], term.get("label_de"), term.get("notes")),
+        )
+        rep.add("vocabulary_terms", 1)
 
 
 # --------------------------------------------------------------------- sources
@@ -337,6 +370,39 @@ def import_config(conn: sqlite3.Connection, data: dict, rep: ImportReport) -> No
             rep.warnings.append(f"system_config.{c['config_key']}: value UNDEFINED (§1)")
 
 
+# ---------------------------------------------------------------- Zusatzpakete
+
+
+#: Dateien eines Zusatzpakets. Jede ist optional - ein Paket, das nur Knoten
+#: beitraegt, braucht keine Aufgaben, und umgekehrt.
+EXTENSION_STEPS = (
+    ("vocabulary_terms.json", import_vocabulary_terms),
+    ("sources.json", import_sources),
+    ("competencies.json", import_competencies),
+    ("relations.json", import_relations),
+    ("task_families.json", import_task_families),
+    ("tasks.json", import_tasks),
+    ("task_routes.json", import_task_routes),
+)
+
+
+def import_extension(conn: sqlite3.Connection, pack_dir: Path, rep: ImportReport) -> None:
+    """Ein Zusatzpaket aus einem Unterverzeichnis von content/ importieren.
+
+    Fehlt das Verzeichnis, passiert nichts: das Paket ist dann schlicht nicht
+    installiert. Fehlt dagegen eine einzelne Datei innerhalb eines
+    vorhandenen Verzeichnisses, ist das kein Fehler, sondern bedeutet, dass
+    das Paket zu dieser Tabelle nichts beitraegt.
+    """
+    if not pack_dir.is_dir():
+        return
+    for filename, fn in EXTENSION_STEPS:
+        path = pack_dir / filename
+        if not path.exists():
+            continue
+        fn(conn, json.loads(path.read_text(encoding="utf-8")), rep)
+
+
 # ------------------------------------------------------------------ Gesamtlauf
 
 
@@ -355,6 +421,9 @@ def import_all(conn: sqlite3.Connection, content_dir: Path) -> ImportReport:
     )
     for filename, fn in steps:
         fn(conn, _load(content_dir, filename), rep)
+
+    for name in EXTENSIONS:
+        import_extension(conn, content_dir / name, rep)
 
     violations = conn.execute("PRAGMA foreign_key_check").fetchall()
     if violations:

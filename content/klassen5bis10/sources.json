@@ -1,0 +1,19 @@
+{
+  "_comment": [
+    "Quelle fuer die Knoten und Items der Klassen 5 bis 10. §114 verlangt",
+    "zu jeder Relation eine Quelle und einen evidence_status; beides zeigt",
+    "hier an, dass es sich um eine Setzung des Implementierers handelt."
+  ],
+  "sources": [
+    {
+      "source_id": "SRC_CURRICULUM_SEK1_UNDEFINED",
+      "author_or_org": "UNDEFINED",
+      "title": "Bildungsplaene Sekundarstufe I, Klassen 5 bis 10",
+      "year": null,
+      "source_type": "MVP_HYPOTHESIS",
+      "url_or_doi": null,
+      "access_date": null,
+      "notes": "UNDEFINED. source_type ist MVP_HYPOTHESIS und nicht OFFICIAL_STANDARD: es wurde kein Bildungsplan ausgewertet, der Name der Quelle beschreibt nur die Anlehnung. Die Knoten und Relationen der Klassen 5 bis 10 sind vom Implementierer gesetzt und an den ueblichen Aufbau der Bildungsplaene angelehnt, ohne dass ein konkreter Plan ausgewertet wurde. Alle so begruendeten Relationen tragen deshalb evidence_status D (§114). Wer diese Erweiterung ernsthaft einsetzen will, ersetzt diese Quelle durch den tatsaechlich geltenden Bildungsplan und prueft die Voraussetzungskanten einzeln nach."
+    }
+  ]
+}

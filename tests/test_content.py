@@ -11,6 +11,30 @@ import pytest
 
 from mathkomp import validate
 
+#: Quelle des Zusatzpakets Klasse 5-10 (content/klassen5bis10/).
+#:
+#: Die Tests dieser Datei pruefen Aussagen der Spezifikation. §42-57 nennen
+#: ausschliesslich Items des Primarbereichs; das Zusatzpaket beruft sich auf
+#: keine Fundstelle und darf deshalb keine Aussage dieser Datei verletzen,
+#: aber auch keine erfuellen. Wo eine Pruefung "jedes Item" oder "jede
+#: Relation" meint, meint sie den MVP-Bestand - abgegrenzt ueber diese
+#: Quelle. Dass das Zusatzpaket die Abgrenzung einhaelt, pruefen die Tests
+#: im Abschnitt "Zusatzpaket" am Ende der Datei.
+ZUSATZ_QUELLE = "SRC_CURRICULUM_SEK1_UNDEFINED"
+
+#: Items des MVP-Bestands: alle, deren Kompetenzknoten nicht aus dem
+#: Zusatzpaket stammt. Ein eigenes Kennzeichen an der Aufgabe waere
+#: redundant - die Zugehoerigkeit steht bereits am Knoten.
+MVP_ITEMS = (
+    "SELECT t.* FROM tasks t JOIN competencies c"
+    f" ON c.competency_id = t.primary_competency WHERE c.source_id IS NOT '{ZUSATZ_QUELLE}'"
+)
+
+ZUSATZ_ITEMS = (
+    "SELECT t.* FROM tasks t JOIN competencies c"
+    f" ON c.competency_id = t.primary_competency WHERE c.source_id = '{ZUSATZ_QUELLE}'"
+)
+
 
 # ------------------------------------------------- Sprint 2: Kompetenzgraph
 
@@ -85,7 +109,9 @@ def test_keine_relation_behauptet_unbelegte_evidenz(conn):
 
 def test_jede_relation_nennt_ihre_fundstelle(conn):
     rows = conn.execute(
-        "SELECT relation_id FROM relations WHERE spec_section IS NULL OR notes IS NULL"
+        "SELECT relation_id FROM relations"
+        " WHERE source_id IS NOT ? AND (spec_section IS NULL OR notes IS NULL)",
+        (ZUSATZ_QUELLE,),
     ).fetchall()
     assert rows == [], f"Relation ohne Fundstelle oder Begruendung: {rows}"
 
@@ -96,8 +122,9 @@ def test_jede_relation_nennt_ihre_fundstelle(conn):
 def test_itemzahl_und_herkunft(conn):
     """§42-57 liefern die Seed-Items; Entscheidung D-11 ergaenzt 13 weitere zur
     Schliessung von F-21 und F-22. Die Herkunft muss unterscheidbar bleiben."""
-    rows = {r["source_type"]: r["n"] for r in conn.execute(
-        "SELECT source_type, COUNT(*) n FROM tasks GROUP BY source_type")}
+    rows = {}
+    for r in conn.execute(MVP_ITEMS):
+        rows[r["source_type"]] = rows.get(r["source_type"], 0) + 1
     assert rows["SPEC_SEED_MVP"] == 81, "§42-57 plus §52, minus 2 zusammengelegte (D-03)"
     assert rows["IMPLEMENTER_AUTHORED"] == 16, \
         "13 nach D-11, ZO06-D3-S-C nach Kritikbefund 10, ZO06-D2-S-C/-S-D nach" \
@@ -239,7 +266,7 @@ def test_zahlenstrahlitem_traegt_die_angaben_aus_paragraph_14(conn):
 
 
 def test_jedes_item_nennt_seine_fundstelle(conn):
-    rows = conn.execute("SELECT task_id FROM tasks WHERE spec_section IS NULL").fetchall()
+    rows = [r["task_id"] for r in conn.execute(MVP_ITEMS) if r["spec_section"] is None]
     assert rows == []
 
 
@@ -379,3 +406,95 @@ def test_verbleibende_hinweise_sind_dokumentiert(conn):
     for erledigt in ("options_undefined", "answer_undefined", "config_undefined",
                      "competency_description", "successor_missing"):
         assert erledigt not in regeln, erledigt
+
+
+# ---------------------------------------------------- Zusatzpaket Klasse 5-10
+
+
+def test_zusatzpaket_beruft_sich_auf_keine_fundstelle(conn):
+    """§1: eine Angabe, die nicht in der Spezifikation steht, darf sich nicht
+    auf sie berufen. §42-57 nennen nur Items des Primarbereichs - jedes Item
+    des Zusatzpakets muss spec_section NULL tragen und als vom Implementierer
+    erstellt gekennzeichnet sein."""
+    rows = conn.execute(ZUSATZ_ITEMS).fetchall()
+    assert len(rows) == 138, "23 Knoten mit je sechs Items"
+    falsch = [r["task_id"] for r in rows if r["spec_section"] is not None]
+    assert falsch == [], f"Item des Zusatzpakets behauptet eine Fundstelle: {falsch}"
+    falsch = [r["task_id"] for r in rows if r["source_type"] != "IMPLEMENTER_AUTHORED"]
+    assert falsch == [], f"Item des Zusatzpakets ohne IMPLEMENTER_AUTHORED: {falsch}"
+    falsch = [r["task_id"] for r in rows
+              if r["calibration_status"] != "UNCALIBRATED_MVP_ITEM"]
+    assert falsch == [], f"§6 verletzt - Item behauptet Kalibrierung: {falsch}"
+
+
+def test_zusatzknoten_sind_nicht_als_mvp_markiert(conn):
+    """§10 zaehlt die MVP-Knoten auf. Die Knoten der Klassen 5 bis 10 stehen
+    dort nicht; is_mvp waere fuer sie eine falsche Behauptung (§1)."""
+    rows = conn.execute(
+        "SELECT competency_id, is_mvp, grade_reference_min, grade_reference_max,"
+        " evidence_status FROM competencies WHERE source_id = ?", (ZUSATZ_QUELLE,)
+    ).fetchall()
+    assert len(rows) == 23
+    assert all(r["is_mvp"] == 0 for r in rows)
+    assert all(r["evidence_status"] == "D" for r in rows), \
+        "§114: ohne ausgewerteten Bildungsplan hoechstens D"
+    for r in rows:
+        assert 5 <= r["grade_reference_min"] <= r["grade_reference_max"] <= 10, \
+            r["competency_id"]
+
+
+def test_zusatzpaket_parallelitems_sind_symmetrisch(conn):
+    """§25: ein Parallelitem variiert nur die Zahlen. Stufe, Darstellung,
+    Bedienform, Antwortformat und Frageform muessen gleich bleiben, sonst ist
+    ein wiederholter Fehler nach §30 kein repliziertes Muster, sondern ein
+    Fehler unter anderen Bedingungen."""
+    paare = conn.execute(
+        "SELECT a.task_id a_id, b.task_id b_id, a.internal_difficulty = b.internal_difficulty d,"
+        " a.representation_mode = b.representation_mode r,"
+        " a.interaction_mode = b.interaction_mode i,"
+        " a.scoring_rule = b.scoring_rule s, a.question_form = b.question_form q"
+        " FROM tasks a JOIN tasks b ON b.task_id = a.parallel_item_id"
+        " JOIN competencies c ON c.competency_id = a.primary_competency"
+        " WHERE c.source_id = ?", (ZUSATZ_QUELLE,)
+    ).fetchall()
+    assert len(paare) == 46, "23 Paare, beidseitig verknuepft"
+    for p in paare:
+        assert all((p["d"], p["r"], p["i"], p["s"], p["q"])), f"{p['a_id']} / {p['b_id']}"
+
+
+def test_zusatzpaket_darstellungsfamilien_variieren_nur_die_darstellung(conn):
+    """§116: ein diagnostischer Vergleich aendert genau eine Variable. In einer
+    REPRESENTATION_VARIATION-Familie darf das nur die Darstellung sein - sonst
+    ist ein Unterschied nach §32 nicht der Darstellung zuzuordnen."""
+    familien = conn.execute(
+        "SELECT f.task_family_id FROM task_families f"
+        " JOIN competencies c ON c.competency_id = f.primary_competency"
+        " WHERE c.source_id = ? AND f.family_type = 'REPRESENTATION_VARIATION'",
+        (ZUSATZ_QUELLE,),
+    ).fetchall()
+    assert len(familien) == 23
+    for f in familien:
+        items = conn.execute(
+            "SELECT * FROM tasks WHERE task_family_id = ?", (f["task_family_id"],)
+        ).fetchall()
+        assert len(items) == 2, f["task_family_id"]
+        a, b = items
+        for spalte in ("internal_difficulty", "interaction_mode", "scoring_rule",
+                       "question_form", "correct_answer"):
+            assert a[spalte] == b[spalte], f"{f['task_family_id']}: {spalte} variiert mit"
+        assert a["representation_mode"] != b["representation_mode"], \
+            f"{f['task_family_id']}: die Darstellung variiert gar nicht"
+
+
+def test_zusatzpaket_routen_sind_abschaltbar_und_begruendet(conn):
+    """§84: kein hardcodiertes Routing. §89: jede Entscheidung muss sich
+    nachlesen lassen - eine Route ohne Begruendung waere nicht pruefbar."""
+    rows = conn.execute(
+        "SELECT r.route_id, r.notes, r.enabled FROM task_routes r"
+        " JOIN tasks t ON t.task_id = r.source_task"
+        " JOIN competencies c ON c.competency_id = t.primary_competency"
+        " WHERE c.source_id = ?", (ZUSATZ_QUELLE,)
+    ).fetchall()
+    assert len(rows) == 92, "23 Knoten mit je vier Uebergaengen"
+    assert all(r["notes"] for r in rows)
+    assert all(r["enabled"] == 1 for r in rows)

@@ -1,0 +1,422 @@
+{
+  "_comment": [
+    "Aufgabenfamilien Klasse 5 bis 10. §58: eine Familie ohne",
+    "Vergleichspartner hat keinen Zweck - jede hier hat genau zwei Items."
+  ],
+  "task_families": [
+    {
+      "task_family_id": "FAM_BR01_D2_PAR",
+      "name": "BR01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "ZO20_FRACTION_UNDERSTANDING",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_BR01_D2_REPR",
+      "name": "BR01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "ZO20_FRACTION_UNDERSTANDING",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_BR02_D2_PAR",
+      "name": "BR02 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "ZO21_FRACTION_ARITHMETIC",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_BR02_D2_REPR",
+      "name": "BR02 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "ZO21_FRACTION_ARITHMETIC",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_DE01_D2_PAR",
+      "name": "DE01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "ZO22_DECIMALS",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_DE01_D2_REPR",
+      "name": "DE01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "ZO22_DECIMALS",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_GZ01_D2_PAR",
+      "name": "GZ01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "ZO23_INTEGERS",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_GZ01_D2_REPR",
+      "name": "GZ01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "ZO23_INTEGERS",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_PR01_D2_PAR",
+      "name": "PR01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "ZO24_PERCENT",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_PR01_D2_REPR",
+      "name": "PR01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "ZO24_PERCENT",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_PW01_D2_PAR",
+      "name": "PW01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "ZO25_POWERS_ROOTS",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_PW01_D2_REPR",
+      "name": "PW01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "ZO25_POWERS_ROOTS",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_PZ01_D2_PAR",
+      "name": "PZ01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "MF01_PROPORTIONALITY",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_PZ01_D2_REPR",
+      "name": "PZ01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "MF01_PROPORTIONALITY",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_TV01_D2_PAR",
+      "name": "TV01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "MF02_TERMS_VARIABLES",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_TV01_D2_REPR",
+      "name": "TV01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "MF02_TERMS_VARIABLES",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_GL01_D2_PAR",
+      "name": "GL01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "MF03_LINEAR_EQUATIONS",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_GL01_D2_REPR",
+      "name": "GL01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "MF03_LINEAR_EQUATIONS",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_LF01_D2_PAR",
+      "name": "LF01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "MF04_LINEAR_FUNCTIONS",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_LF01_D2_REPR",
+      "name": "LF01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "MF04_LINEAR_FUNCTIONS",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_QF01_D2_PAR",
+      "name": "QF01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "MF05_QUADRATIC",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_QF01_D2_REPR",
+      "name": "QF01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "MF05_QUADRATIC",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_EH01_D2_PAR",
+      "name": "EH01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "GM01_UNITS",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_EH01_D2_REPR",
+      "name": "EH01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "GM01_UNITS",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_FL01_D2_PAR",
+      "name": "FL01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "GM02_AREA_PERIMETER",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_FL01_D2_REPR",
+      "name": "FL01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "GM02_AREA_PERIMETER",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_KO01_D2_PAR",
+      "name": "KO01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "GM03_SOLIDS",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_KO01_D2_REPR",
+      "name": "KO01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "GM03_SOLIDS",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_WI01_D2_PAR",
+      "name": "WI01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "RF01_ANGLES",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_WI01_D2_REPR",
+      "name": "WI01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "RF01_ANGLES",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_PY01_D2_PAR",
+      "name": "PY01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "RF02_PYTHAGORAS",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_PY01_D2_REPR",
+      "name": "PY01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "RF02_PYTHAGORAS",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_KR01_D2_PAR",
+      "name": "KR01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "RF03_CIRCLE",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_KR01_D2_REPR",
+      "name": "KR01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "RF03_CIRCLE",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_AE01_D2_PAR",
+      "name": "AE01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "RF04_SIMILARITY",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_AE01_D2_REPR",
+      "name": "AE01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "RF04_SIMILARITY",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_TR01_D2_PAR",
+      "name": "TR01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "RF05_TRIGONOMETRY",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_TR01_D2_REPR",
+      "name": "TR01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "RF05_TRIGONOMETRY",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_DI01_D2_PAR",
+      "name": "DI01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "DZ01_DIAGRAMS",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_DI01_D2_REPR",
+      "name": "DI01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "DZ01_DIAGRAMS",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_MW01_D2_PAR",
+      "name": "MW01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "DZ02_AVERAGES",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_MW01_D2_REPR",
+      "name": "MW01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "DZ02_AVERAGES",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_WK01_D2_PAR",
+      "name": "WK01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "DZ03_PROBABILITY",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_WK01_D2_REPR",
+      "name": "WK01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "DZ03_PROBABILITY",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_BD01_D2_PAR",
+      "name": "BD01 Parallelitems",
+      "family_type": "PARALLEL_ITEM",
+      "primary_competency": "DZ04_MULTISTAGE",
+      "diagnostic_purpose": "§25/§30: denselben Fehler an einem zweiten Item gleicher Bauart replizieren. Erst die Wiederholung macht aus einer Beobachtung ein Muster (§29).",
+      "notes": "Nur die Zahlen wechseln. Stufe, Darstellung, Bedienform, Antwortformat und Frageform bleiben gleich (§116).",
+      "spec_section": null
+    },
+    {
+      "task_family_id": "FAM_BD01_D2_REPR",
+      "name": "BD01 Darstellungsvergleich",
+      "family_type": "REPRESENTATION_VARIATION",
+      "primary_competency": "DZ04_MULTISTAGE",
+      "diagnostic_purpose": "§16/§116: dieselbe Frage mit denselben Zahlen einmal symbolisch und einmal bildlich. Nur so ist ein Unterschied der Darstellung zuzuordnen.",
+      "notes": "§32 verbietet, aus einem Unterschied eine Eigenschaft der Schueler:in zu machen - beobachtet wird eine Bedingung.",
+      "spec_section": null
+    }
+  ]
+}

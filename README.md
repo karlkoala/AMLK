@@ -53,8 +53,41 @@ mathkomp validate
 ```
 
 **3. Mit einem Kind arbeiten.** Das ist der eigentliche Betrieb — die
-Schüler:innenansicht aus §105. Die ID ist frei wählbar und pseudonym (§86: **kein
-Klarname**):
+Schüler:innenansicht aus §105:
+
+```bash
+mathkomp lernen
+```
+
+Dann `http://127.0.0.1:8766/` aufrufen. Auf der Startseite wird ein Kürzel
+eingetragen (§86: **kein Klarname**) und eine Klassenstufe von 1 bis 10 gewählt;
+sie ist Referenz, keine Schranke (§94). Danach läuft genau der Ablauf aus §105 —
+Aufgabe, Interaktion, Antwort, Rückmeldung — und sonst nichts: Fehlercodes,
+Kompetenzstände und Hypothesen bleiben nach §106 in der Lehrkraftansicht.
+
+Der Unterschied zum Terminal ist nicht die Form, sondern was sich überhaupt lösen
+lässt. Jede bildliche Aufgabe bekommt ihr Bild, und die Handlungsaufgaben werden
+zur Handlung: einen Bruchstreifen einfärben, die Marke auf den Zahlenstrahl
+setzen, neun Objekte in ein Feld legen, dreizehn Würfel zu Fünfern bündeln,
+Plättchen gerecht auf drei Kinder verteilen. Was sich ziehen lässt, lässt sich
+auch in zwei Tipps bewegen — anders wäre es mit der Tastatur nicht bedienbar.
+
+`--loesung` zeigt nach einer falschen Antwort die richtige. Ob ein Kind sie
+sofort sehen soll, ist eine fachdidaktische Entscheidung; sie steht nicht im
+Dokument, und §1 verbietet, sie hier zu erfinden — deshalb ist sie nicht
+voreingestellt. `--port` und `--host` ändern die Voreinstellung; gebunden wird
+nur lokal (§86).
+
+Das Häkchen **Simulation** auf der Startseite spielt eine Sitzung ohne Kind
+durch: das System beantwortet seine eigenen Vorschläge richtig, falsch oder
+gemischt (§123) und zeigt dabei offen, weshalb gerade diese Aufgabe kommt (§89).
+Das ist der einzige Ort in dieser Oberfläche, an dem Diagnostisches zu sehen ist
+— ein Kind bekommt den Kasten nie.
+
+**4. Oder im Terminal arbeiten.** Derselbe Betrieb ohne Browser. Bildliche
+Aufgaben werden dort beschrieben statt gezeigt, und bei Handlungsaufgaben tippt
+das Kind das Ergebnis ein, statt zu handeln — es nennt die Zahl der Objekte, die
+es gelegt hätte. Die Aufgabe kommt also, nur die Handlung fehlt:
 
 ```bash
 mathkomp session KIND-01 --grade 3
@@ -65,13 +98,13 @@ zeigt die Befehle, `:ende` beendet. Über `:warum` wird sichtbar, weshalb gerade
 Aufgabe kommt (§89); `:weiter` übergeht den Vorschlag, weil nach §3 die Lehrkraft
 übersteuern darf.
 
-**4. Ergebnis ansehen.** Die Lehrkraftansicht nach §106:
+**5. Ergebnis ansehen.** Die Lehrkraftansicht nach §106:
 
 ```bash
 mathkomp student KIND-01
 ```
 
-**5. Die Analyseoberfläche öffnen.** Dieselben Daten im Browser, nach dem
+**6. Die Analyseoberfläche öffnen.** Dieselben Daten im Browser, nach dem
 Implementierungsauftrag für die UI — acht Bereiche von der Übersicht über die
 Kompetenzkarte bis zum Entscheidungsprotokoll:
 
@@ -239,7 +272,7 @@ Die Anleitung enthält eine Zeile für Name und Kontakt des Absenders; sie will
 ausgefüllt werden. Sie gehört außerdem **neben** die ZIP-Datei geschickt, nicht
 nur hinein — sie erklärt unter anderem, wie man das Archiv öffnet.
 
-Wer das Projekt ohne Mac übernimmt, führt Schritt 0 bis 5 des Schnellstarts aus.
+Wer das Projekt ohne Mac übernimmt, führt Schritt 0 bis 6 des Schnellstarts aus.
 
 Was dabei entsteht: `build` importiert den Content, `simulate` erzeugt aus den
 sechs Testfällen §98–§103 die sieben Profile `SIM-A` bis `SIM-F` (Fall E zerfällt
@@ -253,17 +286,17 @@ entsteht mit `mathkomp session DEMO-LAUFEND --grade 3 --max-tasks 4` — die
 | | |
 |---|---|
 | Tabellen | 20 (§78 verlangt 13 als Minimum) |
-| Kompetenzknoten | 54, davon 50 im MVP-Umfang, alle beschrieben |
-| Relationen | 85, davon 49 von 50 Knoten verbunden |
-| Aufgaben | 97 (81 aus §42–57, 16 ergänzt) |
-| Merkmalszuordnungen | 478 |
-| Aufgabenfamilien | 21 |
-| Routen | 33, davon 8 mit Kontextbedingung |
-| Konfigurationsschlüssel | 46, davon 0 `UNDEFINED` |
-| Vokabulare / Terme | 34 / 259 |
+| Kompetenzknoten | 77, davon 50 im MVP-Umfang, alle beschrieben |
+| Relationen | 128, davon 45 von 50 MVP-Knoten verbunden |
+| Aufgaben | 235 (97 für Klasse 1–5, 138 für Klasse 5–10) |
+| Merkmalszuordnungen | 822 |
+| Aufgabenfamilien | 67 |
+| Routen | 125, davon 8 mit Kontextbedingung |
+| Konfigurationsschlüssel | 47, davon 0 `UNDEFINED` |
+| Vokabulare / Terme | 34 / 349 |
 | Prüfregeln | 19 → **0 Fehler**, 3 Hinweise |
-| Tests | 187 (1 nur auf Unix-Dateisystemen) |
-| Module | 23 |
+| Tests | 208 (1 nur auf Unix-Dateisystemen) |
+| Module | 24 |
 
 Die drei verbleibenden Hinweise betreffen bewusst offene fachliche Fragen, siehe
 [OFFENE_FRAGEN.md](OFFENE_FRAGEN.md).
@@ -324,6 +357,8 @@ content/            Fachlicher Inhalt als JSON — die Datenbank ist daraus repr
   error_codes.json       Fehlercodes aus §59
   config.json            Schwellen und Gewichte aus §35, §41, §68, §95, §96
   _fragments/            Nachweis: die autorisierten Inhalte samt Begründung
+  klassen5bis10/         Dieselben Dateien für Klasse 5 bis 10: 23 weitere
+                         Kompetenzknoten und 138 Aufgaben, derselbe Import
 
 src/mathkomp/
   schema.sql        20 Tabellen, drei Ebenen nach §85
@@ -347,7 +382,10 @@ src/mathkomp/
   simulation.py     Sprint 12: die sechs Testfälle
   api.py            Datenvertrag zur Oberfläche: die 15 Objektarten des UI-Auftrags
   server.py         lokaler HTTP-Server, Datenbank schreibgeschützt
-  cli.py            build / validate / report / routes / session / simulate / student / ui
+  lernserver.py     lokaler HTTP-Server für die Schüler:innenoberfläche; er
+                    schreibt, weil eine Sitzung erfasst wird (§60/§61)
+  cli.py            build / validate / report / routes / session / lernen /
+                    simulate / student / ui
 
 ui/                 Analyseoberfläche — reine Darstellung, ohne Fachlogik
   index.html        Gerüst, Begriffsleiste zu den sechs Ebenen der Grundregel
@@ -359,7 +397,18 @@ ui/                 Analyseoberfläche — reine Darstellung, ohne Fachlogik
   views/            übersicht, karte, fehleranalyse, darstellung, hypothesen,
                     evidenz, verlauf, debug
 
-tests/              187 Tests, darunter test_portabilitaet.py (Übergabe an
+ui_schueler/        Schüler:innenoberfläche (§105) — Aufgabe, Interaktion,
+                    Antwort, Rückmeldung, sonst nichts
+  index.html        Gerüst; alles Weitere baut app.js
+  app.css           dieselbe Palette wie ui/, größere Schrift, ruhigere Flächen
+  figuren.js        zeichnet die Bilder als SVG — nur bei IMAGE und MIXED,
+                    denn bei den anderen Darstellungsarten wäre ein Bild
+                    genau die Variable, die §116 konstant halten will
+  eingabe.js        die Bedienformen (§17): tippen, ziehen, bündeln, verteilen;
+                    jede meldet ihre Ereignisse nach §61
+  app.js            Wegführung: Startseite, Aufgabe, Rückmeldung, Schluss
+
+tests/              208 Tests, darunter test_portabilitaet.py (Übergabe an
                     einen Mac) und test_windows_start.py (die .bat-Hüllen)
 tools/              start.py und sitzung.py — was hinter den beiden
                     Windows-Startsymbolen steckt; paket_fuer_mac.py baut

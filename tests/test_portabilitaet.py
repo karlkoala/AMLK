@@ -13,6 +13,7 @@ dass das Programm selbst entscheidet und nicht das Dateisystem fuer es.
 from __future__ import annotations
 
 import argparse
+import json
 import sqlite3
 import sys
 from pathlib import Path
@@ -25,6 +26,18 @@ sys.path.insert(0, str(ROOT / "src"))
 from mathkomp import cli, db, importer, server  # noqa: E402
 
 CONTENT = ROOT / "content"
+
+
+def _kompetenzen_in_content() -> int:
+    """Wieviele Kompetenzen content/ mitbringt.
+
+    Keine feste Zahl: content/ waechst - mit Klasse 5 bis 10 kam ein zweiter
+    Ordner dazu. Eine eingefrorene Zahl liesse die Pruefungen hier an der
+    Datenmenge scheitern statt an dem, worum es ihnen geht: dass die
+    geoeffnete Datei die gemeinte ist und lesbar bleibt.
+    """
+    return sum(len(json.loads(p.read_text(encoding="utf-8"))["competencies"])
+               for p in sorted(CONTENT.glob("**/competencies.json")))
 
 
 def _gebaut(pfad: Path) -> Path:
@@ -63,7 +76,8 @@ def test_schreibschutz_ueberlebt_sonderzeichen_im_pfad(tmp_path, ordner):
         geoeffnet = conn.execute("PRAGMA database_list").fetchone()["file"]
         assert Path(geoeffnet).resolve() == ziel.resolve(), \
             "Geoeffnet wurde eine andere Datei als die gemeinte"
-        assert conn.execute("SELECT COUNT(*) FROM competencies").fetchone()[0] == 54
+        assert conn.execute("SELECT COUNT(*) FROM competencies").fetchone()[0] \
+            == _kompetenzen_in_content()
         with pytest.raises(sqlite3.OperationalError):
             conn.execute("CREATE TABLE beweis (x)")
     finally:
@@ -117,7 +131,8 @@ def test_build_force_mit_discard_data_baut_neu(tmp_path):
     assert cli.cmd_build(args) == 0
     conn = db.connect(pfad)
     assert conn.execute("SELECT COUNT(*) FROM students").fetchone()[0] == 0
-    assert conn.execute("SELECT COUNT(*) FROM competencies").fetchone()[0] == 54
+    assert conn.execute("SELECT COUNT(*) FROM competencies").fetchone()[0] \
+        == _kompetenzen_in_content()
     conn.close()
 
 
@@ -362,12 +377,19 @@ def test_anleitung_zitiert_keine_meldung_die_es_nicht_gibt():
         + "\n".join(f"  \u201e{z}\u201c" for z in fehlend))
 
 
-def test_beide_startsymbole_sind_auf_einem_mac_startbar():
-    """Jedes ``*.command`` im Projektordner muss unter bash 3.2 laufen.
+def test_alle_startsymbole_sind_auf_einem_mac_startbar():
+    """Jedes ``*.command`` im Projektordner muss auf einem Mac anspringen.
 
-    Mehr liefert macOS nicht mit: seit der Lizenzwechsel von bash 4 kam,
-    steht dort eine Fassung von 2007. Was danach dazugekommen ist -
-    assoziative Arrays, ``mapfile`` -, scheitert auf dem Zielrechner.
+    Zwei Shells bringt macOS von Haus aus mit, und sie sind verschieden alt.
+    bash steht dort seit dem Lizenzwechsel auf einer Fassung von 2007: was
+    bash 4 dazugebracht hat - assoziative Arrays, ``mapfile`` -, scheitert
+    auf dem Zielrechner. zsh dagegen ist die Standardshell und aktuell. Die
+    Einschraenkung auf bash 3.2 gilt deshalb nur fuer bash-Skripte; welche
+    Shell gemeint ist, sagt die Shebang-Zeile.
+
+    Der Rest gilt unabhaengig von der Shell, weil er nichts mit ihr zu tun
+    hat: Unix-Zeilenenden, ``set -u`` als erster Befehl, und der Wechsel in
+    den eigenen Ordner, bevor irgendetwas angefasst wird.
 
     Gesucht wird mit ``glob`` statt mit Dateinamen: ``SITZUNG-MAC.command``
     ist spaeter dazugekommen, und genau solche Nachzuegler fallen aus einer
@@ -375,8 +397,10 @@ def test_beide_startsymbole_sind_auf_einem_mac_startbar():
     """
     import re
 
+    mac_shells = (b"#!/bin/bash\n", b"#!/bin/zsh\n")
+
     skripte = sorted(ROOT.glob("*.command"))
-    assert len(skripte) >= 2, f"Erwartet werden zwei Startsymbole, gefunden: {skripte}"
+    assert len(skripte) >= 2, f"Erwartet werden mindestens zwei, gefunden: {skripte}"
 
     nur_bash4 = {
         r"declare\s+-A": "assoziatives Array (bash 4)",
@@ -392,16 +416,22 @@ def test_beide_startsymbole_sind_auf_einem_mac_startbar():
     for skript in skripte:
         roh = skript.read_bytes()
         assert b"\r\n" not in roh, f"Windows-Zeilenenden in {skript.name}"
-        assert roh.startswith(b"#!/bin/bash\n"), f"Shebang fehlt in {skript.name}"
+        shebang = next((s for s in mac_shells if roh.startswith(s)), None)
+        assert shebang is not None, (
+            f"{skript.name} nennt keine Shell, die auf einem Mac vorhanden ist:"
+            f" {[s.decode().strip() for s in mac_shells]}")
 
         text = roh.decode("utf-8")
         # Nur Code, keine Prosa: der Kopf der Skripte zaehlt die verbotenen
         # Konstrukte namentlich auf, damit die naechste Person sie kennt.
         code = "\n".join(z for z in text.splitlines()
                          if not z.lstrip().startswith("#"))
-        gefunden = [grund for muster, grund in nur_bash4.items()
-                    if re.search(muster, code)]
-        assert not gefunden, f"{skript.name} braucht bash 4: " + ", ".join(gefunden)
+        # Nur bash ist auf dem Mac alt. Fuer ein zsh-Skript waere diese Liste
+        # keine Vorsicht, sondern ein Verbot ohne Grund.
+        if shebang == b"#!/bin/bash\n":
+            gefunden = [grund for muster, grund in nur_bash4.items()
+                        if re.search(muster, code)]
+            assert not gefunden, f"{skript.name} braucht bash 4: " + ", ".join(gefunden)
 
         zeilen = text.splitlines()
         befehle = [z.strip() for z in zeilen
@@ -413,9 +443,21 @@ def test_beide_startsymbole_sind_auf_einem_mac_startbar():
         # Satz sagen kann. Es muss aber vor dem ersten Befehl stehen, der
         # etwas anfasst: ein doppelgeklicktes .command startet im
         # Benutzerordner, und was davor zugreift, greift dort zu.
+        #
+        # Denselben Gedanken schreiben die Shells verschieden: bash nimmt
+        # dirname "$0", zsh nimmt ${0:A:h} und loest dabei sogar noch
+        # Verknuepfungen auf. Gemeint ist beidemal "der Ordner, in dem ich
+        # liege". Der Weg darf ueber eine Variable gehen - dann zaehlt die
+        # Zeile, die diese Variable benutzt.
         greift_zu = re.compile(r"\s*(mkdir|rm|curl|open|touch|mv|cp)\s")
+        aus_dollar_null = re.compile(r'\$\(dirname "\$0"\)|\$\{0:A:h\}')
+        ueber_variable = [m.group(1) for z in zeilen
+                          if aus_dollar_null.search(z)
+                          and (m := re.match(r"([A-Za-z_]\w*)=", z.strip()))]
         wechsel = next((i for i, z in enumerate(zeilen)
-                        if z.startswith('cd "$(dirname "$0")"')), None)
+                        if z.strip().startswith("cd ")
+                        and (aus_dollar_null.search(z)
+                             or any(name in z for name in ueber_variable))), None)
         assert wechsel is not None, f"{skript.name} wechselt nie in seinen Ordner"
         zugriff = next((i for i, z in enumerate(zeilen)
                         if greift_zu.match(z) and not z.lstrip().startswith("#")), None)
