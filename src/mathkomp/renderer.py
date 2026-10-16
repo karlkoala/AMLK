@@ -93,11 +93,29 @@ def _stimulus(task: dict, payload: dict) -> dict:
     dieselbe Anzahl kann in einer Reihe gelingen und ungeordnet nicht. Die
     Anordnung wird deshalb an die Oberflaeche durchgereicht und nicht ihr
     ueberlassen.
+
+    Zwei Formen sind zulaessig. Die Items aus §42-57 fuehren ihre Darstellung
+    in flachen Schluesseln (objects, tens, array); das Zusatzpaket Klasse 5-10
+    fuehrt sie in einem Objekt unter "figure". Der Renderer uebersetzt die
+    eine nicht in die andere: eine Uebersetzung waere eine fachliche Deutung,
+    und §17 verbietet ihm ohnehin, aus der Darstellung auf die Bedienform zu
+    schliessen. Was er nicht kennt, reicht er unveraendert durch.
     """
-    keys = ("objects", "arrangement", "structure", "heterogeneous", "movable",
+    keys = ("figure",
+            "objects", "arrangement", "structure", "heterogeneous", "movable",
             "signal_count", "presentation", "tens", "ones", "hundreds", "material",
             "field", "shown", "shown_structure", "array", "range", "marks",
             "given", "blanks", "direction", "start", "count", "number", "digit",
+            # Ohne diese Schluessel ist das zugehoerige Bild nicht zeichenbar
+            # und das Item damit nicht loesbar: "Welche Zahl zeigt die
+            # Stellenwerttafel?" (ZO06-SUP-D1-I-A) braucht die Ziffern, nicht
+            # nur die Materialangabe, und "Wie viele Punkte sind es
+            # insgesamt?" (ZO09-D2-I-A) braucht die Information, dass das
+            # Innere des Feldes verdeckt ist - genau darin besteht die
+            # Aufgabe. In der Textausgabe fiel das nicht auf, weil dort
+            # ohnehin niemand ein Bild sieht.
+            "place_value_chart", "column_labels", "empty_tens_column", "asked_place",
+            "interior_covered", "visible", "shown_decomposition", "notation",
             "loose_ones", "bundle_size", "decomposition_shown", "columns_hze",
             "operands", "operation", "given_fact", "target_calculation",
             "objects_available", "target_count", "objects_before", "objects_added",
@@ -125,6 +143,12 @@ def _b_enter(task: dict, payload: dict, correct: Any) -> dict:
                 "fields": payload.get("blanks", len(correct.get("sequence", [])))}
     if task["scoring_rule"] == "EXPRESSION_EQUIVALENT":
         return {"input_type": "EXPRESSION", "fields": 1}
+    if task["scoring_rule"] == "ANY_OF_ACCEPTED":
+        # Zulaessig sind hier mehrere Schreibweisen, darunter Brueche wie 5/6.
+        # Ein Zahlenfeld wuerde sie zurueckweisen und damit eine richtige
+        # Antwort zu einer falschen machen - die Beobachtung waere dann ein
+        # Artefakt der Oberflaeche und keine Beobachtung am Kind (§59).
+        return {"input_type": "TEXT", "fields": 1}
     return {"input_type": "NUMBER", "fields": 1}
 
 
@@ -134,6 +158,14 @@ def _b_drag(task: dict, payload: dict, correct: Any) -> dict:
                 "targets": payload.get("recipients") or "GROUPS_FREE",
                 "target_group_size": payload.get("per_group"),
                 "partition_mode": payload.get("mode")}
+    figure = payload.get("figure") or {}
+    if figure.get("type") == "NUMBER_LINE" and figure.get("place"):
+        # Die Marke wird auf dem Zahlenstrahl abgelegt, nicht in einem Feld.
+        # §16: die Skala gehoert zur Darstellung und steht in figure; hier
+        # steht nur, worauf die Bedienung sie einrasten laesst.
+        return {"input_type": "NUMBER_LINE_POSITION",
+                "range": [figure.get("from"), figure.get("to")],
+                "step": figure.get("step"), "targets": "NUMBER_LINE"}
     return {"source_count": payload.get("objects_available", payload.get("objects")),
             "targets": 1, "target_label": "Feld"}
 
@@ -152,7 +184,14 @@ def _b_manipulate(task: dict, payload: dict, correct: Any) -> dict:
 
 
 def _b_click_sequence(task: dict, payload: dict, correct: Any) -> dict:
-    return {"objects": payload.get("objects", payload.get("target_count")),
+    figure = payload.get("figure") or {}
+    # Eine Figur mit anklickbaren Teilen (etwa ein Bruchstreifen) liefert die
+    # Zahl der Ziele selbst. Sie wird nicht aus correct_answer abgeleitet -
+    # dann waere die Loesung aus der Darstellungsvorschrift ablesbar.
+    objects = payload.get("objects", payload.get("target_count"))
+    if objects is None and figure.get("selectable"):
+        objects = figure.get("parts")
+    return {"objects": objects,
             "target_object": payload.get("target_object"),
             # §42: Klickreihenfolge, ausgelassene Objekte und doppelte Klicks.
             "record_object_ids": True,

@@ -148,6 +148,14 @@
       "description": "Gewicht des Summanden boundary_value: Nähe der Itemstufe zur gesuchten Kompetenzgrenze (§36)."
     },
     {
+      "config_key": "score.weight_grade_fit",
+      "value": "1.2",
+      "value_type": "REAL",
+      "status": "CONFIGURABLE_HEURISTIC",
+      "spec_section": "§68, §87, §94",
+      "description": "Gewicht des Summanden grade_fit: Nähe eines Items zur angegebenen Klassenstufe. §94 führt die Klassenstufe als Referenz, nicht als Schranke — der Summand ordnet deshalb nur die Reihenfolge der Einstiege und schließt nichts aus. Über 1.0, weil er sonst vom information_need eines unberührten Knotens überstimmt würde und die Rückwärtssuche aus §36 unten statt oben begänne. Ohne Stufenangabe ist der Summand 0."
+    },
+    {
       "config_key": "score.weight_transfer_value",
       "value": "0.8",
       "value_type": "REAL",

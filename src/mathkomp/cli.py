@@ -6,7 +6,13 @@
     mathkomp routes ZO06-D2-S-A   Ausgehende Routen einer Aufgabe
     mathkomp session KIND-01  Interaktiver Durchlauf (§105)
     mathkomp student KIND-01  Lehrkraftansicht (§106)
-    mathkomp ui               Analyseoberflaeche im Browser
+    mathkomp ui               Analyseoberflaeche im Browser (§106)
+    mathkomp lernen           Schueler:innenoberflaeche im Browser (§105)
+
+`ui` liest nur, `lernen` schreibt: die Analyseoberflaeche oeffnet die
+Datenbank schreibgeschuetzt, weil eine Betrachtung keine Diagnostik
+veraendern darf (§89). Die Lernoberflaeche fuehrt die Sitzung und schreibt
+deshalb. Zwei Befehle, zwei Ports, zwei Verbindungen.
 
 Der Name `mathkomp` steht nach `pip install -e .` zur Verfuegung und ist auf
 allen Systemen derselbe. Ohne Installation stattdessen `python3 -m mathkomp …`
@@ -379,6 +385,30 @@ def cmd_ui(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_lernen(args: argparse.Namespace) -> int:
+    """Schueler:innenoberflaeche im Browser (§105).
+
+    Anders als ``ui`` schreibt dieser Server: er fuehrt die Sitzung. Deshalb
+    ein eigener Befehl und ein eigener Port - der Schreibschutz der
+    Analyseoberflaeche bleibt unberuehrt.
+    """
+    from . import lernserver
+
+    _lesen(args).close()          # prueft Datei, Schema und Content, mit Meldung
+    try:
+        lernserver.serve(Path(args.db), host=args.host, port=args.port,
+                         zeige_loesung=args.loesung)
+    except OSError as exc:
+        if getattr(exc, "errno", None) == errno.EADDRINUSE:
+            print(f"Port {args.port} ist belegt - laeuft bereits ein Server? "
+                  f"Anderen Port waehlen: mathkomp lernen --port {args.port + 1}",
+                  file=sys.stderr)
+            return 1
+        print(f"Server nicht gestartet: {exc}", file=sys.stderr)
+        return 1
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="mathkomp", description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -432,6 +462,16 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--host", default="127.0.0.1",
                    help="Voreinstellung bewusst nur lokal (§86)")
     p.set_defaults(func=cmd_ui)
+
+    p = sub.add_parser("lernen", help="Schueler:innenoberflaeche im Browser (§105)")
+    p.add_argument("--port", type=int, default=8766)
+    p.add_argument("--host", default="127.0.0.1",
+                   help="Voreinstellung bewusst nur lokal (§86)")
+    p.add_argument("--loesung", action="store_true",
+                   help="nach einer falschen Antwort die Loesung zeigen"
+                        " (fachdidaktische Entscheidung, §1 - deshalb nicht"
+                        " voreingestellt)")
+    p.set_defaults(func=cmd_lernen)
 
     args = parser.parse_args(argv)
     try:

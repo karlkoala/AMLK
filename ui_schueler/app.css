@@ -1,0 +1,753 @@
+/* Schueler:innenoberflaeche.
+ *
+ * §105: Aufgabe, Interaktion, Antwort, Rueckmeldung - mehr nicht. Hier steht
+ * deshalb nichts Diagnostisches: keine Schwierigkeit, kein Kompetenzname,
+ * keine Fehlerbezeichnung, kein Hinweis darauf, warum gerade diese Aufgabe
+ * kommt. Das alles gehoert in die Lehrkraftansicht (§106).
+ *
+ * Die Gestaltungsmarken sind dieselben wie in ui/app.css, nur groesser
+ * gesetzt - eine Oberflaeche, zwei Massstaebe.
+ */
+
+:root {
+  --grund: #ffffff;
+  --flaeche: #f6f7f9;
+  --flaeche-2: #eceef2;
+  --linie: #d3d7de;
+  --linie-stark: #9aa2ae;
+  --text: #14181e;
+  --text-leise: #5c6572;
+
+  --akzent: #1c4c8c;
+  --akzent-flaeche: #e6edf7;
+  --akzent-hell: #3f74bb;
+
+  --gelungen: #10603a;
+  --gelungen-flaeche: #e3f1ea;
+  --offen: #8a4a05;
+  --offen-flaeche: #fbeede;
+
+  --schrift: system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: "Cascadia Mono", "SF Mono", Consolas, "Liberation Mono", monospace;
+
+  --rund: 14px;
+  --schatten: 0 1px 2px rgba(20, 24, 30, .06), 0 8px 24px rgba(20, 24, 30, .07);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --grund: #14171c;
+    --flaeche: #1b1f26;
+    --flaeche-2: #242932;
+    --linie: #333a45;
+    --linie-stark: #6d7785;
+    --text: #e8eaee;
+    --text-leise: #a2abb8;
+    --akzent: #7fb0ee;
+    --akzent-flaeche: #172231;
+    --akzent-hell: #a8ccf5;
+    --gelungen: #63c996;
+    --gelungen-flaeche: #163024;
+    --offen: #e0a45e;
+    --offen-flaeche: #322415;
+    --schatten: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .35);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--schrift);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--text);
+  background:
+    radial-gradient(1100px 520px at 50% -180px, var(--akzent-flaeche), transparent 70%),
+    var(--flaeche);
+  min-height: 100vh;
+}
+
+.rahmen {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 20px 18px 72px;
+}
+
+/* ------------------------------------------------------------- Kopfzeile */
+
+.kopf {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 10px 2px 18px;
+}
+
+.kopf h1 {
+  font-size: 19px;
+  margin: 0;
+  letter-spacing: -.01em;
+  font-weight: 650;
+}
+
+.kopf .wer {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-leise);
+}
+
+.marke {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: var(--grund);
+  border: 1px solid var(--linie);
+  font-size: 13.5px;
+  color: var(--text-leise);
+  white-space: nowrap;
+}
+
+.marke b { color: var(--text); font-weight: 600; }
+
+/* ---------------------------------------------------------------- Karten */
+
+.karte {
+  background: var(--grund);
+  border: 1px solid var(--linie);
+  border-radius: var(--rund);
+  box-shadow: var(--schatten);
+  padding: 26px 26px 22px;
+}
+
+.karte + .karte { margin-top: 18px; }
+
+h2 {
+  font-size: 20px;
+  margin: 0 0 6px;
+  font-weight: 650;
+  letter-spacing: -.01em;
+}
+
+p.leise {
+  color: var(--text-leise);
+  font-size: 15px;
+  margin: 0 0 18px;
+}
+
+/* ------------------------------------------------------------ Startseite */
+
+.feldgruppe { display: grid; gap: 18px; margin-bottom: 22px; }
+
+label.feld { display: block; }
+
+label.feld > span {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+label.feld > small {
+  display: block;
+  color: var(--text-leise);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+input[type="text"], input[type="number"], select {
+  font: inherit;
+  font-size: 17px;
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 10px;
+  border: 1px solid var(--linie-stark);
+  background: var(--grund);
+  color: var(--text);
+}
+
+input:focus-visible, select:focus-visible, button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--akzent);
+  outline-offset: 2px;
+}
+
+.stufen {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 9px;
+}
+
+.stufe {
+  font: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 13px 0;
+  border-radius: 10px;
+  border: 1px solid var(--linie-stark);
+  background: var(--grund);
+  color: var(--text);
+  cursor: pointer;
+  transition: background .12s, border-color .12s, transform .08s;
+}
+
+.stufe:hover { background: var(--flaeche-2); }
+.stufe:active { transform: translateY(1px); }
+
+.stufe[aria-pressed="true"] {
+  background: var(--akzent);
+  border-color: var(--akzent);
+  color: var(--grund);
+}
+
+@media (prefers-color-scheme: dark) {
+  .stufe[aria-pressed="true"] { color: #10151c; }
+}
+
+.stufe[disabled] { opacity: .4; cursor: not-allowed; }
+
+/* --------------------------------------------------------------- Knoepfe */
+
+.knopfreihe {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.knopfreihe .rechts { margin-left: auto; }
+
+button {
+  font: inherit;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--linie-stark);
+  background: var(--grund);
+  color: var(--text);
+  cursor: pointer;
+  transition: background .12s, border-color .12s, transform .08s, opacity .12s;
+}
+
+button:hover:not([disabled]) { background: var(--flaeche-2); }
+button:active:not([disabled]) { transform: translateY(1px); }
+button[disabled] { opacity: .45; cursor: not-allowed; }
+
+button.haupt {
+  background: var(--akzent);
+  border-color: var(--akzent);
+  color: #fff;
+}
+
+button.haupt:hover:not([disabled]) {
+  background: var(--akzent-hell);
+  border-color: var(--akzent-hell);
+}
+
+@media (prefers-color-scheme: dark) {
+  button.haupt { color: #10151c; }
+}
+
+button.leise {
+  border-color: transparent;
+  background: transparent;
+  color: var(--text-leise);
+  font-weight: 500;
+  padding: 12px 12px;
+}
+
+button.leise:hover:not([disabled]) { background: var(--flaeche-2); color: var(--text); }
+
+button.klein { padding: 8px 13px; font-size: 14px; }
+
+/* ---------------------------------------------------------------- Aufgabe */
+
+.fortschritt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-size: 13.5px;
+  color: var(--text-leise);
+}
+
+.fortschritt .balken {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--flaeche-2);
+  overflow: hidden;
+}
+
+.fortschritt .balken i {
+  display: block;
+  height: 100%;
+  background: var(--akzent);
+  border-radius: 999px;
+  transition: width .3s ease;
+}
+
+.frage {
+  font-size: 23px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: -.015em;
+  margin: 0 0 18px;
+}
+
+.bild {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 22px;
+}
+
+svg.figur {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  overflow: visible;
+}
+
+.hinweiskasten {
+  background: var(--offen-flaeche);
+  border: 1px solid var(--offen);
+  border-left-width: 4px;
+  border-radius: 10px;
+  padding: 13px 16px;
+  margin-bottom: 18px;
+  font-size: 15.5px;
+}
+
+.hinweiskasten b { display: block; margin-bottom: 2px; }
+
+/* -------------------------------------------------------------- Eingaben */
+
+.eingabe { margin-top: 4px; }
+
+.eingabe .anleitung {
+  font-size: 14px;
+  color: var(--text-leise);
+  margin: 0 0 12px;
+}
+
+.zahlenfeld {
+  font-size: 30px;
+  font-weight: 650;
+  font-family: var(--mono);
+  text-align: center;
+  width: 170px;
+  padding: 13px 10px;
+  letter-spacing: .02em;
+}
+
+.zahlenfeld.breit { width: 100%; max-width: 420px; text-align: left; font-size: 24px; }
+
+.felderreihe { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+.felderreihe .zahlenfeld { width: 108px; font-size: 26px; }
+
+.auswahl { display: grid; gap: 10px; }
+
+.auswahl.waagerecht { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 17px;
+  border-radius: 11px;
+  border: 1.5px solid var(--linie);
+  background: var(--grund);
+  cursor: pointer;
+  font-size: 18px;
+  text-align: left;
+  font-weight: 500;
+  transition: border-color .12s, background .12s, transform .08s;
+}
+
+.option:hover { border-color: var(--linie-stark); background: var(--flaeche); }
+.option:active { transform: translateY(1px); }
+
+.option[aria-pressed="true"] {
+  border-color: var(--akzent);
+  background: var(--akzent-flaeche);
+  color: var(--text);
+}
+
+.option .haken {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1.5px solid var(--linie-stark);
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  color: transparent;
+}
+
+.option.rund .haken { border-radius: 999px; }
+
+.option[aria-pressed="true"] .haken {
+  background: var(--akzent);
+  border-color: var(--akzent);
+  color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .option[aria-pressed="true"] .haken { color: #10151c; }
+}
+
+.zaehler {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 15px;
+  color: var(--text-leise);
+}
+
+.zaehler .stand {
+  font-family: var(--mono);
+  font-size: 30px;
+  font-weight: 650;
+  color: var(--text);
+  min-width: 56px;
+  text-align: center;
+}
+
+.ablage {
+  min-height: 118px;
+  border: 2px dashed var(--linie-stark);
+  border-radius: 12px;
+  background: var(--flaeche);
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  align-content: flex-start;
+}
+
+.ablage.bereit { border-color: var(--akzent); background: var(--akzent-flaeche); }
+
+.ablage .platzhalter {
+  color: var(--text-leise);
+  font-size: 14px;
+  margin: auto;
+  pointer-events: none;
+}
+
+.vorrat {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  padding: 12px;
+  border: 1px solid var(--linie);
+  border-radius: 12px;
+  background: var(--grund);
+  min-height: 74px;
+  align-content: flex-start;
+}
+
+.stein {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--akzent);
+  border: none;
+  cursor: grab;
+  padding: 0;
+  touch-action: none;
+}
+
+.stein:active { cursor: grabbing; }
+.stein.faehrt { opacity: .4; }
+
+.gruppenfeld { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.gruppe {
+  flex: 1 1 120px;
+  min-width: 108px;
+  border: 2px dashed var(--linie-stark);
+  border-radius: 12px;
+  background: var(--flaeche);
+  padding: 10px;
+  min-height: 108px;
+}
+
+.gruppe > .titel {
+  font-size: 13px;
+  color: var(--text-leise);
+  margin-bottom: 7px;
+  text-align: center;
+}
+
+.gruppe .inhalt { display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; }
+
+.gruppe.bereit { border-color: var(--akzent); background: var(--akzent-flaeche); }
+
+/* -------------------------------------------------------- Rueckmeldung */
+
+.rueckmeldung {
+  margin-top: 20px;
+  padding: 17px 20px;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  animation: auf .22s ease;
+}
+
+@keyframes auf {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rueckmeldung, .fortschritt .balken i { animation: none; transition: none; }
+}
+
+.rueckmeldung .zeichen {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 19px;
+  flex: 0 0 auto;
+  color: var(--grund);
+}
+
+.rueckmeldung.ja { background: var(--gelungen-flaeche); color: var(--gelungen); }
+.rueckmeldung.ja .zeichen { background: var(--gelungen); }
+.rueckmeldung.nein { background: var(--offen-flaeche); color: var(--offen); }
+.rueckmeldung.nein .zeichen { background: var(--offen); }
+
+.rueckmeldung .nachtrag {
+  font-weight: 500;
+  font-size: 15px;
+  display: block;
+  opacity: .9;
+}
+
+/* -------------------------------------------------------- Simulation */
+
+.simulation {
+  margin-top: 18px;
+  border: 1px dashed var(--linie-stark);
+  border-radius: var(--rund);
+  background: var(--flaeche);
+  padding: 15px 18px;
+}
+
+.simulation .kopfzeile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-leise);
+}
+
+.simulation .kopfzeile .rechts { margin-left: auto; font-weight: 500; }
+
+.simulation .koerper { margin-top: 12px; }
+
+.simulation p {
+  margin: 0 0 12px;
+  font-size: 13.5px;
+  color: var(--text-leise);
+}
+
+.schalter {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.schalter input { width: 17px; height: 17px; accent-color: var(--akzent); }
+
+/* ---------------------------------------------------------------- Ende */
+
+.abschluss { text-align: center; padding: 20px 0 8px; }
+
+.abschluss .zahl {
+  font-size: 52px;
+  font-weight: 700;
+  font-family: var(--mono);
+  letter-spacing: -.03em;
+  line-height: 1.1;
+}
+
+.abschluss .zahl small { font-size: 22px; color: var(--text-leise); font-weight: 600; }
+
+.fussnote {
+  margin-top: 26px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--text-leise);
+}
+
+.fehler {
+  background: var(--offen-flaeche);
+  border: 1px solid var(--offen);
+  color: var(--offen);
+  border-radius: 10px;
+  padding: 12px 15px;
+  margin-top: 14px;
+  font-size: 15px;
+}
+
+[hidden] { display: none !important; }
+
+/* ================================================================ Figuren
+ *
+ * Die Zeichenfarben sind Flaechen- und Linienmarken, keine Bedeutungstraeger:
+ * nirgends haengt an einer Farbe allein eine Information, die ein Kind
+ * braucht, um die Aufgabe zu loesen.
+ */
+
+svg.figur { color: var(--text); }
+
+.fig-text { fill: var(--text); font-size: 14px; font-family: var(--schrift); }
+.fig-leise { fill: var(--text-leise); font-size: 13px; }
+.fig-klein { font-size: 12px; }
+.fig-zahl { fill: var(--text); font-size: 22px; font-weight: 650; font-family: var(--mono); }
+.fig-auf-flaeche { fill: #fff; font-weight: 600; }
+
+@media (prefers-color-scheme: dark) {
+  .fig-auf-flaeche { fill: #10151c; }
+}
+
+.fig-rahmen { fill: none; stroke: var(--linie-stark); stroke-width: 1.5; }
+.fig-rahmen-kreis { fill: none; stroke: var(--linie-stark); stroke-width: 1.5; }
+.fig-teil { fill: var(--flaeche-2); stroke: var(--linie-stark); stroke-width: 1; }
+.fig-gefuellt { fill: var(--akzent); stroke: none; }
+.fig-halb { fill: var(--akzent); fill-opacity: .3; stroke: var(--linie-stark); stroke-width: 1; }
+
+.fig-mass { stroke: var(--linie-stark); stroke-width: 1.2; fill: none; }
+.fig-mass-gestrichelt {
+  stroke: var(--linie-stark); stroke-width: 1.2; stroke-dasharray: 4 4; fill: none;
+}
+.fig-achse { stroke: var(--text); stroke-width: 1.6; }
+.fig-achse-spitze { fill: var(--text); }
+.fig-teilstrich { stroke: var(--linie-stark); stroke-width: 1.3; }
+.fig-gitter { stroke: var(--linie); stroke-width: 1; }
+.fig-gitter-stark { stroke: var(--linie-stark); stroke-width: .8; }
+.fig-trennlinie { stroke: var(--text); stroke-width: 2; stroke-dasharray: 5 4; }
+
+.fig-marke { fill: var(--akzent); }
+.fig-punkt { fill: var(--akzent); }
+.fig-pfeil { fill: none; stroke: var(--akzent); stroke-width: 2; }
+.fig-graph { fill: none; stroke: var(--akzent); stroke-width: 2.4; stroke-linejoin: round; }
+
+.fig-kopfzelle { fill: var(--flaeche-2); stroke: var(--linie-stark); stroke-width: 1; }
+.fig-zelle { fill: var(--grund); stroke: var(--linie-stark); stroke-width: 1; }
+.fig-zelle-klein { fill: var(--flaeche); stroke: var(--linie-stark); stroke-width: .9; }
+.fig-hervor { fill: var(--akzent-flaeche); stroke: var(--akzent); stroke-width: 2; }
+.fig-hervor-rahmen {
+  fill: none; stroke: var(--akzent); stroke-width: 2; stroke-dasharray: 5 3;
+}
+
+.fig-stuetze { fill: var(--linie-stark); }
+.fig-schale { fill: var(--flaeche-2); stroke: var(--linie-stark); stroke-width: 1.4; }
+
+.fig-koerper { fill: var(--akzent); fill-opacity: .17; stroke: var(--akzent); stroke-width: 2; }
+.fig-quadrat { fill: var(--akzent); fill-opacity: .1; stroke: var(--linie-stark); stroke-width: 1.2; }
+.fig-schenkel { stroke: var(--text); stroke-width: 2; stroke-linecap: round; fill: none; }
+.fig-bogen { fill: none; stroke: var(--akzent); stroke-width: 2; }
+
+.fig-flaeche-vorn { fill: var(--akzent); fill-opacity: .18; stroke: none; }
+.fig-flaeche-oben { fill: var(--akzent); fill-opacity: .33; stroke: none; }
+.fig-flaeche-seite { fill: var(--akzent); fill-opacity: .26; stroke: none; }
+.fig-fluessigkeit { fill: var(--akzent); fill-opacity: .35; }
+
+.fig-sektor { stroke: var(--grund); stroke-width: 2; }
+.fig-sektor-0 { fill: var(--akzent); }
+.fig-sektor-1 { fill: var(--akzent); fill-opacity: .62; }
+.fig-sektor-2 { fill: var(--akzent); fill-opacity: .38; }
+.fig-sektor-3 { fill: var(--akzent); fill-opacity: .2; }
+.fig-sektor-markiert { fill: var(--akzent); }
+.fig-sektor-leer { fill: var(--flaeche-2); }
+
+.fig-kugel { stroke: var(--linie-stark); stroke-width: 1.2; fill: var(--flaeche-2); }
+.fig-knoten { stroke: var(--linie-stark); stroke-width: 1.2; fill: var(--flaeche-2); }
+
+/* Benannte Farben. Sie stehen nach allen Grundformen, damit eine Aufgabe,
+ * die nach "rot" fragt, auch Rot zeigt - in der Kugel, im Baumknoten und im
+ * Gluecksradfeld. Farbe ist hier ausnahmsweise Information und nicht nur
+ * Schmuck, deshalb nennt die Figur das Farbwort zusaetzlich im Text. */
+.fig-kugel-rot { fill: #c0392b; }
+.fig-kugel-blau { fill: #2b6cb0; }
+.fig-kugel-gruen { fill: #2f855a; }
+.fig-kugel-gelb { fill: #d69e2e; }
+.fig-kugel-schwarz { fill: #2d3340; }
+.fig-kugel-weiss { fill: #f4f5f7; }
+.fig-ast { stroke: var(--linie-stark); stroke-width: 1.6; }
+.fig-ast-aktiv { stroke: var(--akzent); stroke-width: 2.6; }
+
+.fig-objekt { fill: var(--akzent); stroke: none; }
+.fig-neu { fill: var(--akzent); fill-opacity: .45; stroke: var(--akzent); stroke-width: 1.4; }
+.fig-weg { fill: none; stroke: var(--linie-stark); stroke-width: 1.4; stroke-dasharray: 3 3; }
+
+.fig-material { stroke: var(--akzent); stroke-width: 1.2; }
+.fig-hundert { fill: var(--akzent); fill-opacity: .3; }
+.fig-zehn { fill: var(--akzent); fill-opacity: .45; }
+.fig-eins { fill: var(--akzent); fill-opacity: .7; }
+
+.fig-feld { fill: var(--grund); stroke: var(--linie-stark); stroke-width: 1; }
+.fig-feld-trenner { stroke: var(--text); stroke-width: 2.6; }
+.fig-abdeckung { fill: var(--linie-stark); fill-opacity: .9; stroke: var(--text); stroke-width: 1.4; }
+.fig-gruppe {
+  fill: var(--flaeche); stroke: var(--linie-stark); stroke-width: 1.4; stroke-dasharray: 5 4;
+}
+.fig-signal { fill: var(--akzent); fill-opacity: .55; stroke: var(--akzent); stroke-width: 1.5; }
+
+/* Anklickbares in der Figur. Die Klasse "figur-aktiv" setzt eingabe.js, nicht
+ * figuren.js - die Darstellung sagt nur, was anklickbar waere (§17). */
+.fig-ziel { fill: transparent; stroke: none; }
+.figur-aktiv .fig-ziel { fill: var(--akzent); fill-opacity: .1; cursor: pointer; }
+.figur-aktiv .fig-ziel:hover { fill-opacity: .3; }
+.figur-aktiv .fig-ziel.gewaehlt { fill-opacity: 1; }
+.figur-aktiv .fig-teil { cursor: pointer; }
+.figur-aktiv .fig-teil:hover { fill: var(--akzent-flaeche); }
+.figur-aktiv .fig-teil.gewaehlt { fill: var(--akzent); }
+/* In der Figur zeichnet der Browser sonst seinen eigenen, orangenen Ring -
+ * eine Farbe, die sonst nirgends vorkommt und wie eine Warnung aussieht.
+ * Nach einem Tipp zeigt schon ".gewaehlt", was gewaehlt ist; der Ring ist
+ * fuer die Tastatur da. --text statt --akzent, weil der Ring sonst auf dem
+ * akzentfarben gefuellten Ziel verschwaende. */
+.figur-aktiv [tabindex]:focus { outline: none; }
+.figur-aktiv [tabindex]:focus-visible {
+  outline: 3px solid var(--text); outline-offset: 2px;
+}
+.figur-aktiv .fig-objekt { cursor: pointer; }
+/* Angetipptes bleibt sichtbar, bewertet aber nichts. Ausgehoehlt heisst
+ * "schon gezaehlt"; die Rueckmeldefarbe --gelungen hiesse "richtig" und
+ * waere ein Urteil, das die Oberflaeche nicht faellen darf (§59). */
+.figur-aktiv .fig-objekt.geklickt {
+  fill: var(--grund); stroke: var(--akzent); stroke-width: 2.6;
+}
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .rahmen { padding: 14px 13px 56px; }
+  .karte { padding: 19px 17px 17px; }
+  .frage { font-size: 20px; }
+  .stufen { gap: 7px; }
+  .stufe { padding: 11px 0; font-size: 16px; }
+  .knopfreihe button { flex: 1 1 auto; }
+  .knopfreihe .rechts { margin-left: 0; }
+}

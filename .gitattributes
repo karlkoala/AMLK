@@ -1,0 +1,10 @@
+# Die Startsymbole fuer den Mac muessen ueberall LF behalten.
+#
+# Mit core.autocrlf=true schreibt git beim Auschecken unter Windows CRLF in
+# die Arbeitskopie. Dann endet schon die Shebang-Zeile auf \r, und macOS
+# meldet beim Doppelklick "bad interpreter: /bin/bash^M". Unter Windows faellt
+# das nicht auf - dort startet ohnehin niemand diese Dateien. Deshalb nimmt
+# diese Regel die Entscheidung dem Dateisystem ab (genau das pruefen die
+# Tests in tests/test_portabilitaet.py).
+*.command text eol=lf
+*.sh       text eol=lf

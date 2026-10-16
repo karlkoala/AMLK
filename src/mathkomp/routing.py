@@ -61,6 +61,10 @@ class Candidate:
     difficulty: str
     representation: str
     purpose: str
+    #: §94 Bezugsrahmen des Items. Getrennt gefuehrt, weil der Score nach §68
+    #: die Naehe zur Klassenstufe braucht, der Filter aber nur die Obergrenze.
+    grade_min: int | None = None
+    grade_max: int | None = None
     score: float = 0.0
     breakdown: dict = field(default_factory=dict)
     route_id: str | None = None
@@ -84,23 +88,86 @@ class Decision:
     termination: dict = field(default_factory=dict)
 
 
+# --------------------------------------------------------- Klassenstufe (§94)
+
+
+def student_grade(conn: sqlite3.Connection, student_id: str) -> int | None:
+    """Die Klassenstufe aus students.grade_reference, oder None.
+
+    §87 fuehrt die Klassenstufe als Bezugsrahmen, §94 ausdruecklich als
+    "Referenz, keine Schranke". Beides zusammen ergibt eine Richtung, nicht
+    zwei: nach OBEN wird nichts angeboten, was die Stufe noch gar nicht
+    behandelt hat - wer in Klasse 3 ist, bekommt keinen Satz des Pythagoras
+    vorgelegt, und ein Fehlversuch dort waere auch keine Beobachtung ueber
+    diese Schueler:in, sondern ueber den Lehrplan. Nach UNTEN bleibt alles
+    offen, denn genau das ist die diagnostische Bewegung dieses Systems: §36
+    sucht rueckwaerts, bis die Stelle gefunden ist, an der die Schwierigkeit
+    beginnt. Eine Schranke nach unten wuerde §36 abschneiden.
+
+    Ohne Angabe bleibt alles wie bisher - die Stufe ist eine Angabe der
+    Lehrkraft, keine Annahme des Systems (§1).
+    """
+    row = conn.execute(
+        "SELECT grade_reference FROM students WHERE student_id = ?", (student_id,)
+    ).fetchone()
+    return row["grade_reference"] if row else None
+
+
+def _in_grade_band(grade: int | None, grade_min: int | None) -> bool:
+    """Liegt ein Knoten oder Item in dem, was diese Stufe schon kennt?"""
+    if grade is None or grade_min is None:
+        return True
+    return grade_min <= grade
+
+
+def engaged_competencies(conn: sqlite3.Connection, student_id: str) -> set[str]:
+    """Knoten, auf denen bereits eine Beobachtung vorliegt.
+
+    Die Klassenstufe entscheidet, WOMIT begonnen wird - nicht, womit eine
+    begonnene Beobachtung fortgesetzt wird. Sobald auf einem Knoten ein
+    Versuch liegt, ist das Argument der Stufe verbraucht: die Aufgabe wurde
+    gestellt, und §30 verlangt dann das Parallelitem, §36 den Schritt
+    rueckwaerts, §52 das Contrast Item. Wuerde die Stufe auch hier filtern,
+    bliebe eine Beobachtung ohne ihre Replikation stehen - und §29 waere
+    verletzt, der aus einem einzelnen Fehler ausdruecklich keine Diagnose
+    zulaesst. Die Lehrkraft kann nach §3 jedes Item ohnehin direkt waehlen;
+    dass eine so gestellte Aufgabe keine Fortsetzung faende, waere nicht
+    Zurueckhaltung, sondern ein Abbruch.
+    """
+    return {r["primary_competency"] for r in conn.execute(
+        "SELECT DISTINCT t.primary_competency FROM task_attempts a"
+        " JOIN tasks t ON t.task_id = a.task_id WHERE a.student_id = ?", (student_id,))}
+
+
 # ------------------------------------------------------------ Teilgraph (§74)
 
 
-def active_nodes(conn: sqlite3.Connection, student_id: str, cfg: Config) -> dict[str, str]:
+def active_nodes(conn: sqlite3.Connection, student_id: str, cfg: Config,
+                 grade: int | None = None) -> dict[str, str]:
     """Der aktive Teilgraph. §37 und §74: aus dem globalen Graphen wird nur ein
     kleiner Teil aktiviert, bereits geklaerte Pfade werden nicht erneut geladen.
+
+    Aufgenommen wird, was ueberhaupt Items hat. Das Feld is_mvp stand hier
+    frueher als Filter; es benennt aber die Herkunft eines Knotens (MVP V1.0,
+    Leitidee L1) und nicht seine Bespielbarkeit. Mit dem Aufgabenbestand fuer
+    die Klassen 5 bis 10 faellt beides auseinander: jene Knoten sind
+    ausdruecklich nicht Teil von MVP V1.0 und tragen deshalb is_mvp = 0 (§1:
+    kein Feld behauptet etwas, das nicht stimmt), haben aber Items. Der Filter
+    fragt jetzt nach dem, worauf es ankommt. Fuer den MVP-Bestand aendert sich
+    nichts - dort hatte jeder Knoten mit Items auch is_mvp = 1.
     """
     state = {
         r["competency_id"]: r["status"] for r in conn.execute(
             "SELECT competency_id, status FROM student_competency_state WHERE student_id = ?",
             (student_id,))
     }
+    engaged = engaged_competencies(conn, student_id)
     with_items = {
-        r["primary_competency"] for r in conn.execute(
-            "SELECT DISTINCT t.primary_competency FROM tasks t"
-            " JOIN competencies c ON c.competency_id = t.primary_competency"
-            " WHERE c.is_mvp = 1")
+        r["competency_id"] for r in conn.execute(
+            "SELECT DISTINCT c.competency_id, c.grade_reference_min FROM competencies c"
+            " JOIN tasks t ON t.primary_competency = c.competency_id")
+        if r["competency_id"] in engaged
+        or _in_grade_band(grade, r["grade_reference_min"])
     }
 
     active: dict[str, str] = {}
@@ -270,7 +337,8 @@ def _undeliverable(conn: sqlite3.Connection) -> set[str]:
 def candidates(conn: sqlite3.Connection, student_id: str, cfg: Config,
                nodes: dict[str, str], forced_competencies: set[str],
                forced_tasks: set[str] | None = None,
-               exclusions: dict | None = None) -> list[Candidate]:
+               exclusions: dict | None = None,
+               grade: int | None = None) -> list[Candidate]:
     """§119: getTasks, removeRedundant, removeParked, filterByPrerequisites.
 
     forced_competencies hebt die Sperren auf Knotenebene auf (PARKED, SECURE,
@@ -279,6 +347,7 @@ def candidates(conn: sqlite3.Connection, student_id: str, cfg: Config,
     darf nicht die ganze Kompetenz fuer Wiederholungen oeffnen.
     """
     forced_tasks = forced_tasks or set()
+    engaged = engaged_competencies(conn, student_id)
     pool_nodes = set(nodes) | forced_competencies
     if not pool_nodes:
         return []
@@ -286,8 +355,8 @@ def candidates(conn: sqlite3.Connection, student_id: str, cfg: Config,
     placeholders = ",".join("?" * len(pool_nodes))
     rows = conn.execute(
         f"SELECT task_id, primary_competency, internal_difficulty, representation_mode,"
-        f" task_purpose, prerequisites, grade_reference_min FROM tasks"
-        f" WHERE primary_competency IN ({placeholders})", tuple(sorted(pool_nodes))
+        f" task_purpose, prerequisites, grade_reference_min, grade_reference_max"
+        f" FROM tasks WHERE primary_competency IN ({placeholders})", tuple(sorted(pool_nodes))
     ).fetchall()
 
     undeliverable = _undeliverable(conn)
@@ -328,6 +397,15 @@ def candidates(conn: sqlite3.Connection, student_id: str, cfg: Config,
         competency = row["primary_competency"]
         if row["task_id"] in undeliverable:
             exclude(row, "UNDELIVERABLE")
+            continue
+        # §94: die Klassenstufe begrenzt nach oben, nie nach unten. Siehe
+        # student_grade(). Ausgenommen sind ein Routenziel - fordert eine
+        # fachliche Regel ein bestimmtes Item an, entscheidet die Regel - und
+        # jeder Knoten, auf dem schon eine Beobachtung liegt (siehe
+        # engaged_competencies).
+        if (row["task_id"] not in forced_tasks and competency not in engaged
+                and not _in_grade_band(grade, row["grade_reference_min"])):
+            exclude(row, "ABOVE_GRADE_REFERENCE")
             continue
         status = state.get(competency, {}).get("status", "UNKNOWN")
         # removeParkedCompetencies (§38) - ausser der Knoten ist Routenziel.
@@ -379,7 +457,9 @@ def candidates(conn: sqlite3.Connection, student_id: str, cfg: Config,
         out.append(Candidate(task_id=row["task_id"], competency_id=competency,
                              difficulty=row["internal_difficulty"],
                              representation=row["representation_mode"],
-                             purpose=row["task_purpose"]))
+                             purpose=row["task_purpose"],
+                             grade_min=row["grade_reference_min"],
+                             grade_max=row["grade_reference_max"]))
     return out
 
 
@@ -529,7 +609,7 @@ def _replication_pending(conn: sqlite3.Connection, student_id: str, last: dict,
 def score_candidates(conn: sqlite3.Connection, student_id: str, cfg: Config,
                      pool: list[Candidate], nodes: dict[str, str],
                      hypotheses: list[dict], routes: list[dict],
-                     last: dict | None) -> list[Candidate]:
+                     last: dict | None, grade: int | None = None) -> list[Candidate]:
     """TASK_SCORE nach §68.
 
         TASK_SCORE = information_need + hypothesis_discrimination
@@ -550,6 +630,7 @@ def score_candidates(conn: sqlite3.Connection, student_id: str, cfg: Config,
         "confirmation": cfg.require("score.weight_confirmation"),
         "family_completion": cfg.require("score.weight_family_completion"),
         "replication": cfg.require("score.weight_replication"),
+        "grade_fit": cfg.require("score.weight_grade_fit"),
     }
     need_by_status = cfg.require("score.information_need_by_status")
     cost_reference = cfg.require("score.cost_reference_seconds")
@@ -650,6 +731,17 @@ def score_candidates(conn: sqlite3.Connection, student_id: str, cfg: Config,
         breakdown["transfer_value"] = w["transfer_value"] * _transfer_value(
             conn, student_id, candidate, cfg)
 
+        # §87/§94: die angegebene Klassenstufe ist der Bezugsrahmen, aus dem
+        # heraus gesucht wird. Der Filter in candidates() nimmt nur weg, was
+        # oberhalb liegt; welcher der verbliebenen Einstiege der naheliegende
+        # ist, entscheidet dieser Summand. Ohne ihn begaenne eine Zehntklaesslerin
+        # beim Punktezaehlen, weil ein unberuehrter Knoten den hoechsten
+        # information_need traegt - fachlich die falsche Richtung: §36 sucht
+        # rueckwaerts, und rueckwaerts faengt oben an. Das Gewicht steht wie
+        # alle uebrigen in system_config (§68, §84); ohne Stufenangabe ist der
+        # Summand 0 und nichts aendert sich.
+        breakdown["grade_fit"] = w["grade_fit"] * _grade_fit(candidate, grade)
+
         breakdown["redundancy"] = -w["redundancy"] * _redundancy(
             conn, student_id, candidate, cfg)
 
@@ -712,6 +804,24 @@ def _discrimination(conn: sqlite3.Connection, candidate: Candidate,
     if candidate.purpose == "CONTRAST":
         return 0.6, hypothesis["hypothesis_id"]
     return 0.3, hypothesis["hypothesis_id"]
+
+
+def _grade_fit(candidate: Candidate, grade: int | None) -> float:
+    """Naehe eines Items zur angegebenen Klassenstufe (§87, §94).
+
+    1.0, solange die Stufe im Bezugsrahmen des Items liegt; darunter faellt
+    der Wert linear ab, Stufe fuer Stufe. Der Abfall ist eine Reihenfolge,
+    keine Bewertung: ein weiter unten liegendes Item ist nicht weniger wert,
+    es ist nur der spaetere Schritt der Rueckwaertssuche aus §36. Items ohne
+    Bezugsrahmen bekommen keinen Vorzug und keinen Abschlag.
+    """
+    if grade is None or candidate.grade_max is None:
+        return 0.0
+    if candidate.grade_min is not None and grade < candidate.grade_min:
+        return 0.0  # oberhalb der Stufe - candidates() hat das bereits entfernt
+    if grade <= candidate.grade_max:
+        return 1.0
+    return max(0.0, 1.0 - (grade - candidate.grade_max) / 10.0)
 
 
 def _transfer_value(conn: sqlite3.Connection, student_id: str, candidate: Candidate,
@@ -833,7 +943,8 @@ def next_task(conn: sqlite3.Connection, student_id: str, cfg: Config, clock: Clo
     trigger_review_reactivation(conn, student_id, cfg, clock)
     trigger_prerequisite_reactivation(conn, student_id, cfg, clock)
 
-    nodes = active_nodes(conn, student_id, cfg)
+    grade = student_grade(conn, student_id)
+    nodes = active_nodes(conn, student_id, cfg, grade)
     if focus:
         # Strikt: nur die genannten Knoten. Voraussetzungen kommen nicht
         # automatisch hinzu - mit einem dichten Graphen (§11) waere das halbe
@@ -855,15 +966,17 @@ def next_task(conn: sqlite3.Connection, student_id: str, cfg: Config, clock: Clo
     forced_tasks = {r["target_task"] for r in routes if r["target_task"]}
 
     exclusions: dict = {}
-    pool = candidates(conn, student_id, cfg, nodes, forced, forced_tasks, exclusions)
-    pool = score_candidates(conn, student_id, cfg, pool, nodes, hypotheses, routes, last)
+    pool = candidates(conn, student_id, cfg, nodes, forced, forced_tasks, exclusions, grade)
+    pool = score_candidates(conn, student_id, cfg, pool, nodes, hypotheses, routes,
+                            last, grade)
 
     max_alternatives = cfg.require("routing.decision_log_alternatives")
     alternatives = [{"task_id": c.task_id, "score": c.score, "reason": c.reason,
                      "route_id": c.route_id} for c in pool[:max_alternatives]]
 
     if not pool:
-        termination = _termination_state(conn, student_id, cfg, focus, exclusions, hypotheses)
+        termination = _termination_state(conn, student_id, cfg, focus, exclusions,
+                                         hypotheses, grade)
         stop = termination["stop_reason"]
         decision = Decision(
             decision_id=ids.next_id(conn, "routing_decisions", student_id),
@@ -944,11 +1057,16 @@ def _explain(conn: sqlite3.Connection, student_id: str, winner: Candidate, margi
     return " ".join(parts)
 
 
-def _termination_state(conn, student_id, cfg, focus, exclusions, hypotheses):
+def _termination_state(conn, student_id, cfg, focus, exclusions, hypotheses, grade=None):
     states = {r["competency_id"]: r["status"] for r in conn.execute(
         "SELECT competency_id,status FROM student_competency_state WHERE student_id=?", (student_id,))}
+    # Der Pruefumfang ist das, worueber ueberhaupt eine Aussage faellig waere.
+    # Mit einer Klassenstufe gehoert dazu, was diese Stufe schon kennt (§94) -
+    # nicht der ganze Katalog. Ohne Stufenangabe bleibt es der MVP-Umfang.
     targets = set(focus) if focus else {r["competency_id"] for r in conn.execute(
-        "SELECT competency_id FROM competencies WHERE is_mvp=1")}
+        "SELECT competency_id FROM competencies WHERE is_mvp = 1"
+        " OR (? IS NOT NULL AND grade_reference_min IS NOT NULL"
+        "     AND grade_reference_min <= ?)", (grade, grade))}
     open_areas, blocked = [], []
     for cid in sorted(targets):
         status = states.get(cid, "UNKNOWN")

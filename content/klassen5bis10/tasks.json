@@ -1,0 +1,6216 @@
+{
+  "_comment": [
+    "Aufgabenbank Klasse 5 bis 10. NICHT Teil von MVP V1.0: §42-57 der",
+    "Spezifikation beschreiben ausschliesslich Items des Primarbereichs.",
+    "Alle Items tragen deshalb source_type IMPLEMENTER_AUTHORED und",
+    "spec_section null - sie berufen sich auf keine Fundstelle (§1).",
+    "",
+    "calibration_status bleibt UNCALIBRATED_MVP_ITEM (§6): keines dieser",
+    "Items ist ein validiertes Testitem, und keine Stufenangabe D1 bis D3",
+    "behauptet eine empirische Schwierigkeit.",
+    "",
+    "task_payload.figure beschreibt eine bildliche Darstellung als Objekt mit",
+    "type und Parametern. Die Oberflaeche zeichnet daraus; der Renderer reicht",
+    "es nach §17 unveraendert durch und legt die Bedienform nicht fest. Die",
+    "Items aus §42-57 fuehren ihre Darstellung weiterhin in flachen",
+    "Schluesseln (objects, tens, array) - beide Formen bleiben gueltig,",
+    "keine wird in die andere uebersetzt.",
+    "",
+    "Das Feld note ist Dokumentation und wird nicht importiert."
+  ],
+  "defaults": {
+    "calibration_status": "UNCALIBRATED_MVP_ITEM",
+    "source_type": "IMPLEMENTER_AUTHORED",
+    "language_demand": "LOW",
+    "primary_leitidee": "NUMBER_OPERATION",
+    "secondary_competencies": [],
+    "secondary_leitideen": [],
+    "process_competencies": [],
+    "prerequisites": [],
+    "estimated_time_seconds": null,
+    "grade_reference_min": null,
+    "grade_reference_max": null,
+    "numeric_features": [],
+    "structural_features": [],
+    "surface_features": [],
+    "strategy_affordances": [],
+    "additional_demands": []
+  },
+  "tasks": [
+    {
+      "task_id": "BR01-D1-I-A",
+      "task_family_id": null,
+      "title": "Zwei Fünftel einfärben",
+      "primary_competency": "ZO20_FRACTION_UNDERSTANDING",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO05_PART_WHOLE"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "CLICK_SEQUENCE",
+      "question_form": "SHADE_FRACTION",
+      "language_demand": "LOW",
+      "task_prompt": "Färbe zwei Fünftel des Bandes ein. Tippe dazu die passenden Teile an.",
+      "task_payload": {
+        "figure": {
+          "type": "FRACTION_BAR",
+          "parts": 5,
+          "shaded": 0,
+          "selectable": true
+        },
+        "fraction": [
+          2,
+          5
+        ],
+        "record": [
+          "click_order",
+          "double_clicks"
+        ]
+      },
+      "correct_answer": {
+        "interactions": 2
+      },
+      "scoring_rule": "INTERACTION_COUNT",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [
+        "UNIT_FRACTION"
+      ],
+      "structural_features": [
+        "FRACTION_PART_WHOLE"
+      ],
+      "surface_features": [
+        "MANIPULATIVE"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "Herstellen statt Ablesen: wer 2/5 als 'zwei von fünf' deutet, färbt zwei Teile."
+    },
+    {
+      "task_id": "BR01-D2-S-A",
+      "task_family_id": "FAM_BR01_D2_PAR",
+      "title": "3/4 auf Nenner 20 erweitern",
+      "primary_competency": "ZO20_FRACTION_UNDERSTANDING",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO05_PART_WHOLE"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "EXTEND_FRACTION",
+      "language_demand": "LOW",
+      "task_prompt": "Erweitere 3/4 auf den Nenner 20. Welche Zahl steht dann oben (Zähler)?",
+      "task_payload": {
+        "fraction": [
+          3,
+          4
+        ],
+        "target_denominator": 20,
+        "operation": "EXTEND"
+      },
+      "correct_answer": {
+        "value": 15
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "FRACTION_PART_WHOLE"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "EQUIVALENT_FRACTION"
+      ],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "BR01-D2-S-B"
+    },
+    {
+      "task_id": "BR01-D2-S-B",
+      "task_family_id": "FAM_BR01_D2_PAR",
+      "title": "2/5 auf Nenner 30 erweitern",
+      "primary_competency": "ZO20_FRACTION_UNDERSTANDING",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO05_PART_WHOLE"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "EXTEND_FRACTION",
+      "language_demand": "LOW",
+      "task_prompt": "Erweitere 2/5 auf den Nenner 30. Welche Zahl steht dann oben (Zähler)?",
+      "task_payload": {
+        "fraction": [
+          2,
+          5
+        ],
+        "target_denominator": 30,
+        "operation": "EXTEND"
+      },
+      "correct_answer": {
+        "value": 12
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "FRACTION_PART_WHOLE"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "EQUIVALENT_FRACTION"
+      ],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "BR01-D2-S-A"
+    },
+    {
+      "task_id": "BR01-D2-S-C",
+      "task_family_id": "FAM_BR01_D2_REPR",
+      "title": "3/4 von 20 symbolisch",
+      "primary_competency": "ZO20_FRACTION_UNDERSTANDING",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO05_PART_WHOLE"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "FRACTION_OF_QUANTITY",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne 3/4 von 20.",
+      "task_payload": {
+        "fraction": [
+          3,
+          4
+        ],
+        "whole": 20,
+        "operation": "FRACTION_OF"
+      },
+      "correct_answer": {
+        "value": 15
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "FRACTION_PART_WHOLE"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "BR01-D2-I-A",
+      "task_family_id": "FAM_BR01_D2_REPR",
+      "title": "3/4 von 20 am Band",
+      "primary_competency": "ZO20_FRACTION_UNDERSTANDING",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO05_PART_WHOLE"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "FRACTION_OF_QUANTITY",
+      "language_demand": "LOW",
+      "task_prompt": "Das ganze Band steht für 20. Wie viel ist der gefärbte Teil wert?",
+      "task_payload": {
+        "figure": {
+          "type": "FRACTION_BAR",
+          "parts": 4,
+          "shaded": 3,
+          "whole_label": "20"
+        },
+        "fraction": [
+          3,
+          4
+        ],
+        "whole": 20
+      },
+      "correct_answer": {
+        "value": 15
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "FRACTION_PART_WHOLE"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "Gleiche Zahlen und gleiche Frageform wie D2-S-C. Nur die Darstellung wechselt - §116."
+    },
+    {
+      "task_id": "BR01-D3-S-A",
+      "task_family_id": null,
+      "title": "Bruch zwischen 1/2 und 3/4",
+      "primary_competency": "ZO20_FRACTION_UNDERSTANDING",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO05_PART_WHOLE"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "SELECT",
+      "question_form": "COMPARE_FRACTIONS",
+      "language_demand": "LOW",
+      "task_prompt": "Welcher Bruch liegt zwischen 1/2 und 3/4?",
+      "task_payload": {
+        "options": [
+          "5/8",
+          "1/4",
+          "7/8",
+          "2/5"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED",
+        "between": [
+          "1/2",
+          "3/4"
+        ]
+      },
+      "correct_answer": {
+        "selection": "5/8"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [
+        "UNEQUAL_DENOMINATOR"
+      ],
+      "structural_features": [
+        "FRACTION_PART_WHOLE"
+      ],
+      "surface_features": [
+        "MULTIPLE_CHOICE"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "BR02-D1-I-A",
+      "task_family_id": null,
+      "title": "Gleichnamige Brüche addieren, ikonisch",
+      "primary_competency": "ZO21_FRACTION_ARITHMETIC",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO20_FRACTION_UNDERSTANDING"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "SELECT",
+      "question_form": "COMPUTE_FRACTION_RESULT",
+      "language_demand": "LOW",
+      "task_prompt": "Die beiden Bänder zeigen 1/4 und 2/4. Wie viel ist das zusammen?",
+      "task_payload": {
+        "figure": {
+          "type": "FRACTION_BARS",
+          "bars": [
+            {
+              "parts": 4,
+              "shaded": 1
+            },
+            {
+              "parts": 4,
+              "shaded": 2
+            }
+          ]
+        },
+        "options": [
+          "3/4",
+          "3/8",
+          "1/2",
+          "2/8"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "3/4"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [
+        "COMMON_DENOMINATOR"
+      ],
+      "structural_features": [
+        "FRACTION_OPERATION"
+      ],
+      "surface_features": [
+        "MULTIPLE_CHOICE",
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "3/8 ist der Nennerfehler (Zähler und Nenner addiert). Die Option ist kein Zufallsdistraktor, sondern die naheliegende Fehlvorstellung."
+    },
+    {
+      "task_id": "BR02-D2-S-A",
+      "task_family_id": "FAM_BR02_D2_PAR",
+      "title": "1/2 + 1/3",
+      "primary_competency": "ZO21_FRACTION_ARITHMETIC",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO20_FRACTION_UNDERSTANDING"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_FRACTION_RESULT",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne 1/2 + 1/3. Schreibe das Ergebnis als Bruch, zum Beispiel 3/4.",
+      "task_payload": {
+        "operands": [
+          "1/2",
+          "1/3"
+        ],
+        "operation": "ADD"
+      },
+      "correct_answer": {
+        "accepted": [
+          "5/6",
+          "10/12"
+        ]
+      },
+      "scoring_rule": "ANY_OF_ACCEPTED",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [
+        "UNEQUAL_DENOMINATOR"
+      ],
+      "structural_features": [
+        "FRACTION_OPERATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "EQUIVALENT_FRACTION"
+      ],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "BR02-D2-S-B"
+    },
+    {
+      "task_id": "BR02-D2-S-B",
+      "task_family_id": "FAM_BR02_D2_PAR",
+      "title": "1/4 + 1/3",
+      "primary_competency": "ZO21_FRACTION_ARITHMETIC",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO20_FRACTION_UNDERSTANDING"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_FRACTION_RESULT",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne 1/4 + 1/3. Schreibe das Ergebnis als Bruch, zum Beispiel 3/4.",
+      "task_payload": {
+        "operands": [
+          "1/4",
+          "1/3"
+        ],
+        "operation": "ADD"
+      },
+      "correct_answer": {
+        "accepted": [
+          "7/12",
+          "14/24"
+        ]
+      },
+      "scoring_rule": "ANY_OF_ACCEPTED",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [
+        "UNEQUAL_DENOMINATOR"
+      ],
+      "structural_features": [
+        "FRACTION_OPERATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "EQUIVALENT_FRACTION"
+      ],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "BR02-D2-S-A"
+    },
+    {
+      "task_id": "BR02-D2-S-C",
+      "task_family_id": "FAM_BR02_D2_REPR",
+      "title": "2/3 mal 3/4 symbolisch",
+      "primary_competency": "ZO21_FRACTION_ARITHMETIC",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO20_FRACTION_UNDERSTANDING"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "MULTIPLY_FRACTIONS",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne 2/3 · 3/4. Schreibe das Ergebnis als Bruch.",
+      "task_payload": {
+        "operands": [
+          "2/3",
+          "3/4"
+        ],
+        "operation": "MULTIPLY"
+      },
+      "correct_answer": {
+        "accepted": [
+          "1/2",
+          "6/12",
+          "2/4",
+          "3/6"
+        ]
+      },
+      "scoring_rule": "ANY_OF_ACCEPTED",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "FRACTION_OPERATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "BR02-D2-I-A",
+      "task_family_id": "FAM_BR02_D2_REPR",
+      "title": "2/3 mal 3/4 am Flächenmodell",
+      "primary_competency": "ZO21_FRACTION_ARITHMETIC",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO20_FRACTION_UNDERSTANDING"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "MULTIPLY_FRACTIONS",
+      "language_demand": "LOW",
+      "task_prompt": "Das Rechteck ist senkrecht in 3 und waagerecht in 4 gleiche Teile geteilt. Zwei der drei Spalten und drei der vier Zeilen sind gefärbt. Welcher Anteil des ganzen Rechtecks liegt in beiden Färbungen?",
+      "task_payload": {
+        "figure": {
+          "type": "FRACTION_GRID",
+          "cols": 3,
+          "rows": 4,
+          "cols_shaded": 2,
+          "rows_shaded": 3
+        },
+        "operands": [
+          "2/3",
+          "3/4"
+        ],
+        "operation": "MULTIPLY"
+      },
+      "correct_answer": {
+        "accepted": [
+          "1/2",
+          "6/12",
+          "2/4",
+          "3/6"
+        ]
+      },
+      "scoring_rule": "ANY_OF_ACCEPTED",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "FRACTION_OPERATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "BR02-D3-S-A",
+      "task_family_id": null,
+      "title": "Durch einen Bruch teilen",
+      "primary_competency": "ZO21_FRACTION_ARITHMETIC",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO20_FRACTION_UNDERSTANDING"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_FRACTION_RESULT",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne 3/4 : 1/2. Schreibe das Ergebnis als Bruch oder Dezimalzahl.",
+      "task_payload": {
+        "operands": [
+          "3/4",
+          "1/2"
+        ],
+        "operation": "DIVIDE"
+      },
+      "correct_answer": {
+        "accepted": [
+          "3/2",
+          "6/4",
+          "1,5",
+          "1.5"
+        ]
+      },
+      "scoring_rule": "ANY_OF_ACCEPTED",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "FRACTION_OPERATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "DE01-D1-I-A",
+      "task_family_id": null,
+      "title": "0,4 am Zahlenstrahl setzen",
+      "primary_competency": "ZO22_DECIMALS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO06_PLACE_VALUE"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "DRAG",
+      "question_form": "PLACE_ON_NUMBER_LINE",
+      "language_demand": "LOW",
+      "task_prompt": "Setze die Marke auf 0,4.",
+      "task_payload": {
+        "figure": {
+          "type": "NUMBER_LINE",
+          "from": 0,
+          "to": 1,
+          "step": 0.1,
+          "place": true,
+          "labels_every": 5
+        }
+      },
+      "correct_answer": {
+        "value": 0.4
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [
+        "TENTHS"
+      ],
+      "structural_features": [
+        "DECIMAL_PLACE_VALUE"
+      ],
+      "surface_features": [
+        "NUMBER_LINE"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "DE01-D2-S-A",
+      "task_family_id": "FAM_DE01_D2_PAR",
+      "title": "0,45 oder 0,8 vergleichen",
+      "primary_competency": "ZO22_DECIMALS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO06_PLACE_VALUE"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPARE_DECIMALS",
+      "language_demand": "LOW",
+      "task_prompt": "Welche Zahl ist größer: 0,45 oder 0,8? Schreibe die größere auf.",
+      "task_payload": {
+        "operands": [
+          0.45,
+          0.8
+        ]
+      },
+      "correct_answer": {
+        "value": 0.8
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [
+        "HUNDREDTHS"
+      ],
+      "structural_features": [
+        "DECIMAL_PLACE_VALUE"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "Die längere Ziffernfolge ist hier die kleinere Zahl. Wer 0,45 wählt, überträgt die Regel 'mehr Stellen = größer' aus den natürlichen Zahlen.",
+      "parallel_item_id": "DE01-D2-S-B"
+    },
+    {
+      "task_id": "DE01-D2-S-B",
+      "task_family_id": "FAM_DE01_D2_PAR",
+      "title": "0,7 oder 0,38 vergleichen",
+      "primary_competency": "ZO22_DECIMALS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO06_PLACE_VALUE"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPARE_DECIMALS",
+      "language_demand": "LOW",
+      "task_prompt": "Welche Zahl ist größer: 0,7 oder 0,38? Schreibe die größere auf.",
+      "task_payload": {
+        "operands": [
+          0.7,
+          0.38
+        ]
+      },
+      "correct_answer": {
+        "value": 0.7
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [
+        "HUNDREDTHS"
+      ],
+      "structural_features": [
+        "DECIMAL_PLACE_VALUE"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "DE01-D2-S-A"
+    },
+    {
+      "task_id": "DE01-D2-S-C",
+      "task_family_id": "FAM_DE01_D2_REPR",
+      "title": "Wert der Ziffer 7 in 3,47",
+      "primary_competency": "ZO22_DECIMALS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO06_PLACE_VALUE"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "VALUE_OF_NAMED_DIGIT",
+      "language_demand": "LOW",
+      "task_prompt": "Welchen Wert hat die Ziffer 7 in der Zahl 3,47?",
+      "task_payload": {
+        "number": 3.47,
+        "digit": 7
+      },
+      "correct_answer": {
+        "value": 0.07
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [
+        "HUNDREDTHS"
+      ],
+      "structural_features": [
+        "DECIMAL_PLACE_VALUE",
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "DE01-D2-I-A",
+      "task_family_id": "FAM_DE01_D2_REPR",
+      "title": "Wert der Ziffer 7 in der Stellenwerttafel",
+      "primary_competency": "ZO22_DECIMALS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO06_PLACE_VALUE"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "VALUE_OF_NAMED_DIGIT",
+      "language_demand": "LOW",
+      "task_prompt": "Welchen Wert hat die hervorgehobene Ziffer 7?",
+      "task_payload": {
+        "figure": {
+          "type": "PLACE_VALUE_CHART",
+          "columns": [
+            "E",
+            "z",
+            "h"
+          ],
+          "digits": [
+            3,
+            4,
+            7
+          ],
+          "decimal_after": 0,
+          "highlight": 2
+        },
+        "number": 3.47,
+        "digit": 7
+      },
+      "correct_answer": {
+        "value": 0.07
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [
+        "HUNDREDTHS"
+      ],
+      "structural_features": [
+        "DECIMAL_PLACE_VALUE",
+        "PLACE_VALUE_DECOMPOSITION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "DE01-D3-S-A",
+      "task_family_id": null,
+      "title": "2,5 mal 0,4",
+      "primary_competency": "ZO22_DECIMALS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO06_PLACE_VALUE"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_RESULT",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne 2,5 · 0,4.",
+      "task_payload": {
+        "operands": [
+          2.5,
+          0.4
+        ],
+        "operation": "MULTIPLY"
+      },
+      "correct_answer": {
+        "value": 1
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [
+        "TENTHS"
+      ],
+      "structural_features": [
+        "DECIMAL_PLACE_VALUE"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "GZ01-D1-I-A",
+      "task_family_id": null,
+      "title": "Negative Zahl ablesen",
+      "primary_competency": "ZO23_INTEGERS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO04_NUMBER_RELATIONS"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "READ_FROM_NUMBER_LINE",
+      "language_demand": "LOW",
+      "task_prompt": "Welche Zahl ist markiert?",
+      "task_payload": {
+        "figure": {
+          "type": "NUMBER_LINE",
+          "from": -6,
+          "to": 6,
+          "step": 1,
+          "marks": [
+            {
+              "at": -4
+            }
+          ]
+        }
+      },
+      "correct_answer": {
+        "value": -4
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "NEGATIVE_NUMBER"
+      ],
+      "surface_features": [
+        "NUMBER_LINE"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "GZ01-D2-S-A",
+      "task_family_id": "FAM_GZ01_D2_PAR",
+      "title": "3 minus 7",
+      "primary_competency": "ZO23_INTEGERS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO04_NUMBER_RELATIONS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_RESULT",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne 3 − 7.",
+      "task_payload": {
+        "operands": [
+          3,
+          7
+        ],
+        "operation": "SUBTRACT"
+      },
+      "correct_answer": {
+        "value": -4
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [
+        "NEGATIVE_RESULT"
+      ],
+      "structural_features": [
+        "NEGATIVE_NUMBER"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "GZ01-D2-S-B"
+    },
+    {
+      "task_id": "GZ01-D2-S-B",
+      "task_family_id": "FAM_GZ01_D2_PAR",
+      "title": "2 minus 9",
+      "primary_competency": "ZO23_INTEGERS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO04_NUMBER_RELATIONS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_RESULT",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne 2 − 9.",
+      "task_payload": {
+        "operands": [
+          2,
+          9
+        ],
+        "operation": "SUBTRACT"
+      },
+      "correct_answer": {
+        "value": -7
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [
+        "NEGATIVE_RESULT"
+      ],
+      "structural_features": [
+        "NEGATIVE_NUMBER"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "GZ01-D2-S-A"
+    },
+    {
+      "task_id": "GZ01-D2-S-C",
+      "task_family_id": "FAM_GZ01_D2_REPR",
+      "title": "Minus fünf plus acht",
+      "primary_competency": "ZO23_INTEGERS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO04_NUMBER_RELATIONS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_RESULT",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne (−5) + 8.",
+      "task_payload": {
+        "operands": [
+          -5,
+          8
+        ],
+        "operation": "ADD"
+      },
+      "correct_answer": {
+        "value": 3
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "NEGATIVE_NUMBER"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "GZ01-D2-I-A",
+      "task_family_id": "FAM_GZ01_D2_REPR",
+      "title": "Minus fünf plus acht am Zahlenstrahl",
+      "primary_competency": "ZO23_INTEGERS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO04_NUMBER_RELATIONS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_RESULT",
+      "language_demand": "LOW",
+      "task_prompt": "Der Pfeil startet bei −5 und geht 8 Schritte nach rechts. Bei welcher Zahl endet er?",
+      "task_payload": {
+        "figure": {
+          "type": "NUMBER_LINE",
+          "from": -8,
+          "to": 8,
+          "step": 1,
+          "jump": {
+            "start": -5,
+            "delta": 8
+          }
+        },
+        "operands": [
+          -5,
+          8
+        ],
+        "operation": "ADD"
+      },
+      "correct_answer": {
+        "value": 3
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "NEGATIVE_NUMBER"
+      ],
+      "surface_features": [
+        "NUMBER_LINE"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "GZ01-D3-S-A",
+      "task_family_id": null,
+      "title": "Minus mal minus",
+      "primary_competency": "ZO23_INTEGERS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO04_NUMBER_RELATIONS"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_RESULT",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne (−4) · (−6).",
+      "task_payload": {
+        "operands": [
+          -4,
+          -6
+        ],
+        "operation": "MULTIPLY"
+      },
+      "correct_answer": {
+        "value": 24
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "NEGATIVE_NUMBER"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "PR01-D1-I-A",
+      "task_family_id": null,
+      "title": "Prozentsatz am Balken ablesen",
+      "primary_competency": "ZO24_PERCENT",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO21_FRACTION_ARITHMETIC"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PERCENT_RATE",
+      "language_demand": "LOW",
+      "task_prompt": "Wie viel Prozent des Balkens sind gefärbt?",
+      "task_payload": {
+        "figure": {
+          "type": "PERCENT_BAR",
+          "percent": 25,
+          "show_scale": true
+        }
+      },
+      "correct_answer": {
+        "value": 25
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [
+        "SIMPLE_PERCENT"
+      ],
+      "structural_features": [
+        "PERCENT_RELATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "PR01-D2-S-A",
+      "task_family_id": "FAM_PR01_D2_PAR",
+      "title": "20 Prozent von 80",
+      "primary_competency": "ZO24_PERCENT",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO21_FRACTION_ARITHMETIC"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PERCENT_VALUE",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne 20 % von 80.",
+      "task_payload": {
+        "percent": 20,
+        "base": 80,
+        "operation": "PERCENT_OF"
+      },
+      "correct_answer": {
+        "value": 16
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [
+        "SIMPLE_PERCENT"
+      ],
+      "structural_features": [
+        "PERCENT_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "PR01-D2-S-B"
+    },
+    {
+      "task_id": "PR01-D2-S-B",
+      "task_family_id": "FAM_PR01_D2_PAR",
+      "title": "15 Prozent von 60",
+      "primary_competency": "ZO24_PERCENT",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO21_FRACTION_ARITHMETIC"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PERCENT_VALUE",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne 15 % von 60.",
+      "task_payload": {
+        "percent": 15,
+        "base": 60,
+        "operation": "PERCENT_OF"
+      },
+      "correct_answer": {
+        "value": 9
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PERCENT_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "PR01-D2-S-A"
+    },
+    {
+      "task_id": "PR01-D2-S-C",
+      "task_family_id": "FAM_PR01_D2_REPR",
+      "title": "30 Prozent von 50 symbolisch",
+      "primary_competency": "ZO24_PERCENT",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO21_FRACTION_ARITHMETIC"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PERCENT_VALUE",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne 30 % von 50.",
+      "task_payload": {
+        "percent": 30,
+        "base": 50,
+        "operation": "PERCENT_OF"
+      },
+      "correct_answer": {
+        "value": 15
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PERCENT_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "PR01-D2-I-A",
+      "task_family_id": "FAM_PR01_D2_REPR",
+      "title": "30 Prozent von 50 am Balken",
+      "primary_competency": "ZO24_PERCENT",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO21_FRACTION_ARITHMETIC"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PERCENT_VALUE",
+      "language_demand": "LOW",
+      "task_prompt": "Der ganze Balken steht für 50. Wie groß ist der gefärbte Teil?",
+      "task_payload": {
+        "figure": {
+          "type": "PERCENT_BAR",
+          "percent": 30,
+          "whole": 50,
+          "whole_label": "50",
+          "show_scale": true
+        },
+        "percent": 30,
+        "base": 50
+      },
+      "correct_answer": {
+        "value": 15
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PERCENT_RELATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "PR01-D3-L-A",
+      "task_family_id": null,
+      "title": "Prozentsatz aus Anteil",
+      "primary_competency": "ZO24_PERCENT",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO21_FRACTION_ARITHMETIC"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "NATURAL_LANGUAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PERCENT_RATE",
+      "language_demand": "MEDIUM",
+      "task_prompt": "In einer Klasse mit 48 Kindern fahren 12 mit dem Rad zur Schule. Wie viel Prozent sind das?",
+      "task_payload": {
+        "part": 12,
+        "whole": 48,
+        "operation": "PERCENT_RATE"
+      },
+      "correct_answer": {
+        "value": 25
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "grade_reference_min": 6,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PERCENT_RELATION"
+      ],
+      "surface_features": [
+        "WORD_PROBLEM"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [
+        "LANGUAGE_DEMAND",
+        "INFORMATION_SELECTION"
+      ],
+      "note": "Gefragt ist der Prozentsatz, nicht der Prozentwert. Wer 12 oder 48 zurückgibt, hat eine gegebene Zahl übernommen - §59 ERR_LANGUAGE_CONTEXT."
+    },
+    {
+      "task_id": "PW01-D1-I-A",
+      "task_family_id": null,
+      "title": "Quadratzahl am Punktfeld",
+      "primary_competency": "ZO25_POWERS_ROOTS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_POWER",
+      "language_demand": "LOW",
+      "task_prompt": "Das Quadrat ist 6 Kästchen breit und 6 Kästchen hoch. Aus wie vielen Kästchen besteht es?",
+      "task_payload": {
+        "figure": {
+          "type": "SQUARE_GRID",
+          "side": 6
+        },
+        "base": 6,
+        "exponent": 2
+      },
+      "correct_answer": {
+        "value": 36
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [
+        "SQUARE_NUMBER"
+      ],
+      "structural_features": [
+        "POWER_RELATION",
+        "ARRAY_STRUCTURE"
+      ],
+      "surface_features": [
+        "GRID"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "PW01-D2-S-A",
+      "task_family_id": "FAM_PW01_D2_PAR",
+      "title": "4 hoch 3",
+      "primary_competency": "ZO25_POWERS_ROOTS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_POWER",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne 4³.",
+      "task_payload": {
+        "base": 4,
+        "exponent": 3,
+        "operation": "POWER"
+      },
+      "correct_answer": {
+        "value": 64
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "POWER_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "12 wäre 4·3 - die Potenz als Multiplikation gelesen.",
+      "parallel_item_id": "PW01-D2-S-B"
+    },
+    {
+      "task_id": "PW01-D2-S-B",
+      "task_family_id": "FAM_PW01_D2_PAR",
+      "title": "3 hoch 4",
+      "primary_competency": "ZO25_POWERS_ROOTS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_POWER",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne 3⁴.",
+      "task_payload": {
+        "base": 3,
+        "exponent": 4,
+        "operation": "POWER"
+      },
+      "correct_answer": {
+        "value": 81
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "POWER_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "PW01-D2-S-A"
+    },
+    {
+      "task_id": "PW01-D2-S-C",
+      "task_family_id": "FAM_PW01_D2_REPR",
+      "title": "Wurzel aus 49 symbolisch",
+      "primary_competency": "ZO25_POWERS_ROOTS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_ROOT",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne die Quadratwurzel aus 49.",
+      "task_payload": {
+        "radicand": 49,
+        "operation": "ROOT"
+      },
+      "correct_answer": {
+        "value": 7
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [
+        "SQUARE_NUMBER"
+      ],
+      "structural_features": [
+        "POWER_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "PW01-D2-I-A",
+      "task_family_id": "FAM_PW01_D2_REPR",
+      "title": "Wurzel aus 49 als Seitenlänge",
+      "primary_competency": "ZO25_POWERS_ROOTS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_ROOT",
+      "language_demand": "LOW",
+      "task_prompt": "Das Quadrat besteht aus 49 Kästchen. Wie viele Kästchen ist eine Seite lang?",
+      "task_payload": {
+        "figure": {
+          "type": "SQUARE_GRID",
+          "area": 49,
+          "ask": "SIDE"
+        },
+        "radicand": 49,
+        "operation": "ROOT"
+      },
+      "correct_answer": {
+        "value": 7
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [
+        "SQUARE_NUMBER"
+      ],
+      "structural_features": [
+        "POWER_RELATION",
+        "ARRAY_STRUCTURE"
+      ],
+      "surface_features": [
+        "GRID"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "PW01-D3-S-A",
+      "task_family_id": null,
+      "title": "Potenzen multiplizieren",
+      "primary_competency": "ZO25_POWERS_ROOTS",
+      "primary_leitidee": "NUMBER_OPERATION",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_POWER",
+      "language_demand": "LOW",
+      "task_prompt": "2⁵ · 2³ lässt sich als eine Potenz von 2 schreiben. Wie groß ist der Exponent?",
+      "task_payload": {
+        "base": 2,
+        "exponents": [
+          5,
+          3
+        ],
+        "operation": "POWER_PRODUCT"
+      },
+      "correct_answer": {
+        "value": 8
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "POWER_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "15 wäre das Produkt der Exponenten statt ihrer Summe."
+    },
+    {
+      "task_id": "PZ01-D1-I-A",
+      "task_family_id": null,
+      "title": "Wertetabelle ergänzen",
+      "primary_competency": "MF01_PROPORTIONALITY",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPLETE_PROPORTION_TABLE",
+      "language_demand": "LOW",
+      "task_prompt": "Die Tabelle gehört zu einer proportionalen Zuordnung. Welcher Wert fehlt?",
+      "task_payload": {
+        "figure": {
+          "type": "VALUE_TABLE",
+          "head": [
+            "Brötchen",
+            "Preis in €"
+          ],
+          "rows": [
+            [
+              2,
+              1.4
+            ],
+            [
+              4,
+              2.8
+            ],
+            [
+              6,
+              null
+            ]
+          ],
+          "ask_row": 2,
+          "ask_col": 1
+        }
+      },
+      "correct_answer": {
+        "value": 4.2
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROPORTIONAL_RELATION"
+      ],
+      "surface_features": [
+        "TABLE"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "PZ01-D2-L-A",
+      "task_family_id": "FAM_PZ01_D2_PAR",
+      "title": "Dreisatz Äpfel",
+      "primary_competency": "MF01_PROPORTIONALITY",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "NATURAL_LANGUAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PROPORTION_VALUE",
+      "language_demand": "MEDIUM",
+      "task_prompt": "5 kg Äpfel kosten 12 €. Wie viel kosten 15 kg?",
+      "task_payload": {
+        "given": [
+          5,
+          12
+        ],
+        "ask": 15,
+        "operation": "PROPORTION"
+      },
+      "correct_answer": {
+        "value": 36
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROPORTIONAL_RELATION"
+      ],
+      "surface_features": [
+        "WORD_PROBLEM"
+      ],
+      "strategy_affordances": [
+        "UNIT_RATE"
+      ],
+      "additional_demands": [
+        "LANGUAGE_DEMAND"
+      ],
+      "note": null,
+      "parallel_item_id": "PZ01-D2-L-B"
+    },
+    {
+      "task_id": "PZ01-D2-L-B",
+      "task_family_id": "FAM_PZ01_D2_PAR",
+      "title": "Dreisatz Stoff",
+      "primary_competency": "MF01_PROPORTIONALITY",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "NATURAL_LANGUAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PROPORTION_VALUE",
+      "language_demand": "MEDIUM",
+      "task_prompt": "4 m Stoff kosten 18 €. Wie viel kosten 12 m?",
+      "task_payload": {
+        "given": [
+          4,
+          18
+        ],
+        "ask": 12,
+        "operation": "PROPORTION"
+      },
+      "correct_answer": {
+        "value": 54
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROPORTIONAL_RELATION"
+      ],
+      "surface_features": [
+        "WORD_PROBLEM"
+      ],
+      "strategy_affordances": [
+        "UNIT_RATE"
+      ],
+      "additional_demands": [
+        "LANGUAGE_DEMAND"
+      ],
+      "note": null,
+      "parallel_item_id": "PZ01-D2-L-A"
+    },
+    {
+      "task_id": "PZ01-D2-S-A",
+      "task_family_id": "FAM_PZ01_D2_REPR",
+      "title": "Zuordnung symbolisch",
+      "primary_competency": "MF01_PROPORTIONALITY",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PROPORTION_VALUE",
+      "language_demand": "LOW",
+      "task_prompt": "Eine proportionale Zuordnung ordnet der 3 den Wert 7,5 zu. Welcher Wert gehört zur 8?",
+      "task_payload": {
+        "given": [
+          3,
+          7.5
+        ],
+        "ask": 8,
+        "operation": "PROPORTION"
+      },
+      "correct_answer": {
+        "value": 20
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROPORTIONAL_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "PZ01-D2-I-A",
+      "task_family_id": "FAM_PZ01_D2_REPR",
+      "title": "Zuordnung in der Tabelle",
+      "primary_competency": "MF01_PROPORTIONALITY",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PROPORTION_VALUE",
+      "language_demand": "LOW",
+      "task_prompt": "Die Tabelle gehört zu einer proportionalen Zuordnung. Welcher Wert gehört zur 8?",
+      "task_payload": {
+        "figure": {
+          "type": "VALUE_TABLE",
+          "head": [
+            "x",
+            "y"
+          ],
+          "rows": [
+            [
+              3,
+              7.5
+            ],
+            [
+              8,
+              null
+            ]
+          ],
+          "ask_row": 1,
+          "ask_col": 1
+        },
+        "given": [
+          3,
+          7.5
+        ],
+        "ask": 8
+      },
+      "correct_answer": {
+        "value": 20
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROPORTIONAL_RELATION"
+      ],
+      "surface_features": [
+        "TABLE"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "PZ01-D3-L-A",
+      "task_family_id": null,
+      "title": "Antiproportional",
+      "primary_competency": "MF01_PROPORTIONALITY",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "NATURAL_LANGUAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PROPORTION_VALUE",
+      "language_demand": "MEDIUM",
+      "task_prompt": "6 Arbeiter brauchen für eine Mauer 12 Tage. Wie lange brauchen 8 Arbeiter?",
+      "task_payload": {
+        "given": [
+          6,
+          12
+        ],
+        "ask": 8,
+        "operation": "INVERSE_PROPORTION"
+      },
+      "correct_answer": {
+        "value": 9
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "grade_reference_min": 6,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "INVERSE_PROPORTIONAL_RELATION"
+      ],
+      "surface_features": [
+        "WORD_PROBLEM"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [
+        "LANGUAGE_DEMAND"
+      ],
+      "note": "Hier ist der Dreisatz der falsche Weg. 16 wäre das proportionale Ergebnis - eine Beobachtung, keine Diagnose (§59)."
+    },
+    {
+      "task_id": "TV01-D1-I-A",
+      "task_family_id": null,
+      "title": "Term zum Rechteck",
+      "primary_competency": "MF02_TERMS_VARIABLES",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "ZO13_ARITHMETIC_LAWS"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "SELECT",
+      "question_form": "SET_UP_TERM",
+      "language_demand": "LOW",
+      "task_prompt": "Das Rechteck ist x lang und 3 hoch. Welcher Term beschreibt seinen Flächeninhalt?",
+      "task_payload": {
+        "figure": {
+          "type": "ALGEBRA_RECT",
+          "width": "x",
+          "height": 3
+        },
+        "options": [
+          "3 · x",
+          "3 + x",
+          "x²",
+          "x : 3"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "3 · x"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "VARIABLE_AS_UNKNOWN"
+      ],
+      "surface_features": [
+        "MULTIPLE_CHOICE",
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "TV01-D2-S-A",
+      "task_family_id": "FAM_TV01_D2_PAR",
+      "title": "Term einsetzen 4a+7",
+      "primary_competency": "MF02_TERMS_VARIABLES",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "ZO13_ARITHMETIC_LAWS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "EVALUATE_TERM",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne den Wert von 4a + 7 für a = 5.",
+      "task_payload": {
+        "term": "4a + 7",
+        "substitution": {
+          "a": 5
+        }
+      },
+      "correct_answer": {
+        "value": 27
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "VARIABLE_AS_UNKNOWN"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "48 entstünde, wenn 4a+7 von links nach rechts als (4·5+7) ... nein: wer 4·(5+7) rechnet, erhält 48 - die Punkt-vor-Strich-Ordnung übergangen.",
+      "parallel_item_id": "TV01-D2-S-B"
+    },
+    {
+      "task_id": "TV01-D2-S-B",
+      "task_family_id": "FAM_TV01_D2_PAR",
+      "title": "Term einsetzen 6b+5",
+      "primary_competency": "MF02_TERMS_VARIABLES",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "ZO13_ARITHMETIC_LAWS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "EVALUATE_TERM",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne den Wert von 6b + 5 für b = 4.",
+      "task_payload": {
+        "term": "6b + 5",
+        "substitution": {
+          "b": 4
+        }
+      },
+      "correct_answer": {
+        "value": 29
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "VARIABLE_AS_UNKNOWN"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "TV01-D2-S-A"
+    },
+    {
+      "task_id": "TV01-D2-S-C",
+      "task_family_id": "FAM_TV01_D2_REPR",
+      "title": "3x plus 5x zusammenfassen",
+      "primary_competency": "MF02_TERMS_VARIABLES",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "ZO13_ARITHMETIC_LAWS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "SIMPLIFY_TERM",
+      "language_demand": "LOW",
+      "task_prompt": "Fasse 3x + 5x zusammen. Welche Zahl steht dann vor dem x?",
+      "task_payload": {
+        "term": "3x + 5x",
+        "operation": "COLLECT_TERMS"
+      },
+      "correct_answer": {
+        "value": 8
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "VARIABLE_AS_UNKNOWN"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "TV01-D2-I-A",
+      "task_family_id": "FAM_TV01_D2_REPR",
+      "title": "3x plus 5x als Stäbe",
+      "primary_competency": "MF02_TERMS_VARIABLES",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "ZO13_ARITHMETIC_LAWS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "SIMPLIFY_TERM",
+      "language_demand": "LOW",
+      "task_prompt": "Hier liegen 3 Stäbe der Länge x und daneben 5 weitere. Wie viele x sind es zusammen?",
+      "task_payload": {
+        "figure": {
+          "type": "ALGEBRA_TILES",
+          "groups": [
+            {
+              "count": 3,
+              "label": "x"
+            },
+            {
+              "count": 5,
+              "label": "x"
+            }
+          ]
+        },
+        "term": "3x + 5x",
+        "operation": "COLLECT_TERMS"
+      },
+      "correct_answer": {
+        "value": 8
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "VARIABLE_AS_UNKNOWN"
+      ],
+      "surface_features": [
+        "MANIPULATIVE"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "TV01-D3-S-A",
+      "task_family_id": null,
+      "title": "Klammer ausmultiplizieren",
+      "primary_competency": "MF02_TERMS_VARIABLES",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "ZO13_ARITHMETIC_LAWS"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "SIMPLIFY_TERM",
+      "language_demand": "LOW",
+      "task_prompt": "Multipliziere 3 · (2x + 4) aus. Welche Zahl steht dann vor dem x?",
+      "task_payload": {
+        "term": "3(2x + 4)",
+        "operation": "EXPAND"
+      },
+      "correct_answer": {
+        "value": 6
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "VARIABLE_AS_UNKNOWN",
+        "DISTRIBUTIVE_STRUCTURE"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "GL01-D1-I-A",
+      "task_family_id": null,
+      "title": "Waage im Gleichgewicht",
+      "primary_competency": "MF03_LINEAR_EQUATIONS",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF02_TERMS_VARIABLES"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "SOLVE_EQUATION",
+      "language_demand": "LOW",
+      "task_prompt": "Die Waage ist im Gleichgewicht. Wie schwer ist ein x?",
+      "task_payload": {
+        "figure": {
+          "type": "BALANCE",
+          "left": {
+            "x": 1,
+            "units": 2
+          },
+          "right": {
+            "units": 5
+          }
+        },
+        "equation": "x + 2 = 5"
+      },
+      "correct_answer": {
+        "value": 3
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "EQUATION_BALANCE"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "GL01-D2-S-A",
+      "task_family_id": "FAM_GL01_D2_PAR",
+      "title": "4x + 5 = 21",
+      "primary_competency": "MF03_LINEAR_EQUATIONS",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF02_TERMS_VARIABLES"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "SOLVE_EQUATION",
+      "language_demand": "LOW",
+      "task_prompt": "Löse die Gleichung 4x + 5 = 21.",
+      "task_payload": {
+        "equation": "4x + 5 = 21"
+      },
+      "correct_answer": {
+        "value": 4
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "EQUATION_BALANCE"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "GL01-D2-S-B"
+    },
+    {
+      "task_id": "GL01-D2-S-B",
+      "task_family_id": "FAM_GL01_D2_PAR",
+      "title": "3x + 7 = 25",
+      "primary_competency": "MF03_LINEAR_EQUATIONS",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF02_TERMS_VARIABLES"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "SOLVE_EQUATION",
+      "language_demand": "LOW",
+      "task_prompt": "Löse die Gleichung 3x + 7 = 25.",
+      "task_payload": {
+        "equation": "3x + 7 = 25"
+      },
+      "correct_answer": {
+        "value": 6
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "EQUATION_BALANCE"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "GL01-D2-S-A"
+    },
+    {
+      "task_id": "GL01-D2-S-C",
+      "task_family_id": "FAM_GL01_D2_REPR",
+      "title": "2x + 3 = 11 symbolisch",
+      "primary_competency": "MF03_LINEAR_EQUATIONS",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF02_TERMS_VARIABLES"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "SOLVE_EQUATION",
+      "language_demand": "LOW",
+      "task_prompt": "Löse die Gleichung 2x + 3 = 11.",
+      "task_payload": {
+        "equation": "2x + 3 = 11"
+      },
+      "correct_answer": {
+        "value": 4
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "EQUATION_BALANCE"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "GL01-D2-I-A",
+      "task_family_id": "FAM_GL01_D2_REPR",
+      "title": "2x + 3 = 11 an der Waage",
+      "primary_competency": "MF03_LINEAR_EQUATIONS",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF02_TERMS_VARIABLES"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "SOLVE_EQUATION",
+      "language_demand": "LOW",
+      "task_prompt": "Die Waage ist im Gleichgewicht. Wie schwer ist ein x?",
+      "task_payload": {
+        "figure": {
+          "type": "BALANCE",
+          "left": {
+            "x": 2,
+            "units": 3
+          },
+          "right": {
+            "units": 11
+          }
+        },
+        "equation": "2x + 3 = 11"
+      },
+      "correct_answer": {
+        "value": 4
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "EQUATION_BALANCE"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "GL01-D3-S-A",
+      "task_family_id": null,
+      "title": "x auf beiden Seiten",
+      "primary_competency": "MF03_LINEAR_EQUATIONS",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF02_TERMS_VARIABLES"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "SOLVE_EQUATION",
+      "language_demand": "LOW",
+      "task_prompt": "Löse die Gleichung 5x − 4 = 2x + 11.",
+      "task_payload": {
+        "equation": "5x - 4 = 2x + 11"
+      },
+      "correct_answer": {
+        "value": 5
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "EQUATION_BALANCE"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "LF01-D1-I-A",
+      "task_family_id": null,
+      "title": "y-Achsenabschnitt ablesen",
+      "primary_competency": "MF04_LINEAR_FUNCTIONS",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF03_LINEAR_EQUATIONS"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "READ_INTERCEPT",
+      "language_demand": "LOW",
+      "task_prompt": "Bei welchem y-Wert schneidet die Gerade die y-Achse?",
+      "task_payload": {
+        "figure": {
+          "type": "COORDINATE_SYSTEM",
+          "xmin": -5,
+          "xmax": 5,
+          "ymin": -5,
+          "ymax": 5,
+          "lines": [
+            {
+              "m": 1,
+              "b": 2
+            }
+          ]
+        }
+      },
+      "correct_answer": {
+        "value": 2
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 8,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "LINEAR_RELATION"
+      ],
+      "surface_features": [
+        "COORDINATE_GRID"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "LF01-D2-S-A",
+      "task_family_id": "FAM_LF01_D2_PAR",
+      "title": "y = 3x − 4 an der Stelle 5",
+      "primary_competency": "MF04_LINEAR_FUNCTIONS",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF03_LINEAR_EQUATIONS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "EVALUATE_FUNCTION",
+      "language_demand": "LOW",
+      "task_prompt": "Gegeben ist y = 3x − 4. Berechne y für x = 5.",
+      "task_payload": {
+        "function": "3x - 4",
+        "substitution": {
+          "x": 5
+        }
+      },
+      "correct_answer": {
+        "value": 11
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 8,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "LINEAR_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "LF01-D2-S-B"
+    },
+    {
+      "task_id": "LF01-D2-S-B",
+      "task_family_id": "FAM_LF01_D2_PAR",
+      "title": "y = 2x + 6 an der Stelle 7",
+      "primary_competency": "MF04_LINEAR_FUNCTIONS",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF03_LINEAR_EQUATIONS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "EVALUATE_FUNCTION",
+      "language_demand": "LOW",
+      "task_prompt": "Gegeben ist y = 2x + 6. Berechne y für x = 7.",
+      "task_payload": {
+        "function": "2x + 6",
+        "substitution": {
+          "x": 7
+        }
+      },
+      "correct_answer": {
+        "value": 20
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 8,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "LINEAR_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "LF01-D2-S-A"
+    },
+    {
+      "task_id": "LF01-D2-S-C",
+      "task_family_id": "FAM_LF01_D2_REPR",
+      "title": "Steigung aus der Gleichung",
+      "primary_competency": "MF04_LINEAR_FUNCTIONS",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF03_LINEAR_EQUATIONS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "READ_SLOPE",
+      "language_demand": "LOW",
+      "task_prompt": "Welche Steigung hat die Gerade y = 2x − 3?",
+      "task_payload": {
+        "function": "2x - 3",
+        "ask": "SLOPE"
+      },
+      "correct_answer": {
+        "value": 2
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 8,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "LINEAR_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "−3 wäre der y-Achsenabschnitt. Beide Zahlen stehen in der Gleichung; gefragt ist, welche welche Rolle hat."
+    },
+    {
+      "task_id": "LF01-D2-I-A",
+      "task_family_id": "FAM_LF01_D2_REPR",
+      "title": "Steigung aus dem Graphen",
+      "primary_competency": "MF04_LINEAR_FUNCTIONS",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF03_LINEAR_EQUATIONS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "READ_SLOPE",
+      "language_demand": "LOW",
+      "task_prompt": "Welche Steigung hat die gezeichnete Gerade?",
+      "task_payload": {
+        "figure": {
+          "type": "COORDINATE_SYSTEM",
+          "xmin": -5,
+          "xmax": 5,
+          "ymin": -6,
+          "ymax": 6,
+          "lines": [
+            {
+              "m": 2,
+              "b": -3
+            }
+          ]
+        },
+        "function": "2x - 3",
+        "ask": "SLOPE"
+      },
+      "correct_answer": {
+        "value": 2
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 8,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "LINEAR_RELATION"
+      ],
+      "surface_features": [
+        "COORDINATE_GRID"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "LF01-D3-S-A",
+      "task_family_id": null,
+      "title": "Nullstelle berechnen",
+      "primary_competency": "MF04_LINEAR_FUNCTIONS",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF03_LINEAR_EQUATIONS"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_ZERO",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne die Nullstelle von y = 4x − 10.",
+      "task_payload": {
+        "function": "4x - 10",
+        "ask": "ZERO"
+      },
+      "correct_answer": {
+        "value": 2.5
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 8,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "LINEAR_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "QF01-D1-I-A",
+      "task_family_id": null,
+      "title": "Nullstelle der Parabel ablesen",
+      "primary_competency": "MF05_QUADRATIC",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF04_LINEAR_FUNCTIONS"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_ZERO",
+      "language_demand": "LOW",
+      "task_prompt": "Wo schneidet die Parabel die x-Achse rechts von der 0?",
+      "task_payload": {
+        "figure": {
+          "type": "COORDINATE_SYSTEM",
+          "xmin": -5,
+          "xmax": 5,
+          "ymin": -6,
+          "ymax": 8,
+          "parabolas": [
+            {
+              "a": 1,
+              "b": 0,
+              "c": -4
+            }
+          ]
+        }
+      },
+      "correct_answer": {
+        "value": 2
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "QUADRATIC_RELATION"
+      ],
+      "surface_features": [
+        "COORDINATE_GRID"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "QF01-D2-S-A",
+      "task_family_id": "FAM_QF01_D2_PAR",
+      "title": "x² = 49",
+      "primary_competency": "MF05_QUADRATIC",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF04_LINEAR_FUNCTIONS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "SOLVE_EQUATION",
+      "language_demand": "LOW",
+      "task_prompt": "Löse x² = 49. Gib die positive Lösung an.",
+      "task_payload": {
+        "equation": "x^2 = 49"
+      },
+      "correct_answer": {
+        "value": 7
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "QUADRATIC_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "QF01-D2-S-B"
+    },
+    {
+      "task_id": "QF01-D2-S-B",
+      "task_family_id": "FAM_QF01_D2_PAR",
+      "title": "x² = 144",
+      "primary_competency": "MF05_QUADRATIC",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF04_LINEAR_FUNCTIONS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "SOLVE_EQUATION",
+      "language_demand": "LOW",
+      "task_prompt": "Löse x² = 144. Gib die positive Lösung an.",
+      "task_payload": {
+        "equation": "x^2 = 144"
+      },
+      "correct_answer": {
+        "value": 12
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "QUADRATIC_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "QF01-D2-S-A"
+    },
+    {
+      "task_id": "QF01-D2-S-C",
+      "task_family_id": "FAM_QF01_D2_REPR",
+      "title": "Funktionswert von x²−4",
+      "primary_competency": "MF05_QUADRATIC",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF04_LINEAR_FUNCTIONS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "EVALUATE_FUNCTION",
+      "language_demand": "LOW",
+      "task_prompt": "Gegeben ist y = x² − 4. Welchen y-Wert hat die Stelle x = 3?",
+      "task_payload": {
+        "function": "x^2 - 4",
+        "substitution": {
+          "x": 3
+        }
+      },
+      "correct_answer": {
+        "value": 5
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "QUADRATIC_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "QF01-D2-I-A",
+      "task_family_id": "FAM_QF01_D2_REPR",
+      "title": "Funktionswert am Graphen",
+      "primary_competency": "MF05_QUADRATIC",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF04_LINEAR_FUNCTIONS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "EVALUATE_FUNCTION",
+      "language_demand": "LOW",
+      "task_prompt": "Welchen y-Wert hat die Parabel an der markierten Stelle x = 3?",
+      "task_payload": {
+        "figure": {
+          "type": "COORDINATE_SYSTEM",
+          "xmin": -5,
+          "xmax": 5,
+          "ymin": -6,
+          "ymax": 8,
+          "parabolas": [
+            {
+              "a": 1,
+              "b": 0,
+              "c": -4
+            }
+          ],
+          "markers": [
+            {
+              "x": 3,
+              "on": "parabola"
+            }
+          ]
+        },
+        "function": "x^2 - 4",
+        "substitution": {
+          "x": 3
+        }
+      },
+      "correct_answer": {
+        "value": 5
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "QUADRATIC_RELATION"
+      ],
+      "surface_features": [
+        "COORDINATE_GRID"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "QF01-D3-S-A",
+      "task_family_id": null,
+      "title": "Quadratische Gleichung lösen",
+      "primary_competency": "MF05_QUADRATIC",
+      "primary_leitidee": "PATTERN_FUNCTION",
+      "prerequisites": [
+        "MF04_LINEAR_FUNCTIONS"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "SOLVE_EQUATION",
+      "language_demand": "LOW",
+      "task_prompt": "Löse x² − 5x + 6 = 0. Gib die größere Lösung an.",
+      "task_payload": {
+        "equation": "x^2 - 5x + 6 = 0"
+      },
+      "correct_answer": {
+        "value": 3
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "QUADRATIC_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "EH01-D1-I-A",
+      "task_family_id": null,
+      "title": "Messbecher ablesen",
+      "primary_competency": "GM01_UNITS",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "ZO06_PLACE_VALUE"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "READ_MEASURE",
+      "language_demand": "LOW",
+      "task_prompt": "Wie viele Milliliter sind im Messbecher?",
+      "task_payload": {
+        "figure": {
+          "type": "JUG",
+          "capacity": 2000,
+          "filled": 1250,
+          "unit": "ml",
+          "step": 250
+        }
+      },
+      "correct_answer": {
+        "value": 1250
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "UNIT_RELATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "EH01-D2-S-A",
+      "task_family_id": "FAM_EH01_D2_PAR",
+      "title": "Meter in Zentimeter",
+      "primary_competency": "GM01_UNITS",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "ZO06_PLACE_VALUE"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "CONVERT_UNIT",
+      "language_demand": "LOW",
+      "task_prompt": "Wie viele Zentimeter sind 3,40 m?",
+      "task_payload": {
+        "value": 3.4,
+        "from_unit": "m",
+        "to_unit": "cm"
+      },
+      "correct_answer": {
+        "value": 340
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "UNIT_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "UNIT_CONVERSION"
+      ],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "EH01-D2-S-B"
+    },
+    {
+      "task_id": "EH01-D2-S-B",
+      "task_family_id": "FAM_EH01_D2_PAR",
+      "title": "Kilogramm in Gramm",
+      "primary_competency": "GM01_UNITS",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "ZO06_PLACE_VALUE"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "CONVERT_UNIT",
+      "language_demand": "LOW",
+      "task_prompt": "Wie viele Gramm sind 2,8 kg?",
+      "task_payload": {
+        "value": 2.8,
+        "from_unit": "kg",
+        "to_unit": "g"
+      },
+      "correct_answer": {
+        "value": 2800
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "UNIT_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "UNIT_CONVERSION"
+      ],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "EH01-D2-S-A"
+    },
+    {
+      "task_id": "EH01-D2-S-C",
+      "task_family_id": "FAM_EH01_D2_REPR",
+      "title": "Liter in Milliliter symbolisch",
+      "primary_competency": "GM01_UNITS",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "ZO06_PLACE_VALUE"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "CONVERT_UNIT",
+      "language_demand": "LOW",
+      "task_prompt": "Wie viele Milliliter sind 1,25 l?",
+      "task_payload": {
+        "value": 1.25,
+        "from_unit": "l",
+        "to_unit": "ml"
+      },
+      "correct_answer": {
+        "value": 1250
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "UNIT_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "EH01-D2-I-A",
+      "task_family_id": "FAM_EH01_D2_REPR",
+      "title": "Liter in Milliliter am Messbecher",
+      "primary_competency": "GM01_UNITS",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "ZO06_PLACE_VALUE"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "CONVERT_UNIT",
+      "language_demand": "LOW",
+      "task_prompt": "Der Messbecher ist bis 1,25 l gefüllt. Wie viele Milliliter sind das?",
+      "task_payload": {
+        "figure": {
+          "type": "JUG",
+          "capacity": 2,
+          "filled": 1.25,
+          "unit": "l",
+          "step": 0.25,
+          "fill_label": "1,25 l"
+        },
+        "value": 1.25,
+        "from_unit": "l",
+        "to_unit": "ml"
+      },
+      "correct_answer": {
+        "value": 1250
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "UNIT_RELATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "EH01-D3-S-A",
+      "task_family_id": null,
+      "title": "Quadratmeter in Quadratzentimeter",
+      "primary_competency": "GM01_UNITS",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "ZO06_PLACE_VALUE"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "CONVERT_UNIT",
+      "language_demand": "LOW",
+      "task_prompt": "Wie viele Quadratzentimeter sind 2,5 m²?",
+      "task_payload": {
+        "value": 2.5,
+        "from_unit": "m^2",
+        "to_unit": "cm^2"
+      },
+      "correct_answer": {
+        "value": 25000
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 6,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "UNIT_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "Der Umrechnungsfaktor ist 10000, nicht 100. 250 wäre der lineare Faktor."
+    },
+    {
+      "task_id": "FL01-D1-I-A",
+      "task_family_id": null,
+      "title": "Kästchen zählen",
+      "primary_competency": "GM02_AREA_PERIMETER",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_AREA",
+      "language_demand": "LOW",
+      "task_prompt": "Wie viele Kästchen bedeckt das Rechteck?",
+      "task_payload": {
+        "figure": {
+          "type": "GRID_RECTANGLE",
+          "w": 6,
+          "h": 4
+        }
+      },
+      "correct_answer": {
+        "value": 24
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "AREA_RELATION",
+        "ARRAY_STRUCTURE"
+      ],
+      "surface_features": [
+        "GRID"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "FL01-D2-S-A",
+      "task_family_id": "FAM_FL01_D2_PAR",
+      "title": "Fläche 7 mal 5",
+      "primary_competency": "GM02_AREA_PERIMETER",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_AREA",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Rechteck ist 7 cm lang und 5 cm breit. Wie groß ist sein Flächeninhalt in cm²?",
+      "task_payload": {
+        "shape": "RECTANGLE",
+        "a": 7,
+        "b": 5,
+        "ask": "AREA"
+      },
+      "correct_answer": {
+        "value": 35
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "AREA_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "24 wäre der Umfang. Fläche und Umfang zu vertauschen ist die häufigste Beobachtung hier - §59: ein Code, keine Ursache.",
+      "parallel_item_id": "FL01-D2-S-B"
+    },
+    {
+      "task_id": "FL01-D2-S-B",
+      "task_family_id": "FAM_FL01_D2_PAR",
+      "title": "Fläche 9 mal 4",
+      "primary_competency": "GM02_AREA_PERIMETER",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_AREA",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Rechteck ist 9 cm lang und 4 cm breit. Wie groß ist sein Flächeninhalt in cm²?",
+      "task_payload": {
+        "shape": "RECTANGLE",
+        "a": 9,
+        "b": 4,
+        "ask": "AREA"
+      },
+      "correct_answer": {
+        "value": 36
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "AREA_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "FL01-D2-S-A"
+    },
+    {
+      "task_id": "FL01-D2-S-C",
+      "task_family_id": "FAM_FL01_D2_REPR",
+      "title": "Umfang symbolisch",
+      "primary_competency": "GM02_AREA_PERIMETER",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PERIMETER",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Rechteck ist 6 cm lang und 4 cm breit. Wie groß ist sein Umfang in cm?",
+      "task_payload": {
+        "shape": "RECTANGLE",
+        "a": 6,
+        "b": 4,
+        "ask": "PERIMETER"
+      },
+      "correct_answer": {
+        "value": 20
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PERIMETER_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "FL01-D2-I-A",
+      "task_family_id": "FAM_FL01_D2_REPR",
+      "title": "Umfang am Gitterbild",
+      "primary_competency": "GM02_AREA_PERIMETER",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PERIMETER",
+      "language_demand": "LOW",
+      "task_prompt": "Wie groß ist der Umfang dieses Rechtecks in cm?",
+      "task_payload": {
+        "figure": {
+          "type": "GRID_RECTANGLE",
+          "w": 6,
+          "h": 4,
+          "unit": "cm",
+          "label_sides": true
+        },
+        "shape": "RECTANGLE",
+        "a": 6,
+        "b": 4,
+        "ask": "PERIMETER"
+      },
+      "correct_answer": {
+        "value": 20
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PERIMETER_RELATION"
+      ],
+      "surface_features": [
+        "GRID"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "FL01-D3-S-A",
+      "task_family_id": null,
+      "title": "Dreiecksfläche",
+      "primary_competency": "GM02_AREA_PERIMETER",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "ZO09_MULTIPLICATION"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_AREA",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Dreieck hat die Grundseite 8 cm und die Höhe 5 cm. Wie groß ist sein Flächeninhalt in cm²?",
+      "task_payload": {
+        "shape": "TRIANGLE",
+        "a": 8,
+        "h": 5,
+        "ask": "AREA"
+      },
+      "correct_answer": {
+        "value": 20
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "AREA_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "40 wäre das Rechteck. Der Faktor 1/2 ist die eigentliche Frage."
+    },
+    {
+      "task_id": "KO01-D1-I-A",
+      "task_family_id": null,
+      "title": "Würfel im Quader zählen",
+      "primary_competency": "GM03_SOLIDS",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "GM02_AREA_PERIMETER"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_VOLUME",
+      "language_demand": "LOW",
+      "task_prompt": "Aus wie vielen kleinen Würfeln besteht der Quader?",
+      "task_payload": {
+        "figure": {
+          "type": "CUBOID",
+          "l": 4,
+          "w": 3,
+          "h": 2,
+          "grid": true
+        }
+      },
+      "correct_answer": {
+        "value": 24
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "VOLUME_RELATION",
+        "ARRAY_STRUCTURE"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "KO01-D2-S-A",
+      "task_family_id": "FAM_KO01_D2_PAR",
+      "title": "Quadervolumen 5·4·3",
+      "primary_competency": "GM03_SOLIDS",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "GM02_AREA_PERIMETER"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_VOLUME",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Quader ist 5 cm lang, 4 cm breit und 3 cm hoch. Wie groß ist sein Volumen in cm³?",
+      "task_payload": {
+        "shape": "CUBOID",
+        "l": 5,
+        "w": 4,
+        "h": 3,
+        "ask": "VOLUME"
+      },
+      "correct_answer": {
+        "value": 60
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "VOLUME_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "KO01-D2-S-B"
+    },
+    {
+      "task_id": "KO01-D2-S-B",
+      "task_family_id": "FAM_KO01_D2_PAR",
+      "title": "Quadervolumen 6·5·4",
+      "primary_competency": "GM03_SOLIDS",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "GM02_AREA_PERIMETER"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_VOLUME",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Quader ist 6 cm lang, 5 cm breit und 4 cm hoch. Wie groß ist sein Volumen in cm³?",
+      "task_payload": {
+        "shape": "CUBOID",
+        "l": 6,
+        "w": 5,
+        "h": 4,
+        "ask": "VOLUME"
+      },
+      "correct_answer": {
+        "value": 120
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "VOLUME_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "KO01-D2-S-A"
+    },
+    {
+      "task_id": "KO01-D2-S-C",
+      "task_family_id": "FAM_KO01_D2_REPR",
+      "title": "Oberfläche symbolisch",
+      "primary_competency": "GM03_SOLIDS",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "GM02_AREA_PERIMETER"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_SURFACE",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Quader ist 5 cm lang, 4 cm breit und 3 cm hoch. Wie groß ist seine Oberfläche in cm²?",
+      "task_payload": {
+        "shape": "CUBOID",
+        "l": 5,
+        "w": 4,
+        "h": 3,
+        "ask": "SURFACE"
+      },
+      "correct_answer": {
+        "value": 94
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "grade_reference_min": 6,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "SURFACE_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "47 wäre die halbe Oberfläche: drei Flächen statt sechs."
+    },
+    {
+      "task_id": "KO01-D2-I-A",
+      "task_family_id": "FAM_KO01_D2_REPR",
+      "title": "Oberfläche am Schrägbild",
+      "primary_competency": "GM03_SOLIDS",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "GM02_AREA_PERIMETER"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_SURFACE",
+      "language_demand": "LOW",
+      "task_prompt": "Wie groß ist die Oberfläche dieses Quaders in cm²?",
+      "task_payload": {
+        "figure": {
+          "type": "CUBOID",
+          "l": 5,
+          "w": 4,
+          "h": 3,
+          "unit": "cm",
+          "label_edges": true
+        },
+        "shape": "CUBOID",
+        "ask": "SURFACE"
+      },
+      "correct_answer": {
+        "value": 94
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "grade_reference_min": 6,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "SURFACE_RELATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "KO01-D3-S-A",
+      "task_family_id": null,
+      "title": "Zylindervolumen",
+      "primary_competency": "GM03_SOLIDS",
+      "primary_leitidee": "MEASUREMENT",
+      "prerequisites": [
+        "GM02_AREA_PERIMETER"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_VOLUME",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Zylinder hat den Radius 3 cm und die Höhe 10 cm. Wie groß ist sein Volumen in cm³? Rechne mit π ≈ 3,14.",
+      "task_payload": {
+        "shape": "CYLINDER",
+        "r": 3,
+        "h": 10,
+        "pi": 3.14,
+        "ask": "VOLUME"
+      },
+      "correct_answer": {
+        "value": 282.6
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "VOLUME_RELATION",
+        "CIRCLE_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "WI01-D1-I-A",
+      "task_family_id": null,
+      "title": "Winkel schätzen",
+      "primary_competency": "RF01_ANGLES",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "SELECT",
+      "question_form": "READ_ANGLE",
+      "language_demand": "LOW",
+      "task_prompt": "Wie groß ist der gezeichnete Winkel?",
+      "task_payload": {
+        "figure": {
+          "type": "ANGLE",
+          "degrees": 120,
+          "show_arc": true
+        },
+        "options": [
+          "120°",
+          "60°",
+          "90°",
+          "150°"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "120°"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "ANGLE_RELATION"
+      ],
+      "surface_features": [
+        "MULTIPLE_CHOICE",
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "60° ist der Nebenwinkel - die typische Verwechslung beim Ablesen am Geodreieck (innere statt äußere Skala)."
+    },
+    {
+      "task_id": "WI01-D2-S-A",
+      "task_family_id": "FAM_WI01_D2_PAR",
+      "title": "Nebenwinkel zu 65°",
+      "primary_competency": "RF01_ANGLES",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_ANGLE",
+      "language_demand": "LOW",
+      "task_prompt": "Zwei Winkel sind Nebenwinkel. Einer misst 65°. Wie groß ist der andere in Grad?",
+      "task_payload": {
+        "given_angle": 65,
+        "relation": "SUPPLEMENTARY"
+      },
+      "correct_answer": {
+        "value": 115
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "ANGLE_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "WI01-D2-S-B"
+    },
+    {
+      "task_id": "WI01-D2-S-B",
+      "task_family_id": "FAM_WI01_D2_PAR",
+      "title": "Nebenwinkel zu 140°",
+      "primary_competency": "RF01_ANGLES",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_ANGLE",
+      "language_demand": "LOW",
+      "task_prompt": "Zwei Winkel sind Nebenwinkel. Einer misst 140°. Wie groß ist der andere in Grad?",
+      "task_payload": {
+        "given_angle": 140,
+        "relation": "SUPPLEMENTARY"
+      },
+      "correct_answer": {
+        "value": 40
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "ANGLE_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "WI01-D2-S-A"
+    },
+    {
+      "task_id": "WI01-D2-S-C",
+      "task_family_id": "FAM_WI01_D2_REPR",
+      "title": "Dritter Dreieckswinkel symbolisch",
+      "primary_competency": "RF01_ANGLES",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_ANGLE",
+      "language_demand": "LOW",
+      "task_prompt": "In einem Dreieck sind zwei Winkel 50° und 70° groß. Wie groß ist der dritte Winkel in Grad?",
+      "task_payload": {
+        "angles": [
+          50,
+          70
+        ],
+        "relation": "TRIANGLE_SUM"
+      },
+      "correct_answer": {
+        "value": 60
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "ANGLE_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "WI01-D2-I-A",
+      "task_family_id": "FAM_WI01_D2_REPR",
+      "title": "Dritter Dreieckswinkel am Bild",
+      "primary_competency": "RF01_ANGLES",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_ANGLE",
+      "language_demand": "LOW",
+      "task_prompt": "Wie groß ist der fehlende Winkel in Grad?",
+      "task_payload": {
+        "figure": {
+          "type": "TRIANGLE_ANGLES",
+          "angles": [
+            50,
+            70,
+            null
+          ]
+        },
+        "angles": [
+          50,
+          70
+        ],
+        "relation": "TRIANGLE_SUM"
+      },
+      "correct_answer": {
+        "value": 60
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "ANGLE_RELATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "WI01-D3-S-A",
+      "task_family_id": null,
+      "title": "Basiswinkel im gleichschenkligen Dreieck",
+      "primary_competency": "RF01_ANGLES",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_ANGLE",
+      "language_demand": "LOW",
+      "task_prompt": "Ein gleichschenkliges Dreieck hat an der Spitze einen Winkel von 40°. Wie groß ist ein Basiswinkel in Grad?",
+      "task_payload": {
+        "angles": [
+          40
+        ],
+        "relation": "ISOSCELES"
+      },
+      "correct_answer": {
+        "value": 70
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "ANGLE_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "140 wäre die Summe beider Basiswinkel - der Schritt 'durch 2' fehlt."
+    },
+    {
+      "task_id": "PY01-D1-I-A",
+      "task_family_id": null,
+      "title": "3-4-5-Dreieck",
+      "primary_competency": "RF02_PYTHAGORAS",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "ZO25_POWERS_ROOTS"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_HYPOTENUSE",
+      "language_demand": "LOW",
+      "task_prompt": "Wie lang ist die Hypotenuse dieses rechtwinkligen Dreiecks in cm?",
+      "task_payload": {
+        "figure": {
+          "type": "RIGHT_TRIANGLE",
+          "a": 3,
+          "b": 4,
+          "c": null,
+          "unit": "cm",
+          "show_squares": true
+        }
+      },
+      "correct_answer": {
+        "value": 5
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 8,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PYTHAGOREAN_RELATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "PY01-D2-S-A",
+      "task_family_id": "FAM_PY01_D2_PAR",
+      "title": "Hypotenuse zu 6 und 8",
+      "primary_competency": "RF02_PYTHAGORAS",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "ZO25_POWERS_ROOTS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_HYPOTENUSE",
+      "language_demand": "LOW",
+      "task_prompt": "Ein rechtwinkliges Dreieck hat die Katheten 6 cm und 8 cm. Wie lang ist die Hypotenuse in cm?",
+      "task_payload": {
+        "a": 6,
+        "b": 8,
+        "ask": "HYPOTENUSE"
+      },
+      "correct_answer": {
+        "value": 10
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 8,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PYTHAGOREAN_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "14 wäre a+b - der Satz des Pythagoras durch Addition ersetzt.",
+      "parallel_item_id": "PY01-D2-S-B"
+    },
+    {
+      "task_id": "PY01-D2-S-B",
+      "task_family_id": "FAM_PY01_D2_PAR",
+      "title": "Hypotenuse zu 5 und 12",
+      "primary_competency": "RF02_PYTHAGORAS",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "ZO25_POWERS_ROOTS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_HYPOTENUSE",
+      "language_demand": "LOW",
+      "task_prompt": "Ein rechtwinkliges Dreieck hat die Katheten 5 cm und 12 cm. Wie lang ist die Hypotenuse in cm?",
+      "task_payload": {
+        "a": 5,
+        "b": 12,
+        "ask": "HYPOTENUSE"
+      },
+      "correct_answer": {
+        "value": 13
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 8,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PYTHAGOREAN_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "PY01-D2-S-A"
+    },
+    {
+      "task_id": "PY01-D2-S-C",
+      "task_family_id": "FAM_PY01_D2_REPR",
+      "title": "Kathete symbolisch",
+      "primary_competency": "RF02_PYTHAGORAS",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "ZO25_POWERS_ROOTS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_LEG",
+      "language_demand": "LOW",
+      "task_prompt": "Ein rechtwinkliges Dreieck hat die Hypotenuse 13 cm und eine Kathete 5 cm. Wie lang ist die andere Kathete in cm?",
+      "task_payload": {
+        "c": 13,
+        "a": 5,
+        "ask": "LEG"
+      },
+      "correct_answer": {
+        "value": 12
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "grade_reference_min": 8,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PYTHAGOREAN_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "Hier wird subtrahiert, nicht addiert. Wer 13²+5² rechnet, wendet die Formel an, ohne die Rolle der Seiten zu unterscheiden."
+    },
+    {
+      "task_id": "PY01-D2-I-A",
+      "task_family_id": "FAM_PY01_D2_REPR",
+      "title": "Kathete am Bild",
+      "primary_competency": "RF02_PYTHAGORAS",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "ZO25_POWERS_ROOTS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_LEG",
+      "language_demand": "LOW",
+      "task_prompt": "Wie lang ist die fehlende Kathete in cm?",
+      "task_payload": {
+        "figure": {
+          "type": "RIGHT_TRIANGLE",
+          "a": 5,
+          "b": null,
+          "c": 13,
+          "unit": "cm"
+        },
+        "c": 13,
+        "a": 5,
+        "ask": "LEG"
+      },
+      "correct_answer": {
+        "value": 12
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "grade_reference_min": 8,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PYTHAGOREAN_RELATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "PY01-D3-S-A",
+      "task_family_id": null,
+      "title": "Quadratdiagonale",
+      "primary_competency": "RF02_PYTHAGORAS",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "ZO25_POWERS_ROOTS"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_HYPOTENUSE",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Quadrat hat die Seitenlänge 6 cm. Wie lang ist seine Diagonale in cm? Runde auf eine Stelle nach dem Komma.",
+      "task_payload": {
+        "shape": "SQUARE",
+        "a": 6,
+        "ask": "DIAGONAL",
+        "round": 1
+      },
+      "correct_answer": {
+        "value": 8.5
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 8,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PYTHAGOREAN_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "KR01-D1-I-A",
+      "task_family_id": null,
+      "title": "Durchmesser aus Radius",
+      "primary_competency": "RF03_CIRCLE",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "GM02_AREA_PERIMETER"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_MISSING_LENGTH",
+      "language_demand": "LOW",
+      "task_prompt": "Der eingezeichnete Radius ist 5 cm lang. Wie lang ist der Durchmesser in cm?",
+      "task_payload": {
+        "figure": {
+          "type": "CIRCLE",
+          "r": 5,
+          "unit": "cm",
+          "show_radius": true,
+          "show_diameter": true
+        }
+      },
+      "correct_answer": {
+        "value": 10
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "CIRCLE_RELATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "KR01-D2-S-A",
+      "task_family_id": "FAM_KR01_D2_PAR",
+      "title": "Kreisumfang r=4",
+      "primary_competency": "RF03_CIRCLE",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "GM02_AREA_PERIMETER"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_CIRCLE_PERIMETER",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Kreis hat den Radius 4 cm. Wie groß ist sein Umfang in cm? Rechne mit π ≈ 3,14 und runde auf eine Stelle nach dem Komma.",
+      "task_payload": {
+        "r": 4,
+        "pi": 3.14,
+        "ask": "PERIMETER",
+        "round": 1
+      },
+      "correct_answer": {
+        "value": 25.1
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "CIRCLE_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "12,6 wäre π·r statt 2·π·r.",
+      "parallel_item_id": "KR01-D2-S-B"
+    },
+    {
+      "task_id": "KR01-D2-S-B",
+      "task_family_id": "FAM_KR01_D2_PAR",
+      "title": "Kreisumfang r=6",
+      "primary_competency": "RF03_CIRCLE",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "GM02_AREA_PERIMETER"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_CIRCLE_PERIMETER",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Kreis hat den Radius 6 cm. Wie groß ist sein Umfang in cm? Rechne mit π ≈ 3,14 und runde auf eine Stelle nach dem Komma.",
+      "task_payload": {
+        "r": 6,
+        "pi": 3.14,
+        "ask": "PERIMETER",
+        "round": 1
+      },
+      "correct_answer": {
+        "value": 37.7
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "CIRCLE_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "KR01-D2-S-A"
+    },
+    {
+      "task_id": "KR01-D2-S-C",
+      "task_family_id": "FAM_KR01_D2_REPR",
+      "title": "Kreisfläche symbolisch",
+      "primary_competency": "RF03_CIRCLE",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "GM02_AREA_PERIMETER"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_CIRCLE_AREA",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Kreis hat den Radius 5 cm. Wie groß ist sein Flächeninhalt in cm²? Rechne mit π ≈ 3,14.",
+      "task_payload": {
+        "r": 5,
+        "pi": 3.14,
+        "ask": "AREA"
+      },
+      "correct_answer": {
+        "value": 78.5
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "CIRCLE_RELATION",
+        "AREA_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "31,4 wäre der Umfang. Umfangs- und Flächenformel zu tauschen ist hier die häufigste Beobachtung."
+    },
+    {
+      "task_id": "KR01-D2-I-A",
+      "task_family_id": "FAM_KR01_D2_REPR",
+      "title": "Kreisfläche am Bild",
+      "primary_competency": "RF03_CIRCLE",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "GM02_AREA_PERIMETER"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_CIRCLE_AREA",
+      "language_demand": "LOW",
+      "task_prompt": "Wie groß ist der Flächeninhalt dieses Kreises in cm²? Rechne mit π ≈ 3,14.",
+      "task_payload": {
+        "figure": {
+          "type": "CIRCLE",
+          "r": 5,
+          "unit": "cm",
+          "show_radius": true,
+          "fill": true
+        },
+        "r": 5,
+        "pi": 3.14,
+        "ask": "AREA"
+      },
+      "correct_answer": {
+        "value": 78.5
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "CIRCLE_RELATION",
+        "AREA_RELATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "KR01-D3-S-A",
+      "task_family_id": null,
+      "title": "Radius aus Umfang",
+      "primary_competency": "RF03_CIRCLE",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "GM02_AREA_PERIMETER"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_MISSING_LENGTH",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Kreis hat den Umfang 31,4 cm. Wie groß ist sein Radius in cm? Rechne mit π ≈ 3,14.",
+      "task_payload": {
+        "perimeter": 31.4,
+        "pi": 3.14,
+        "ask": "RADIUS"
+      },
+      "correct_answer": {
+        "value": 5
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "CIRCLE_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "AE01-D1-I-A",
+      "task_family_id": null,
+      "title": "Vergrößertes Dreieck",
+      "primary_competency": "RF04_SIMILARITY",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "MF01_PROPORTIONALITY"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_MISSING_LENGTH",
+      "language_demand": "LOW",
+      "task_prompt": "Das große Dreieck ist eine Vergrößerung des kleinen. Wie lang ist die mit ? markierte Seite in cm?",
+      "task_payload": {
+        "figure": {
+          "type": "TRIANGLE_PAIR",
+          "small": [
+            3,
+            4
+          ],
+          "big": [
+            6,
+            null
+          ],
+          "unit": "cm"
+        }
+      },
+      "correct_answer": {
+        "value": 8
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "SIMILARITY_RELATION",
+        "PROPORTIONAL_RELATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "AE01-D2-S-A",
+      "task_family_id": "FAM_AE01_D2_PAR",
+      "title": "Ähnliche Figuren 4 zu 10",
+      "primary_competency": "RF04_SIMILARITY",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "MF01_PROPORTIONALITY"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_MISSING_LENGTH",
+      "language_demand": "LOW",
+      "task_prompt": "Zwei Figuren sind ähnlich. Einer Seite von 4 cm entspricht eine Seite von 10 cm. Welche Länge entspricht einer Seite von 6 cm?",
+      "task_payload": {
+        "given": [
+          4,
+          10
+        ],
+        "ask": 6,
+        "operation": "SIMILARITY"
+      },
+      "correct_answer": {
+        "value": 15
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "SIMILARITY_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "12 entstünde durch Addition von 6 statt Multiplikation mit 2,5 - additives statt multiplikatives Vergleichen.",
+      "parallel_item_id": "AE01-D2-S-B"
+    },
+    {
+      "task_id": "AE01-D2-S-B",
+      "task_family_id": "FAM_AE01_D2_PAR",
+      "title": "Ähnliche Figuren 3 zu 12",
+      "primary_competency": "RF04_SIMILARITY",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "MF01_PROPORTIONALITY"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_MISSING_LENGTH",
+      "language_demand": "LOW",
+      "task_prompt": "Zwei Figuren sind ähnlich. Einer Seite von 3 cm entspricht eine Seite von 12 cm. Welche Länge entspricht einer Seite von 5 cm?",
+      "task_payload": {
+        "given": [
+          3,
+          12
+        ],
+        "ask": 5,
+        "operation": "SIMILARITY"
+      },
+      "correct_answer": {
+        "value": 20
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "SIMILARITY_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "AE01-D2-S-A"
+    },
+    {
+      "task_id": "AE01-D2-S-C",
+      "task_family_id": "FAM_AE01_D2_REPR",
+      "title": "Maßstab symbolisch",
+      "primary_competency": "RF04_SIMILARITY",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "MF01_PROPORTIONALITY"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_SCALE_FACTOR",
+      "language_demand": "LOW",
+      "task_prompt": "Eine Karte hat den Maßstab 1 : 25000. Eine Strecke ist dort 4 cm lang. Wie viele Meter sind das in Wirklichkeit?",
+      "task_payload": {
+        "scale": 25000,
+        "map_cm": 4,
+        "to_unit": "m"
+      },
+      "correct_answer": {
+        "value": 1000
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "SIMILARITY_RELATION",
+        "UNIT_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "100000 wäre das Ergebnis in Zentimetern - die Umrechnung fehlt."
+    },
+    {
+      "task_id": "AE01-D2-I-A",
+      "task_family_id": "FAM_AE01_D2_REPR",
+      "title": "Maßstab am Maßstabsbalken",
+      "primary_competency": "RF04_SIMILARITY",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "MF01_PROPORTIONALITY"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_SCALE_FACTOR",
+      "language_demand": "LOW",
+      "task_prompt": "Die abgebildete Strecke ist auf der Karte 4 cm lang. Wie viele Meter sind das in Wirklichkeit?",
+      "task_payload": {
+        "figure": {
+          "type": "SCALE_BAR",
+          "scale": "1 : 25000",
+          "length_cm": 4
+        },
+        "scale": 25000,
+        "map_cm": 4,
+        "to_unit": "m"
+      },
+      "correct_answer": {
+        "value": 1000
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "SIMILARITY_RELATION",
+        "UNIT_RELATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "AE01-D3-S-A",
+      "task_family_id": null,
+      "title": "Strahlensatz",
+      "primary_competency": "RF04_SIMILARITY",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "MF01_PROPORTIONALITY"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_MISSING_LENGTH",
+      "language_demand": "LOW",
+      "task_prompt": "In einer Strahlensatzfigur gilt ZA = 3 cm, ZA' = 9 cm und AB = 4 cm. Wie lang ist A'B' in cm?",
+      "task_payload": {
+        "za": 3,
+        "za_prime": 9,
+        "ab": 4,
+        "operation": "INTERCEPT_THEOREM"
+      },
+      "correct_answer": {
+        "value": 12
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "SIMILARITY_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "TR01-D1-I-A",
+      "task_family_id": null,
+      "title": "Gegenkathete benennen",
+      "primary_competency": "RF05_TRIGONOMETRY",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "RF02_PYTHAGORAS"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "SELECT",
+      "question_form": "SELECT_TRIG_RATIO",
+      "language_demand": "LOW",
+      "task_prompt": "Welche Seite ist die Gegenkathete des markierten Winkels α?",
+      "task_payload": {
+        "figure": {
+          "type": "RIGHT_TRIANGLE",
+          "labels": [
+            "a",
+            "b",
+            "c"
+          ],
+          "mark_angle": "alpha",
+          "angle_at": "A"
+        },
+        "options": [
+          "a",
+          "b",
+          "c"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "a"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "TRIGONOMETRIC_RELATION"
+      ],
+      "surface_features": [
+        "MULTIPLE_CHOICE",
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "TR01-D2-S-A",
+      "task_family_id": "FAM_TR01_D2_PAR",
+      "title": "Gegenkathete bei 30°, Hypotenuse 10",
+      "primary_competency": "RF05_TRIGONOMETRY",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "RF02_PYTHAGORAS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_TRIG_LENGTH",
+      "language_demand": "LOW",
+      "task_prompt": "Ein rechtwinkliges Dreieck hat die Hypotenuse 10 cm und einen Winkel von 30°. Wie lang ist die Gegenkathete dieses Winkels in cm?",
+      "task_payload": {
+        "hypotenuse": 10,
+        "angle": 30,
+        "ask": "OPPOSITE"
+      },
+      "correct_answer": {
+        "value": 5
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "TRIGONOMETRIC_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "TR01-D2-S-B"
+    },
+    {
+      "task_id": "TR01-D2-S-B",
+      "task_family_id": "FAM_TR01_D2_PAR",
+      "title": "Gegenkathete bei 30°, Hypotenuse 20",
+      "primary_competency": "RF05_TRIGONOMETRY",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "RF02_PYTHAGORAS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_TRIG_LENGTH",
+      "language_demand": "LOW",
+      "task_prompt": "Ein rechtwinkliges Dreieck hat die Hypotenuse 20 cm und einen Winkel von 30°. Wie lang ist die Gegenkathete dieses Winkels in cm?",
+      "task_payload": {
+        "hypotenuse": 20,
+        "angle": 30,
+        "ask": "OPPOSITE"
+      },
+      "correct_answer": {
+        "value": 10
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "TRIGONOMETRIC_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "TR01-D2-S-A"
+    },
+    {
+      "task_id": "TR01-D2-S-C",
+      "task_family_id": "FAM_TR01_D2_REPR",
+      "title": "Winkel aus Seitenverhältnis",
+      "primary_competency": "RF05_TRIGONOMETRY",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "RF02_PYTHAGORAS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_ANGLE",
+      "language_demand": "LOW",
+      "task_prompt": "In einem rechtwinkligen Dreieck ist die Gegenkathete 3 cm und die Hypotenuse 6 cm lang. Wie groß ist der Winkel in Grad?",
+      "task_payload": {
+        "opposite": 3,
+        "hypotenuse": 6,
+        "ask": "ANGLE"
+      },
+      "correct_answer": {
+        "value": 30
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "TRIGONOMETRIC_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "TR01-D2-I-A",
+      "task_family_id": "FAM_TR01_D2_REPR",
+      "title": "Winkel am beschrifteten Dreieck",
+      "primary_competency": "RF05_TRIGONOMETRY",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "RF02_PYTHAGORAS"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_ANGLE",
+      "language_demand": "LOW",
+      "task_prompt": "Wie groß ist der markierte Winkel in Grad?",
+      "task_payload": {
+        "figure": {
+          "type": "RIGHT_TRIANGLE",
+          "a": 3,
+          "c": 6,
+          "unit": "cm",
+          "mark_angle": "alpha",
+          "angle_at": "A"
+        },
+        "opposite": 3,
+        "hypotenuse": 6,
+        "ask": "ANGLE"
+      },
+      "correct_answer": {
+        "value": 30
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "TRIGONOMETRIC_RELATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "TR01-D3-S-A",
+      "task_family_id": null,
+      "title": "Winkel aus Tangens",
+      "primary_competency": "RF05_TRIGONOMETRY",
+      "primary_leitidee": "SPACE_SHAPE",
+      "prerequisites": [
+        "RF02_PYTHAGORAS"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_ANGLE",
+      "language_demand": "LOW",
+      "task_prompt": "In einem rechtwinkligen Dreieck sind Gegenkathete und Ankathete beide 7 cm lang. Wie groß ist der Winkel in Grad?",
+      "task_payload": {
+        "opposite": 7,
+        "adjacent": 7,
+        "ask": "ANGLE"
+      },
+      "correct_answer": {
+        "value": 45
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "TRIGONOMETRIC_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "DI01-D1-I-A",
+      "task_family_id": null,
+      "title": "Höchste Säule finden",
+      "primary_competency": "DZ01_DIAGRAMS",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "SELECT",
+      "question_form": "READ_FROM_DIAGRAM",
+      "language_demand": "LOW",
+      "task_prompt": "An welchem Tag wurden die meisten Bücher ausgeliehen?",
+      "task_payload": {
+        "figure": {
+          "type": "BAR_CHART",
+          "axis_y": "Bücher",
+          "bars": [
+            {
+              "label": "Mo",
+              "value": 8
+            },
+            {
+              "label": "Di",
+              "value": 12
+            },
+            {
+              "label": "Mi",
+              "value": 15
+            },
+            {
+              "label": "Do",
+              "value": 9
+            },
+            {
+              "label": "Fr",
+              "value": 6
+            }
+          ]
+        },
+        "options": [
+          "Mi",
+          "Di",
+          "Do",
+          "Fr"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "Mi"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "DATA_DISPLAY"
+      ],
+      "surface_features": [
+        "BAR_CHART"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "DI01-D2-I-A",
+      "task_family_id": "FAM_DI01_D2_PAR",
+      "title": "Wert am Mittwoch ablesen",
+      "primary_competency": "DZ01_DIAGRAMS",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "READ_FROM_DIAGRAM",
+      "language_demand": "LOW",
+      "task_prompt": "Wie viele Bücher wurden am Mittwoch ausgeliehen?",
+      "task_payload": {
+        "figure": {
+          "type": "BAR_CHART",
+          "axis_y": "Bücher",
+          "step": 2,
+          "bars": [
+            {
+              "label": "Mo",
+              "value": 8
+            },
+            {
+              "label": "Di",
+              "value": 12
+            },
+            {
+              "label": "Mi",
+              "value": 14
+            },
+            {
+              "label": "Do",
+              "value": 6
+            },
+            {
+              "label": "Fr",
+              "value": 10
+            }
+          ]
+        },
+        "ask_label": "Mi"
+      },
+      "correct_answer": {
+        "value": 14
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "DATA_DISPLAY"
+      ],
+      "surface_features": [
+        "BAR_CHART"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "Die Achse ist in Zweierschritten geteilt. Wer die Striche zählt statt die Skala zu lesen, erhält 7.",
+      "parallel_item_id": "DI01-D2-I-B"
+    },
+    {
+      "task_id": "DI01-D2-I-B",
+      "task_family_id": "FAM_DI01_D2_PAR",
+      "title": "Wert am Donnerstag ablesen",
+      "primary_competency": "DZ01_DIAGRAMS",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "READ_FROM_DIAGRAM",
+      "language_demand": "LOW",
+      "task_prompt": "Wie viele Bücher wurden am Donnerstag ausgeliehen?",
+      "task_payload": {
+        "figure": {
+          "type": "BAR_CHART",
+          "axis_y": "Bücher",
+          "step": 2,
+          "bars": [
+            {
+              "label": "Mo",
+              "value": 4
+            },
+            {
+              "label": "Di",
+              "value": 10
+            },
+            {
+              "label": "Mi",
+              "value": 16
+            },
+            {
+              "label": "Do",
+              "value": 8
+            },
+            {
+              "label": "Fr",
+              "value": 12
+            }
+          ]
+        },
+        "ask_label": "Do"
+      },
+      "correct_answer": {
+        "value": 8
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "DATA_DISPLAY"
+      ],
+      "surface_features": [
+        "BAR_CHART"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "DI01-D2-I-A"
+    },
+    {
+      "task_id": "DI01-D2-S-A",
+      "task_family_id": "FAM_DI01_D2_REPR",
+      "title": "Spannweite aus der Liste",
+      "primary_competency": "DZ01_DIAGRAMS",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPARE_IN_DIAGRAM",
+      "language_demand": "LOW",
+      "task_prompt": "Die Ausleihen einer Woche: Mo 8, Di 12, Mi 15, Do 9, Fr 6. Wie groß ist der Unterschied zwischen dem größten und dem kleinsten Wert?",
+      "task_payload": {
+        "values": [
+          8,
+          12,
+          15,
+          9,
+          6
+        ],
+        "ask": "RANGE"
+      },
+      "correct_answer": {
+        "value": 9
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "DATA_DISPLAY"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "DI01-D2-I-C",
+      "task_family_id": "FAM_DI01_D2_REPR",
+      "title": "Spannweite im Säulendiagramm",
+      "primary_competency": "DZ01_DIAGRAMS",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPARE_IN_DIAGRAM",
+      "language_demand": "LOW",
+      "task_prompt": "Wie groß ist der Unterschied zwischen der höchsten und der niedrigsten Säule?",
+      "task_payload": {
+        "figure": {
+          "type": "BAR_CHART",
+          "axis_y": "Bücher",
+          "bars": [
+            {
+              "label": "Mo",
+              "value": 8
+            },
+            {
+              "label": "Di",
+              "value": 12
+            },
+            {
+              "label": "Mi",
+              "value": 15
+            },
+            {
+              "label": "Do",
+              "value": 9
+            },
+            {
+              "label": "Fr",
+              "value": 6
+            }
+          ]
+        },
+        "values": [
+          8,
+          12,
+          15,
+          9,
+          6
+        ],
+        "ask": "RANGE"
+      },
+      "correct_answer": {
+        "value": 9
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "DATA_DISPLAY"
+      ],
+      "surface_features": [
+        "BAR_CHART"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "DI01-D3-I-A",
+      "task_family_id": null,
+      "title": "Anteil im Kreisdiagramm",
+      "primary_competency": "DZ01_DIAGRAMS",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [],
+      "internal_difficulty": "D3",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "READ_FROM_DIAGRAM",
+      "language_demand": "LOW",
+      "task_prompt": "Das Kreisdiagramm zeigt, wie 200 Personen zur Arbeit kommen. Wie viele Personen fahren mit dem Bus?",
+      "task_payload": {
+        "figure": {
+          "type": "PIE_CHART",
+          "total_label": "200 Personen",
+          "sectors": [
+            {
+              "label": "Auto",
+              "percent": 45
+            },
+            {
+              "label": "Bus",
+              "percent": 25
+            },
+            {
+              "label": "Rad",
+              "percent": 20
+            },
+            {
+              "label": "zu Fuß",
+              "percent": 10
+            }
+          ]
+        },
+        "whole": 200,
+        "ask_label": "Bus"
+      },
+      "correct_answer": {
+        "value": 50
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 5,
+      "grade_reference_max": 7,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "DATA_DISPLAY",
+        "PERCENT_RELATION"
+      ],
+      "surface_features": [
+        "PIE_CHART"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "25 wäre der Prozentsatz statt der Anzahl - die Frage nach dem Wert mit der Angabe im Diagramm verwechselt."
+    },
+    {
+      "task_id": "MW01-D1-I-A",
+      "task_family_id": null,
+      "title": "Häufigkeit im Punktdiagramm",
+      "primary_competency": "DZ02_AVERAGES",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "ZO07_ADDITION"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "READ_FROM_DIAGRAM",
+      "language_demand": "LOW",
+      "task_prompt": "Wie oft kommt der Wert 3 vor?",
+      "task_payload": {
+        "figure": {
+          "type": "DOT_PLOT",
+          "values": [
+            2,
+            3,
+            3,
+            4,
+            5
+          ],
+          "from": 1,
+          "to": 6
+        },
+        "ask_value": 3
+      },
+      "correct_answer": {
+        "value": 2
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "DATA_DISPLAY"
+      ],
+      "surface_features": [
+        "DOT_PLOT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "MW01-D2-S-A",
+      "task_family_id": "FAM_MW01_D2_PAR",
+      "title": "Mittelwert von 4, 7, 10",
+      "primary_competency": "DZ02_AVERAGES",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "ZO07_ADDITION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_MEAN",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne das arithmetische Mittel von 4, 7 und 10.",
+      "task_payload": {
+        "values": [
+          4,
+          7,
+          10
+        ],
+        "ask": "MEAN"
+      },
+      "correct_answer": {
+        "value": 7
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "AVERAGE_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "21 wäre die Summe - der Schritt 'durch die Anzahl' fehlt.",
+      "parallel_item_id": "MW01-D2-S-B"
+    },
+    {
+      "task_id": "MW01-D2-S-B",
+      "task_family_id": "FAM_MW01_D2_PAR",
+      "title": "Mittelwert von 5, 8, 11, 12",
+      "primary_competency": "DZ02_AVERAGES",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "ZO07_ADDITION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_MEAN",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne das arithmetische Mittel von 5, 8, 11 und 12.",
+      "task_payload": {
+        "values": [
+          5,
+          8,
+          11,
+          12
+        ],
+        "ask": "MEAN"
+      },
+      "correct_answer": {
+        "value": 9
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "AVERAGE_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "MW01-D2-S-A"
+    },
+    {
+      "task_id": "MW01-D2-S-C",
+      "task_family_id": "FAM_MW01_D2_REPR",
+      "title": "Median symbolisch",
+      "primary_competency": "DZ02_AVERAGES",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "ZO07_ADDITION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_MEDIAN",
+      "language_demand": "LOW",
+      "task_prompt": "Berechne den Median von 3, 5, 9, 11 und 12.",
+      "task_payload": {
+        "values": [
+          3,
+          5,
+          9,
+          11,
+          12
+        ],
+        "ask": "MEDIAN"
+      },
+      "correct_answer": {
+        "value": 9
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "grade_reference_min": 6,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "AVERAGE_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "8 wäre das arithmetische Mittel. Median und Mittelwert liegen hier dicht beieinander - der Unterschied ist die Frage."
+    },
+    {
+      "task_id": "MW01-D2-I-A",
+      "task_family_id": "FAM_MW01_D2_REPR",
+      "title": "Median im Punktdiagramm",
+      "primary_competency": "DZ02_AVERAGES",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "ZO07_ADDITION"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_MEDIAN",
+      "language_demand": "LOW",
+      "task_prompt": "Welcher der dargestellten Werte liegt genau in der Mitte, wenn man sie der Größe nach ordnet?",
+      "task_payload": {
+        "figure": {
+          "type": "DOT_PLOT",
+          "values": [
+            3,
+            5,
+            9,
+            11,
+            12
+          ],
+          "from": 1,
+          "to": 13
+        },
+        "values": [
+          3,
+          5,
+          9,
+          11,
+          12
+        ],
+        "ask": "MEDIAN"
+      },
+      "correct_answer": {
+        "value": 9
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "grade_reference_min": 6,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "AVERAGE_RELATION"
+      ],
+      "surface_features": [
+        "DOT_PLOT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "MW01-D3-S-A",
+      "task_family_id": null,
+      "title": "Fehlenden Wert aus dem Mittelwert",
+      "primary_competency": "DZ02_AVERAGES",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "ZO07_ADDITION"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_MEAN",
+      "language_demand": "LOW",
+      "task_prompt": "Vier Arbeiten haben den Durchschnitt 3. Drei davon sind 2, 3 und 3. Welche Note war die vierte?",
+      "task_payload": {
+        "values": [
+          2,
+          3,
+          3
+        ],
+        "mean": 3,
+        "count": 4,
+        "ask": "MISSING"
+      },
+      "correct_answer": {
+        "value": 4
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 6,
+      "grade_reference_max": 8,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "AVERAGE_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "WK01-D1-I-A",
+      "task_family_id": null,
+      "title": "Wahrscheinlichere Farbe",
+      "primary_competency": "DZ03_PROBABILITY",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "ZO20_FRACTION_UNDERSTANDING"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "SELECT",
+      "question_form": "SELECT_PROBABILITY",
+      "language_demand": "LOW",
+      "task_prompt": "Aus der Urne wird eine Kugel gezogen. Welche Farbe kommt wahrscheinlicher?",
+      "task_payload": {
+        "figure": {
+          "type": "URN",
+          "balls": [
+            {
+              "color": "rot",
+              "count": 3
+            },
+            {
+              "color": "blau",
+              "count": 5
+            }
+          ]
+        },
+        "options": [
+          "blau",
+          "rot",
+          "gleich wahrscheinlich"
+        ],
+        "options_status": "IMPLEMENTER_AUTHORED"
+      },
+      "correct_answer": {
+        "selection": "blau"
+      },
+      "scoring_rule": "SELECT_ONE",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROBABILITY_RELATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT",
+        "MULTIPLE_CHOICE"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "WK01-D2-S-A",
+      "task_family_id": "FAM_WK01_D2_PAR",
+      "title": "Wahrscheinlichkeit 4 von 16",
+      "primary_competency": "DZ03_PROBABILITY",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "ZO20_FRACTION_UNDERSTANDING"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PROBABILITY",
+      "language_demand": "LOW",
+      "task_prompt": "In einer Urne sind 4 rote und 12 blaue Kugeln. Es wird eine Kugel gezogen. Wie groß ist die Wahrscheinlichkeit für Rot in Prozent?",
+      "task_payload": {
+        "favorable": 4,
+        "other": 12,
+        "ask": "PERCENT"
+      },
+      "correct_answer": {
+        "value": 25
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROBABILITY_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "33 entstünde aus 4/12 - der Anteil auf die andere Farbe statt auf alle Kugeln bezogen.",
+      "parallel_item_id": "WK01-D2-S-B"
+    },
+    {
+      "task_id": "WK01-D2-S-B",
+      "task_family_id": "FAM_WK01_D2_PAR",
+      "title": "Wahrscheinlichkeit 6 von 20",
+      "primary_competency": "DZ03_PROBABILITY",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "ZO20_FRACTION_UNDERSTANDING"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PROBABILITY",
+      "language_demand": "LOW",
+      "task_prompt": "In einer Urne sind 6 rote und 14 blaue Kugeln. Es wird eine Kugel gezogen. Wie groß ist die Wahrscheinlichkeit für Rot in Prozent?",
+      "task_payload": {
+        "favorable": 6,
+        "other": 14,
+        "ask": "PERCENT"
+      },
+      "correct_answer": {
+        "value": 30
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROBABILITY_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "WK01-D2-S-A"
+    },
+    {
+      "task_id": "WK01-D2-S-C",
+      "task_family_id": "FAM_WK01_D2_REPR",
+      "title": "Glücksrad symbolisch",
+      "primary_competency": "DZ03_PROBABILITY",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "ZO20_FRACTION_UNDERSTANDING"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PROBABILITY",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Glücksrad hat 8 gleich große Felder, 3 davon sind rot. Wie groß ist die Wahrscheinlichkeit für Rot in Prozent?",
+      "task_payload": {
+        "favorable": 3,
+        "total": 8,
+        "ask": "PERCENT"
+      },
+      "correct_answer": {
+        "value": 37.5
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROBABILITY_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "WK01-D2-I-A",
+      "task_family_id": "FAM_WK01_D2_REPR",
+      "title": "Glücksrad als Bild",
+      "primary_competency": "DZ03_PROBABILITY",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "ZO20_FRACTION_UNDERSTANDING"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PROBABILITY",
+      "language_demand": "LOW",
+      "task_prompt": "Wie groß ist die Wahrscheinlichkeit, dass das Glücksrad auf Rot stehen bleibt, in Prozent?",
+      "task_payload": {
+        "figure": {
+          "type": "SPINNER",
+          "sectors": 8,
+          "marked": 3,
+          "color": "rot"
+        },
+        "favorable": 3,
+        "total": 8,
+        "ask": "PERCENT"
+      },
+      "correct_answer": {
+        "value": 37.5
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROBABILITY_RELATION"
+      ],
+      "surface_features": [
+        "IMAGE_CONTEXT"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "WK01-D3-S-A",
+      "task_family_id": null,
+      "title": "Anzahl aus der Wahrscheinlichkeit",
+      "primary_competency": "DZ03_PROBABILITY",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "ZO20_FRACTION_UNDERSTANDING"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PROBABILITY",
+      "language_demand": "LOW",
+      "task_prompt": "Von 20 Losen sollen 40 % Gewinne sein. Wie viele Gewinne müssen es sein?",
+      "task_payload": {
+        "total": 20,
+        "percent": 40,
+        "ask": "COUNT"
+      },
+      "correct_answer": {
+        "value": 8
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 7,
+      "grade_reference_max": 9,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROBABILITY_RELATION",
+        "PERCENT_RELATION"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [
+        "INVERSE_OPERATION"
+      ],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "BD01-D1-I-A",
+      "task_family_id": null,
+      "title": "Fehlende Astwahrscheinlichkeit",
+      "primary_competency": "DZ04_MULTISTAGE",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "DZ03_PROBABILITY"
+      ],
+      "internal_difficulty": "D1",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPLETE_TREE",
+      "language_demand": "LOW",
+      "task_prompt": "Welche Wahrscheinlichkeit gehört an den Ast mit dem Fragezeichen? Gib sie in Prozent an.",
+      "task_payload": {
+        "figure": {
+          "type": "TREE",
+          "stages": 1,
+          "branches": [
+            {
+              "label": "rot",
+              "p": 0.3
+            },
+            {
+              "label": "blau",
+              "p": null
+            }
+          ],
+          "unit": "percent"
+        }
+      },
+      "correct_answer": {
+        "value": 70
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROBABILITY_RELATION"
+      ],
+      "surface_features": [
+        "TREE_DIAGRAM"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "BD01-D2-S-A",
+      "task_family_id": "FAM_BD01_D2_PAR",
+      "title": "Zweimal Rot bei zwei Feldern",
+      "primary_competency": "DZ04_MULTISTAGE",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "DZ03_PROBABILITY"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PATH_PROBABILITY",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Glücksrad hat 2 gleich große Felder, eines ist rot. Es wird zweimal gedreht. Wie groß ist die Wahrscheinlichkeit für zweimal Rot in Prozent?",
+      "task_payload": {
+        "p": 0.5,
+        "stages": 2,
+        "ask": "PERCENT"
+      },
+      "correct_answer": {
+        "value": 25
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROBABILITY_RELATION",
+        "MULTISTAGE_EXPERIMENT"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "50 entstünde durch Addition der Astwahrscheinlichkeiten statt Multiplikation entlang des Pfades.",
+      "parallel_item_id": "BD01-D2-S-B"
+    },
+    {
+      "task_id": "BD01-D2-S-B",
+      "task_family_id": "FAM_BD01_D2_PAR",
+      "title": "Zweimal Rot bei fünf Feldern",
+      "primary_competency": "DZ04_MULTISTAGE",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "DZ03_PROBABILITY"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PATH_PROBABILITY",
+      "language_demand": "LOW",
+      "task_prompt": "Ein Glücksrad hat 5 gleich große Felder, 2 davon sind rot. Es wird zweimal gedreht. Wie groß ist die Wahrscheinlichkeit für zweimal Rot in Prozent?",
+      "task_payload": {
+        "p": 0.4,
+        "stages": 2,
+        "ask": "PERCENT"
+      },
+      "correct_answer": {
+        "value": 16
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROBABILITY_RELATION",
+        "MULTISTAGE_EXPERIMENT"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null,
+      "parallel_item_id": "BD01-D2-S-A"
+    },
+    {
+      "task_id": "BD01-D2-S-C",
+      "task_family_id": "FAM_BD01_D2_REPR",
+      "title": "Mit Zurücklegen symbolisch",
+      "primary_competency": "DZ04_MULTISTAGE",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "DZ03_PROBABILITY"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PATH_PROBABILITY",
+      "language_demand": "LOW",
+      "task_prompt": "In einer Urne sind 2 rote und 3 blaue Kugeln. Es wird zweimal mit Zurücklegen gezogen. Wie groß ist die Wahrscheinlichkeit für zweimal Rot in Prozent?",
+      "task_payload": {
+        "favorable": 2,
+        "total": 5,
+        "stages": 2,
+        "replacement": true,
+        "ask": "PERCENT"
+      },
+      "correct_answer": {
+        "value": 16
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROBABILITY_RELATION",
+        "MULTISTAGE_EXPERIMENT"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "BD01-D2-I-A",
+      "task_family_id": "FAM_BD01_D2_REPR",
+      "title": "Mit Zurücklegen im Baumdiagramm",
+      "primary_competency": "DZ04_MULTISTAGE",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "DZ03_PROBABILITY"
+      ],
+      "internal_difficulty": "D2",
+      "representation_mode": "IMAGE",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PATH_PROBABILITY",
+      "language_demand": "LOW",
+      "task_prompt": "Wie groß ist die Wahrscheinlichkeit für den Pfad rot–rot in Prozent?",
+      "task_payload": {
+        "figure": {
+          "type": "TREE",
+          "stages": 2,
+          "branches": [
+            {
+              "label": "rot",
+              "p": 0.4
+            },
+            {
+              "label": "blau",
+              "p": 0.6
+            }
+          ],
+          "highlight_path": [
+            "rot",
+            "rot"
+          ]
+        },
+        "favorable": 2,
+        "total": 5,
+        "stages": 2,
+        "replacement": true,
+        "ask": "PERCENT"
+      },
+      "correct_answer": {
+        "value": 16
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "SCREEN",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROBABILITY_RELATION",
+        "MULTISTAGE_EXPERIMENT"
+      ],
+      "surface_features": [
+        "TREE_DIAGRAM"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": null
+    },
+    {
+      "task_id": "BD01-D3-S-A",
+      "task_family_id": null,
+      "title": "Ohne Zurücklegen",
+      "primary_competency": "DZ04_MULTISTAGE",
+      "primary_leitidee": "DATA_CHANCE",
+      "prerequisites": [
+        "DZ03_PROBABILITY"
+      ],
+      "internal_difficulty": "D3",
+      "representation_mode": "MATHEMATICAL_SYMBOL",
+      "interaction_mode": "ENTER",
+      "question_form": "COMPUTE_PATH_PROBABILITY",
+      "language_demand": "LOW",
+      "task_prompt": "In einer Urne sind 2 rote und 3 blaue Kugeln. Es wird zweimal ohne Zurücklegen gezogen. Wie groß ist die Wahrscheinlichkeit für zweimal Rot in Prozent?",
+      "task_payload": {
+        "favorable": 2,
+        "total": 5,
+        "stages": 2,
+        "replacement": false,
+        "ask": "PERCENT"
+      },
+      "correct_answer": {
+        "value": 10
+      },
+      "scoring_rule": "EXACT_NUMERIC",
+      "task_purpose": "CONTRAST",
+      "grade_reference_min": 9,
+      "grade_reference_max": 10,
+      "spec_section": null,
+      "numeric_features": [],
+      "structural_features": [
+        "PROBABILITY_RELATION",
+        "MULTISTAGE_EXPERIMENT"
+      ],
+      "surface_features": [
+        "SYMBOLIC_ONLY"
+      ],
+      "strategy_affordances": [],
+      "additional_demands": [],
+      "note": "16 wäre das Ergebnis mit Zurücklegen. Dieselben Zahlen, ein anderer Versuchsaufbau - §116: nur eine Variable ändert sich gegenüber D2-S-C."
+    }
+  ]
+}

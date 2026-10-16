@@ -289,10 +289,15 @@ def notice_relation_coverage(conn: sqlite3.Connection) -> list[Finding]:
     total = conn.execute(
         "SELECT COUNT(*) AS n FROM competencies WHERE is_mvp = 1"
     ).fetchone()["n"]
+    # Gezaehlt wird dieselbe Menge, von der die Rede ist. Ohne die zweite
+    # Bedingung stammte "connected" aus allen Knoten und "total" nur aus den
+    # MVP-Knoten; seit content/klassen5bis10/ dazugekommen ist, stand da
+    # "72 von 50".
     connected = conn.execute(
         "SELECT COUNT(DISTINCT cid) AS n FROM ("
         " SELECT source_competency AS cid FROM relations"
         " UNION SELECT target_competency AS cid FROM relations)"
+        " WHERE cid IN (SELECT competency_id FROM competencies WHERE is_mvp = 1)"
     ).fetchone()["n"]
     return [Finding(NOTICE, "relation_coverage", "§10, §11",
                     f"{connected} von {total} MVP-Knoten haengen im Relationsgraphen."
